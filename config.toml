@@ -6,7 +6,7 @@ enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
 
 # Enable comments by entering your Disqus shortname
-disqusShortname = ""
+disqusShortname = "www-analytical-cl"
 
 # Enable analytics by entering your Google Analytics tracking ID
 googleAnalytics = "UA-103645009-1"
@@ -26,7 +26,7 @@ Químico - Bioquímico"""
   organization = """
   División Metals & Minerals 
   Bureau Veritas Chile"""
-  organization_url = "http://www.bureauveritas.cl/wps/wcm/connect/bv_cl/local"
+  organization_url = "http://www.bureauveritas.cl/home/your-industry/process-industries-and-mining"
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "foto_cv.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "cvgomez@gmail.com"
