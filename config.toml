@@ -23,10 +23,8 @@ defaultContentLanguageInSubdir = true
   role = """
 Magíster en Estadística  
 Químico - Bioquímico"""
-  organization = """
-  División Metals & Minerals 
-  Bureau Veritas Chile"""
-  organization_url = ""
+  organization = "División Metals & Minerals Bureau Veritas"
+  organization_url = "http://www.bureauveritas.cl/wps/wcm/connect/bv_cl/local"
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "foto_cv.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "cvgomez@gmail.com"
