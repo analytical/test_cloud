@@ -1,0 +1,51 @@
+---
+title: ¿Cómo calcular la incertidumbre de una curva de calibración?
+author: cgomez
+date: "2017-08-13T10:00:00"
+slug: como-calcular-la-incertidumbre-de-una-curva-de-calibracion
+categories:
+  - incertidumbre
+tags: []
+---
+
+
+
+<p>Ok, este es el segundo post y es ‘levemente’ más serio que el anterior, pero aún en rodaje.</p>
+<blockquote>
+<p>¿Qué es y cómo estimar la incertidumbre de una curva de calibración?</p>
+</blockquote>
+<p>La incertidumbre de calibración, en adelante <span class="math inline">\(u(x_{0})\)</span>, es aquella que se propaga cuando obtenemos la concentración de un mensurando al interpolar una señal instrumental (por ejemplo, absorbancia o área cromatográfica) en una curva de calibración. Básicamente, esta incertidumbre sólo da cuenta de error aleatorio del instrumento y no incopora la incertidumbre de los calibrantes, al menos cuando se utiliza el modelo de calibración clásico:</p>
+<span class="math display" id="eq:lin">\[\begin{equation}
+  y = \beta_{0} + \beta_{1} x + \epsilon
+    \tag{1}
+\end{equation}\]</span>
+<p>A partir de la ecuación <a href="#eq:lin">(1)</a> obtenemos la concentración de una muestra problema <span class="math inline">\(x_{0}\)</span> cuya señal instrumental es <span class="math inline">\(y_{0}\)</span>:</p>
+<span class="math display" id="eq:x0">\[\begin{equation}
+  x{0} = \frac{y_{0} - \beta_{0}}{\beta_{1}}
+    \tag{2}
+\end{equation}\]</span>
+<p>Sin embargo, ya que la señal instrumental tiene un error aleatorio <span class="math inline">\(\epsilon\)</span> (que se asume Normal con media 0 y varianza <span class="math inline">\(\sigma_{y/x}^2\)</span>) la muestra problema, al ser obenida por interpolación, tiene una incertidumbre estándar de:</p>
+<span class="math display" id="eq:ux0">\[\begin{equation}
+  u(x_{0}) = \frac{\sigma_{y/x}}{\beta_{1}}
+  \sqrt{\frac{1}{n} + \frac{1}{m_{0}} + \frac{(x_{0} - \overline{x})^2}
+  {\sum_{i}^{n} (x_{i} - \overline{x})}}
+    \tag{3}
+\end{equation}\]</span>
+<p>Esta incertidumbre se puede observar en la figura <a href="#fig:banda">1</a>, la cual es obtenida mediante simulació en kenguaje <code>R</code>:</p>
+<pre class="r"><code>set.seed(123)
+x &lt;- 1:10
+y &lt;- 5*x + 3*rnorm(length(x), 0, 1)
+d &lt;- data.frame(x, y)
+
+library(ggplot2)
+
+ggplot(d, aes(x = x, y = y)) +
+  geom_point(pch = 19, col = &#39;red&#39;) +
+  geom_smooth(method = &#39;lm&#39;)</code></pre>
+<div class="figure"><span id="fig:banda"></span>
+<img src="/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png" alt="Incertidumbre de calibración" width="672" />
+<p class="caption">
+Figure 1: Incertidumbre de calibración
+</p>
+</div>
+<p>Ok, vamos a analizar cada uno de los términos.</p>

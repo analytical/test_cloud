@@ -1,0 +1,69 @@
+---
+title: Primer Post, perdone lo poco
+author: cgomez
+date: '2017-08-13'
+slug: primer-post
+categories: []
+tags: [R]
+summary: 'Ese es el primer post...probando... probando'
+---
+
+Este es el primer post de esta página.
+Estoy utilizando ```blogdown``` para generar los post, el cual permite
+incorporar código en R y $\LaTeX$ en el mismo documento.
+
+Probando $\LaTeX$:
+
+$$
+\mu = \int xf(x)dx
+$$
+\begin{equation}
+  E = mc^{2}
+    (\#eq:mc2)
+\end{equation}
+
+La ecuación \@ref(eq:mc2) es muy importante.
+
+
+
+Probando R:
+
+```{r}
+library(ggplot2)
+
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point(pch = 19, col = 'red') +
+  geom_smooth(method = 'lm') +
+  theme_bw()
+
+```
+
+> Todos los modelos son erróneos, pero algunos son útiles (__no me acuerdo quién dijo esto__)
+
+Probando el package ```leaflet```. En la figura \@ref(fig:bv) está
+ubicada mi fuente laboral.
+
+```{r bv, fig.cap = 'Ubicación de Bureau Veritas', warning=F}
+library(leaflet)
+
+m <- leaflet() %>%
+  addTiles() %>%  
+  addMarkers(lng = -70.613644, 
+             lat = -33.478783, 
+             popup = 'Aquí trabajo')
+m  
+
+```
+
+
+
+Probando tablas:
+
+```{r}
+
+knitr::kable(head(mtcars))
+
+```
+
+Ok t'amos listos.
+
