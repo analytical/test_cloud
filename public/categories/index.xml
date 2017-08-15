@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Carlos Gómez</title>
-    <link>/categories/</link>
+    <link>https://www.analytical.cl/categories/</link>
     <description>Recent content in Categories on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -11,19 +11,19 @@
     
     <item>
       <title>Incertidumbre</title>
-      <link>/categories/incertidumbre/</link>
+      <link>https://www.analytical.cl/categories/incertidumbre/</link>
       <pubDate>Mon, 14 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/incertidumbre/</guid>
+      <guid>https://www.analytical.cl/categories/incertidumbre/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/categories/r/</link>
+      <link>https://www.analytical.cl/categories/r/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>/categories/r/</guid>
+      <guid>https://www.analytical.cl/categories/r/</guid>
       <description></description>
     </item>
     
