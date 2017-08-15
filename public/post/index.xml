@@ -74,11 +74,11 @@ Figure 1: Incertidumbre de calibración
 &lt;/ol&gt;
 &lt;div id=&#34;aplicacion-a-un-caso-real&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Aplicación a un caso real&lt;/h1&gt;
-&lt;p&gt;La tabla &lt;a href=&#34;#tab:tabla&#34;&gt;1&lt;/a&gt; muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS:&lt;/p&gt;
+&lt;p&gt;La tabla &lt;a href=&#34;#tab:tabla&#34;&gt;1&lt;/a&gt; muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura &lt;a href=&#34;#fig:cal&#34;&gt;2&lt;/a&gt; describe el gráfico de calibración:&lt;/p&gt;
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
-&lt;table class=&#34;table&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;table class=&#34;table&#34; style=&#34;width: auto !important; text-align: right;&#34;&gt;
 &lt;caption&gt;
-&lt;span id=&#34;tab:tabla&#34;&gt;Table 1: &lt;/span&gt;Curva de Calibración Cu en AAS
+&lt;span id=&#34;tab:tabla&#34;&gt;Table 1: &lt;/span&gt;Curva de Calibración Cu
 &lt;/caption&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -173,6 +173,12 @@ UA
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:cal&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png&#34; alt=&#34;Curva de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: Curva de calibración
+&lt;/p&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

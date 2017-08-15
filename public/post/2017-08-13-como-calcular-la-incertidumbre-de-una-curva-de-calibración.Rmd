@@ -7,6 +7,7 @@ categories:
   - incertidumbre
 tags: []
 summary: '¿Qué es y cómo estimar la incertidumbre de una curva de calibración?'
+
 ---
 
 Ok, este es el segundo post pero advierto que aún está en rodaje... esto del
@@ -96,7 +97,9 @@ es decir, utilizando todo el rango lineal (Nota mental: otro post)
 
 # Aplicación a un caso real
 
-La tabla \@ref(tab:tabla) muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS:
+La tabla \@ref(tab:tabla) muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura \@ref(fig:cal) describe
+el gráfico de calibración:
+
 
 ```{r tabla, echo = F, warning = F, message=F}
 library(magrittr)
@@ -110,15 +113,25 @@ y <- b0 + b1*x + rnorm(length(x), 0, 0.01)
 d <- data.frame(x, y)
 
 knitr::kable(d,
-             caption = 'Curva de Calibración Cu en AAS',
+             caption = 'Curva de Calibración Cu',
              booktabs = T,
              digits = 4,
              align = 'c',
              col.names = c('Cu [ppm]', 'UA')) %>% 
-  kable_styling(full_width = F)
+  kable_styling(full_width = F, position = 'left')
+
 
 ```
 
 
+```{r cal, echo = F, fig.cap = 'Curva de calibración'}
+
+ggplot(d, aes(x = x, y = y)) +
+  geom_point(col = 'red') +
+  geom_smooth(method = 'lm') +
+  xlab('Cu [ppm]') +
+  ylab('UA')
+
+```
 
 
