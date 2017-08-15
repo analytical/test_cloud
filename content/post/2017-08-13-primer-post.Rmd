@@ -10,7 +10,7 @@ summary: 'Ese es el primer post...probando... probando'
 
 Este es el primer post de esta página.
 Estoy utilizando ```blogdown``` para generar los post, el cual permite
-incorporar código en R y $\LaTeX$ en el mismo documento.
+incorporar código en `R` y $\LaTeX$ en el mismo documento.
 
 Probando $\LaTeX$:
 

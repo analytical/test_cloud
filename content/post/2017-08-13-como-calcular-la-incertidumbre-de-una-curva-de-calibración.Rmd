@@ -1,24 +1,25 @@
 ---
 title: ¿Cómo calcular la incertidumbre de una curva de calibración?
 author: cgomez
-date: "2017-08-13T10:00:00"
+date: "2017-08-14"
 slug: como-calcular-la-incertidumbre-de-una-curva-de-calibracion
 categories:
   - incertidumbre
 tags: []
+summary: '¿Qué es y cómo estimar la incertidumbre de una curva de calibración?'
 ---
 
-Ok, este es el segundo post y es 'levemente' más serio que el anterior, pero
-aún en rodaje.
+Ok, este es el segundo post pero advierto que aún está en rodaje... esto del
+_copywriting_ no es nada fácil.
 
 >¿Qué es y cómo estimar la incertidumbre de una curva de calibración?
 
 La incertidumbre de calibración, en adelante $u(x_{0})$, es aquella que se 
 propaga cuando obtenemos la concentración de un mensurando
-al interpolar una señal instrumental (por ejemplo, absorbancia o 
+al *interpolar* una señal instrumental (por ejemplo, absorbancia o 
 área cromatográfica) en una curva de calibración. Básicamente, 
 esta incertidumbre
-sólo da cuenta de error aleatorio del instrumento y no incopora la
+sólo da cuenta del error aleatorio del instrumento y no incopora la
 incertidumbre de los calibrantes, al menos cuando se utiliza el modelo de 
 calibración clásico:
 
@@ -27,17 +28,27 @@ calibración clásico:
     (\#eq:lin)
 \end{equation}
 
+donde $y$ es la respuesta instrumental, $\beta_{0}$ es el intercepto,
+$\beta_{1}$ es la pendiente y $\epsilon$ es un error aleatorio Normal que tiene
+media $\mu_{\epsilon} = 0$ y varianza $\sigma_{y/x}^2$. Note de la 
+ecuación \@ref(eq:lin) que lo único aleatorio es $\epsilon$, por lo tanto,
+el intercepto $\beta_{0}$  y la pendiente $\beta_{1}$ son *fijos*. 
+Lo que hacemos cuando aplicamos, por ejemplo, el método de los mínimos 
+cuadrados es estimar estos parámetros y, en estadística, todas las 
+estimaciones tienen un error asociado.
+
 A partir de la ecuación \@ref(eq:lin) obtenemos la concentración de una 
 muestra problema $x_{0}$ cuya señal instrumental es $y_{0}$:
 
 \begin{equation}
-  x{0} = \frac{y_{0} - \beta_{0}}{\beta_{1}}
+  x_{0} = \frac{y_{0} - \beta_{0}}{\beta_{1}}
     (\#eq:x0)
 \end{equation}
 
-Sin embargo, ya que la señal instrumental tiene un error aleatorio $\epsilon$ 
-(que se asume Normal con media 0 y varianza $\sigma_{y/x}^2$) la muestra problema, 
-al ser obenida por interpolación, tiene una incertidumbre estándar de:
+Si aplicáramos la guía GUM para obtener la incertidumbre estándar de 
+calibración $u(x_{0})$ sería bastante latoso-engorroso, pues hay unas 
+covarianzas no muy amistosas entre pendiente e intercepto. Afortunadamente
+$u(x_{0})$ puede aproximarse muy bien a través de la ecuación \@ref(eq:ux0):
 
 \begin{equation}
   u(x_{0}) = \frac{\sigma_{y/x}}{\beta_{1}}
@@ -46,23 +57,68 @@ al ser obenida por interpolación, tiene una incertidumbre estándar de:
     (\#eq:ux0)
 \end{equation}
 
+Vamos viendo dijo el ciego:
+
+- $\sigma_{y/x}$ es la desviación estándar del error aleatorio $\epsilon$
+- $n$ es el número de calibrantes independientes (esto da para otro post)
+- $m_{0}$ es el número de replicado independientes de la muestra problema
+- $\overline{x}$ es el promedio de la concentraciones de los calibrantes
+
+
 Esta incertidumbre se puede observar en la figura \@ref(fig:banda), la
-cual es obtenida mediante simulació en kenguaje `R`:
+cual fue obtenida mediante simulación en lenguaje `R`:
 
 ```{r banda, fig.cap = 'Incertidumbre de calibración'}
 
 set.seed(123)
 x <- 1:10
-y <- 5*x + 3*rnorm(length(x), 0, 1)
+y <- 2 + 5*x + 10*rnorm(length(x), 0, 1)
 d <- data.frame(x, y)
 
 library(ggplot2)
 
 ggplot(d, aes(x = x, y = y)) +
-  geom_point(pch = 19, col = 'red') +
-  geom_smooth(method = 'lm')
+  geom_smooth(method = 'lm') 
+
+```
+
+¿Dónde se obtiene la menor incertidumbre de calibración? ... ¡Correcto!
+
+> En el centro de la curva se minimiza la incertidumbre de calibración
+
+Si obervamos la ecuación \@ref(eq:ux0) podemos minimizar $u(x_{0})$:
+
+1. Aumentando $n$ el número de calibrantes. 
+2. Aumentando $m_{0}$
+3. Diseñando la curva de calibración de modo que $x_{0} = \bar{x}$
+4. Aunque no tan "evidente", maximizando $\sum_{i}^{n} (x_{i} - \overline{x})$,
+es decir, utilizando todo el rango lineal (Nota mental: otro post)
+
+# Aplicación a un caso real
+
+La tabla \@ref(tab:tabla) muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS:
+
+```{r tabla, echo = F, warning = F, message=F}
+library(magrittr)
+library(kableExtra)
+options(knitr.table.format = "html") 
+
+b0 <- 0
+b1 <- 0.200/5 # para 5 ppm se obtienen 200 UA 
+x <- 1:10
+y <- b0 + b1*x + rnorm(length(x), 0, 0.01)
+d <- data.frame(x, y)
+
+knitr::kable(d,
+             caption = 'Curva de Calibración Cu en AAS',
+             booktabs = T,
+             digits = 4,
+             align = 'c',
+             col.names = c('Cu [ppm]', 'UA')) %>% 
+  kable_styling(full_width = F)
 
 ```
 
 
-Ok, vamos a analizar cada uno de los términos.
+
+

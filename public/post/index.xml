@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Carlos Gómez</title>
-    <link>https://www.analytical.cl/post/</link>
+    <link>/post/</link>
     <description>Recent content in Posts on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -12,71 +12,190 @@
     
     <item>
       <title>¿Cómo calcular la incertidumbre de una curva de calibración?</title>
-      <link>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
-      <pubDate>Sun, 13 Aug 2017 10:00:00 +0000</pubDate>
+      <link>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
+      <pubDate>Mon, 14 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
-      <description>&lt;p&gt;Ok, este es el segundo post y es ‘levemente’ más serio que el anterior, pero aún en rodaje.&lt;/p&gt;
+      <guid>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
+      <description>&lt;p&gt;Ok, este es el segundo post pero advierto que aún está en rodaje… esto del &lt;em&gt;copywriting&lt;/em&gt; no es nada fácil.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;¿Qué es y cómo estimar la incertidumbre de una curva de calibración?&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;La incertidumbre de calibración, en adelante &lt;span class=&#34;math inline&#34;&gt;\(u(x_{0})\)&lt;/span&gt;, es aquella que se propaga cuando obtenemos la concentración de un mensurando al interpolar una señal instrumental (por ejemplo, absorbancia o área cromatográfica) en una curva de calibración. Básicamente, esta incertidumbre sólo da cuenta de error aleatorio del instrumento y no incopora la incertidumbre de los calibrantes, al menos cuando se utiliza el modelo de calibración clásico:&lt;/p&gt;
+&lt;p&gt;La incertidumbre de calibración, en adelante &lt;span class=&#34;math inline&#34;&gt;\(u(x_{0})\)&lt;/span&gt;, es aquella que se propaga cuando obtenemos la concentración de un mensurando al &lt;em&gt;interpolar&lt;/em&gt; una señal instrumental (por ejemplo, absorbancia o área cromatográfica) en una curva de calibración. Básicamente, esta incertidumbre sólo da cuenta del error aleatorio del instrumento y no incopora la incertidumbre de los calibrantes, al menos cuando se utiliza el modelo de calibración clásico:&lt;/p&gt;
 &lt;span class=&#34;math display&#34; id=&#34;eq:lin&#34;&gt;\[\begin{equation}
   y = \beta_{0} + \beta_{1} x + \epsilon
     \tag{1}
 \end{equation}\]&lt;/span&gt;
+&lt;p&gt;donde &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; es la respuesta instrumental, &lt;span class=&#34;math inline&#34;&gt;\(\beta_{0}\)&lt;/span&gt; es el intercepto, &lt;span class=&#34;math inline&#34;&gt;\(\beta_{1}\)&lt;/span&gt; es la pendiente y &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt; es un error aleatorio Normal que tiene media &lt;span class=&#34;math inline&#34;&gt;\(\mu_{\epsilon} = 0\)&lt;/span&gt; y varianza &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{y/x}^2\)&lt;/span&gt;. Note de la ecuación &lt;a href=&#34;#eq:lin&#34;&gt;(1)&lt;/a&gt; que lo único aleatorio es &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt;, por lo tanto, el intercepto &lt;span class=&#34;math inline&#34;&gt;\(\beta_{0}\)&lt;/span&gt; y la pendiente &lt;span class=&#34;math inline&#34;&gt;\(\beta_{1}\)&lt;/span&gt; son &lt;em&gt;fijos&lt;/em&gt;. Lo que hacemos cuando aplicamos, por ejemplo, el método de los mínimos cuadrados es estimar estos parámetros y, en estadística, todas las estimaciones tienen un error asociado.&lt;/p&gt;
 &lt;p&gt;A partir de la ecuación &lt;a href=&#34;#eq:lin&#34;&gt;(1)&lt;/a&gt; obtenemos la concentración de una muestra problema &lt;span class=&#34;math inline&#34;&gt;\(x_{0}\)&lt;/span&gt; cuya señal instrumental es &lt;span class=&#34;math inline&#34;&gt;\(y_{0}\)&lt;/span&gt;:&lt;/p&gt;
 &lt;span class=&#34;math display&#34; id=&#34;eq:x0&#34;&gt;\[\begin{equation}
-  x{0} = \frac{y_{0} - \beta_{0}}{\beta_{1}}
+  x_{0} = \frac{y_{0} - \beta_{0}}{\beta_{1}}
     \tag{2}
 \end{equation}\]&lt;/span&gt;
-&lt;p&gt;Sin embargo, ya que la señal instrumental tiene un error aleatorio &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt; (que se asume Normal con media 0 y varianza &lt;span class=&#34;math inline&#34;&gt;\(\sigma_{y/x}^2\)&lt;/span&gt;) la muestra problema, al ser obenida por interpolación, tiene una incertidumbre estándar de:&lt;/p&gt;
+&lt;p&gt;Si aplicáramos la guía GUM para obtener la incertidumbre estándar de calibración &lt;span class=&#34;math inline&#34;&gt;\(u(x_{0})\)&lt;/span&gt; sería bastante latoso-engorroso, pues hay unas covarianzas no muy amistosas entre pendiente e intercepto. Afortunadamente &lt;span class=&#34;math inline&#34;&gt;\(u(x_{0})\)&lt;/span&gt; puede aproximarse muy bien a través de la ecuación &lt;a href=&#34;#eq:ux0&#34;&gt;(3)&lt;/a&gt;:&lt;/p&gt;
 &lt;span class=&#34;math display&#34; id=&#34;eq:ux0&#34;&gt;\[\begin{equation}
   u(x_{0}) = \frac{\sigma_{y/x}}{\beta_{1}}
   \sqrt{\frac{1}{n} + \frac{1}{m_{0}} + \frac{(x_{0} - \overline{x})^2}
   {\sum_{i}^{n} (x_{i} - \overline{x})}}
     \tag{3}
 \end{equation}\]&lt;/span&gt;
-&lt;p&gt;Esta incertidumbre se puede observar en la figura &lt;a href=&#34;#fig:banda&#34;&gt;1&lt;/a&gt;, la cual es obtenida mediante simulació en kenguaje &lt;code&gt;R&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Vamos viendo dijo el ciego:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\sigma_{y/x}\)&lt;/span&gt; es la desviación estándar del error aleatorio &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; es el número de calibrantes independientes (esto da para otro post)&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(m_{0}\)&lt;/span&gt; es el número de replicado independientes de la muestra problema&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\overline{x}\)&lt;/span&gt; es el promedio de la concentraciones de los calibrantes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Esta incertidumbre se puede observar en la figura &lt;a href=&#34;#fig:banda&#34;&gt;1&lt;/a&gt;, la cual fue obtenida mediante simulación en lenguaje &lt;code&gt;R&lt;/code&gt;:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(123)
 x &amp;lt;- 1:10
-y &amp;lt;- 5*x + 3*rnorm(length(x), 0, 1)
+y &amp;lt;- 2 + 5*x + 10*rnorm(length(x), 0, 1)
 d &amp;lt;- data.frame(x, y)
 
 library(ggplot2)
 
 ggplot(d, aes(x = x, y = y)) +
-  geom_point(pch = 19, col = &amp;#39;red&amp;#39;) +
-  geom_smooth(method = &amp;#39;lm&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+  geom_smooth(method = &amp;#39;lm&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:banda&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Incertidumbre de calibración
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;Ok, vamos a analizar cada uno de los términos.&lt;/p&gt;
+&lt;p&gt;¿Dónde se obtiene la menor incertidumbre de calibración? … ¡Correcto!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;En el centro de la curva se minimiza la incertidumbre de calibración&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Si obervamos la ecuación &lt;a href=&#34;#eq:ux0&#34;&gt;(3)&lt;/a&gt; podemos minimizar &lt;span class=&#34;math inline&#34;&gt;\(u(x_{0})\)&lt;/span&gt;:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Aumentando &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; el número de calibrantes.&lt;/li&gt;
+&lt;li&gt;Aumentando &lt;span class=&#34;math inline&#34;&gt;\(m_{0}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Diseñando la curva de calibración de modo que &lt;span class=&#34;math inline&#34;&gt;\(x_{0} = \bar{x}\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Aunque no tan “evidente”, maximizando &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i}^{n} (x_{i} - \overline{x})\)&lt;/span&gt;, es decir, utilizando todo el rango lineal (Nota mental: otro post)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;aplicacion-a-un-caso-real&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Aplicación a un caso real&lt;/h1&gt;
+&lt;p&gt;La tabla &lt;a href=&#34;#tab:tabla&#34;&gt;1&lt;/a&gt; muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS:&lt;/p&gt;
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
+&lt;table class=&#34;table&#34; style=&#34;width: auto !important; margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;caption&gt;
+&lt;span id=&#34;tab:tabla&#34;&gt;Table 1: &lt;/span&gt;Curva de Calibración Cu en AAS
+&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+Cu [ppm]
+&lt;/th&gt;
+&lt;th style=&#34;text-align:center;&#34;&gt;
+UA
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+1
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.0522
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+2
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.0836
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+3
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.1240
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+4
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.1611
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+5
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.1944
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+6
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.2579
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+7
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.2850
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+8
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.3003
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+9
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.3670
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+10
+&lt;/td&gt;
+&lt;td style=&#34;text-align:center;&#34;&gt;
+0.3953
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
 </description>
     </item>
     
     <item>
       <title>Primer Post, perdone lo poco</title>
-      <link>https://www.analytical.cl/post/primer-post/</link>
+      <link>/post/primer-post/</link>
       <pubDate>Sun, 13 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/primer-post/</guid>
-      <description>&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-label/leaflet.label.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-label/leaflet.label.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
+      <guid>/post/primer-post/</guid>
+      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;/rmarkdown-libs/leaflet-label/leaflet.label.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-label/leaflet.label.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
 
 
-&lt;p&gt;Este es el primer post de esta página. Estoy utilizando &lt;code&gt;blogdown&lt;/code&gt; para generar los post, el cual permite incorporar código en R y &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; en el mismo documento.&lt;/p&gt;
+&lt;p&gt;Este es el primer post de esta página. Estoy utilizando &lt;code&gt;blogdown&lt;/code&gt; para generar los post, el cual permite incorporar código en &lt;code&gt;R&lt;/code&gt; y &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; en el mismo documento.&lt;/p&gt;
 &lt;p&gt;Probando &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt;:&lt;/p&gt;
 &lt;span class=&#34;math display&#34;&gt;\[
 \mu = \int xf(x)dx
@@ -93,7 +212,7 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point(pch = 19, col = &amp;#39;red&amp;#39;) +
   geom_smooth(method = &amp;#39;lm&amp;#39;) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-primer-post_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-08-13-primer-post_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Todos los modelos son erróneos, pero algunos son útiles (&lt;strong&gt;no me acuerdo quién dijo esto&lt;/strong&gt;)&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -225,19 +344,19 @@ Figure 1: Ubicación de Bureau Veritas
     
     <item>
       <title>test</title>
-      <link>https://www.analytical.cl/post/test/</link>
+      <link>/post/test/</link>
       <pubDate>Sun, 13 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/test/</guid>
+      <guid>/post/test/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Getting started with the Academic framework for Hugo</title>
-      <link>https://www.analytical.cl/post/getting-started/</link>
+      <link>/post/getting-started/</link>
       <pubDate>Wed, 20 Apr 2016 12:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/getting-started/</guid>
+      <guid>/post/getting-started/</guid>
       <description>
 
 &lt;p&gt;The Academic framework enables you to easily create a beautifully simple personal or academic website using the &lt;a href=&#34;https://gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; static site generator.&lt;/p&gt;
@@ -248,7 +367,7 @@ Figure 1: Ubicación de Bureau Veritas
 &lt;li&gt;Easily manage your homepage, blog posts, publications, talks, and projects&lt;/li&gt;
 &lt;li&gt;Configurable widgets available for Biography, Publications, Projects, News/Blog, Talks, and Contact&lt;/li&gt;
 &lt;li&gt;Need a different section? Just use the Custom widget!&lt;/li&gt;
-&lt;li&gt;Write in &lt;a href=&#34;https://www.analytical.cl/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt; for easy formatting and code highlighting, with &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX&lt;/a&gt; for mathematical expressions&lt;/li&gt;
+&lt;li&gt;Write in &lt;a href=&#34;/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt; for easy formatting and code highlighting, with &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX&lt;/a&gt; for mathematical expressions&lt;/li&gt;
 &lt;li&gt;Social/academic network linking, &lt;a href=&#34;https://analytics.google.com&#34; target=&#34;_blank&#34;&gt;Google Analytics&lt;/a&gt;, and &lt;a href=&#34;https://disqus.com&#34; target=&#34;_blank&#34;&gt;Disqus&lt;/a&gt; comments&lt;/li&gt;
 &lt;li&gt;Responsive and mobile friendly&lt;/li&gt;
 &lt;li&gt;Simple and refreshing one page design&lt;/li&gt;
@@ -312,15 +431,15 @@ cd my_website
 
 &lt;h3 id=&#34;customize-the-homepage&#34;&gt;Customize the homepage&lt;/h3&gt;
 
-&lt;p&gt;Refer to our guide on using &lt;a href=&#34;https://www.analytical.cl/post/widgets/&#34; target=&#34;_blank&#34;&gt;widgets&lt;/a&gt; to customize your homepage.&lt;/p&gt;
+&lt;p&gt;Refer to our guide on using &lt;a href=&#34;/post/widgets/&#34; target=&#34;_blank&#34;&gt;widgets&lt;/a&gt; to customize your homepage.&lt;/p&gt;
 
 &lt;h3 id=&#34;add-your-content&#34;&gt;Add your content&lt;/h3&gt;
 
-&lt;p&gt;Refer to our guide on &lt;a href=&#34;https://www.analytical.cl/post/managing-content/&#34; target=&#34;_blank&#34;&gt;managing content&lt;/a&gt; to create your own publications, blog posts, talks, and projects.&lt;/p&gt;
+&lt;p&gt;Refer to our guide on &lt;a href=&#34;/post/managing-content/&#34; target=&#34;_blank&#34;&gt;managing content&lt;/a&gt; to create your own publications, blog posts, talks, and projects.&lt;/p&gt;
 
 &lt;h3 id=&#34;remove-unused-widgets-and-pages&#34;&gt;Remove unused widgets and pages&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.analytical.cl/post/managing-content/#removing-content&#34; target=&#34;_blank&#34;&gt;How to remove unused widgets and content pages&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;/post/managing-content/#removing-content&#34; target=&#34;_blank&#34;&gt;How to remove unused widgets and content pages&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;customization-upgrading&#34;&gt;Customization &amp;amp; Upgrading&lt;/h3&gt;
 
@@ -424,10 +543,10 @@ $ git log --pretty=oneline --abbrev-commit --decorate HEAD..upstream/master
     
     <item>
       <title>Customizing the homepage with widgets</title>
-      <link>https://www.analytical.cl/post/widgets/</link>
+      <link>/post/widgets/</link>
       <pubDate>Wed, 20 Apr 2016 11:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/widgets/</guid>
+      <guid>/post/widgets/</guid>
       <description>
 
 &lt;p&gt;Homepage widgets display as sections on the homepage. They can be enabled/disabled and configured as desired. Academic has the following widgets available to use:&lt;/p&gt;
@@ -490,15 +609,15 @@ $ git log --pretty=oneline --abbrev-commit --decorate HEAD..upstream/master
     
     <item>
       <title>Managing content</title>
-      <link>https://www.analytical.cl/post/managing-content/</link>
+      <link>/post/managing-content/</link>
       <pubDate>Wed, 20 Apr 2016 11:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/managing-content/</guid>
-      <description>&lt;p&gt;This is a brief guide to managing content with the Academic framework. Content can include publications, projects, talks, and news/blog articles. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;https://www.analytical.cl/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;
+      <guid>/post/managing-content/</guid>
+      <description>&lt;p&gt;This is a brief guide to managing content with the Academic framework. Content can include publications, projects, talks, and news/blog articles. After you have read this guide about creating and managing content, you may also be interested to learn about &lt;a href=&#34;/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;writing content with Markdown, LaTeX, and Shortcodes&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;To enable LaTeX math rendering for a page, you should include &lt;code&gt;math = true&lt;/code&gt; in the page&amp;rsquo;s &lt;code&gt;+++&lt;/code&gt; preamble, as demonstrated in the included example site. Otherwise, to enable math on the homepage or for all pages, you must globally set &lt;code&gt;math = true&lt;/code&gt; in &lt;code&gt;config.toml&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;To disable source code highlighting by default for all pages, set &lt;code&gt;highlight = false&lt;/code&gt; in &lt;code&gt;config.toml&lt;/code&gt;. You can then enable source code highlighting only on pages that need it by setting &lt;code&gt;highlight = true&lt;/code&gt; in that page&amp;rsquo;s preamble. See the &lt;a href=&#34;https://www.analytical.cl/post/writing-markdown-latex/#code-highlighting&#34; target=&#34;_blank&#34;&gt;code-highlighting docs&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;To disable source code highlighting by default for all pages, set &lt;code&gt;highlight = false&lt;/code&gt; in &lt;code&gt;config.toml&lt;/code&gt;. You can then enable source code highlighting only on pages that need it by setting &lt;code&gt;highlight = true&lt;/code&gt; in that page&amp;rsquo;s preamble. See the &lt;a href=&#34;/post/writing-markdown-latex/#code-highlighting&#34; target=&#34;_blank&#34;&gt;code-highlighting docs&lt;/a&gt; for more details.&lt;/p&gt;
 
 &lt;p&gt;To display a featured image in content page headers, the parameters below can be inserted towards the end of a page&amp;rsquo;s &lt;code&gt;+++&lt;/code&gt; preamble. It is assumed that the image is located in your &lt;code&gt;static/img/&lt;/code&gt; folder, so the full path in the example below will be &lt;code&gt;static/img/headers/getting-started.png&lt;/code&gt;. The &lt;code&gt;caption&lt;/code&gt; parameter can be used to write an image caption or credit.&lt;/p&gt;
 
@@ -637,10 +756,10 @@ Below is an automatically generated list of all my blog posts!
     
     <item>
       <title>Writing content with Markdown, LaTeX, and Shortcodes</title>
-      <link>https://www.analytical.cl/post/writing-markdown-latex/</link>
+      <link>/post/writing-markdown-latex/</link>
       <pubDate>Wed, 20 Apr 2016 10:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/writing-markdown-latex/</guid>
+      <guid>/post/writing-markdown-latex/</guid>
       <description>&lt;p&gt;Content can be written using &lt;a href=&#34;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt;, &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX math&lt;/a&gt;, and &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34; target=&#34;_blank&#34;&gt;Hugo Shortcodes&lt;/a&gt;. Additionally, HTML may be used for advanced formatting. This article gives an overview of the most common formatting options.&lt;/p&gt;
 
 &lt;h2 id=&#34;sub-headings&#34;&gt;Sub-headings&lt;/h2&gt;
@@ -843,7 +962,7 @@ print(&amp;quot;You entered: {}&amp;quot;.format(input_string_var))
 
 &lt;p&gt;If the &lt;code&gt;highlight_languages&lt;/code&gt; option is set, then the corresponding javascript files will be served from the &lt;a href=&#34;https://cdnjs.com/libraries/highlight.js/&#34; target=&#34;_blank&#34;&gt;cdnjs server&lt;/a&gt;. To see a list of available languages, visit the &lt;a href=&#34;https://cdnjs.com/libraries/highlight.js/&#34; target=&#34;_blank&#34;&gt;cdnjs page&lt;/a&gt; and search for links with the word &amp;ldquo;languages&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;The &lt;code&gt;highlight_languages&lt;/code&gt; option provides an easy and convenient way to include support for additional languages to be severed from a CDN. If serving unmodified files from cdnjs doesn&amp;rsquo;t meet your needs, you can include javascript files for additional language support via one of the methods described in the &lt;a href=&#34;https://www.analytical.cl/post/getting-started/#third-party-and-local-scripts-js&#34; target=&#34;_blank&#34;&gt;getting started guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;highlight_languages&lt;/code&gt; option provides an easy and convenient way to include support for additional languages to be severed from a CDN. If serving unmodified files from cdnjs doesn&amp;rsquo;t meet your needs, you can include javascript files for additional language support via one of the methods described in the &lt;a href=&#34;/post/getting-started/#third-party-and-local-scripts-js&#34; target=&#34;_blank&#34;&gt;getting started guide&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h4 id=&#34;option-highlight-style&#34;&gt;Option &lt;code&gt;highlight_style&lt;/code&gt;&lt;/h4&gt;
 
@@ -989,10 +1108,10 @@ Here&#39;s some important information...
     
     <item>
       <title>Hello R Markdown</title>
-      <link>https://www.analytical.cl/post/2015-07-23-r-rmarkdown/</link>
+      <link>/post/2015-07-23-r-rmarkdown/</link>
       <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
       
-      <guid>https://www.analytical.cl/post/2015-07-23-r-rmarkdown/</guid>
+      <guid>/post/2015-07-23-r-rmarkdown/</guid>
       <description>&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;R Markdown&lt;/h1&gt;
 &lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
@@ -1026,7 +1145,7 @@ pie(
   init.angle = -50, border = NA
 )&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: A fancy pie chart.
 &lt;/p&gt;
@@ -1037,13 +1156,13 @@ Figure 1: A fancy pie chart.
     
     <item>
       <title>Migrate from Jekyll to Hugo</title>
-      <link>https://www.analytical.cl/post/migrate-from-jekyll/</link>
+      <link>/post/migrate-from-jekyll/</link>
       <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/migrate-from-jekyll/</guid>
+      <guid>/post/migrate-from-jekyll/</guid>
       <description>
 
-&lt;p&gt;Here are a few tips for migrating an existing website from Jekyll to Hugo. These tips can be applied in conjunction with following Hugo Academic&amp;rsquo;s &lt;a href=&#34;https://www.analytical.cl/post/getting-started/&#34; target=&#34;_blank&#34;&gt;getting started guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here are a few tips for migrating an existing website from Jekyll to Hugo. These tips can be applied in conjunction with following Hugo Academic&amp;rsquo;s &lt;a href=&#34;/post/getting-started/&#34; target=&#34;_blank&#34;&gt;getting started guide&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;move-static-content-to-static&#34;&gt;Move static content to &lt;code&gt;static&lt;/code&gt;&lt;/h2&gt;
 
