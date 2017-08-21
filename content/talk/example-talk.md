@@ -1,5 +1,5 @@
 +++
-date = "2017-01-01T00:00:00"
+date = "2014-05-14T19:00:00"
 title = "Tutorial Rstudio+knitr: Reportería automática con R"
 abstract = "El objetivo de esta presentación es entregar una rápida visión de las principales capacidades de R para la generación automática de reportes y las potencialidades que se pueden explorar en investigación reproducible (tesis, papers, informes de consultoría, etc)"
 abstract_short = ""
@@ -20,5 +20,7 @@ image = "headers/bubbles-wide.jpg"
 caption = "My caption :smile:"
 
 +++
+
+{{< youtube id="4oV2ncCN_aQ" autoplay="true" >}}
 
 Embed your slides or video here using [shortcodes](https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/). Further details can easily be added using *Markdown* and $\rm \LaTeX$ math code. 
