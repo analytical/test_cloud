@@ -223,5 +223,12 @@ extracción, aforo final, factor de dilución, etc. Ud.debe, mediante los
 mandamientos de la guía GUM, combinar todas estas fuentes de incertidumbre
 con la de calibración $u(x0)$.
 
+5. En el fondo, como se asume que los calibrantes no tienen incertidumbre, 
+$u(x0)$ reflejaría el comportamiento aleatorio del instrumento cuando
+se lee la curva "muchas" veces, siempre con los mismos calibrantes. En cada 
+oportunidad, se obtendría una pendiente e intercepto distintos (debido a al 
+error aleatorio $\epsilon$), por lo tanto, también una concentración $x0$ 
+distinta cada vez.
+
 Bueno espero que este post, en rodaje áun, haya sido de su agrado. Como siempre, 
 siéntase libre de criticarlo. Nos vemos.
