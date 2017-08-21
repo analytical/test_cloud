@@ -95,7 +95,7 @@ Si obervamos la ecuación \@ref(eq:ux0) podemos minimizar $u(x_{0})$:
 4. Aunque no tan "evidente", maximizando $\sum_{i}^{n} (x_{i} - \overline{x})$,
 es decir, utilizando todo el rango lineal (Nota mental: otro post)
 
-# Aplicación a un caso real
+# Aplicación a un caso "real"
 
 La tabla \@ref(tab:tabla) muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura \@ref(fig:cal) describe
 el gráfico de calibración:
@@ -173,12 +173,20 @@ y0 <- 0.200
 library(chemCal)
 
 # Calcular la concentración de la muestra problema, x0, a partir de su señal
-# instrumental y0, junto con la incertidumbre estándar de calibración u(x0) y
-# expandida U(x0):
+# instrumental y0, junto con la incertidumbre estándar de calibración u(x0) e
+# incertidumbre expandida U(x0) con un 95% de confianza:
 
 inverse.predict(fit.lin, newdata = y0)
 
 ```
+
+
+```{r, echo = F}
+
+ux0 <- inverse.predict(fit.lin, newdata = y0)
+
+```
+
 
 Bien, interpretemos la salida:
 
@@ -190,7 +198,9 @@ obviamente, en las mismas unidades que los calibrantes [ppm].
 $U(x0) = k\cdot u(x0)$ donde $k$ es el factor de cobertura con el cual se obtiene
 un intervalo de incertidumbre con cierta confianza (habitualmente 95%). 
 Más de esto en otro post.
-- `$Confidence Limits` es simplemente $x0 \pm U(x0)$ ppm.
+- `$Confidence Limits` es simplemente $x0 \pm U(x0)$, es decir,
+$`r round(ux0$Prediction, 1)` \pm `r round(ux0$Confidence, 1)`$ ppm 
+(ojo con las cifras significativas... ahí va otro post).
 
 Algunas consideraciones importantes:
 

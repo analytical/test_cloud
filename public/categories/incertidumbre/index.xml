@@ -73,7 +73,7 @@ Figure 1: Incertidumbre de calibración
 &lt;li&gt;Aunque no tan “evidente”, maximizando &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i}^{n} (x_{i} - \overline{x})\)&lt;/span&gt;, es decir, utilizando todo el rango lineal (Nota mental: otro post)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div id=&#34;aplicacion-a-un-caso-real&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Aplicación a un caso real&lt;/h1&gt;
+&lt;h1&gt;Aplicación a un caso “real”&lt;/h1&gt;
 &lt;p&gt;La tabla &lt;a href=&#34;#tab:tabla&#34;&gt;1&lt;/a&gt; muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura &lt;a href=&#34;#fig:cal&#34;&gt;2&lt;/a&gt; describe el gráfico de calibración:&lt;/p&gt;
 &lt;div class=&#34;alert alert-note&#34;&gt;
   &lt;p&gt;Alguien capo en HTML/CSS que me ayude a poner tabla enfrentada con figura en 2 columnas por favor… y que Dios se lo pague.&lt;/p&gt;
@@ -206,8 +206,8 @@ y0 &amp;lt;- 0.200
 library(chemCal)
 
 # Calcular la concentración de la muestra problema, x0, a partir de su señal
-# instrumental y0, junto con la incertidumbre estándar de calibración u(x0) y
-# expandida U(x0):
+# instrumental y0, junto con la incertidumbre estándar de calibración u(x0) e
+# incertidumbre expandida U(x0) con un 95% de confianza:
 
 inverse.predict(fit.lin, newdata = y0)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;$Prediction
@@ -226,7 +226,7 @@ $`Confidence Limits`
 &lt;li&gt;&lt;code&gt;$Prediction&lt;/code&gt; es la concentración de la muestra problema en [ppm]&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;$Standard Error&lt;/code&gt; es la incertidumbre estándar de calibración, es decir, la que se obtiene de la ecuación &lt;a href=&#34;#eq:ux0&#34;&gt;(3)&lt;/a&gt; expresada, obviamente, en las mismas unidades que los calibrantes [ppm].&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;$Confidence&lt;/code&gt; es la incertidumbre expandida de calibración &lt;span class=&#34;math inline&#34;&gt;\(U(x0)\)&lt;/span&gt;, es decir, &lt;span class=&#34;math inline&#34;&gt;\(U(x0) = k\cdot u(x0)\)&lt;/span&gt; donde &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; es el factor de cobertura con el cual se obtiene un intervalo de incertidumbre con cierta confianza (habitualmente 95%). Más de esto en otro post.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$Confidence Limits&lt;/code&gt; es simplemente &lt;span class=&#34;math inline&#34;&gt;\(x0 \pm U(x0)\)&lt;/span&gt; ppm.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$Confidence Limits&lt;/code&gt; es simplemente &lt;span class=&#34;math inline&#34;&gt;\(x0 \pm U(x0)\)&lt;/span&gt;, es decir, &lt;span class=&#34;math inline&#34;&gt;\(4.9 \pm 0.6\)&lt;/span&gt; ppm (ojo con las cifras significativas… ahí va otro post).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Algunas consideraciones importantes:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
