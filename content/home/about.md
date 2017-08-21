@@ -50,9 +50,9 @@ Facultad de Ciencias Químicas y Farmacéuticas de la Universidad de Chile.
 
 Ha actuado como consultor en Validación de Procesos Farmacéuticos (Nota N° 4 ISP), así como auditor internacional en la norma ISO 17025.
 
-Durante el período 2011-2013 fue miembro activo del Organic Analysis Working
-Group y Key Comparison Working Group del CCQM (Comité Consultor para la
-Cantidad de Materia) en el BIPM (Bureau Internacional de Pesos y Medidas)
+Durante el período 2011-2013 fui miembro activo del Organic Analysis Working
+Group y el Key Comparison Working Group del CCQM (Comité Consultor para la
+Cantidad de Materia) en el BIPM (Bureau Internacional de Pesos y Medidas).
 
 
 
