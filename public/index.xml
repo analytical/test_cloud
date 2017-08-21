@@ -75,6 +75,11 @@ Figure 1: Incertidumbre de calibración
 &lt;div id=&#34;aplicacion-a-un-caso-real&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Aplicación a un caso real&lt;/h1&gt;
 &lt;p&gt;La tabla &lt;a href=&#34;#tab:tabla&#34;&gt;1&lt;/a&gt; muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura &lt;a href=&#34;#fig:cal&#34;&gt;2&lt;/a&gt; describe el gráfico de calibración:&lt;/p&gt;
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;p&gt;Alguien capo en HTML/CSS que me ayude a poner tabla enfrentada con figura en 2 columnas por favor… y que Dios se lo pague.&lt;/p&gt;
+
+&lt;/div&gt;
+
 &lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
 &lt;table class=&#34;table&#34; style=&#34;width: auto !important; text-align: right;&#34;&gt;
 &lt;caption&gt;
@@ -179,6 +184,57 @@ UA
 Figure 2: Curva de calibración
 &lt;/p&gt;
 &lt;/div&gt;
+&lt;p&gt;Ok, hay varias formas de implementar los cálculos de incertidumbre de calibración de la ecuación &lt;a href=&#34;#eq:ux0&#34;&gt;(3)&lt;/a&gt;. Podríamos utilizar Excel para obtener cada uno de los términos, pero eso lo ilustraremos en otro post. En esta oportunidad utilizaremos el software &lt;code&gt;R&lt;/code&gt;. Este software posee varias librerías o packages especializados en el cálculo de incertidumbre en química analítica, por ejemplo: &lt;code&gt;metRology&lt;/code&gt; y &lt;code&gt;chemCal&lt;/code&gt;. En este post utilizaremos el segundo, pues entrega en forma directa el cálculo de la incertidumbre de calibración:&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;Si no tienes instalado el package &lt;code&gt;chemCal&lt;/code&gt; utiliza el comando &lt;code&gt;install.packages(&amp;lsquo;chemCal&amp;rsquo;)&lt;/code&gt;. Una vez instalado procede con el siguiente código.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Creación del modelo de calibración lineal, al que llamaremos fit.lin 
+# (En otro post se profundizará sobre otros modelos de calibración en R)
+
+fit.lin &amp;lt;- lm(y ~ x, data = d)
+
+# Simular un valor de respuesta de la muestra problema, es decir, y0.
+# Sólo por conveniencia simularemos que y0 = 0.200 UA, es decir, más o menos
+# en el centro de la curva:
+
+y0 &amp;lt;- 0.200
+
+# Cargar la librería chemCal con el comando &amp;#39;library&amp;#39;:
+
+library(chemCal)
+
+# Calcular la concentración de la muestra problema, x0, a partir de su señal
+# instrumental y0, junto con la incertidumbre estándar de calibración u(x0) y
+# expandida U(x0):
+
+inverse.predict(fit.lin, newdata = y0)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$Prediction
+[1] 4.929508
+
+$`Standard Error`
+[1] 0.2770136
+
+$Confidence
+[1] 0.6387945
+
+$`Confidence Limits`
+[1] 4.290713 5.568302&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Bien, interpretemos la salida:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$Prediction&lt;/code&gt; es la concentración de la muestra problema en [ppm]&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$Standard Error&lt;/code&gt; es la incertidumbre estándar de calibración, es decir, la que se obtiene de la ecuación &lt;a href=&#34;#eq:ux0&#34;&gt;(3)&lt;/a&gt; expresada, obviamente, en las mismas unidades que los calibrantes [ppm].&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$Confidence&lt;/code&gt; es la incertidumbre expandida de calibración &lt;span class=&#34;math inline&#34;&gt;\(U(x0)\)&lt;/span&gt;, es decir, &lt;span class=&#34;math inline&#34;&gt;\(U(x0) = k\cdot u(x0)\)&lt;/span&gt; donde &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; es el factor de cobertura con el cual se obtiene un intervalo de incertidumbre con cierta confianza (habitualmente 95%). Más de esto en otro post.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$Confidence Limits&lt;/code&gt; es simplemente &lt;span class=&#34;math inline&#34;&gt;\(x0 \pm U(x0)\)&lt;/span&gt; ppm.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Algunas consideraciones importantes:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Esta incertidumbre de calibración &lt;span class=&#34;math inline&#34;&gt;\(u(x0)\)&lt;/span&gt; NO incorpora la incertidumbre de los calibrantes, sólo es un reflejo del error aleatorio instrumental. Punto. Es decir, asume que los calibrantes no tienen incertidumbre… lo cual todos los químcos sabemos que es ¡Farso, farso!&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Si Ud. requiere incorporar, también, la incertidumbre de los calibrantes, debe utilizar otro modelo lineal de calibración denominado: modelo lineal con error en ambos ejes (otro post).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ya que esta incertidumbre sólo refleja el componente aleatorio de la calibración, no están incorporados los errores sistemáticos de la preparación de estándares: equivocación en el aforo, no considerar la pureza del reactivo, etc. (Nota mental: otro post… ¿cuántos van?)&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Bueno espero que este post, en rodaje áun, haya sido de su agrado. Como siempre, siéntase libre de criticarlo. Nos vemos.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

@@ -71,6 +71,7 @@ Figure 1: Incertidumbre de calibración
 <div id="aplicacion-a-un-caso-real" class="section level1">
 <h1>Aplicación a un caso real</h1>
 <p>La tabla <a href="#tab:tabla">1</a> muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura <a href="#fig:cal">2</a> describe el gráfico de calibración:</p>
+<p>{{% alert note %}} Alguien capo en HTML/CSS que me ayude a poner tabla enfrentada con figura en 2 columnas por favor… y que Dios se lo pague. {{% /alert %}}</p>
 <?xml version="1.0" encoding="UTF-8"?>
 <table class="table" style="width: auto !important; text-align: right;">
 <caption>
@@ -175,4 +176,51 @@ UA
 Figure 2: Curva de calibración
 </p>
 </div>
+<p>Ok, hay varias formas de implementar los cálculos de incertidumbre de calibración de la ecuación <a href="#eq:ux0">(3)</a>. Podríamos utilizar Excel para obtener cada uno de los términos, pero eso lo ilustraremos en otro post. En esta oportunidad utilizaremos el software <code>R</code>. Este software posee varias librerías o packages especializados en el cálculo de incertidumbre en química analítica, por ejemplo: <code>metRology</code> y <code>chemCal</code>. En este post utilizaremos el segundo, pues entrega en forma directa el cálculo de la incertidumbre de calibración:</p>
+<p>{{% alert warning %}} Si no tienes instalado el package <code>chemCal</code> utiliza el comando <code>install.packages('chemCal')</code>. Una vez instalado procede con el siguiente código.{{% /alert %}}</p>
+<pre class="r"><code># Creación del modelo de calibración lineal, al que llamaremos fit.lin 
+# (En otro post se profundizará sobre otros modelos de calibración en R)
+
+fit.lin &lt;- lm(y ~ x, data = d)
+
+# Simular un valor de respuesta de la muestra problema, es decir, y0.
+# Sólo por conveniencia simularemos que y0 = 0.200 UA, es decir, más o menos
+# en el centro de la curva:
+
+y0 &lt;- 0.200
+
+# Cargar la librería chemCal con el comando &#39;library&#39;:
+
+library(chemCal)
+
+# Calcular la concentración de la muestra problema, x0, a partir de su señal
+# instrumental y0, junto con la incertidumbre estándar de calibración u(x0) y
+# expandida U(x0):
+
+inverse.predict(fit.lin, newdata = y0)</code></pre>
+<pre><code>$Prediction
+[1] 4.929508
+
+$`Standard Error`
+[1] 0.2770136
+
+$Confidence
+[1] 0.6387945
+
+$`Confidence Limits`
+[1] 4.290713 5.568302</code></pre>
+<p>Bien, interpretemos la salida:</p>
+<ul>
+<li><code>$Prediction</code> es la concentración de la muestra problema en [ppm]</li>
+<li><code>$Standard Error</code> es la incertidumbre estándar de calibración, es decir, la que se obtiene de la ecuación <a href="#eq:ux0">(3)</a> expresada, obviamente, en las mismas unidades que los calibrantes [ppm].</li>
+<li><code>$Confidence</code> es la incertidumbre expandida de calibración <span class="math inline">\(U(x0)\)</span>, es decir, <span class="math inline">\(U(x0) = k\cdot u(x0)\)</span> donde <span class="math inline">\(k\)</span> es el factor de cobertura con el cual se obtiene un intervalo de incertidumbre con cierta confianza (habitualmente 95%). Más de esto en otro post.</li>
+<li><code>$Confidence Limits</code> es simplemente <span class="math inline">\(x0 \pm U(x0)\)</span> ppm.</li>
+</ul>
+<p>Algunas consideraciones importantes:</p>
+<ol style="list-style-type: decimal">
+<li><p>Esta incertidumbre de calibración <span class="math inline">\(u(x0)\)</span> NO incorpora la incertidumbre de los calibrantes, sólo es un reflejo del error aleatorio instrumental. Punto. Es decir, asume que los calibrantes no tienen incertidumbre… lo cual todos los químcos sabemos que es ¡Farso, farso!</p></li>
+<li><p>Si Ud. requiere incorporar, también, la incertidumbre de los calibrantes, debe utilizar otro modelo lineal de calibración denominado: modelo lineal con error en ambos ejes (otro post).</p></li>
+<li><p>Ya que esta incertidumbre sólo refleja el componente aleatorio de la calibración, no están incorporados los errores sistemáticos de la preparación de estándares: equivocación en el aforo, no considerar la pureza del reactivo, etc. (Nota mental: otro post… ¿cuántos van?)</p></li>
+</ol>
+<p>Bueno espero que este post, en rodaje áun, haya sido de su agrado. Como siempre, siéntase libre de criticarlo. Nos vemos.</p>
 </div>

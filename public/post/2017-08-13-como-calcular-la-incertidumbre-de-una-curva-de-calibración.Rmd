@@ -100,6 +100,11 @@ es decir, utilizando todo el rango lineal (Nota mental: otro post)
 La tabla \@ref(tab:tabla) muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura \@ref(fig:cal) describe
 el gráfico de calibración:
 
+{{% alert note %}}
+Alguien capo en HTML/CSS que me ayude a poner tabla enfrentada con figura en 
+2 columnas por favor... y que Dios se lo pague.
+{{% /alert %}}
+
 
 ```{r tabla, echo = F, warning = F, message=F}
 library(magrittr)
@@ -135,3 +140,73 @@ ggplot(d, aes(x = x, y = y)) +
 ```
 
 
+Ok, hay varias formas de implementar los cálculos de incertidumbre de 
+calibración de la ecuación \@ref(eq:ux0). Podríamos utilizar Excel para
+obtener cada uno de los términos, pero eso lo ilustraremos en otro post.
+En esta oportunidad utilizaremos el software `R`. Este software posee varias
+librerías o packages especializados en el cálculo de incertidumbre en
+química analítica, por ejemplo: `metRology` y `chemCal`. En este post
+utilizaremos el segundo, pues entrega en forma directa el cálculo de
+la incertidumbre de calibración:
+
+{{% alert warning %}}
+Si no tienes instalado el package `chemCal` utiliza el comando
+`install.packages('chemCal')`. Una vez instalado procede con el siguiente 
+código.{{% /alert %}}
+
+
+```{r ux0, warning=F, message=F, comment = NA}
+
+# Creación del modelo de calibración lineal, al que llamaremos fit.lin 
+# (En otro post se profundizará sobre otros modelos de calibración en R)
+
+fit.lin <- lm(y ~ x, data = d)
+
+# Simular un valor de respuesta de la muestra problema, es decir, y0.
+# Sólo por conveniencia simularemos que y0 = 0.200 UA, es decir, más o menos
+# en el centro de la curva:
+
+y0 <- 0.200
+
+# Cargar la librería chemCal con el comando 'library':
+
+library(chemCal)
+
+# Calcular la concentración de la muestra problema, x0, a partir de su señal
+# instrumental y0, junto con la incertidumbre estándar de calibración u(x0) y
+# expandida U(x0):
+
+inverse.predict(fit.lin, newdata = y0)
+
+```
+
+Bien, interpretemos la salida:
+
+- `$Prediction` es la concentración de la muestra problema en [ppm]
+- `$Standard Error` es la incertidumbre estándar de calibración, es
+decir, la que se obtiene de la ecuación \@ref(eq:ux0) expresada,
+obviamente, en las mismas unidades que los calibrantes [ppm].
+- `$Confidence` es la incertidumbre expandida de calibración $U(x0)$, es decir, 
+$U(x0) = k\cdot u(x0)$ donde $k$ es el factor de cobertura con el cual se obtiene
+un intervalo de incertidumbre con cierta confianza (habitualmente 95%). 
+Más de esto en otro post.
+- `$Confidence Limits` es simplemente $x0 \pm U(x0)$ ppm.
+
+Algunas consideraciones importantes:
+
+1. Esta incertidumbre de calibración $u(x0)$ NO incorpora la 
+incertidumbre de los calibrantes, sólo es un reflejo del error aleatorio
+instrumental. Punto. Es decir, asume que los calibrantes no tienen
+incertidumbre... lo cual todos los químcos sabemos que es ¡Farso, farso!
+
+2. Si Ud. requiere incorporar, también, la incertidumbre de los calibrantes, debe
+utilizar otro modelo lineal de calibración denominado: modelo lineal con error
+en ambos ejes (otro post).
+
+3. Ya que esta incertidumbre sólo refleja el componente aleatorio de la 
+calibración, no están incorporados los errores sistemáticos de la preparación
+de estándares: equivocación en el aforo, no considerar la pureza del 
+reactivo, etc. (Nota mental: otro post... ¿cuántos van?)
+
+Bueno espero que este post, en rodaje áun, haya sido de su agrado. Como siempre, 
+siéntase libre de criticarlo. Nos vemos.
