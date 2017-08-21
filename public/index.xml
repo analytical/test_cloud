@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Carlos Gómez on Carlos Gómez</title>
-    <link>/</link>
+    <link>https://www.analytical.cl/</link>
     <description>Recent content in Carlos Gómez on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>¿Cómo calcular la incertidumbre de una curva de calibración?</title>
-      <link>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
+      <link>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
       <pubDate>Mon, 14 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
+      <guid>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
       <description>&lt;p&gt;Ok, este es el segundo post pero advierto que aún está en rodaje… esto del &lt;em&gt;copywriting&lt;/em&gt; no es nada fácil.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;¿Qué es y cómo estimar la incertidumbre de una curva de calibración?&lt;/p&gt;
@@ -56,7 +56,7 @@ library(ggplot2)
 ggplot(d, aes(x = x, y = y)) +
   geom_smooth(method = &amp;#39;lm&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:banda&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Incertidumbre de calibración
 &lt;/p&gt;
@@ -179,7 +179,7 @@ UA
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:cal&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png&#34; alt=&#34;Curva de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png&#34; alt=&#34;Curva de calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Curva de calibración
 &lt;/p&gt;
@@ -243,20 +243,20 @@ $`Confidence Limits`
     
     <item>
       <title>Primer Post, perdone lo poco</title>
-      <link>/post/primer-post/</link>
+      <link>https://www.analytical.cl/post/primer-post/</link>
       <pubDate>Sun, 13 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/primer-post/</guid>
-      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;link href=&#34;/rmarkdown-libs/leaflet-label/leaflet.label.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;/rmarkdown-libs/leaflet-label/leaflet.label.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
+      <guid>https://www.analytical.cl/post/primer-post/</guid>
+      <description>&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-label/leaflet.label.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-label/leaflet.label.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Este es el primer post de esta página. Estoy utilizando &lt;code&gt;blogdown&lt;/code&gt; para generar los post, el cual permite incorporar código en &lt;code&gt;R&lt;/code&gt; y &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; en el mismo documento.&lt;/p&gt;
@@ -276,7 +276,7 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point(pch = 19, col = &amp;#39;red&amp;#39;) +
   geom_smooth(method = &amp;#39;lm&amp;#39;) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;/post/2017-08-13-primer-post_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-primer-post_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Todos los modelos son erróneos, pero algunos son útiles (&lt;strong&gt;no me acuerdo quién dijo esto&lt;/strong&gt;)&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -408,20 +408,20 @@ Figure 1: Ubicación de Bureau Veritas
     
     <item>
       <title>Suitable areas for apiculture expansion determined by antioxidant power, chemical profiles, and pesticide residues in honey and beeswax samples</title>
-      <link>/publication/clothing-search/</link>
+      <link>https://www.analytical.cl/publication/clothing-search/</link>
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/publication/clothing-search/</guid>
+      <guid>https://www.analytical.cl/publication/clothing-search/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Análisis Geoespacial de Zonas de Producción de Mieles</title>
-      <link>/project/deep-learning/</link>
+      <link>https://www.analytical.cl/project/deep-learning/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/deep-learning/</guid>
+      <guid>https://www.analytical.cl/project/deep-learning/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
 
 &lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
@@ -436,29 +436,29 @@ Figure 1: Ubicación de Bureau Veritas
     
     <item>
       <title>External Project</title>
-      <link>/project/example-external-project/</link>
+      <link>https://www.analytical.cl/project/example-external-project/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>/project/example-external-project/</guid>
+      <guid>https://www.analytical.cl/project/example-external-project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>A Person Re-Identification System For Mobile Devices</title>
-      <link>/publication/person-re-identification/</link>
+      <link>https://www.analytical.cl/publication/person-re-identification/</link>
       <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
       
-      <guid>/publication/person-re-identification/</guid>
+      <guid>https://www.analytical.cl/publication/person-re-identification/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Tutorial Rstudio&#43;knitr: Reportería automática con R</title>
-      <link>/talk/copyofexample-talk/</link>
+      <link>https://www.analytical.cl/talk/example-talk/</link>
       <pubDate>Wed, 14 May 2014 19:00:00 +0000</pubDate>
       
-      <guid>/talk/copyofexample-talk/</guid>
+      <guid>https://www.analytical.cl/talk/example-talk/</guid>
       <description>
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 
@@ -470,11 +470,11 @@ Figure 1: Ubicación de Bureau Veritas
     </item>
     
     <item>
-      <title>Tutorial Rstudio&#43;knitr: Reportería automática con R</title>
-      <link>/talk/example-talk/</link>
-      <pubDate>Wed, 14 May 2014 19:00:00 +0000</pubDate>
+      <title>Establecimiento de la trazabilidad y estimación de incertidumbre en Metrología Química</title>
+      <link>https://www.analytical.cl/talk/inn/</link>
+      <pubDate>Thu, 12 Jul 2012 12:00:00 +0000</pubDate>
       
-      <guid>/talk/example-talk/</guid>
+      <guid>https://www.analytical.cl/talk/inn/</guid>
       <description>
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 

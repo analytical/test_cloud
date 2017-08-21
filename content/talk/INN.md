@@ -1,12 +1,10 @@
 +++
-date = "2014-05-14T19:00:00"
-title = "Establecimiento de la trazabilidad y estimación de
-incertidumbre en Metrología Química"
-abstract_short = "Se muestran las principales métodos de estimación de incertidumbre en Química Analítica y su link con el establecimiento de la trazabilidad de un resultado."
-abstract_short = "Se ejemplifica la estimación de incertidumbre com
-el Méodos de Monte Carlo"
-event = "Taller INN sobre incetidumbre y trazabilida de la RNM"
-event_url = """
+date = "2012-07-12T12:00:00"
+title = "Establecimiento de la trazabilidad y estimación de incertidumbre en Metrología Química"
+abstract = "El objetivo de esta presentación es entregar una resumida visión acerca de los desafíos que encruenta la química analítica para establecer la trazabilidad de las mediciones y el cálculo de a incertiumbre de medición"
+abstract_short = ""
+event = "Taller RNM INN 2012"
+event_url = ""
 location = "Santiago, Chile"
 
 selected = false

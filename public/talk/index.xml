@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent &amp; Upcoming Talks on Carlos Gómez</title>
-    <link>/talk/</link>
+    <link>https://www.analytical.cl/talk/</link>
     <description>Recent content in Recent &amp; Upcoming Talks on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Tutorial Rstudio&#43;knitr: Reportería automática con R</title>
-      <link>/talk/copyofexample-talk/</link>
+      <link>https://www.analytical.cl/talk/example-talk/</link>
       <pubDate>Wed, 14 May 2014 19:00:00 +0000</pubDate>
       
-      <guid>/talk/copyofexample-talk/</guid>
+      <guid>https://www.analytical.cl/talk/example-talk/</guid>
       <description>
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 
@@ -27,11 +27,11 @@
     </item>
     
     <item>
-      <title>Tutorial Rstudio&#43;knitr: Reportería automática con R</title>
-      <link>/talk/example-talk/</link>
-      <pubDate>Wed, 14 May 2014 19:00:00 +0000</pubDate>
+      <title>Establecimiento de la trazabilidad y estimación de incertidumbre en Metrología Química</title>
+      <link>https://www.analytical.cl/talk/inn/</link>
+      <pubDate>Thu, 12 Jul 2012 12:00:00 +0000</pubDate>
       
-      <guid>/talk/example-talk/</guid>
+      <guid>https://www.analytical.cl/talk/inn/</guid>
       <description>
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
   &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 
