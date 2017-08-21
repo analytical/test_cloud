@@ -15,6 +15,7 @@ weight = 1
     "Chemometrics/Quimiometría",
     "Estadística Computacional en R",
     "Química Analítica",
+    "Validación de métodos analíticos",
     "ISO 17025",
     "Cálculo de Incertidumbre",
     "Validación de Procesos Farmacéuticos"
