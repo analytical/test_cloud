@@ -21,6 +21,6 @@ caption = "My caption :smile:"
 
 +++
 
-{{< youtube id="4oV2ncCN_aQ" autoplay="true" >}}
+{{< youtube id="4oV2ncCN_aQ" autoplay="false" >}}
 
 Embed your slides or video here using [shortcodes](https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/). Further details can easily be added using *Markdown* and $\rm \LaTeX$ math code. 

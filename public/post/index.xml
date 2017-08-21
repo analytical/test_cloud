@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Carlos Gómez</title>
-    <link>https://www.analytical.cl/post/</link>
+    <link>/post/</link>
     <description>Recent content in Posts on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>¿Cómo calcular la incertidumbre de una curva de calibración?</title>
-      <link>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
+      <link>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
       <pubDate>Mon, 14 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
+      <guid>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
       <description>&lt;p&gt;Ok, este es el segundo post pero advierto que aún está en rodaje… esto del &lt;em&gt;copywriting&lt;/em&gt; no es nada fácil.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;¿Qué es y cómo estimar la incertidumbre de una curva de calibración?&lt;/p&gt;
@@ -56,7 +56,7 @@ library(ggplot2)
 ggplot(d, aes(x = x, y = y)) +
   geom_smooth(method = &amp;#39;lm&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:banda&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Incertidumbre de calibración
 &lt;/p&gt;
@@ -179,7 +179,7 @@ UA
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:cal&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png&#34; alt=&#34;Curva de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png&#34; alt=&#34;Curva de calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Curva de calibración
 &lt;/p&gt;
@@ -243,20 +243,20 @@ $`Confidence Limits`
     
     <item>
       <title>Primer Post, perdone lo poco</title>
-      <link>https://www.analytical.cl/post/primer-post/</link>
+      <link>/post/primer-post/</link>
       <pubDate>Sun, 13 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/primer-post/</guid>
-      <description>&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-label/leaflet.label.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-label/leaflet.label.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
+      <guid>/post/primer-post/</guid>
+      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;/rmarkdown-libs/leaflet-label/leaflet.label.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-label/leaflet.label.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Este es el primer post de esta página. Estoy utilizando &lt;code&gt;blogdown&lt;/code&gt; para generar los post, el cual permite incorporar código en &lt;code&gt;R&lt;/code&gt; y &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; en el mismo documento.&lt;/p&gt;
@@ -276,7 +276,7 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point(pch = 19, col = &amp;#39;red&amp;#39;) +
   geom_smooth(method = &amp;#39;lm&amp;#39;) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-primer-post_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-08-13-primer-post_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Todos los modelos son erróneos, pero algunos son útiles (&lt;strong&gt;no me acuerdo quién dijo esto&lt;/strong&gt;)&lt;/p&gt;
 &lt;/blockquote&gt;
