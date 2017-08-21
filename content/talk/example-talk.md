@@ -1,18 +1,18 @@
 +++
 date = "2017-01-01T00:00:00"
-title = "Example Talk"
-abstract = ""
+title = "Tutorial Rstudio+knitr: Reportería automática con R"
+abstract = "El objetivo de esta presentación es entregar una rápida visión de las principales capacidades de R para la generación automática de reportes y las potencialidades que se pueden explorar en investigación reproducible (tesis, papers, informes de consultoría, etc)"
 abstract_short = ""
-event = "Hugo Academic Theme Conference"
-event_url = "https://example.org"
-location = "London, United Kingdom"
+event = "Meeting useR Chile"
+event_url = "https://www.meetup.com/es-ES/useRchile/events/178999002/"
+location = "Santiago, Chile"
 
 selected = false
 math = true
 
-url_pdf = ""
-url_slides = ""
-url_video = ""
+url_pdf = "https://1drv.ms/b/s!AuF6FPVWruwDgZhQ_fKHEfIvWRF0dA"
+url_slides = "https://1drv.ms/b/s!AuF6FPVWruwDgZhQ_fKHEfIvWRF0dA"
+url_video = "https://www.youtube.com/watch?v=4oV2ncCN_aQ"
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
