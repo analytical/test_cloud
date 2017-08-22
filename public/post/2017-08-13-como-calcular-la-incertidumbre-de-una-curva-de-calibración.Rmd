@@ -209,13 +209,13 @@ incertidumbre de los calibrantes, sólo es un reflejo del error aleatorio
 instrumental. Punto. Es decir, asume que los calibrantes no tienen
 incertidumbre... lo cual todos los químicos sabemos que es ¡Farso, farso!
 
-2. Si Ud. requiere incorporar, también, la incertidumbre de los calibrantes, debe
+2. Si Ud. requiere incorporar también la incertidumbre de los calibrantes, debe
 utilizar otro modelo lineal de calibración denominado: modelo lineal con error
 en ambos ejes (otro post).
 
 3. Ya que esta incertidumbre sólo refleja el componente aleatorio de la 
 calibración, no están incorporados los errores sistemáticos de la preparación
-de estándares: equivocación en el aforo, no considerar la pureza del 
+de estándares: error en el aforo, no considerar la pureza del 
 reactivo, etc. (Nota mental: otro post... ¿cuántos van?).
 
 4. Si, además, el método analítico incluye pesada de la muestra, digestión o

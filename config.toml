@@ -31,13 +31,13 @@ Químico - Bioquímico"""
   avatar = "foto_cv.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "cvgomez@gmail.com"
   address = "Marathon 2595, Macul, Santiago - Chile"
-  office_hours = ""
+  office_hours = "8:30 a 18:00"
   phone = "56 9 8729 6214"
   skype = ""
   telegram = ""
 
   # Enable Keybase in Contact section by entering your keybase.io username.
-  keybase = "analytical"
+  keybase = ""
 
   # Date format (refer to Go's date format: http://flippinggodateformat.com )
   #   Examples: "Mon, Jan 2, 2006" or "2006-01-02"
