@@ -54,7 +54,7 @@ $u(x_{0})$ puede aproximarse muy bien a través de la ecuación \@ref(eq:ux0):
 \begin{equation}
   u(x_{0}) = \frac{\sigma_{y/x}}{\beta_{1}}
   \sqrt{\frac{1}{n} + \frac{1}{m_{0}} + \frac{(x_{0} - \overline{x})^2}
-  {\sum_{i}^{n} (x_{i} - \overline{x})}}
+  {\sum_{i}^{n} (x_{i} - \overline{x})^2}}
     (\#eq:ux0)
 \end{equation}
 

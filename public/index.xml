@@ -35,7 +35,7 @@
 &lt;span class=&#34;math display&#34; id=&#34;eq:ux0&#34;&gt;\[\begin{equation}
   u(x_{0}) = \frac{\sigma_{y/x}}{\beta_{1}}
   \sqrt{\frac{1}{n} + \frac{1}{m_{0}} + \frac{(x_{0} - \overline{x})^2}
-  {\sum_{i}^{n} (x_{i} - \overline{x})}}
+  {\sum_{i}^{n} (x_{i} - \overline{x})^2}}
     \tag{3}
 \end{equation}\]&lt;/span&gt;
 &lt;p&gt;Vamos viendo dijo el ciego:&lt;/p&gt;
