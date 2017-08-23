@@ -92,7 +92,7 @@ Si obervamos la ecuación \@ref(eq:ux0) podemos minimizar $u(x_{0})$:
 1. Aumentando $n$ el número de calibrantes. 
 2. Aumentando $m_{0}$
 3. Diseñando la curva de calibración de modo que $x_{0} = \bar{x}$
-4. Aunque no tan "evidente", maximizando $\sum_{i}^{n} (x_{i} - \overline{x})$,
+4. Aunque no tan "evidente", maximizando $\sum_{i}^{n} (x_{i} - \overline{x})^2$,
 es decir, utilizando todo el rango lineal (Nota mental: otro post)
 
 # Aplicación a un caso "real"
