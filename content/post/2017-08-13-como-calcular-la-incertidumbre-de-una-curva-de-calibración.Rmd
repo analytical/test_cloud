@@ -111,6 +111,7 @@ library(magrittr)
 library(kableExtra)
 options(knitr.table.format = "html") 
 
+set.seed(123)
 b0 <- 0
 b1 <- 0.200/5 # para 5 ppm se obtienen 200 UA 
 x <- 1:10

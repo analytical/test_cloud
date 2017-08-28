@@ -101,7 +101,7 @@ UA
 1
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.0522
+0.0344
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -109,7 +109,7 @@ UA
 2
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.0836
+0.0777
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -117,7 +117,7 @@ UA
 3
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.1240
+0.1356
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -125,7 +125,7 @@ UA
 4
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.1611
+0.1607
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -133,7 +133,7 @@ UA
 5
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.1944
+0.2013
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -141,7 +141,7 @@ UA
 6
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.2579
+0.2572
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -149,7 +149,7 @@ UA
 7
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.2850
+0.2846
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -157,7 +157,7 @@ UA
 8
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.3003
+0.3073
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -165,7 +165,7 @@ UA
 9
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.3670
+0.3531
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -173,7 +173,7 @@ UA
 10
 &lt;/td&gt;
 &lt;td style=&#34;text-align:center;&#34;&gt;
-0.3953
+0.3955
 &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -211,22 +211,22 @@ library(chemCal)
 
 inverse.predict(fit.lin, newdata = y0)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;$Prediction
-[1] 4.929508
+[1] 4.970492
 
 $`Standard Error`
-[1] 0.2770136
+[1] 0.2618792
 
 $Confidence
-[1] 0.6387945
+[1] 0.6038946
 
 $`Confidence Limits`
-[1] 4.290713 5.568302&lt;/code&gt;&lt;/pre&gt;
+[1] 4.366598 5.574387&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Bien, interpretemos la salida:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;$Prediction&lt;/code&gt; es la concentración de la muestra problema en [ppm]&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;$Standard Error&lt;/code&gt; es la incertidumbre estándar de calibración, es decir, la que se obtiene de la ecuación &lt;a href=&#34;#eq:ux0&#34;&gt;(3)&lt;/a&gt; expresada, obviamente, en las mismas unidades que los calibrantes [ppm].&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;$Confidence&lt;/code&gt; es la incertidumbre expandida de calibración &lt;span class=&#34;math inline&#34;&gt;\(U(x0)\)&lt;/span&gt;, es decir, &lt;span class=&#34;math inline&#34;&gt;\(U(x0) = k\cdot u(x0)\)&lt;/span&gt; donde &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; es el factor de cobertura con el cual se obtiene un intervalo de incertidumbre con cierta confianza (habitualmente 95%). Más de esto en otro post.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$Confidence Limits&lt;/code&gt; es simplemente &lt;span class=&#34;math inline&#34;&gt;\(x0 \pm U(x0)\)&lt;/span&gt;, es decir, &lt;span class=&#34;math inline&#34;&gt;\(4.9 \pm 0.6\)&lt;/span&gt; ppm (ojo con las cifras significativas… ahí va otro post).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$Confidence Limits&lt;/code&gt; es simplemente &lt;span class=&#34;math inline&#34;&gt;\(x0 \pm U(x0)\)&lt;/span&gt;, es decir, &lt;span class=&#34;math inline&#34;&gt;\(5 \pm 0.6\)&lt;/span&gt; ppm (ojo con las cifras significativas… ahí va otro post).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Algunas consideraciones importantes:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;

@@ -333,7 +333,7 @@ UA
 1
 </td>
 <td style="text-align:center;">
-0.0522
+0.0344
 </td>
 </tr>
 <tr>
@@ -341,7 +341,7 @@ UA
 2
 </td>
 <td style="text-align:center;">
-0.0836
+0.0777
 </td>
 </tr>
 <tr>
@@ -349,7 +349,7 @@ UA
 3
 </td>
 <td style="text-align:center;">
-0.1240
+0.1356
 </td>
 </tr>
 <tr>
@@ -357,7 +357,7 @@ UA
 4
 </td>
 <td style="text-align:center;">
-0.1611
+0.1607
 </td>
 </tr>
 <tr>
@@ -365,7 +365,7 @@ UA
 5
 </td>
 <td style="text-align:center;">
-0.1944
+0.2013
 </td>
 </tr>
 <tr>
@@ -373,7 +373,7 @@ UA
 6
 </td>
 <td style="text-align:center;">
-0.2579
+0.2572
 </td>
 </tr>
 <tr>
@@ -381,7 +381,7 @@ UA
 7
 </td>
 <td style="text-align:center;">
-0.2850
+0.2846
 </td>
 </tr>
 <tr>
@@ -389,7 +389,7 @@ UA
 8
 </td>
 <td style="text-align:center;">
-0.3003
+0.3073
 </td>
 </tr>
 <tr>
@@ -397,7 +397,7 @@ UA
 9
 </td>
 <td style="text-align:center;">
-0.3670
+0.3531
 </td>
 </tr>
 <tr>
@@ -405,7 +405,7 @@ UA
 10
 </td>
 <td style="text-align:center;">
-0.3953
+0.3955
 </td>
 </tr>
 </tbody>
@@ -443,22 +443,22 @@ library(chemCal)
 
 inverse.predict(fit.lin, newdata = y0)</code></pre>
 <pre><code>$Prediction
-[1] 4.929508
+[1] 4.970492
 
 $`Standard Error`
-[1] 0.2770136
+[1] 0.2618792
 
 $Confidence
-[1] 0.6387945
+[1] 0.6038946
 
 $`Confidence Limits`
-[1] 4.290713 5.568302</code></pre>
+[1] 4.366598 5.574387</code></pre>
 <p>Bien, interpretemos la salida:</p>
 <ul>
 <li><code>$Prediction</code> es la concentración de la muestra problema en [ppm]</li>
 <li><code>$Standard Error</code> es la incertidumbre estándar de calibración, es decir, la que se obtiene de la ecuación <a href="#eq:ux0">(3)</a> expresada, obviamente, en las mismas unidades que los calibrantes [ppm].</li>
 <li><code>$Confidence</code> es la incertidumbre expandida de calibración <span class="math inline">\(U(x0)\)</span>, es decir, <span class="math inline">\(U(x0) = k\cdot u(x0)\)</span> donde <span class="math inline">\(k\)</span> es el factor de cobertura con el cual se obtiene un intervalo de incertidumbre con cierta confianza (habitualmente 95%). Más de esto en otro post.</li>
-<li><code>$Confidence Limits</code> es simplemente <span class="math inline">\(x0 \pm U(x0)\)</span>, es decir, <span class="math inline">\(4.9 \pm 0.6\)</span> ppm (ojo con las cifras significativas… ahí va otro post).</li>
+<li><code>$Confidence Limits</code> es simplemente <span class="math inline">\(x0 \pm U(x0)\)</span>, es decir, <span class="math inline">\(5 \pm 0.6\)</span> ppm (ojo con las cifras significativas… ahí va otro post).</li>
 </ul>
 <p>Algunas consideraciones importantes:</p>
 <ol style="list-style-type: decimal">
@@ -484,6 +484,9 @@ $`Confidence Limits`
       aria-hidden="true">&larr;</span> Primer Post, perdone lo poco</a></li>
     
 
+    
+    <li class="next"><a href="https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/">¿Cómo &#34;demuestro&#34; que mi curva de calibracion es lineal? <span
+      aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
 </nav>

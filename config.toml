@@ -135,7 +135,7 @@ Químico - Bioquímico"""
   #[[params.social]]
     #icon = "twitter"
     #icon_pack = "fa"
-    #link = "//twitter.com/GeorgeCushen"
+    #link = "//twitter.com/quimiometrico"
 
   [[params.social]]
     icon = "facebook"
