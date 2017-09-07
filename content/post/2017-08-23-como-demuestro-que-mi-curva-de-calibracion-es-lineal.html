@@ -82,12 +82,12 @@ Figure 3: Simulación de curvas perfectamente lineales
 <div id="test-formales-de-linealidad" class="section level1">
 <h1>Test formales de linealidad</h1>
 <p>Existen varios tests estadísticos formales para evaluar el supuesto de linealidad de la curva de calibración. Sin embargo, en este post veremos dos que son los más utilizados en Química Analítica y son sugeridos por normativas internacionales (para presentárselos a los amables auditores).</p>
-<p>Si bien no es estrictamente riguroso, para simplificar el concepto, diremos que ambos tests estadísticos intentan intentan dirimir entre dos hipótesis:</p>
+<p>Si bien no es estrictamente riguroso, para simplificar el concepto, diremos que ambos tests estadísticos intentan dirimir entre dos hipótesis:</p>
 <ul>
 <li><span class="math inline">\(H_{0}\)</span> (a.k.a Hipótesis Nula) : El modelo lineal es adecuado para describir los datos de calibración</li>
 <li><span class="math inline">\(H_{1}\)</span> (a.k.a Hipótesis alternativa): El modelo lineal <strong>NO</strong> es adecuado para describir los datos de calibración</li>
 </ul>
-<p>También debemo hacer la siguiente acotación: En <strong>estadística</strong> un modelo lineal es aquel en sus parámetros son lineales. Por ejemplo, la curva de calibración lineal clásica <span class="math inline">\(y = \beta_{0} + \beta_{1}x\)</span> tanto <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> son lineales. Sin embargo, en un modelo exponencial <span class="math inline">\(y = \gamma_{0} e^{\gamma_{1}x}\)</span> el coeficiente <span class="math inline">\(\gamma_{1}\)</span> no lo es.</p>
+<p>También debemos hacer la siguiente acotación: En <strong>estadística</strong> un modelo lineal es aquel en que sus parámetros son lineales. Por ejemplo, la curva de calibración lineal clásica <span class="math inline">\(y = \beta_{0} + \beta_{1}x\)</span> tanto <span class="math inline">\(\beta_{0}\)</span> y <span class="math inline">\(\beta_{1}\)</span> son lineales. Sin embargo, en un modelo exponencial <span class="math inline">\(y = \gamma_{0} e^{\gamma_{1}x}\)</span> el coeficiente <span class="math inline">\(\gamma_{1}\)</span> no lo es.</p>
 <p>Dicho esto, el modelo cuadrático de calibración <span class="math inline">\(y = \beta_{0} + \beta_{1}x + \beta_{2}x^2\)</span> <strong>es lineal</strong> desde el punto de vista estrictamente estadístico. Sin embargo, debido al arraigo del concepto de linealidad en química analítica no modificaremos su interpretación.</p>
 <div id="test-de-carencia-de-ajuste-lack-of-fit-iso-11095" class="section level2">
 <h2>Test de carencia de ajuste (<em>Lack of fit</em>) ISO 11095</h2>
@@ -408,7 +408,7 @@ Pure Error
   SS_{r} = \sum_{i = 1}^{n} e_{i}^2
     \tag{2}
 \end{equation}\]</span>
-<p>Donde el residuo <span class="math inline">\(e = y - \hat{y}\)</span>. <span class="math inline">\(y\)</span> es la respuesta instrumental observada o experimental (áreas, absorbancias, etc.); <span class="math inline">\(\hat{y}\)</span>, es la respuesta instrumental que predice el modelo (lineal o o cuadrático) en cada una de las concentraciones de los calibrantes. Si observa la ecuación  el concepto de residuo es el mismo para cualquier modelo de calibración, es decir, ¿cuánto difiere lo que se observa experimentalmente con lo que predice el modelo?</p>
+<p>Donde el residuo <span class="math inline">\(e = y - \hat{y}\)</span>. <span class="math inline">\(y\)</span> es la respuesta instrumental observada o experimental (áreas, absorbancias, etc.); <span class="math inline">\(\hat{y}\)</span>, es la respuesta instrumental que predice el modelo (lineal o o cuadrático) en cada una de las concentraciones de los calibrantes. Si observa la ecuación <a href="#eq:res">(2)</a> el concepto de residuo es el mismo para cualquier modelo de calibración, es decir, ¿cuánto difiere lo que se observa experimentalmente con lo que predice el modelo?</p>
 <p>Un buen modelo tiene residuos pequeños. Un residuo grande para cierto de nivel de concentración implica que existe una gran diferencia entre lo observado y lo que predice el modelo, por lo tanto, nos guiará (en otro post) a detectar posibles valores anómalos o <em>outliers</em>.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Calcule la diferencia entre ambas sumas de cuadrado de los residuos, la del modelo no lineal <span class="math inline">\(SS_{r}^{no-lin}\)</span> y la correspondiente al modelo lineal <span class="math inline">\(SS_{r}^{lin}\)</span>:</li>
@@ -544,7 +544,7 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 <p>Porque la decisión está basada en pruebas estadísticas, las cuáles tienen algunas consideraciones para su correcta interpretación:</p>
 <ol style="list-style-type: decimal">
 <li><p>Con estas pruebas estadísticas no se puede probar linealidad, lo que podemos concluir es que el modelo lineal es adecuado o razonable para modelar nuestros datos de calibración ¡nada más!.</p></li>
-<li><p>Es imposible que en un sistema físico-químico complejo como una llama o plasma/detector (ICP-MS) exista una relación “perfectamente” lineal entre absorbacia (cuentas) y concentración. Lo que hizo Lambert-Beer (o cualquier científico que proponga un modelo de la naturaleza) fue proponer una simplificación del sistema y representarlo mediante un modelo cuantitativo.</p></li>
+<li><p>Es imposible que en un sistema físico-químico complejo como una llama o plasma/detector (ICP-MS) exista una relación “perfectamente” lineal entre absorbancia (cuentas) y concentración. Lo que hicieron Lambert &amp; Beer (o cualquier científico que proponga un modelo de la naturaleza) fue proponer una simplificación del sistema y representarlo mediante un modelo cuantitativo.</p></li>
 <li><p>Existen muchos modelos que se podrían ajustar muy bien a nuestros datos de calibración, pero en estadística existe el principio de parsimonia:</p></li>
 </ol>
 <blockquote>

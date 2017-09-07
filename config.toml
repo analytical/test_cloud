@@ -173,7 +173,7 @@ Químico - Bioquímico"""
 [[menu.main]]
   name = "Publicaciones"
   url = "#publications_selected"
-  weight = 3
+  weight = 4
 
 [[menu.main]]
   name = "Blog"

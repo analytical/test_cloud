@@ -231,16 +231,16 @@ que son los más utilizados en Química Analítica y son sugeridos por
 normativas internacionales (para presentárselos a los amables auditores).
 
 Si bien no es estrictamente riguroso, para simplificar el concepto, diremos que
-ambos tests estadísticos intentan intentan dirimir entre dos hipótesis:
+ambos tests estadísticos intentan dirimir entre dos hipótesis:
 
 - $H_{0}$ (a.k.a Hipótesis Nula) : El modelo lineal es adecuado para describir 
 los datos de calibración
 - $H_{1}$ (a.k.a Hipótesis alternativa): El modelo lineal **NO** es adecuado para 
 describir los datos de calibración
 
-También debemo hacer la siguiente acotación: En **estadística** 
+También debemos hacer la siguiente acotación: En **estadística** 
 un modelo lineal es
-aquel en sus parámetros son lineales. Por ejemplo, la curva de calibración lineal
+aquel en que sus parámetros son lineales. Por ejemplo, la curva de calibración lineal
 clásica $y = \beta_{0} + \beta_{1}x$ tanto $\beta_{0}$  y $\beta_{1}$ son 
 lineales. Sin embargo, en un modelo exponencial $y = \gamma_{0} e^{\gamma_{1}x}$
 el coeficiente $\gamma_{1}$ no lo es.
@@ -437,7 +437,7 @@ Donde el residuo $e = y - \hat{y}$.
 $y$ es la respuesta instrumental observada o experimental 
 (áreas, absorbancias, etc.); $\hat{y}$, es la respuesta instrumental que predice
 el modelo (lineal o o cuadrático) en cada una de las concentraciones de los
-calibrantes. Si observa la ecuación \ el concepto de residuo es el mismo para
+calibrantes. Si observa la ecuación \@ref(eq:res) el concepto de residuo es el mismo para
 cualquier modelo de calibración, es decir, ¿cuánto difiere lo que se observa
 experimentalmente con lo que predice el modelo?
 
@@ -552,8 +552,8 @@ podemos concluir es que el modelo lineal es adecuado o razonable
 para modelar nuestros datos de calibración ¡nada más!.
 
 2. Es imposible que en un sistema físico-químico complejo como una llama o plasma/detector
-(ICP-MS) exista una relación "perfectamente" lineal entre absorbacia (cuentas) 
-y concentración. Lo que hizo Lambert-Beer (o cualquier científico que 
+(ICP-MS) exista una relación "perfectamente" lineal entre absorbancia (cuentas) 
+y concentración. Lo que hicieron Lambert & Beer (o cualquier científico que 
 proponga un modelo de la naturaleza) fue proponer una simplificación 
 del sistema
 y representarlo mediante un modelo cuantitativo. 
