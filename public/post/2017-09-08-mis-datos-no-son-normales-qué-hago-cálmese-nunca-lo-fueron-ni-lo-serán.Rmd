@@ -1,0 +1,352 @@
+---
+title: '¡Mis datos no son normales! ¿Qué hago?...Cálmese, nunca lo fueron...
+ni lo serán'
+author: cgomez
+date: '2017-09-08'
+slug: mis-datos-no-son-normales
+categories:
+  - R
+  - normalidad
+tags: []
+summary: 'En este post discutiremos el concepto de normalidad y su aplicación
+en química. Daremos algunas luces sobre qué hacer cuándo los datos experimentales 
+no soportan el supuesto de normalidad'
+---
+
+Bueno, aquí va la primera piedra:
+
+> No existen datos experimentales normales
+
+Sus datos obtenidos en el laboratorio no "siguen" ninguna distribución de 
+probabilidad. La naturaleza no "sigue" ninguna distribución de probabilidad.
+
+> La Normalidad es sólo una abstracción, es un modelo matemático 
+de un fenómeno aleatorio.
+
+Y como todo modelo, podría ser razonable para un conjunto de datos y totalmente
+equivocado para otro. Somos nosotros, los químicos/científicos, quienes 
+proponemos modelos del sistema que estamos estudiando y a través de la 
+experimentación corroboramos o no estos modelos.
+
+
+
+
+Todos los tests estadísticos formales para evaluar la normalidad tampoco
+responden en forma 100% certera si esta hipótesis es válida, pues
+están afectos a los errores de tipo falso positivo (I) y falso negativo (II).
+Por lo tanto, las pruebas estadísticas en la práctica no confirman que los
+datos experimentales sean Normales, sino que nos indican si el modelo Normal
+es razonable o no. Si lo es, actuamos como si "fuesen" normales y hacemos 
+inferencia estadística a partir de las propiedades de la Normal.
+
+El modelo Normal se describe en la ecuación \@ref(eq:normal) y la figura
+\@ref(fig:plotnormal) muestra la archiconocida forma de campana:
+
+\begin{equation}
+  f(x) = \frac{1}{\sigma \sqrt{2\pi}}\exp{-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2}
+  (\#eq:normal)
+\end{equation}
+
+donde $\sigma$ y $\mu$ son la desviación estándar y media, respectivamente.
+Notar que la distribución Normal es aplicable sólo a variables **continuas**, 
+tales como concentración, temperatura, masa, etc. No se puede aplicar 
+la distribución normal a variables **discretas** como cuentas de células bajo 
+un campo de microscopio, por ejemplo. Quizás algún microbiólogo está 
+familiarizado con el uso de logaritmos en sus cálculos de incertidumbre, bueno,
+es porque se utilizan otros modelos de probabilidad para datos discretos (ufc), 
+como el modelo Poisson.
+
+Advierta también, que los posibles valores que puede tomar la variable $X$ 
+están en el no despreciable rango entre $-\infty$ y $+\infty$. ¿Ha comprado 
+algún estándar de calibración cuyo certificado indique una
+pureza de $99.7 \pm 0.5$ %? Raro ¿no? Bueno, pues el proveedor ha aplicado
+equivocadamente la distribución Normal a una variable que no es Normal: pureza
+química. En efecto, desde el punto de vista químico la pureza está confinada
+al intervalo $[0, 100]$ \%, por lo tanto, no tiene sentido químico un certificado
+que indique $99.7 \pm 0.5$ %. Para modelar pureza química es necesario utilizar
+una distribución de probabilidad que esté restringida al intervalo $[0, 100]$ % 
+(o $[0, 1]$) como, por ejemplo, la distribución Beta.
+
+```{r plotnormal, echo = F, fig.cap = 'Distribución Normal con media = 0 y sd = 1 '}
+
+library(ggplot2)
+
+ggplot(data = data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, 
+                args = list(mean = 0, sd = 1),
+                geom = 'area',
+                fill = 'lightblue',
+                alpha = 0.7) + 
+  ylab('f(x)') +
+  theme_bw() +
+  xlim(-4, 4)
+
+```
+
+
+Existen varios test para evaluar la palusibilidad de la normalidad de los datos, 
+pero en este post discutiremos sólo dos de ellos: El test de Shapiro-Wilk y el
+Test de Anderson-Darling.
+
+La matemática detrás de estos tests no es muy digerible, por lo que simplemente
+los ejemplificaremos con algunos datos reales y simulados. La ventaja de 
+usar simulaciones es que "creamos" artificialmente datos de la distribución 
+que se nos plazca y así verificar el desempeño de estos tests. Si recuerda, ya
+habíamos utilizado la simulación cuando revisamos las pruebas de linealidad
+en este [post](https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/).
+
+
+> Antes de hacer cualquier prueba estadística de normalidad grafique los datos,
+> a través de un histograma y un gráfico de probabilidad Normal
+
+Estos gráficos le darán una primera aproximación para evaluar el supuesto de
+normalidad. Todos los softwares estadísticos incorporan estos gráficos.
+A continuación los veremos en acción en datos normales simulados en 
+lenguaje `R`, qué otro. El siguiente es el código para llevar a cabo esta
+simulación de $n = 100$ datos normales:
+
+```{r sim, echo = T}
+
+set.seed(123) # Con este comando nos aseguramos de generar siempre
+              # los mismos datos aleatorios. Sino, obviamente, todos
+              # generaríamos números distintos pues son aleatorios ¿no?
+
+n <- 100 # Número de datos a simular
+mu <- 10 # Media de los n = 100 datos
+sigma <- 1 # Desviación estándar de los n = 100 datos
+
+# Genera 100 dato normales con media mu y desviación estándar sigma
+# y guárdalos en el vector llamado x
+x <- rnorm(n, mu, sigma)
+
+```
+
+Al calcular la media y desviación estándar (muestral) de estos datos obtenemos 
+$\overline{x} = `r round(mean(x), 1)`$ y $s = `r round(sd(x), 1)`$ "¿Pero cómo?
+¿No habíamos simulado una media de 10 y desviación estándar 1? 
+Esto es una estafa" _Keep calm_ recuerde que son aleatorios. 
+La figura \@ref(fig:normplot) muestra a la izquierda el histograma y a la derecha 
+el gráfico de normalidad (_QQ-Plot_) de los datos simulados:
+
+```{r normplot, echo = F, fig.cap = 'Izquierda histograma, derecha gráfico de normalidad'}
+
+par(mfrow = c(1, 2))
+hist(x, main = 'Histograma')
+qqnorm(x, main = 'Gráfico de Normalidad')
+qqline(x, col = 'red')
+
+```
+
+El histograma muestra esa forma de campana característica de la distribución
+normal. Quizás no conozca el gráfico de probabilidad normal o _QQ-Plot_, pero 
+es la primera evidencia que un estadístico revisa para evaluar la hipótesis de
+normalidad. Note que la "mayoría" de los datos está sobre una línea diagonal roja,
+cuando Ud. observe este patrón podría concluir que el modelo normal es 
+**razonable** o adecuado para modelar sus datos. 
+
+> ¿Son concluyentes estos gráficos?
+No, en absoluto. Simplemente muestran que la normalidad es una hipótesis 
+plausible.
+
+Recuerde que estos datos son simulados, por lo tanto, era esperable este 
+comportamiento. Pero sus datos experimentales son "reales", _a priori_ no sabe
+qué comportamiento podrían evidenciar, sólo puede plantear una hipótesis.
+
+Apliquemos ahora los test "formales" de linealidad: test de Shapiro y
+test de Anderson. Ambos tests intentan
+evaluar la hipótesis nula $H_{0}$ que los datos provienen de una
+distribución Normal:
+
+```{r simtest, warning=F, comment=''}
+
+library(nortest) # Cargamos esta librería que contiene varios test de
+                 # Normalidad, entre ellos Anderson-Darling
+
+# Test de Shapiro-Wilk (no requiere librería nortest)
+shapiro.test(x)
+
+# test de Anderson-Darling
+ad.test(x)
+
+```
+
+La interpretación tradicional de las pruebas de hipótesis sería más o 
+menos la siguiente:
+
+> Ya que el _p-value_ > 0,05, entonces, no hay evidencia para rechazar la 
+> hipótesis de normalidad de los datos. ¿Se conluye, entonces, que los
+datos son normales? No. Simplemente, no tenemos la evidencia para rechzar la
+hipótesis.
+
+Por lo tanto, no es que los datos sean normales, sino que la hipótesis de
+normalidad es razonable, por lo que actuaremos como si fuese cierto.
+Obviamente, estos resultados eran esperables pues hemos "creado" datos 
+normales, pero recuerde que sus datos son "reales", no simulados. Hay otras
+consideraciones de las pruebas de hipótesis que no mencionaremos por espacio, 
+pero que un post futuro discutiremos en profundidad. Especialmente, esta
+perversa dicotomía del _p-value_ < ó >  0,05 de la cual ya hicimos mención
+en este [post](https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/). 
+
+> "The p-value was never intended to be a substitute for scientific reasoning" 
+> Ron Wasserstein, Director Ejecutivo de la Asociación Americana de Estadística 
+> ASA.
+
+_**Nota**: Para tamaños de muestra grandes ($n > 1000$), una pequeña desviación
+de la normalidad hará que los tests estadísticos acusen No Normalidad_
+
+Cuando nos referimos a "actuar como si fuese cierto", estamos diciendo que todos
+aquellos procedimientos estadísticos que suponen normalidad de los datos, 
+funcionarán de acuerdo a la teoría. ¿Cuáles son estos métodos estadísticos que
+requieren normalidad de los datos?:
+
+1. Test de Student en todas sus variantes (es un test de sesgo)
+2. Test de Fisher para comparar varianzas (precisión analítica de 2 métodos)
+3. Curva de calibración lineal
+4. Máxima diferencia tolerable entre duplicados de análisis, discutido [aquí](https://www.analytical.cl/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/)
+5. Análisis de varianza para evaluar varios métodos analíticos o analistas
+6. Intervalos de confianza para la media de concentraciones.
+7. Incertidumbre de métodos analíticos. El $k = 2$ asume normalidad de las 
+concentraciones.
+8. ... y un largo etc.
+
+Ok, es cierto, a medida que aumenta el $n$ la suposición de normalidad es cada
+vez menos relevante. De hecho algunos de los tests mencionados arriba son 
+más o menos "robustos" a la suposición de normalidad.
+
+# ¿Qué observaríamos si la hipótesis de normalidad fuese totalmente inverosímil para modelar nuestros datos?
+
+Simulemos ahora datos no normales y veamos cuáles son los resultados tanto de los
+gráficos exploratorios como de las pruebas estadísticas formales:
+
+
+
+```{r nonnorm, echo = T}
+
+# Simularemos m = 100 datos discretos de una distribución Poisson
+
+set.seed (123) # Para que pueda reproducir los datos
+m <- 100 # m = 100 datos
+lambda <- 5 # Parámetro de la distribución Poisson
+
+# Generar m = 100 datos de una distribución Poisson con parámtro lambda = 5
+y <- rpois(m, lambda)
+
+```
+
+
+
+
+```{r, echo = F}
+
+par(mfrow = c(1, 2))
+hist(y, main = 'Histograma datos No Normales')
+qqnorm(y, main = 'Gráfico de normalidad QQ-Plot')
+qqline(y, col = 'red')
+
+```
+
+
+{{% alert warning %}}
+¿No les parece familiar el QQ-Plot a aquellos que validan homogeneidad de peso en
+validación de procesos farmacéuticos? 1313{{% /alert %}}
+
+La evidencia de los gráficos es abrumadora, los datos no son normales. Esto
+concuerda con lo que muestran los tests estadísticos de normalidad:
+
+```{r simtestno, warning=F, comment=''}
+
+# Test de Shapiro-Wilk (no requiere librería nortets)
+shapiro.test(y)
+
+# test de Anderson-Darling
+ad.test(y)
+
+```
+
+Como era esperable, ambos tests confirman que la hipótesis de normalidad
+no es razonable para modelar los datos(_p-value_ < 0,05)
+
+# Si mis datos no son normales, entonces ¿Cómo los analizo?
+
+Tranquilo(a), el mundo sigue girando. Existen varios métodos estadísticos 
+que Ud. puede utilizar para analizar datos donde la hipótesis de normalidad
+no es razonable o se ha demostrado empíricamente que no es :
+
+1. **Bootstrap**: Utilizado, entre otros propósitos, para obtener intervalos de
+confianza para datos no normales.
+2. **Tests no paramétricos**: Análogos a las pruebas paramétricas tradicionales 
+(Test T, ANOVA, etc.)
+3. **Tests de permutaciones**: También son una excelente alternativa a las
+pruebas paramétricas tradicionales y funcionan, incluso, para conjuntos 
+pequeños de datos. Son tests "exactos", pero necesitan que Ud. disponga de un 
+buen "tarro" (computador) pues son _computationally-intensive methods_.
+4. **Modelos lineales generalizados**: Idóneos para modelar datos discretos como
+cuentas de células (leucocitos, ufc, etc.) o variables dicotómicas 
+(Conforme/No Conforme), etc.
+5. **Transformación de datos**: Especialmente útiles son la transformación de
+Johnson y la de Box-Cox.
+6. **Estadística Robusta**: No tan sólo son útiles para minimizar el 
+efecto de valores anómalos (_outliers_), sino también para obener estimadores de 
+datos que no son normales.
+
+Para finalizar veamos en acción de estos métodos: Bootstrap. 
+Sin embargo, el detalle estadístico y su implementación los veremos en otro post, por ahora, 
+simplemente lo ejemplificaremos. La figura \@ref(fig:As) muestra 
+el histograma y el _QQ-Plot_ de normalidad correspondientes a datos de concentración de arsénico [ppm] muestreados en $n = 271$ pozos de agua en
+Bangladesh:
+
+```{r As, echo = F, fig.cap = 'Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh', warning=F, message=F}
+
+library(resampledata)
+
+par(mfrow = c(1, 2))
+qqnorm(Bangladesh$Arsenic)
+qqline(Bangladesh$Arsenic, col = 'red')
+hist(Bangladesh$Arsenic, 
+     main = 'Histograma As [ppm]',
+     xlab = 'As [ppm]')
+t.As <- t.test(Bangladesh$Arsenic)
+
+library(boot)
+set.seed(123)
+As.boot <- boot(Bangladesh$Arsenic, 
+                function(x, i) mean(x[i]), 
+                R = 1000)
+
+As.boot.ci <- boot.ci(As.boot)
+
+```
+
+Claramente, ni si quiera es necesario hacer un test de normalidad, la evidencia
+que muestra la figura \@ref(fig:As) en contra de la hipótesis de normalidad es abrumadora. El promedio de la concentración de As es 
+$\overline{x} = `r round(mean(Bangladesh$Arsenic), 0)`$ ppm y la 
+desviación estándar $s = `r round(sd(Bangladesh$Arsenic), 0)`$ ppm. Utilizando
+la fórmula usual para estimar un intervalo de confianza al 95% para la media
+$\overline{x} \pm t_{\alpha/2, n - 1} s/\sqrt{n}$ obtenemos 
+[`r round(t.As$conf.int, 0)`] ppm As. Sin embargo, la gran asimetría de los datos
+hace inverosímil el intervalo obtenido.
+
+Al aplicar el método _bootstrap_ obtenemos un intervalo para la media al 95% (BCa) entre [`r round(As.boot.ci$bca[c(4,5)], 0)`] ppm As, el cual es más
+"correcto" por si Ud. necesita informar este parámetro. La figura 
+\@ref(fig:Asboot) muestra el histograma y QQ-Plot de normalidad de
+el método de bootstrap. Advierta el Teorema Central del Límite en su 
+máxima expresión.
+
+```{r Asboot, fig.cap = 'Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos', echo = F}
+
+plot(As.boot)
+
+```
+
+Bueno estimado lector, nos vemos pronto. Saludos.
+
+# Bibliografía
+
+1. Ghasemi A, Zahediasl S. Normality Tests for Statistical Analysis: A Guide for Non-Statisticians. _International Journal of Endocrinology and Metabolism_. 2012;10(2):486-489. doi:10.5812/ijem.3505.
+
+2. Henry C. Thode _Testing For Normality_  CRC Press 2002
+
+3. [Is normality testing 'essentially useless'?](http://bit.ly/2pfPsRg)
+
+
+

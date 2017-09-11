@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mieles De Chile on Carlos Gómez</title>
+    <link>https://www.analytical.cl/tags/mieles-de-chile/</link>
+    <description>Recent content in Mieles De Chile on Carlos Gómez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <copyright>&amp;copy; 2017 Carlos Gómez</copyright>
+    <lastBuildDate>Thu, 27 Jul 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/mieles-de-chile/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Análisis Geoespacial de Zonas de Producción de Mieles</title>
+      <link>https://www.analytical.cl/project/indice_mieles_chile/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.analytical.cl/project/indice_mieles_chile/</guid>
+      <description>&lt;p&gt;Zonas idóneas para la apicultura
+&lt;img src=&#34;static/img/indice.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

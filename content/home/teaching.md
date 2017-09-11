@@ -5,7 +5,7 @@
 date = "2016-04-20T00:00:00"
 draft = false
 
-title = "Cursos 2017"
+title = "Cursos 2018"
 subtitle = ""
 widget = "custom"
 
@@ -14,7 +14,7 @@ weight = 60
 
 +++
 
-Durante el segundo semestre de 2017 dictaré los siguientes
+Durante el año 2018 dictaré los siguientes
 cursos en la Facultad de Ciencias Químicas y Farmacéuticas
 de la Universidad de Chile:
 
@@ -22,3 +22,6 @@ de la Universidad de Chile:
 - Métodos estadísticos aplicados a Buenas Prácticas de Manufactura
 - Cálculo de incertidumbre en mediciones químicas
 - Control Estadístico de la calidad en el laboratorio
+
+
+Más información [aquí](http://www.quimica.uchile.cl/postgrado/)
