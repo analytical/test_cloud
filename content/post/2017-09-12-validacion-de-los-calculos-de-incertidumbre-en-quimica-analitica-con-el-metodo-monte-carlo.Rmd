@@ -1,7 +1,7 @@
 ---
 title: 'Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I'
 author: cgomez
-date: '2017-09-12'
+date: '2017-09-20'
 slug: validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo
 categories:
   - incertidumbre
@@ -449,7 +449,7 @@ quantilos <- quantile(f.sim, c(0.025, 0.975))
 
 Esto quiere decir, que de los $n = `r n`$ datos simulados del factor de 
 dilución, un 95% se encuentra dentro del intervalo  [`r round(quantilos, 2)`]. 
-La figura \@ref(fig:quantilosfig) muestra este intervalo en el histograma de 
+La figura \@ref(fig:quantilofig) muestra este intervalo en el histograma de 
 los datos simulados:
 
 ```{r quantilofig, fig.cap = 'Intervalo de confianza al 95% de los datos simulados del factor de dilución'}

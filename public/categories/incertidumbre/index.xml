@@ -7,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2017 Carlos Gómez</copyright>
-    <lastBuildDate>Tue, 12 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 Sep 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/categories/incertidumbre/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I</title>
       <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
-      <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
       <description>&lt;p&gt;De acuerdo al numeral 8.1 del Suplemento 1 de la guía GUM, el método de Monte Carlo es un método general para estimar la incertidumbre de medición y puede, bajo ciertas directrices, validar los cálculos realizados con el método GUM. En este post asumiremos que Ud., esimado lector, está familiarizado con el método GUM y ya lo tiene implementado , por ejemplo, en una hoja Excel y le gustaría validar sus cálculos mediante un método totalmente independiente y más general. De esta forma podrá cumplir cabalmente con el siguiente numeral de la norma 17025:&lt;/p&gt;
@@ -244,7 +244,7 @@ W = 0.99005, p-value = 2.719e-06&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;¿Cómo obtenemos los percentiles 2.5 y 97.5 de la simulación de Monte Carlo?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Muy sencillo, con el comando &lt;code&gt;quantile&lt;/code&gt;:&lt;/p&gt;
-&lt;p&gt;Esto quiere decir, que de los &lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt; datos simulados del factor de dilución, un 95% se encuentra dentro del intervalo [4.96, 5.04]. La figura &lt;a href=&#34;#fig:quantilosfig&#34;&gt;&lt;strong&gt;??&lt;/strong&gt;&lt;/a&gt; muestra este intervalo en el histograma de los datos simulados:&lt;/p&gt;
+&lt;p&gt;Esto quiere decir, que de los &lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt; datos simulados del factor de dilución, un 95% se encuentra dentro del intervalo [4.96, 5.04]. La figura &lt;a href=&#34;#fig:quantilofig&#34;&gt;5&lt;/a&gt; muestra este intervalo en el histograma de los datos simulados:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(f.sim, 
      xlab = &amp;#39;Factor de dilución&amp;#39;,
      main = &amp;#39;&amp;#39;,
