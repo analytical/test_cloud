@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</loc>
+      <lastmod>2017-09-12T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.analytical.cl/post/mis-datos-no-son-normales/</loc>
       <lastmod>2017-09-08T00:00:00+00:00</lastmod>
     </url>
@@ -52,15 +61,6 @@
     
       <loc>https://www.analytical.cl/project/indice_mieles_chile/</loc>
       <lastmod>2017-07-27T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.analytical.cl/publication/mieles_chile_zonas/</loc>
-      <lastmod>2017-07-01T00:00:00+00:00</lastmod>
     </url>
     
   
@@ -122,16 +122,6 @@
     
     <url>
     
-      <loc>https://www.analytical.cl/publication_types/2/</loc>
-      <lastmod>2017-07-01T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://www.analytical.cl/tags/calibracion/</loc>
       <lastmod>2017-08-23T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -161,8 +151,8 @@
     
     <url>
     
-      <loc>https://www.analytical.cl/categories/incertidumbre/</loc>
-      <lastmod>2017-08-14T00:00:00+00:00</lastmod>
+      <loc>https://www.analytical.cl/tags/gum/</loc>
+      <lastmod>2017-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -172,7 +162,17 @@
     <url>
     
       <loc>https://www.analytical.cl/tags/incertidumbre/</loc>
-      <lastmod>2017-08-28T00:00:00+00:00</lastmod>
+      <lastmod>2017-09-12T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.analytical.cl/categories/incertidumbre/</loc>
+      <lastmod>2017-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -211,6 +211,16 @@
     
     <url>
     
+      <loc>https://www.analytical.cl/categories/monte-carlo/</loc>
+      <lastmod>2017-09-12T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://www.analytical.cl/categories/normalidad/</loc>
       <lastmod>2017-09-08T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -221,7 +231,7 @@
     
     <url>
     
-      <loc>https://www.analytical.cl/categories/precision/</loc>
+      <loc>https://www.analytical.cl/tags/precision/</loc>
       <lastmod>2017-08-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -231,7 +241,7 @@
     
     <url>
     
-      <loc>https://www.analytical.cl/tags/precision/</loc>
+      <loc>https://www.analytical.cl/categories/precision/</loc>
       <lastmod>2017-08-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -252,7 +262,16 @@
     <url>
     
       <loc>https://www.analytical.cl/publication_types/</loc>
-      <lastmod>2017-07-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://www.analytical.cl/tags/r/</loc>
+      <lastmod>2017-09-12T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -271,17 +290,7 @@
     
     <url>
     
-      <loc>https://www.analytical.cl/tags/r/</loc>
-      <lastmod>2017-08-13T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://www.analytical.cl/categories/repetibilidad/</loc>
+      <loc>https://www.analytical.cl/tags/repetibilidad/</loc>
       <lastmod>2017-08-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -291,7 +300,7 @@
     
     <url>
     
-      <loc>https://www.analytical.cl/tags/repetibilidad/</loc>
+      <loc>https://www.analytical.cl/categories/repetibilidad/</loc>
       <lastmod>2017-08-28T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>

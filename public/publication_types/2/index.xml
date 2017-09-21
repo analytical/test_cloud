@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>2 on Carlos Gómez</title>
-    <link>https://www.analytical.cl/publication_types/2/</link>
+    <link>/publication_types/2/</link>
     <description>Recent content in 2 on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>Suitable areas for apiculture expansion determined by antioxidant power, chemical profiles, and pesticide residues in honey and beeswax samples</title>
-      <link>https://www.analytical.cl/publication/mieles_chile_zonas/</link>
+      <link>/publication/mieles_chile_zonas/</link>
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/publication/mieles_chile_zonas/</guid>
+      <guid>/publication/mieles_chile_zonas/</guid>
       <description></description>
     </item>
     

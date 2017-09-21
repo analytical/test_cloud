@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gum on Carlos Gómez</title>
+    <link>https://www.analytical.cl/tags/gum/</link>
+    <description>Recent content in Gum on Carlos Gómez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <copyright>&amp;copy; 2017 Carlos Gómez</copyright>
+    <lastBuildDate>Tue, 12 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/gum/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I</title>
+      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
+      <pubDate>Tue, 12 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
+      <description>&lt;p&gt;De acuerdo al numeral 8.1 del Suplemento 1 de la guía GUM, el método de Monte Carlo es un método general para estimar la incertidumbre de medición y puede, bajo ciertas directrices, validar los cálculos realizados con el método GUM. En este post asumiremos que Ud., esimado lector, está familiarizado con el método GUM y ya lo tiene implementado , por ejemplo, en una hoja Excel y le gustaría validar sus cálculos mediante un método totalmente independiente y más general. De esta forma podrá cumplir cabalmente con el siguiente numeral de la norma 17025:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;5.4.7.1 Los cálculos y la transferencia de los datos deben estar sujetos a verificaciones adecuadas llevadas a cabo de una manera sistemática.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;¿Cómo sabe Ud. que su implementación en Excel está correcta?&lt;/p&gt;
+&lt;div id=&#34;que-es-el-metodo-de-monte-carlo&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;¿Qué es el método de Monte Carlo?&lt;/h1&gt;
+&lt;p&gt;(Aquí podría hacer copy-paste de Wikipedia…no olvidar borrar esta nota interna)&lt;/p&gt;
+&lt;p&gt;Muy sucintamente, el método de Monte Carlo es un método numérico que permite evaluar expresiones matemáticas complejas (muy complejas, créame) mediante la simulación de números aleatorios. Este post no pretende profundizar en la teoría de este método (ZzzZzz…) , sino más bien dar ejemplos concretos aplicados en química analítica, por lo tanto, es posible que un avezado estadístico computacional le dé un infarto al leer la soltura con la cual me expreso y lo ineficiente del código &lt;code&gt;R&lt;/code&gt;. El objetivo es simplemente la divulgación a la comunidad químico-analítica para abordar algunos puntos normativos de la 17025 y guía GUM.&lt;/p&gt;
+&lt;p&gt;Veamos un ejemplo sencillo. Supongamos que necesitamos calcular la incertidumbre de la suma de 2 variables aleatorias normales &lt;strong&gt;independientes&lt;/strong&gt;, y que poseen&lt;br /&gt;
+la misma media (&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;) y varianza (&lt;span class=&#34;math inline&#34;&gt;\(\sigma^2\)&lt;/span&gt;), es decir, si &lt;span class=&#34;math inline&#34;&gt;\(Z = X + Y\)&lt;/span&gt; ¿Cuál es la incertiumbre de &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;? (&lt;span class=&#34;math inline&#34;&gt;\(u_{Z}\)&lt;/span&gt;)&lt;/p&gt;
+&lt;p&gt;Si Ud. recuerda de sus cursos de probabilidades, este problema tiene una solución directa y sencilla:&lt;/p&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{eqnarray}
+  V(Z) &amp;amp;=&amp;amp; V(X) + V(Y) \\
+  V(Z) &amp;amp;=&amp;amp; \sigma^2 + \sigma^2 \\
+  V(Z) &amp;amp;=&amp;amp; 2\sigma^2
+\end{eqnarray}\]&lt;/span&gt;
+&lt;p&gt;donde &lt;span class=&#34;math inline&#34;&gt;\(V()\)&lt;/span&gt; denota varianza. Por lo tanto, la incertidumbre de Z es &lt;span class=&#34;math inline&#34;&gt;\(u_{Z} = \sqrt{V(Z)} = \sqrt{2}\sigma\)&lt;/span&gt;. Si Ud, conoce &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt;, es decir, la incertidumbre estándar de &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, el problema está resuelto. En realidad, este ejemplo es bastente general y las distribuciones ni siquiera tienen que ser las mismas, bajo ciertas condiciones, esto se cumplirá.&lt;/p&gt;
+&lt;p&gt;Pero supongamos que, repentinamente, Ud. olvidó todo lo aprendido en esas estimulantes clases de probabilidades con 33°C y sin aire acondicionado. No se preocupe, obtendremos la incertidumbre de Z sin recurrir a ninguna propiedad teórica de las varianzas. Usareemos el método de Monte Carlo, para lo cual debemos hacer lo siguiente:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Asigne a cada variable, en este caso &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, una distribución de probabilidad de acuerdo a la información que disponga hasta ese momento. En nuestro ejemplo tanto &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; como &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; son normales con la misma media (&lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;) y desviación estándar (&lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt;). Sin pérdida de generalidad, diremos que ambas variables &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; son normales con media &lt;span class=&#34;math inline&#34;&gt;\(\mu = 100\)&lt;/span&gt; y desviación estándar &lt;span class=&#34;math inline&#34;&gt;\(\sigma = 5\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;De cada variable genere un valor aleatorio. Es decir, en nuestro ejemplo debemos generar un número aleatorio para &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; y otro para &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; a partir de sus respectivas distribuciones de probabilidad asignadas, que en este caso es la misma. Haremos esto en lenguaje &lt;code&gt;R&lt;/code&gt;:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Generamos n = 1 número aletorio para X a partir de una
+# distribución Normal con media 100 y desviación estándar 5
+X &amp;lt;- rnorm(1, 100, 5) 
+
+# Generamos n = 1 número aletorio para Y a partir de una
+# distribución Normal con media 100 y desviación estándar 5
+Y &amp;lt;- rnorm(1, 100, 5) &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;En esta primera simulación obtuvimos &lt;span class=&#34;math inline&#34;&gt;\(X = 97.1976218\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(Y = 98.8491126\)&lt;/span&gt;.&lt;/p&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Calcule la variable de interés con los datos simulados. En el ejemplo, &lt;span class=&#34;math inline&#34;&gt;\(Z = X + Y = 97.1976218 + 98.8491126= 196.0467343\)&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Repita los pasos 2 y 3 &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; veces y obtenga la distribución empírica de &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A partir de los &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; datos simulados de &lt;span class=&#34;math inline&#34;&gt;\(Z\)&lt;/span&gt;, estime &lt;span class=&#34;math inline&#34;&gt;\(u_{Z} = s_{Z}\)&lt;/span&gt;, es decir, la desviación estándar muestral de los &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; datos.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Hay varias formas de implementar todos estos pasos en &lt;code&gt;R&lt;/code&gt;, la más intuitiva (creo yo) es la siguiente:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;n &amp;lt;- 1000 # Obtendremos n = 1000 datos aleatorios para X e Y
+mu &amp;lt;- 100 # Media mu = 100
+s &amp;lt;- 5    # Desviación estandar s = 5
+
+X &amp;lt;- rnorm(n, mu, s) # 1000 datos aleatorios de una normal con parámetros mu y s
+Y &amp;lt;- rnorm(n, mu, s) # 1000 datos aleatorios de una normal con parámetros mu y s
+
+Z &amp;lt;- X + Y # Para cada uno de los 1000 datos de X e Y, calculamos Z
+
+uZ &amp;lt;- sd(Z) # La incertidumbre estándar de Z es la desviación estándar de las
+            # n = 1000 simulaciones&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;En nuestro ejemplo, la incertidumbre estándar por Monte Carlo es de &lt;span class=&#34;math inline&#34;&gt;\(u_{Z}^{MC} = 7.4\)&lt;/span&gt;. ¿Qué nos decía la teoría? Que &lt;span class=&#34;math inline&#34;&gt;\(u_{Z} = \sqrt{2}\sigma = \sqrt{2}\cdot 5 = 7.1\)&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Ojalá todo fuera tan fácil. El ejemplo era muy sencillo y la solución es conocida en forma teórica. La vida del químico analítico es extremadamente compleja (en todo $entido), y no siempre existe una solución tan simple. Para eso está el método de Monte Carlo, el cual simula un proceso complejo cuyas variables de entrada pueden tener cualquier distribución de probabilidad tal como lo muestra la siguiente figura:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/mc2.png&#34; width=&#34;500&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;La generalidad del método MC no asume normalidad de la variable de interés &lt;span class=&#34;math inline&#34;&gt;\(g(y)\)&lt;/span&gt;, sino más bien la estima como una distribución empírica y a partir de ésta calcula la incertidumbre estándar y expandida.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;incertidumbre-de-un-factor-de-dilucion&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Incertidumbre de un factor de dilución&lt;/h1&gt;
+&lt;p&gt;Para aterrizar esta definición veamos un ejemplo muy simple en química analítica y cómo podemos implementarlo en un lenguaje de programación especialmente dedicado a esta tareas: &lt;code&gt;R&lt;/code&gt;. A su vez discutiremos las principales diferencias entre el método GUM y el método de Monte Carlo&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Se prepara la dilución de una muestra antes de su lectura por AAS, mediante la toma de una alícuota de 20 mL con una pipeta volumétrica cuyo volumen es &lt;span class=&#34;math inline&#34;&gt;\(20,0 \pm 0,1\)&lt;/span&gt; mL y su dilución en un matraz de 100 mL, con un volumen de &lt;span class=&#34;math inline&#34;&gt;\(100 \pm 0,6\)&lt;/span&gt; mL. Calcular la incertidumbre del factor de dilución &lt;span class=&#34;math inline&#34;&gt;\(f = V_{final}/V_{inicial}\)&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;metodo-gum&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Método GUM&lt;/h2&gt;
+&lt;p&gt;Este es un ejercicio bastante simple para el método GUM, pues el factor de dilución es una operación de división, por lo que aplicando las reglas de propagación de la incertidumbre de una división, obtenemos lo siguiente:&lt;/p&gt;
+&lt;span class=&#34;math display&#34; id=&#34;eq:f&#34;&gt;\[\begin{equation}
+  u_{f} = f\sqrt{\left(\frac{u_{V_{final}}}{V_{final}}\right)^2 + 
+  \left(\frac{u_{V_{inicial}}}{V_{incial}}\right)^2}
+  \tag{1}
+\end{equation}\]&lt;/span&gt;
+&lt;p&gt;Asumiremos por simplicidad que las incertidumbres asociadas al material volumétrico son las indicadas por el fabricante en el mismo material, es decir, de acuerdo a la figura &lt;a href=&#34;#fig:matraz&#34;&gt;1&lt;/a&gt; y, por ahora, serán las únicas fuentes de incertidumbre del material volumétrico (olvidaremos la T° y la repetibilidad).&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:matraz&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/pipeta.jpg&#34; alt=&#34;Incertidumbre del fabricante&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Incertidumbre del fabricante
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Ahora bien, las incertidumbres del material volumétrico corresponden a incertidumbres expandidas &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt;, por lo tanto, debemos convertirlas a incertidumbres estándares antes de aplicar la ecuación &lt;a href=&#34;#eq:f&#34;&gt;(1)&lt;/a&gt;. También por simplicidad, modelaremos los volúmenes mediante una distribución rectangular, por lo tanto, al estandarizar &lt;span class=&#34;math inline&#34;&gt;\(u = U/k\)&lt;/span&gt;, con &lt;span class=&#34;math inline&#34;&gt;\(k = \sqrt{3}\)&lt;/span&gt; obtenemos lo siguiente:&lt;/p&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{eqnarray}
+  u_{V_{final}} &amp;amp;=&amp;amp; \frac{0,6}{\sqrt{3}} = 0.35\, \text{mL}\\
+  u_{V_{incial}} &amp;amp;=&amp;amp; \frac{0,1}{\sqrt{3}} = 0.06\, \text{mL}\\
+  u_{f} &amp;amp;=&amp;amp; \frac{100}{20}\sqrt{\left(\frac{0.35}{100}\right)^2 + 
+  \left(\frac{0.06}{20}\right)^2} \\
+    u_{f} &amp;amp;=&amp;amp;  0.02255
+\end{eqnarray}\]&lt;/span&gt;
+&lt;p&gt;En este ejemplo, podemos asumir que los grados de libertad de ambas incertidumbres tienden a infinito, por lo tanto, si queremos obtener la incertidumbre expandida del factor de dilución con un 95% de confianza, se asume un factor de cobertura &lt;span class=&#34;math inline&#34;&gt;\(k = 2\)&lt;/span&gt;, de esta forma obtenemos &lt;span class=&#34;math inline&#34;&gt;\(U_{f} = ku_{f} = 0.04509\)&lt;/span&gt; mL.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;metodo-de-monte-carlo&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Método de Monte Carlo&lt;/h2&gt;
+&lt;p&gt;Implementaremos en &lt;code&gt;R&lt;/code&gt;, los pasos descritos del método de Monte Carlo:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;k &amp;lt;- sqrt(3) # Factor de estandarización para una distribución rectangular
+vi &amp;lt;- 20     # Volumen inicial [mL]
+Uvi &amp;lt;- 0.1   # Incertidumbre expandida del volumen inicial [mL]
+uvi &amp;lt;- Uvi/k # Incertidumbre estándar del volumen inicial [mL]
+vf &amp;lt;- 100    # Volumen incial [mL]
+Uvf &amp;lt;- 0.6   # Incertidumbre expandida del volumen final [mL]
+uvf &amp;lt;- Uvf/k # Incertidumbre estándar del volumen final [mL]
+
+# Aquí haremos la simulación de Monte Carlo
+set.seed(123) # Para que Ud. obtenga los mismos resultados en su simulación
+
+# Generaremos valores aleatorios de volumen inicial y volumen final
+# desde una distribución rectangular con el comando runif(n, minimo, maximo)
+# minimo = volumen - U
+# maximos = volumen + U
+# Los guardaremos en los vectores vi.sim y vf.sim
+
+n &amp;lt;- 1000
+vi.sim &amp;lt;- runif(n, vi - Uvi, vi + Uvi)
+vf.sim &amp;lt;- runif(n, vf - Uvf, vf + Uvf)
+
+# Ahora calcularemos el factor de dilución para cada uno de los pares de 
+# valores de volumen inicial y final que simulamos y lo guardaremos en el
+# el vector f.sim
+
+f.sim &amp;lt;- vf.sim/vi.sim # Es la misma fórmula&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;“Bueno ¿Y?” se preguntará Ud.&lt;/p&gt;
+&lt;p&gt;Veamos que hemos generado con la simulación:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt; valores aleatorios del volumen inicial a partir de una distribución rectangular con media &lt;code&gt;vi&lt;/code&gt; = 20 mL e incertidumbre expandida &lt;code&gt;Uvi&lt;/code&gt; = 0.1 mL. El promedio de los 1000 volumenes iniciales simulados es 19.999 mL y una desviación estándar de &lt;code&gt;uvi&lt;/code&gt; = &lt;span class=&#34;math inline&#34;&gt;\(U_{vf}/\sqrt{3} = 0.058\)&lt;/span&gt; mL. La figura &lt;a href=&#34;#fig:visim&#34;&gt;2&lt;/a&gt; muestra el histograma de los valores simulados. Note que la simulación concuerda perfectamente con los valores de incertidumbre informados por el fabricante (&lt;span class=&#34;math inline&#34;&gt;\(20 \pm 0.1\)&lt;/span&gt; mL).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:visim&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/visim-1.png&#34; alt=&#34;Histograma de los valores simulados de volumen inicial [mL]&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: Histograma de los valores simulados de volumen inicial [mL]
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt; valores aleatorios del volumen final a partir de una distribución rectangular con media &lt;code&gt;vf&lt;/code&gt; = 100 mL e incertidumbre expandida &lt;code&gt;Uvf&lt;/code&gt; = 0.6 mL.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Para cada uno de los pares datos simulados de volumen inicial y final, se calculó el factor de dilución, por lo tanto, se obtuvieron en total &lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt; factores los cuales se “guardaron” en el vector &lt;code&gt;f.sim&lt;/code&gt;, tal como se muestra en la tabla &lt;a href=&#34;#tab:fsim&#34;&gt;1&lt;/a&gt;:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:fsim&#34;&gt;Table 1: &lt;/span&gt;Variables simuladas. Se muestran los primeros 6 datos&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;vf.sim&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;vi.sim&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;f.sim&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;99.73&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;19.96&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;100.11&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;20.06&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;99.59&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;19.98&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.98&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;100.42&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;20.08&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;100.42&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;20.09&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.00&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;99.97&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;19.91&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5.02&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;La figura &lt;a href=&#34;#fig:fsimhis&#34;&gt;3&lt;/a&gt; muestra el histograma de los 1000 factores de dilución simulados:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:fsimhis&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimhis-1.png&#34; alt=&#34;Histograma de factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: Histograma de factores de dilución simulados
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;“¡Qué interesante!”, dirá Ud., la división de dos variables rectangulares genera una distribución de datos que, al menos, es simétrica. ¿Es razonable asumir una distribución normal del factor de dilución simulado? Si recuerda la discusión en este &lt;a href=&#34;https://www.analytical.cl/post/mis-datos-no-son-normales/&#34;&gt;post&lt;/a&gt;, podemos evaluar la admisibilidad de esta hipótesis mediante el análisis gráfico &lt;em&gt;QQ-Plot&lt;/em&gt; de normalidad de los datos simulados y el test de Shapiro, el cual se muestra en la figura &lt;a href=&#34;#fig:fsimnorm&#34;&gt;4&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:fsimnorm&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimnorm-1.png&#34; alt=&#34;QQ-Plot de normalidad de los n factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4: QQ-Plot de normalidad de los n factores de dilución simulados
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;pre&gt;&lt;code&gt;
+    Shapiro-Wilk normality test
+
+data:  f.sim
+W = 0.99005, p-value = 2.719e-06&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Aparentemente, el modelo normal sería razonable para modelar el factor de dilución sino fuera por los siguientes hechos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;El histograma del factor de dilución tiene “colas livianas”, lo cual se puede advertir en el &lt;em&gt;QQ-plot&lt;/em&gt; de normalidad en los valores extremos.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;La evidencia del test de Shapiro en contra de la hipótesis de normalidad.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Y lo más importante, la razón de dos variables independientes rectangulares (uniformes) teóricamente no es Normal (está demostrado).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ok, probablemente esta discusión no sea de mucho interés por ahora, pero nos dará pistas para dirigir la discusión posterior.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Entonces ¿Cómo obtenemos la incertidumbre del factor de dilución por el método de Monte Carlo?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Muy sencillo, a partir de la desviación estándar de los factores de dilución simulados, es decir, $u_{f}^{MC} = $ &lt;code&gt;sd(f.sim)&lt;/code&gt; = 0.02302. Como podrá advertir, es muy similar a la obtenida por el método GUM &lt;span class=&#34;math inline&#34;&gt;\(u_{f} = 0.02255\)&lt;/span&gt;, la diferencia relativa es de un 2.1 %. Es más, ajustando a las cifras significativas correctas se obtiene la misma magnitud 0.02&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;¿Queda validado el método GUM con los cálculos del método de Monte Carlo? Desde el punto de vista metrológico químico: Sí. Desde el punto de vista numérico: Depende.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Lo que sucede es que el numeral 8.1 del suplemento 1 dela guía GUM es explícito en establecer un criterio de aceptación entre el método GUM y el método de Monte Carlo (MC):&lt;/p&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{eqnarray}
+  |y - U(y) - y_{low}| &amp;amp;&amp;lt;&amp;amp; \xi \\
+  |y + U(y) - y_{high}| &amp;amp;&amp;lt;&amp;amp; \xi
+\end{eqnarray}\]&lt;/span&gt;
+&lt;p&gt;donde &lt;span class=&#34;math inline&#34;&gt;\(y \pm U(y)\)&lt;/span&gt; es el valor calculado de la variable y su incertidumbre expandida estimada por el método GUM; &lt;span class=&#34;math inline&#34;&gt;\(y_{low}\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(y_{high}\)&lt;/span&gt; corresponden a los percentiles 2.5 y 97.5 de los datos simulados, es decir, el intervalo de incertidumbre al 95% de confianza calculado por el método de Monte Carlo. &lt;span class=&#34;math inline&#34;&gt;\(\xi\)&lt;/span&gt; es la tolerancia numérica entre ambas metodologías de cálculo. Es decir, es un test de precisión numérica, no metrológica.&lt;/p&gt;
+&lt;p&gt;El valor de &lt;span class=&#34;math inline&#34;&gt;\(\xi\)&lt;/span&gt; está relacionado las cifras significativas que tienen sentido físico-químico y metrológico. Por ejemplo, si para una gravimetría usamos una balanza granataria cuya incertidumbre es del orden de &lt;span class=&#34;math inline&#34;&gt;\(\pm 0.1\)&lt;/span&gt; g, no podríamos elegir una tolerancia numérica de &lt;span class=&#34;math inline&#34;&gt;\(0.00001\)&lt;/span&gt; g. Para establecer &lt;span class=&#34;math inline&#34;&gt;\(\xi\)&lt;/span&gt; la guía indica lo siguiente:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Exprese &lt;span class=&#34;math inline&#34;&gt;\(u(y)\)&lt;/span&gt; en notación científica manteniendo las cifras significativas. En nuestro caso obtuvimos &lt;span class=&#34;math inline&#34;&gt;\(u_{f} = 0.0225\)&lt;/span&gt;, la cual puede ser redondeada a una cifra significativa &lt;span class=&#34;math inline&#34;&gt;\(u_{f} = 0.02\)&lt;/span&gt;. Esta incertidumbre, entonces, se expresa como &lt;span class=&#34;math inline&#34;&gt;\(2 \cdot 10^{-2}\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Para obtener &lt;span class=&#34;math inline&#34;&gt;\(\xi\)&lt;/span&gt;, utilice el exponente de la potencia de 10 (t = -2) del paso anterior, en la siguiente expresión:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{eqnarray}
+  \xi &amp;amp;=&amp;amp; \frac{1}{2}\times 10^{t} \\
+  \xi &amp;amp;=&amp;amp; \frac{1}{2}\times 10^{-2}\\
+  \xi &amp;amp;=&amp;amp; 0.005
+\end{eqnarray}\]&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;¿Cómo obtenemos los percentiles 2.5 y 97.5 de la simulación de Monte Carlo?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Muy sencillo, con el comando &lt;code&gt;quantile&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Esto quiere decir, que de los &lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt; datos simulados del factor de dilución, un 95% se encuentra dentro del intervalo [4.96, 5.04]. La figura &lt;a href=&#34;#fig:quantilosfig&#34;&gt;&lt;strong&gt;??&lt;/strong&gt;&lt;/a&gt; muestra este intervalo en el histograma de los datos simulados:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;hist(f.sim, 
+     xlab = &amp;#39;Factor de dilución&amp;#39;,
+     main = &amp;#39;&amp;#39;,
+     freq = T,
+     breaks = 20,
+     xlim = c(4.93, 5.07))
+
+abline(v = quantilos[1], col = &amp;#39;red&amp;#39;)
+abline(v = quantilos[2], col = &amp;#39;red&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:quantilofig&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/quantilofig-1.png&#34; alt=&#34;Intervalo de confianza al 95% de los datos simulados del factor de dilución&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 5: Intervalo de confianza al 95% de los datos simulados del factor de dilución
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Por lo tanto, sólo nos queda calcular &lt;span class=&#34;math inline&#34;&gt;\(U(y)\)&lt;/span&gt; que es la incertidumbre expandida del factor de dilución calculada por el método GUM. De acuerdo a la guía &lt;span class=&#34;math inline&#34;&gt;\(U = k\cdot u\)&lt;/span&gt;, donde &lt;span class=&#34;math inline&#34;&gt;\(k\)&lt;/span&gt; es el factor de cobertura para obtener un intervalo de incertidumbre con cierto grado de confianza. Aquí es donde la guía GUM asume, bajo ciertas condiciones (ver numeral G.2.3), que la variable de respuesta, en este caso factor de dilución, puede aproximarse a una distribución Normal donde &lt;span class=&#34;math inline&#34;&gt;\(k \approx 2\)&lt;/span&gt;. Advierta que para nuestro ejemplo esta suposición no tiene mucho asidero. Por lo tanto, siguiendo las directrices de la guía GUM &lt;span class=&#34;math inline&#34;&gt;\(U_{f} = 2\cdot 0.023 = 0.05\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Con todos los datos estimados, llevemos a cabo el test de validación entre el método GUM y el método de Monte Carlo:&lt;/p&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{eqnarray}
+  |5 - 0.045 - 4.957| &amp;amp;&amp;lt;&amp;amp; 0.005 \\
+  |5 + 0.045 - 5.043| &amp;amp;&amp;lt;&amp;amp; 0.005
+\end{eqnarray}\]&lt;/span&gt;
+&lt;blockquote&gt;
+&lt;p&gt;En ambos casos &lt;span class=&#34;math inline&#34;&gt;\(0.002 &amp;lt; 0.005\)&lt;/span&gt;, por lo tanto, el método GUM queda validado&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Insisto con lo del mago Tamariz: ¡chiararáaa!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Observaciones:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Si bien en este ejemplo sólo utilizamos &lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt; simulaciones, en la práctica se requieren muchas más (&lt;span class=&#34;math inline&#34;&gt;\(10^{5} - 10^{6}\)&lt;/span&gt;). El suplemento 1 de la GUM entrega más directrices en este tema.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Mientras mayor sea el grado de no linealidad de la ecuación de medición, más divergencias habrá entre GUM y MC. Siendo este último el de mayor generalidad.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Si bien se puede implementar Monte Carlo en Excel, es una tarea bastante engorrosa pues debe programarlo en Visual Basic. Le sugiero utilizar lenguajes de programación más modernos como &lt;code&gt;R&lt;/code&gt; o &lt;code&gt;Python&lt;/code&gt;, los cuales tienen librerías especializadas en métodos de simulación.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;A mayor asimetría de la distribución empírica, mayores diferencias habrá entre ambos métodos.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Dé un sentido químico a la simulación ¿&lt;a href=&#34;https://www.analytical.cl/post/mis-datos-no-son-normales/&#34;&gt;Recuerda que la pureza química no es Normal&lt;/a&gt;? Intente con la distribución Beta la cual es más apropiada para modelar pureza.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;En este post hemos validado el método GUM frente a Monte Carlo “a mano”, es decir, hemos hecho el test en forma manual. En el próximo post utilizaremos la librería &lt;code&gt;metRology&lt;/code&gt; la cual incorpora la validación de GUM con MC en un único comando &lt;code&gt;gum.validate&lt;/code&gt;… ¡y listo!.&lt;/p&gt;
+&lt;p&gt;Hasta la próxima.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;bibliografia&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Bibliografía&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Evaluation of measurement data – Guide to the expression of uncertainty in measurement JCGM 100:2008&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Evaluation of measurement data – Supplement 1 to the “Guide to the expression of uncertainty in measurement” – Propagation of distributions using a Monte Carlo method JCGM 101:2008&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Stephen L R Ellison &lt;em&gt;metRology: Support for Metrological Applications&lt;/em&gt; R package version 0.9-23-2, 2016.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
