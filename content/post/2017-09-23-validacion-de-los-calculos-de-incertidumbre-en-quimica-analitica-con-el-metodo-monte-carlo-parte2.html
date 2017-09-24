@@ -20,10 +20,10 @@ por guía GUM.'
 
 
 <p>En el <a href="https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/">post anterior</a> describimos brevemente en qué consiste el método de Monte Carlo y cómo utilizarlo para estimar la incertidumbre de medición. Finalizamos comparando la estimación de acuerdo a la guía GUM con el método de Monte Carlo siguiendo estrictamente las directrices del test de diferencias numéricas propuesto por el Suplmento 1 de la GUM.</p>
-<p>Dijimos que habíamos hecho el test de validación “a mano”, es decir, ingresamos todas las instrucciones en código <code>R</code>. Si bien no fue difícil, existen librerías especializadas en <code>R</code> que permiten realizar todos los cálculos de incertidumbre y validarlos utilizando funciones ya incorporadas en estas librerías.</p>
+<p>Llevamos a cabo el test de validación “a mano”, es decir, ingresamos todas las instrucciones en código <code>R</code>. Si bien no fue difícil, existen librerías especializadas en <code>R</code> que permiten realizar todos los cálculos de incertidumbre y validarlos utilizando funciones ya incorporadas.</p>
 <p>En <code>R</code>existen dos librerías especializadas en cálculo de incertidumbre de métodos de medición físico-químicos:</p>
 <ul>
-<li><p><code>metRology</code> desarrollada en conjunto entre los Institutos Nacionales de Metrología del Reino Unido (LGC) y de Estados Unidos (NIST). Es mantenido por Steve Ellison, el autor de la guía GUM. Puede encontrar más información <a href="https://www.nist.gov/programs-projects/metrology-software-project">aquí</a>.</p></li>
+<li><p><code>metRology</code> desarrollada en conjunto entre los Institutos Nacionales de Metrología del Reino Unido (LGC) y de Estados Unidos (NIST). Es mantenida por Steve Ellison, el autor de la guía GUM. Puede encontrar más información <a href="https://www.nist.gov/programs-projects/metrology-software-project">aquí</a>.</p></li>
 <li><p><code>propagate</code> desarrollada por Andrej-Nikolai Spiess</p></li>
 </ul>
 <p>Me inclinaré por <code>metRology</code> principalmente porque tiene el soporte de los dos centros de metrología más imporantes a nivel mundial y, ya que fue desarrollada en sus inicios por Steve Ellison, tiene un pequeño sesgo hacia la metrología química.</p>
@@ -32,7 +32,7 @@ por guía GUM.'
 <p>Desarrollaremos un ejemplo más extenso sobre cálculo de incertidumbre en química analítica utilizando esta librería. Iremos paso a paso, cualquier duda en la implementación nada más escríbala en los comentarios más abajo. Sin embargo, no detallaremos cómo obtener las incertidumbres de cada uno de los factores involucrados en la ecuación de medición, sino que simplemente será un dato conocido para este ejemplo. En un futuro post, desarollaremos un ejemplo completo de principio a fin, por ahora nos centraremos en utilizar <code>metRology</code>como herramienta práctica.</p>
 <p>En este ejemplo, calcularemos la incertidumbre de un método de determinación de cobre en mineral de cobre, con digestión ácida y cuantificación mediante espetroscopía de abosrción atómica AAS. Los detalles del método analítico están fuera del alcance de este post, pero pueden ser consultados en la norma chilena NCh 3392:2016.</p>
 <blockquote>
-<p>Seguirmeos estrictamente las directrices de la GUM, por lo tanto, queda fuera de esta evaluación cualquier corrección de sesgo y/o recuperación. La discusión sobre si se debiera, o no, incorporar el sesgo en la incertidumbre es un tema que abordaremos en otro post.</p>
+<p>Seguiremos estrictamente las directrices de la GUM, por lo tanto, queda fuera de esta evaluación cualquier corrección de sesgo y/o recuperación. La discusión sobre si se debiera, o no, incorporar el sesgo en la incertidumbre es un tema que abordaremos en otro post.</p>
 </blockquote>
 <ol style="list-style-type: decimal">
 <li>El primer paso para estimar la incertidumbre de este método es escribir la ecuación de medición:</li>
@@ -193,11 +193,11 @@ x.Cu &lt;- list(Cu.calib = Cu.calib, V = V , D = D, m = m)
 # Llamaremos a este vector u.x.Cu
 
 u.x.Cu &lt;- c(u.Cu.calib, u.V, u.D, u.m)</code></pre>
-<p>¡Estamos listos! Ahora <code>metRology</code>hará todo el trabajo con el comando <code>uncert</code>, Ud.debe elegir cuál método de estimación desea utilizar, las opciones son:</p>
+<p>¡Estamos listos! Ahora <code>metRology</code>hará todo el trabajo con el comando <code>uncert</code>, Ud. debe elegir cuál método de estimación desea utilizar, las opciones son:</p>
 <ul>
 <li>GUM</li>
 <li>Monte Carlo</li>
-<li>Kragten: Método numérico basado en una aproximación de las derivadas parciales propuestas por GUM. Es una excelente alternativa y muy sencilla de implmentar en Excel también.</li>
+<li>Kragten: Método numérico basado en una aproximación de las derivadas parciales propuestas por GUM. Es una excelente alternativa y muy sencilla de implementar en Excel también.</li>
 <li>NUM y k2 son otras aproximaciones numéricas de derivadas parciales.</li>
 </ul>
 <ol style="list-style-type: decimal">
@@ -243,7 +243,7 @@ Figure 1: Gráfico de contribución a la incertidumbre total
 <p>Esencialmente es el mismo comando que utilizamos para GUM, sólo que seleccionaremos <code>method = 'MC'</code>. Sin embargo, este método tiene varias opciones adicionales muy interesantes:</p>
 <ul>
 <li><p>Con la opción <code>distrib</code> Ud. puede asignar a cada variable su respectiva distribución de probabilidad: Normal, uniforme, triangular o Student. Por defecto, asume que todas son normales.</p></li>
-<li><p>Con la opción <code>B</code> indica el número de simulaciones. Por defecto <code>B = 200</code>. L e sugiero cambiar a <code>B = 10000</code>.</p></li>
+<li><p>Con la opción <code>B</code> indica el número de simulaciones. Por defecto <code>B = 200</code>. Le sugiero cambiar a <code>B = 10000</code>.</p></li>
 </ul>
 <pre class="r"><code># Guardaremos los cálculos en el objeto u.Cu.MC
 
@@ -363,7 +363,7 @@ distribution &lt;- rep(&#39;Normal&#39;, 4) # Repetir Normal 4 veces (soy muy fl
 
 # Guarde la ecuación de medición entre &#39;&#39;
 ec_de_medicion &lt;- &#39;Cu.calib*V*D/(m*10000)&#39;</code></pre>
-<p>Listo, ahora apliquemos validemos los cálculos GUM con el comando <code>GUM.validate</code>:</p>
+<p>Listo, ahora validemos los cálculos GUM con el comando <code>GUM.validate</code>:</p>
 <pre class="r"><code>set.seed(126) # Tu ya sabes
 GUM.validate(var.name = variables, 
              x.i = x.i,
@@ -382,8 +382,8 @@ GUM.validate(var.name = variables,
 <ol style="list-style-type: decimal">
 <li><p>El método de Monte Carlo funciona en casos donde las suposiciones del método GUM no se cumplen, especialmente en ecuaciones de medición no lineales.</p></li>
 <li><p>Mientras más divergencia de la linealidad tenga el modelo de medición, más discrepancias habrá entre ambos métodos.</p></li>
-<li><p>Es posible que cuando incorpore distribuciones rectangulares (uniformes), el histograma de los valores de Monte Carlo esté muy dominado por este tipo de distribuciones. Verá un achatamiento del histograma.</p></li>
-<li><p>Ya hablamos que la pureza química (al menos para compuestos muy puros <span class="math inline">\(&gt; 95%\)</span>) no es correcto modelarla mediante una distribución Normal (¿<span class="math inline">\(99.7 \pm 0.5\)</span> %?), sino con una Beta. Lamentablmente, la librería <code>metRology</code>no posee esta distribución en sus opciones y tendrá que hacer la simulación “a mano”.</p></li>
+<li><p>Es posible que cuando incorpore distribuciones rectangulares (uniformes), el histograma de los valores de Monte Carlo esté dominado por este tipo de distribuciones. Verá un achatamiento del histograma.</p></li>
+<li><p>Ya hablamos que la pureza química (al menos para compuestos muy puros <span class="math inline">\(&gt; 95\%\)</span>) no es correcto modelarla mediante una distribución Normal (¿<span class="math inline">\(99.7 \pm 0.5\)</span> %?), sino con una Beta. Lamentablmente, la librería <code>metRology</code>no posee esta distribución en sus opciones y tendrá que hacer la simulación “a mano”.</p></li>
 <li><p>En general para distribuciones de Monte Carlos muy asimétricas (como la pureza química modelada con Beta), la diferencia entre MC y GUM se verá reflejada en la incertidumbre expandida y no en la estándar.</p></li>
 <li><p>Quedan muchas cosas por analizar del método de Monte Carlo, sin embargo, el espíritu de este post es divulgar a la comunidad químico-analítica esta poderosa herramienta más que entrar en los detalles teóricos.</p></li>
 <li><p>Usamos el lenguaje <code>R</code>porque es actualmente el <em>idioma oficial</em> de la estadística. Sin embargo, Ud. puede implementar estos cálculos en cualquier lenguaje e incluso en Excel. Además, existen muchos otros softwares que, aunque no tan flexibles y potentes como <code>R</code>, harán el trabajo. Revise la siguiente lista en <a href="https://en.wikipedia.org/wiki/List_of_uncertainty_propagation_software">Wikipedia</a>.</p></li>

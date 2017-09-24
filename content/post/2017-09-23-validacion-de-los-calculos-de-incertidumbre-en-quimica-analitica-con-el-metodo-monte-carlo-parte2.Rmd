@@ -25,16 +25,16 @@ Finalizamos comparando la estimación de acuerdo a la guía GUM con el método d
 Monte Carlo siguiendo estrictamente las directrices del test de diferencias
 numéricas propuesto por el Suplmento 1 de la GUM.
 
-Dijimos que habíamos hecho el test de validación "a mano", es decir, ingresamos
+Llevamos a cabo el test de validación "a mano", es decir, ingresamos
 todas las instrucciones en código `R`. Si bien no fue difícil, existen librerías
 especializadas en `R` que permiten realizar todos los cálculos de 
-incertidumbre y validarlos utilizando funciones ya incorporadas en estas librerías.
+incertidumbre y validarlos utilizando funciones ya incorporadas.
 
 En `R`existen dos librerías especializadas en cálculo de incertidumbre de 
 métodos de medición físico-químicos:
 
 - `metRology` desarrollada en conjunto entre los Institutos Nacionales de 
-Metrología del Reino Unido (LGC) y de Estados Unidos (NIST). Es mantenido 
+Metrología del Reino Unido (LGC) y de Estados Unidos (NIST). Es mantenida 
 por Steve Ellison, el autor de la guía GUM. Puede encontrar más información 
 [aquí](https://www.nist.gov/programs-projects/metrology-software-project).
 
@@ -62,7 +62,7 @@ espetroscopía de abosrción atómica AAS. Los detalles del método analítico
 están fuera del alcance de este post, pero pueden ser consultados en la 
 norma chilena NCh 3392:2016.
 
-> Seguirmeos estrictamente las directrices de la GUM, por lo tanto, queda 
+> Seguiremos estrictamente las directrices de la GUM, por lo tanto, queda 
 fuera de esta evaluación cualquier corrección de sesgo y/o recuperación. La 
 discusión sobre si se debiera, o no, incorporar el sesgo en la incertidumbre 
 es un tema que abordaremos en otro post. 
@@ -279,13 +279,13 @@ u.x.Cu <- c(u.Cu.calib, u.V, u.D, u.m)
 
 ```
 
-¡Estamos listos! Ahora `metRology`hará todo el trabajo con el comando `uncert`, Ud.debe elegir cuál método de estimación desea utilizar, las opciones son:
+¡Estamos listos! Ahora `metRology`hará todo el trabajo con el comando `uncert`, Ud. debe elegir cuál método de estimación desea utilizar, las opciones son:
 
 - GUM
 - Monte Carlo
 - Kragten: Método numérico basado en una aproximación de las derivadas
 parciales propuestas por GUM. Es una excelente alternativa y muy sencilla de 
-implmentar en Excel también.
+implementar en Excel también.
 - NUM y k2 son otras aproximaciones numéricas de derivadas parciales.
 
 
@@ -337,8 +337,7 @@ opciones adicionales muy interesantes:
 distribución de probabilidad: Normal, uniforme, triangular o Student. Por 
 defecto, asume que todas son normales. 
 
-- Con la opción `B` indica el número de simulaciones. Por defecto `B = 200`. L
-e sugiero cambiar a `B = 10000`.
+- Con la opción `B` indica el número de simulaciones. Por defecto `B = 200`. Le sugiero cambiar a `B = 10000`.
 
 ```{r MC, message=F, warning=F}
 
@@ -436,7 +435,7 @@ ec_de_medicion <- 'Cu.calib*V*D/(m*10000)'
 
 ```
 
-Listo, ahora apliquemos validemos los cálculos GUM con el comando
+Listo, ahora validemos los cálculos GUM con el comando
 `GUM.validate`:
 
 ```{r, comment = '', eval = T}
@@ -482,11 +481,11 @@ lineales.
 más discrepancias habrá entre ambos métodos.
 
 3. Es posible que cuando incorpore distribuciones rectangulares (uniformes),
-el histograma de los valores de Monte Carlo esté muy dominado por este
+el histograma de los valores de Monte Carlo esté dominado por este
 tipo de distribuciones. Verá un achatamiento del histograma.
 
 4. Ya hablamos que la pureza química (al menos para compuestos muy puros
-$> 95%$) no es correcto modelarla mediante una distribución Normal
+$> 95\%$) no es correcto modelarla mediante una distribución Normal
 (¿$99.7 \pm 0.5$ %?), sino
 con una Beta. Lamentablmente, la librería `metRology`no posee esta distribución
 en sus opciones y tendrá que hacer la simulación "a mano". 
