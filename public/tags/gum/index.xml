@@ -7,8 +7,404 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2017 Carlos Gómez</copyright>
-    <lastBuildDate>Wed, 20 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Sep 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/tags/gum/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte II</title>
+      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
+      <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
+      <description>&lt;p&gt;En el &lt;a href=&#34;https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/&#34;&gt;post anterior&lt;/a&gt; describimos brevemente en qué consiste el método de Monte Carlo y cómo utilizarlo para estimar la incertidumbre de medición. Finalizamos comparando la estimación de acuerdo a la guía GUM con el método de Monte Carlo siguiendo estrictamente las directrices del test de diferencias numéricas propuesto por el Suplmento 1 de la GUM.&lt;/p&gt;
+&lt;p&gt;Dijimos que habíamos hecho el test de validación “a mano”, es decir, ingresamos todas las instrucciones en código &lt;code&gt;R&lt;/code&gt;. Si bien no fue difícil, existen librerías especializadas en &lt;code&gt;R&lt;/code&gt; que permiten realizar todos los cálculos de incertidumbre y validarlos utilizando funciones ya incorporadas en estas librerías.&lt;/p&gt;
+&lt;p&gt;En &lt;code&gt;R&lt;/code&gt;existen dos librerías especializadas en cálculo de incertidumbre de métodos de medición físico-químicos:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;metRology&lt;/code&gt; desarrollada en conjunto entre los Institutos Nacionales de Metrología del Reino Unido (LGC) y de Estados Unidos (NIST). Es mantenido por Steve Ellison, el autor de la guía GUM. Puede encontrar más información &lt;a href=&#34;https://www.nist.gov/programs-projects/metrology-software-project&#34;&gt;aquí&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;propagate&lt;/code&gt; desarrollada por Andrej-Nikolai Spiess&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Me inclinaré por &lt;code&gt;metRology&lt;/code&gt; principalmente porque tiene el soporte de los dos centros de metrología más imporantes a nivel mundial y, ya que fue desarrollada en sus inicios por Steve Ellison, tiene un pequeño sesgo hacia la metrología química.&lt;/p&gt;
+&lt;div id=&#34;ejemplo-de-validacion-de-calculos-con-libreria-metrology&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Ejemplo de validación de cálculos con librería &lt;code&gt;metRology&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Desarrollaremos un ejemplo más extenso sobre cálculo de incertidumbre en química analítica utilizando esta librería. Iremos paso a paso, cualquier duda en la implementación nada más escríbala en los comentarios más abajo. Sin embargo, no detallaremos cómo obtener las incertidumbres de cada uno de los factores involucrados en la ecuación de medición, sino que simplemente será un dato conocido para este ejemplo. En un futuro post, desarollaremos un ejemplo completo de principio a fin, por ahora nos centraremos en utilizar &lt;code&gt;metRology&lt;/code&gt;como herramienta práctica.&lt;/p&gt;
+&lt;p&gt;En este ejemplo, calcularemos la incertidumbre de un método de determinación de cobre en mineral de cobre, con digestión ácida y cuantificación mediante espetroscopía de abosrción atómica AAS. Los detalles del método analítico están fuera del alcance de este post, pero pueden ser consultados en la norma chilena NCh 3392:2016.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Seguirmeos estrictamente las directrices de la GUM, por lo tanto, queda fuera de esta evaluación cualquier corrección de sesgo y/o recuperación. La discusión sobre si se debiera, o no, incorporar el sesgo en la incertidumbre es un tema que abordaremos en otro post.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;El primer paso para estimar la incertidumbre de este método es escribir la ecuación de medición:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;span class=&#34;math display&#34; id=&#34;eq:medicion&#34;&gt;\[\begin{equation}
+  \text{Cu}[\text{%}]=\frac{\text{C}_{\text{calib}}\cdot V \cdot D}{m\cdot 10000}
+  \tag{1}
+\end{equation}\]&lt;/span&gt;
+&lt;p&gt;donde &lt;span class=&#34;math inline&#34;&gt;\(\text{C}_{\text{calib}}\)&lt;/span&gt; es la concentración de la muestra digerida interpolada en la curva de calibración &lt;span class=&#34;math inline&#34;&gt;\([\mu\text{g}\,\text{mL}^{-1}]\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; es la masa de la muestra [g], &lt;span class=&#34;math inline&#34;&gt;\(V\,[\text{mL}]\)&lt;/span&gt; es el volumen del aforo final y &lt;span class=&#34;math inline&#34;&gt;\(D\)&lt;/span&gt; es un factor de dilución volumétrico, utilizado cuando es necesario. Para simplificar el problema, asumiremos que no hay dilución antes de la lectura por AAS, por lo tanto, &lt;span class=&#34;math inline&#34;&gt;\(D = 1\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(u_{D} = 0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Identificación de las fuentes de incertidumbre&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A continuación se enumeran las fuentes de incertidumbre asociadas a cada uno de los factores de la ecuación &lt;a href=&#34;#eq:medicion&#34;&gt;(1)&lt;/a&gt; y se describe brevemente los métodos estadísticos y de juicio experto utilizados para obtener las incertidumbres estándar correpospondientes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\text{C}_{\text{calib}}\)&lt;/span&gt;: La incertidumbre estándar de la concentración de una muestra problema &lt;span class=&#34;math inline&#34;&gt;\(u_{\text{C}_\text{calib}}\)&lt;/span&gt; obtenida de una curva de calibración lineal &lt;span class=&#34;math inline&#34;&gt;\(y = a + bx\)&lt;/span&gt; es calculada a partir de la siguiente expresión:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+u_{\text{C}_{\text{calib}}}=\frac{s_{y/x}}{b}\sqrt{\frac{1}{m}+\frac{1}{n}+
+\frac{(C_{\text{calib}}-\overline{C})^2}{\sum(C_{i}-\overline{C})^2}}
+\label{eq:ucurva}
+\end{equation}\]&lt;/span&gt;
+&lt;p&gt;donde &lt;span class=&#34;math inline&#34;&gt;\(s_{y/x}\)&lt;/span&gt; es la desviación estándar de la regresión, &lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; es el número de replicados independientes de la muestra problema efectivamente analizados, &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; es el número de calibrantes, &lt;span class=&#34;math inline&#34;&gt;\(C_{\text{calib}}\)&lt;/span&gt; es la concentración de la muestra problema obtenida por interpolación en la curva de calibración, &lt;span class=&#34;math inline&#34;&gt;\(\overline{C}\)&lt;/span&gt; es el promedio de la concentraciones de los calibrantes. Estos parámetros pueden ser obtenidos directamente del análisis estadístico de la curva de calibración lineal. Cabe destacar que cuando se utiliza el método de mínimos cuadrados ordinarios para estimar la pendiente e intercepto de la curva, esta metodología no incorpora la incertirtumbre de la concentración de los calibrantes.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;Puede profundizar sobre la incertidumbre de calibración en el siguiente &lt;a href=&#34;https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/&#34;&gt;post&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt;: La incertidumbre del volumen de aforo &lt;span class=&#34;math inline&#34;&gt;\(u_{\text{V}}\)&lt;/span&gt; es estimada a partir de la combinación de tres fuentes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(u_{\text{tol}}\)&lt;/span&gt; La incertidumbre informada por el fabricante en el certificado original del lote de producción o aquella impresa en el material de vidrio. Esta incertidumbre es de Tipo B.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(u_{\text{rep}}\)&lt;/span&gt; Incertidumbre debido a la repetibilidad de llenado del aforo del material de vidrio. Esta incertidumbre (Tipo A) es evaluada mediante métodos estadísticos a través de la replicación (&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;) del llenado del material con agua destilada y el registro gravimétrico de la cantidad de agua. La incertidumbre estándar se expresa como la desviación estándar de los &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; replicados.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;span class=&#34;math inline&#34;&gt;\(u_{\text{temp}}\)&lt;/span&gt; La incertidumbre debido a la diferencia de temperatura registrada durante la calibración del material de vidrio y aquella que se registra durante los análisis de rutina. Esta incertidumbre expandida es expresada en la ecuación &lt;a href=&#34;#eq:uvol&#34;&gt;(2)&lt;/a&gt;:&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class=&#34;math display&#34; id=&#34;eq:uvol&#34;&gt;\[\begin{equation}
+  U_{\text{temp}}= V\cdot \gamma_{\text{H}_{2}\text{O}} \cdot \Delta T
+  \tag{2}
+\end{equation}\]&lt;/span&gt;
+&lt;p&gt;donde &lt;span class=&#34;math inline&#34;&gt;\(V\)&lt;/span&gt; es el volumen certificado del material de vidrio, &lt;span class=&#34;math inline&#34;&gt;\(\gamma_{\text{H}_{2}\text{O}} = 2.1\cdot 10^{-4}\,\text{°C}^{-1}\)&lt;/span&gt; es el coeficiente de expansión del agua y &lt;span class=&#34;math inline&#34;&gt;\(\Delta T\)&lt;/span&gt; es la variabilidad de la temperatura de trabajo del laboratorio en relación a la tempreratura de calibración del material. Finalmente, se obtiene asume una distribución rectangular de la variable  obteniéndose una incertidumbre estándar &lt;span class=&#34;math inline&#34;&gt;\(u_{\text{temp}}=U_{\text{temp}}/\sqrt{3}\)&lt;/span&gt; mL.&lt;/p&gt;
+&lt;p&gt;Esta expresión debe utilizarse cuando exista un certificado de calibración que informe la temperatura de referencia registrada durante el proceso de certificación el cual puede provenir del mismo fabricante o de alguna institución metrológica nacional que certifique este tipo material. Generalmente la temperatura de calibración se espcifica a 20°C.&lt;/p&gt;
+&lt;p&gt;La incertidumbre combinada estándar del volumen del aforo se obtiene a través de la siguiente expresión:&lt;/p&gt;
+&lt;span class=&#34;math display&#34;&gt;\[\begin{equation}
+u_{\text{V}} = \sqrt{u_{\text{tol}}^2+u_{\text{rep}}^2+u_{\text{temp}}^2} 
+\end{equation}\]&lt;/span&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(m\)&lt;/span&gt; : La incertidudmbre de la masa de la muestra es obtenida directamente del certificado de la balanza emitido por el nodo de metrología física nacional u otro proveedor de calibración.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Cuantificación de los componentes de incertidumbre&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Como mencionamos anteriormente, no llevaremos a cabo la estimación de incertidumbre de cada uno de lo componentes, sino que asumiremos que estos datos ya están disponibles. Dedicaremos otro post a desarrollar un ejemplo completo de principio a fin.&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Cálculo de la incertidumbre combinada total&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Aplicando las directrices de la GUM y en base a la ecuación de medición &lt;a href=&#34;#eq:medicion&#34;&gt;(1)&lt;/a&gt;, la incertidumbre estándar de la concentración de Cu por este método analítico es obtenida a partir de:&lt;/p&gt;
+&lt;span class=&#34;math display&#34; id=&#34;eq:ufinal&#34;&gt;\[\begin{equation}
+u_{\text{Cu}} = \text{Cu}\sqrt{\left(\frac{u_{\text{C}_\text{calib}}}{\text{C}_{\text{calib}}}\right)^2+
+\left(\frac{u_{\text{m}}}{m}\right)^2+
+\left(\frac{u_{\text{V}}}{V}\right)^2}
+\tag{3}
+\end{equation}\]&lt;/span&gt;
+&lt;p&gt;La tabla &lt;a href=&#34;#tab:udata&#34;&gt;1&lt;/a&gt; muestra las incertidumbres estándares de cada uno de los componentes de la ecuación &lt;a href=&#34;#eq:ufinal&#34;&gt;(3)&lt;/a&gt;:&lt;/p&gt;
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
+&lt;table class=&#34;table table-striped&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;caption&gt;
+&lt;span id=&#34;tab:udata&#34;&gt;Table 1: &lt;/span&gt;Valores e incertidumbres estándar de cada componente
+&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Componente
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Valor
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+u
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Unidades
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Concentracion calibracion
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+13.82
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.24
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+ug/mL
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Volumen aforo
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+250.00
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.14
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+mL
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Masa muestra
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.99160
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.00005
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+g
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Ok, vamos entonces a utilizar la librería &lt;code&gt;metRology&lt;/code&gt; para evaluar la incertidumbre del % de Cu.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;Debe, en primer lugar, instalar la librería mediante el comando &lt;code&gt;install.packages(&amp;lsquo;metRology&amp;rsquo;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Una vez instalada debe ingresar el siguiente código &lt;code&gt;R&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(metRology)  # Carga la librería metRology
+
+# Ingresar los valores de cada variable input (Tabla 1)
+
+Cu.calib &amp;lt;- 13.82 # Concentración interpolada en la curva de calibración [ug/mL]
+V &amp;lt;- 250          # Volumen de aforo [mL]
+m &amp;lt;- 0.9916       # Masa de la muestra [g]
+D &amp;lt;- 1            # Factor de dilución (D = 1 implica no hay dilución)
+
+# Ingresar las incertidumbres estándar de cada variable input (Tabla 1)
+# Se mantienen, obviamente, las mismas unidades
+
+u.Cu.calib &amp;lt;- 0.24
+u.V &amp;lt;- 0.14
+u.m &amp;lt;- 0.00005
+u.D &amp;lt;- 0
+
+# Ingresamos la ecuación de medición y la guardamos con el nombre C.Cu
+# mediante el comando &amp;#39;expression&amp;#39;
+
+C.Cu &amp;lt;- expression(Cu.calib*V*D/(m*10000))
+
+# Guardemos en una lista los valores de cada variable input, la llamaremos
+# x.Cu
+
+x.Cu &amp;lt;- list(Cu.calib = Cu.calib, V = V , D = D, m = m)
+
+# Guardemos en un vector las incertidumbres estándares de cada variable input
+# ¡¡en el mismo orden que fueron ingresadas en x.Cu!!
+# Llamaremos a este vector u.x.Cu
+
+u.x.Cu &amp;lt;- c(u.Cu.calib, u.V, u.D, u.m)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;¡Estamos listos! Ahora &lt;code&gt;metRology&lt;/code&gt;hará todo el trabajo con el comando &lt;code&gt;uncert&lt;/code&gt;, Ud.debe elegir cuál método de estimación desea utilizar, las opciones son:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GUM&lt;/li&gt;
+&lt;li&gt;Monte Carlo&lt;/li&gt;
+&lt;li&gt;Kragten: Método numérico basado en una aproximación de las derivadas parciales propuestas por GUM. Es una excelente alternativa y muy sencilla de implmentar en Excel también.&lt;/li&gt;
+&lt;li&gt;NUM y k2 son otras aproximaciones numéricas de derivadas parciales.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Cálculo de incertidumbre de acuerdo a GUM:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Ingresamos ¡en este orden! los siguientes parámetros del comando uncert
+# Ecuación de medición C.Cu
+# Lista de valores inputs x.Cu
+# Vector de incertidumbres estándar u.x.Cu
+# ¿Con cuál método quiere calcular la incertidumbre? En este caso GUM
+
+u.Cu.GUM &amp;lt;- uncert(C.Cu, x.Cu, u.x.Cu, method = &amp;#39;GUM&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;La información que entrega &lt;code&gt;uncert&lt;/code&gt;es muy completa, sin embargo, para nuestro propósito sólo debemos fijarnos en el resultado que aparece al final del análisis, es decir: &lt;span class=&#34;math inline&#34;&gt;\(y = 0.3484268\)&lt;/span&gt; % Cu y &lt;span class=&#34;math inline&#34;&gt;\(u(y) = 0.006054\)&lt;/span&gt; % Cu.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+Uncertainty evaluation
+
+Call:
+  uncert.expression(obj = C.Cu, x = x.Cu, u = u.x.Cu, method = &amp;quot;GUM&amp;quot;)
+
+Expression: Cu.calib * V * D/(m * 10000)
+
+Evaluation method:  GUM 
+
+Uncertainty budget:
+         x        u       c            u.c          
+Cu.calib  13.8200 0.24000  0.025211779  6.050827e-03
+V        250.0000 0.14000  0.001393707  1.951190e-04
+D          1.0000 0.00000  0.348426785  0.000000e+00
+m          0.9916 0.00005 -0.351378363 -1.756892e-05
+
+   y:  0.3484268
+u(y):  0.006053998 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Además de los cálculos de incertidumbre, la opción &lt;code&gt;method = &#39;GUM&#39;&lt;/code&gt; entrega 4 gráficos muy interesantes, siendo el más importante el de &lt;em&gt;Contribuciones combinadas&lt;/em&gt;, el cual se muestra en la figura &lt;a href=&#34;#fig:plotGUM&#34;&gt;1&lt;/a&gt;. En este gráfico queda en evidencia que el factor que más aporta a la incertidumbre total (evaluada por GUM) es la curva de calibración.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:plotGUM&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-23-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo-parte2_files/figure-html/plotGUM-1.png&#34; alt=&#34;Gráfico de contribución a la incertidumbre total&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Gráfico de contribución a la incertidumbre total
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Cálculo de incertidumbre de acuerdo a Monte Carlo:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Esencialmente es el mismo comando que utilizamos para GUM, sólo que seleccionaremos &lt;code&gt;method = &#39;MC&#39;&lt;/code&gt;. Sin embargo, este método tiene varias opciones adicionales muy interesantes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Con la opción &lt;code&gt;distrib&lt;/code&gt; Ud. puede asignar a cada variable su respectiva distribución de probabilidad: Normal, uniforme, triangular o Student. Por defecto, asume que todas son normales.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Con la opción &lt;code&gt;B&lt;/code&gt; indica el número de simulaciones. Por defecto &lt;code&gt;B = 200&lt;/code&gt;. L e sugiero cambiar a &lt;code&gt;B = 10000&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Guardaremos los cálculos en el objeto u.Cu.MC
+
+set.seed(123) # Sólo para que Ud. obtenga los mismos resultados
+
+u.Cu.MC &amp;lt;- uncert(C.Cu, x.Cu, u.x.Cu, method = &amp;#39;MC&amp;#39;, B = 10000)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;El método de Monte Carlo entrega el siguiente análisis:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+Uncertainty evaluation
+
+Call:
+  uncert.expression(obj = C.Cu, x = x.Cu, u = u.x.Cu, method = &amp;quot;MC&amp;quot;,     B = 10000)
+
+Expression: Cu.calib * V * D/(m * 10000)
+
+Evaluation method:  MC 
+
+Budget:
+         x        u       c            u.c           distrib
+Cu.calib  13.8200 0.24000  0.025211842  6.050842e-03 norm   
+V        250.0000 0.14000  0.001393355  1.950696e-04 norm   
+D          1.0000 0.00000           NA            NA norm   
+m          0.9916 0.00005 -0.351680471 -1.758402e-05 norm   
+         distrib.pars         
+Cu.calib mean=13.82, sd=0.24  
+V        mean=250, sd=0.14    
+D        mean=1, sd=0         
+m        mean=0.9916, sd=5e-05
+
+   y:  0.3484268
+u(y):  0.006046603 
+
+Monte Carlo evaluation using 10000 replicates:
+
+   y:
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.3252  0.3444  0.3484  0.3484  0.3525  0.3720 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;El MMC obtiene &lt;span class=&#34;math inline&#34;&gt;\(y = 0.3484268\)&lt;/span&gt; % Cu y &lt;span class=&#34;math inline&#34;&gt;\(u(y) = 0.0060466\)&lt;/span&gt; % Cu.&lt;/p&gt;
+&lt;p&gt;La tabla &lt;a href=&#34;#tab:comparacion&#34;&gt;2&lt;/a&gt; muestra la comparación de ambas aproximaciones en la estimación de la incertidumbre estándar:&lt;/p&gt;
+&lt;table&gt;
+&lt;caption&gt;
+&lt;span id=&#34;tab:comparacion&#34;&gt;Table 2: &lt;/span&gt;Cuadro comparativo GUM v/s Monte Carlo % Cu
+&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Método
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+Valor calculado
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+u
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+GUM
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.3484268
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.0060540
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Monte Carlo
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.3484268
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+0.0060466
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Note la excelente concordancia entre ambas metodologías &lt;strong&gt;para esta ecuación de medición asumiendo una distribución normal para todas las variables inputs&lt;/strong&gt;. En este caso, &lt;em&gt;muy particular&lt;/em&gt;, casi sería innecesario validar el método GUM, pero lo haremos de todas maneras para ejemplificar la operación.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;validacion-de-los-calculos-gum-con-el-metodo-de-monte-carlo&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Validación de los cálculos GUM con el método de Monte Carlo&lt;/h2&gt;
+&lt;p&gt;En el &lt;a href=&#34;https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/&#34;&gt;post anterior&lt;/a&gt; hicimos el test de validación numérica “a mano”, en esta oportunidad utilizaremos el comando &lt;code&gt;GUM.validate&lt;/code&gt;. Lamentablemente este comando tiene una forma distinta de ingresar los parámetros, nada del otro mundo, pero es distinta a &lt;code&gt;uncert&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Si bien GUM.validate tiene muchas opciones, utilizaremos aquellas
+# que están por defecto en la librería
+
+# Guarde en un vector el nombre de las variables, cada una entre &amp;#39; &amp;#39;
+variables &amp;lt;- c(&amp;#39;Cu.calib&amp;#39;, &amp;#39;V&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;m&amp;#39;)
+
+# Guarde en un vector x.i los valores de la variables input en el 
+# mismo orden que ingresó &amp;#39;variables&amp;#39; arriba
+x.i &amp;lt;- c(13.82, 250, 1, 0.9916)
+
+# Guarde en un vector u.i las incertidumbres estándar de las variables
+# input, en el mismo orden que ingresó &amp;#39;variables&amp;#39; arriba
+u.i &amp;lt;- c(0.24, 0.14, 0, 0.00005)
+
+# Guarde los grados de libertad de cada variable input como nu.i. 
+# En este ejemplo  asumiremos que todas tienen infinitos grados de 
+# libertad (nu = 9999)
+
+nu.i &amp;lt;- c(9999, 9999, 9999, 9999)
+
+# Seleccione que tipo de método utilizó para evaluar cada una de las
+# incertidumbres: Tipo A o tipo B. En este caso sólo la incertidumbre
+# de calibración u.Cu.calib es de tipo A.
+
+type &amp;lt;- c(&amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;B&amp;#39;)
+
+# Seleccione que distribuciones de probabilidad asignó a las variables
+# input. En este ejemplo, asumiremos que todas son normales
+
+distribution &amp;lt;- rep(&amp;#39;Normal&amp;#39;, 4) # Repetir Normal 4 veces (soy muy flojo)
+
+# Guarde la ecuación de medición entre &amp;#39;&amp;#39;
+ec_de_medicion &amp;lt;- &amp;#39;Cu.calib*V*D/(m*10000)&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Listo, ahora apliquemos validemos los cálculos GUM con el comando &lt;code&gt;GUM.validate&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;set.seed(126) # Tu ya sabes
+GUM.validate(var.name = variables, 
+             x.i = x.i,
+             u.i = u.i,
+             nu.i = nu.i,
+             type = type,
+             distribution = distribution,
+             measurement.fnc = ec_de_medicion)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 0.958&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;“Bueno ¿Y?” se preguntará Ud.&lt;/p&gt;
+&lt;p&gt;Bien, para validar el método GUM frente a Monte Carlo, fíjese en el valor que entrega &lt;code&gt;GUM.validate = 0.958&lt;/code&gt; y compárelo con 0.95. Si el valor de &lt;code&gt;GUM.validate&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\(&amp;gt; 0.95\)&lt;/span&gt; entonces el método GUM queda validado.&lt;/p&gt;
+&lt;p&gt;En el fondo, &lt;code&gt;GUM.validate&lt;/code&gt; evalúa si el intervalo de incertidumbre calculado por GUM alcanza o no la cobertura esperada del 95% (teórica).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resumiendo&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Resumiendo&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;El método de Monte Carlo funciona en casos donde las suposiciones del método GUM no se cumplen, especialmente en ecuaciones de medición no lineales.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Mientras más divergencia de la linealidad tenga el modelo de medición, más discrepancias habrá entre ambos métodos.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Es posible que cuando incorpore distribuciones rectangulares (uniformes), el histograma de los valores de Monte Carlo esté muy dominado por este tipo de distribuciones. Verá un achatamiento del histograma.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Ya hablamos que la pureza química (al menos para compuestos muy puros &lt;span class=&#34;math inline&#34;&gt;\(&amp;gt; 95%\)&lt;/span&gt;) no es correcto modelarla mediante una distribución Normal (¿&lt;span class=&#34;math inline&#34;&gt;\(99.7 \pm 0.5\)&lt;/span&gt; %?), sino con una Beta. Lamentablmente, la librería &lt;code&gt;metRology&lt;/code&gt;no posee esta distribución en sus opciones y tendrá que hacer la simulación “a mano”.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;En general para distribuciones de Monte Carlos muy asimétricas (como la pureza química modelada con Beta), la diferencia entre MC y GUM se verá reflejada en la incertidumbre expandida y no en la estándar.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Quedan muchas cosas por analizar del método de Monte Carlo, sin embargo, el espíritu de este post es divulgar a la comunidad químico-analítica esta poderosa herramienta más que entrar en los detalles teóricos.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Usamos el lenguaje &lt;code&gt;R&lt;/code&gt;porque es actualmente el &lt;em&gt;idioma oficial&lt;/em&gt; de la estadística. Sin embargo, Ud. puede implementar estos cálculos en cualquier lenguaje e incluso en Excel. Además, existen muchos otros softwares que, aunque no tan flexibles y potentes como &lt;code&gt;R&lt;/code&gt;, harán el trabajo. Revise la siguiente lista en &lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_uncertainty_propagation_software&#34;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Espero que este post haya sido de su agrado, todos los comentarios son bienvenidos. Hasta la próxima.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;bibliografia&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Bibliografía&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Evaluation of measurement data – Guide to the expression of uncertainty in measurement JCGM 100:2008&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Evaluation of measurement data – Supplement 1 to the “Guide to the expression of uncertainty in measurement” – Propagation of distributions using a Monte Carlo method JCGM 101:2008&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Stephen L R Ellison &lt;em&gt;metRology: Support for Metrological Applications&lt;/em&gt; R package version 0.9-23-2, 2016.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I</title>
