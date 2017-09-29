@@ -1,0 +1,139 @@
+---
+title: Prueba de linealidad de una curva de calibración en Excel... Sí ¡En Excel!
+author: cgomez
+date: '2017-09-28'
+slug: prueba-de-linealidad-de-una-curva-de-calibracion-en-excel
+categories: []
+tags:
+  - linealidad
+summary: 'En este post implementaremos el test de linealidad de Mandel en 
+Excel, para evaluar la hipótesis de linealidad de una curva de calibración 
+en química analítica.'
+---
+
+En un [post anterior](https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/) vimos cómo evaluar la hipótesis de linealidad
+de una curva de calibración. Propusimos dos tests estadísticos formales:
+
+1. El test de Mandel (ISO 8466-1)
+2. El test de carencia de ajuste (_lack-of-fit_) (ISO 11095)
+
+los cuáles nos permiten concluir (o no) que el modelo
+lineal es _adecuado o razonable_ para nuestros datos de calibración. 
+Nada más, ni nada menos. No cometa el error de afirmar que su calibración es 
+lineal, porque no existe método en el mundo que permita llegar a esa 
+conclusión.
+
+Implementamos estos tests en lenguaje de programación `R` que es, actualmente,
+la _lingua franca_ de la estadística, big data, data science y toda esa
+pirotecnia. Sin embargo, también es posible implementar fácilmente
+estos tests en el viejo y querido, pero a veces vapuleado por la comunidad
+Estadística, Excel. Obviamente, 
+no existe el comando `test.de.linealidad`, por lo tanto, tendremos que 
+"hacerlo a mano".
+
+En este post implementaremos el Test de Mandel, cuyos detalles puede
+consultar [aquí](https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/). El test de carencia de ajuste lo veremos en otro post.
+
+# Test de Mandel en Excel
+
+1. En primer lugar necesitaremos, obviamente, los datos de calibración. 
+Estos se muestran en Excel en la siguiente figura:
+
+![](/img/datos.png)
+La gráfica de esta calibración se presenta a continuación. Note la 
+evidente no linealidad a alta concentración.
+
+![](/img/plot_cal.png)
+
+2. Bien, como Ud.recordará del post sobre [linealidad](https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/), para aplicar el test de Mandel debemos
+ajustar dos modelos: un modelo lineal y otro no lineal. Mencionamos que para 
+darle sentido 
+químico-analítico ajustamos un modelo "no lineal" cuadrático. Yo sé que la 
+tentación 
+es grande para aplicar el botón derecho y `Ajustar línea de tendencia`, pero
+mantengamos la calma. Lo haremos de otra forma.
+
+3. Para ajustar un modelo cuadrático en Excel hay varias formas, pero en este 
+post utilizaremos las herramientas del menú `Análisis de datos`:
+
+![](/img/tools.png)
+
+4. Como ajustaremos un modelo cuadrático, necesitamos incorporar la 
+variable $X^2$. Esto es muy sencillo, debemos ubicarnos
+en la columna B (donde está la $Y$), presionar botón derecho y seleccionar
+`Insertar`, lo cual generará una columna vacía entre $X$ e $Y$ tal 
+como se muestra en la siguiente figura:
+
+![](/img/insertar.png)
+A esta nueva columna la llamaremos `X^2`, y generaremos los valores 
+correspondientes en la celda `B2`con la fórmula `=A2^2`: 
+
+![](/img/formula.png)
+
+Copiamos la fórmula hasta la celda `B12`:
+
+![](/img/copiada.png)
+
+
+5. Ahora ajustaremos el modelo cuadrático. Seleccionemos el menú `Datos` de
+la cinta de herramientas, el cual mostrará a la derecha el menú
+`Análisis de datos`, hacemos clic y se abrirá el siguiente cuadro:
+
+![](/img/cuadro.png)
+
+Seleccionamos la opción `Regresión`, con lo que se abrirá el siguiente
+diálogo:
+
+![](/img/regresion.png)
+
+En `Rango Y de entrada` presionamos la flecha negra que apunta hacia arriba
+y seleccionamos con el _mouse_ los datos de $Y$, incluyendo la letra $Y$, 
+luego presionamos la flecha que apunta hacia abajo:
+
+![](/img/rangoy.png)
+
+En `Rango X de entrada` presionamos la flecha negra que apunta hacia arriba
+y seleccionamos con el _mouse_ **las dos columnas: $X$ y $X^2$**, 
+incluyendo las etiquetas, luego presionamos la flecha que apunta hacia abajo:
+
+![](/img/rangox.png)
+
+Chequeamos los cuadritos `Rótulos`y `Nivel de confianza`.
+
+{{% alert warning %}}
+Jamás chequee el cuadrito `Constante igual a cero`, a menos que haya
+demostrado previamente esta hipótesis{{% /alert %}}
+
+En `Opciones de salida` seleccionamos en `Rango de salida` la celda 
+`E1` (en realidad da igual, es para que tengamos la misma salida).
+
+![](/img/cuadrolisto.png)
+¡Listo! Por ahora no usaremos las otras opciones.
+
+6. Presiones `Aceptar`y aparecerá el análisis estadístico a partir de la 
+celda `E1`:
+
+![](/img/analisis.png)
+
+7. No nos detendremos a explicar toda la información estadística de 
+las tablas, iremos
+directamente al grano: al test de linealidad de Mandel. Ubique en la tabla
+inferior la fila de la variable `X^2` y la columna respectiva denominada
+`Probabilidad`. En este ejemplo marqué con rojo la celda del test de Mandel:
+
+![](/img/mandel.png)
+8. Esta celda representa el _p-value_ del test de Mandel. En este ejemplo
+el _p-value_ = $3,6\times 10^{-11}$, es decir, 
+bajo la interpretación tradicional
+de las pruebas de hipótesis, ya que _p-value_ $< 0,05$ 
+concluiríamos que el modelo lineal no es adecuado o razonable para modelar 
+los datos de calibración. 
+
+Bueno, queridos lectores espero les haya gustado. Como siempre, 
+pueden dejar sus comentarios/críticas y sugerencias aquí abajo.
+Hasta la próxima.
+
+
+
+
+

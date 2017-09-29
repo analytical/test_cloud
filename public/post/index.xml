@@ -11,6 +11,97 @@
     <atom:link href="/post/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Prueba de linealidad de una curva de calibración en Excel... Sí ¡En Excel!</title>
+      <link>https://www.analytical.cl/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</link>
+      <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.analytical.cl/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</guid>
+      <description>&lt;p&gt;En un &lt;a href=&#34;https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/&#34;&gt;post anterior&lt;/a&gt; vimos cómo evaluar la hipótesis de linealidad de una curva de calibración. Propusimos dos tests estadísticos formales:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;El test de Mandel (ISO 8466-1)&lt;/li&gt;
+&lt;li&gt;El test de carencia de ajuste (&lt;em&gt;lack-of-fit&lt;/em&gt;) (ISO 11095)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;los cuáles nos permiten concluir (o no) que el modelo lineal es &lt;em&gt;adecuado o razonable&lt;/em&gt; para nuestros datos de calibración. Nada más, ni nada menos. No cometa el error de afirmar que su calibración es lineal, porque no existe método en el mundo que permita llegar a esa conclusión.&lt;/p&gt;
+&lt;p&gt;Implementamos estos tests en lenguaje de programación &lt;code&gt;R&lt;/code&gt; que es, actualmente, la &lt;em&gt;lingua franca&lt;/em&gt; de la estadística, big data, data science y toda esa pirotecnia. Sin embargo, también es posible implementar fácilmente estos tests en el viejo y querido, pero a veces vapuleado por la comunidad Estadística, Excel. Obviamente, no existe el comando &lt;code&gt;test.de.linealidad&lt;/code&gt;, por lo tanto, tendremos que “hacerlo a mano”.&lt;/p&gt;
+&lt;p&gt;En este post implementaremos el Test de Mandel, cuyos detalles puede consultar &lt;a href=&#34;https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/&#34;&gt;aquí&lt;/a&gt;. El test de carencia de ajuste lo veremos en otro post.&lt;/p&gt;
+&lt;div id=&#34;test-de-mandel-en-excel&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Test de Mandel en Excel&lt;/h1&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;En primer lugar necesitaremos, obviamente, los datos de calibración. Estos se muestran en Excel en la siguiente figura:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/img/datos.png&#34; /&gt; La gráfica de esta calibración se presenta a continuación. Note la evidente no linealidad a alta concentración.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/plot_cal.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Bien, como Ud.recordará del post sobre &lt;a href=&#34;https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/&#34;&gt;linealidad&lt;/a&gt;, para aplicar el test de Mandel debemos ajustar dos modelos: un modelo lineal y otro no lineal. Mencionamos que para darle sentido químico-analítico ajustamos un modelo “no lineal” cuadrático. Yo sé que la tentación es grande para aplicar el botón derecho y &lt;code&gt;Ajustar línea de tendencia&lt;/code&gt;, pero mantengamos la calma. Lo haremos de otra forma.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Para ajustar un modelo cuadrático en Excel hay varias formas, pero en este post utilizaremos las herramientas del menú &lt;code&gt;Análisis de datos&lt;/code&gt;:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/tools.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Como ajustaremos un modelo cuadrático, necesitamos incorporar la variable &lt;span class=&#34;math inline&#34;&gt;\(X^2\)&lt;/span&gt;. Esto es muy sencillo, debemos ubicarnos en la columna B (donde está la &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;), presionar botón derecho y seleccionar &lt;code&gt;Insertar&lt;/code&gt;, lo cual generará una columna vacía entre &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; tal como se muestra en la siguiente figura:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/img/insertar.png&#34; /&gt; A esta nueva columna la llamaremos &lt;code&gt;X^2&lt;/code&gt;, y generaremos los valores correspondientes en la celda &lt;code&gt;B2&lt;/code&gt;con la fórmula &lt;code&gt;=A2^2&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/formula.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;Copiamos la fórmula hasta la celda &lt;code&gt;B12&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/copiada.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Ahora ajustaremos el modelo cuadrático. Seleccionemos el menú &lt;code&gt;Datos&lt;/code&gt; de la cinta de herramientas, el cual mostrará a la derecha el menú &lt;code&gt;Análisis de datos&lt;/code&gt;, hacemos clic y se abrirá el siguiente cuadro:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/cuadro.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;Seleccionamos la opción &lt;code&gt;Regresión&lt;/code&gt;, con lo que se abrirá el siguiente diálogo:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/regresion.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;En &lt;code&gt;Rango Y de entrada&lt;/code&gt; presionamos la flecha negra que apunta hacia arriba y seleccionamos con el &lt;em&gt;mouse&lt;/em&gt; los datos de &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, incluyendo la letra &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, luego presionamos la flecha que apunta hacia abajo:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/rangoy.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;En &lt;code&gt;Rango X de entrada&lt;/code&gt; presionamos la flecha negra que apunta hacia arriba y seleccionamos con el &lt;em&gt;mouse&lt;/em&gt; &lt;strong&gt;las dos columnas: &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(X^2\)&lt;/span&gt;&lt;/strong&gt;, incluyendo las etiquetas, luego presionamos la flecha que apunta hacia abajo:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/rangox.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;Chequeamos los cuadritos &lt;code&gt;Rótulos&lt;/code&gt;y &lt;code&gt;Nivel de confianza&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;Jamás chequee el cuadrito &lt;code&gt;Constante igual a cero&lt;/code&gt;, a menos que haya demostrado previamente esta hipótesis&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;En &lt;code&gt;Opciones de salida&lt;/code&gt; seleccionamos en &lt;code&gt;Rango de salida&lt;/code&gt; la celda &lt;code&gt;E1&lt;/code&gt; (en realidad da igual, es para que tengamos la misma salida).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/img/cuadrolisto.png&#34; /&gt; ¡Listo! Por ahora no usaremos las otras opciones.&lt;/p&gt;
+&lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Presiones &lt;code&gt;Aceptar&lt;/code&gt;y aparecerá el análisis estadístico a partir de la celda &lt;code&gt;E1&lt;/code&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/analisis.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;No nos detendremos a explicar toda la información estadística de las tablas, iremos directamente al grano: al test de linealidad de Mandel. Ubique en la tabla inferior la fila de la variable &lt;code&gt;X^2&lt;/code&gt; y la columna respectiva denominada &lt;code&gt;Probabilidad&lt;/code&gt;. En este ejemplo marqué con rojo la celda del test de Mandel:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/img/mandel.png&#34; /&gt; 8. Esta celda representa el &lt;em&gt;p-value&lt;/em&gt; del test de Mandel. En este ejemplo el &lt;em&gt;p-value&lt;/em&gt; = &lt;span class=&#34;math inline&#34;&gt;\(3,6\times 10^{-11}\)&lt;/span&gt;, es decir, bajo la interpretación tradicional de las pruebas de hipótesis, ya que &lt;em&gt;p-value&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(&amp;lt; 0,05\)&lt;/span&gt; concluiríamos que el modelo lineal no es adecuado o razonable para modelar los datos de calibración.&lt;/p&gt;
+&lt;p&gt;Bueno, queridos lectores espero les haya gustado. Como siempre, pueden dejar sus comentarios/críticas y sugerencias aquí abajo. Hasta la próxima.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte II</title>
       <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
@@ -674,7 +765,7 @@ Figure 5: Intervalo de confianza al 95% de los datos simulados del factor de dil
 &lt;li&gt;&lt;p&gt;A mayor asimetría de la distribución empírica, mayores diferencias habrá entre ambos métodos.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Dé un sentido químico a la simulación ¿&lt;a href=&#34;https://www.analytical.cl/post/mis-datos-no-son-normales/&#34;&gt;Recuerda que la pureza química no es Normal&lt;/a&gt;? Intente con la distribución Beta la cual es más apropiada para modelar pureza.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;En este post hemos validado el método GUM frente a Monte Carlo “a mano”, es decir, hemos hecho el test en forma manual. En el próximo post utilizaremos la librería &lt;code&gt;metRology&lt;/code&gt; la cual incorpora la validación de GUM con MC en un único comando &lt;code&gt;gum.validate&lt;/code&gt;… ¡y listo!.&lt;/p&gt;
+&lt;p&gt;En este post hemos validado el método GUM frente a Monte Carlo “a mano”, es decir, hemos hecho el test en forma manual. En el &lt;a href=&#34;https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/&#34;&gt;próximo post&lt;/a&gt; utilizaremos la librería &lt;code&gt;metRology&lt;/code&gt; la cual incorpora la validación de GUM con MC en un único comando &lt;code&gt;GUM.validate&lt;/code&gt;… ¡y listo!.&lt;/p&gt;
 &lt;p&gt;Hasta la próxima.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;bibliografia&#34; class=&#34;section level2&#34;&gt;

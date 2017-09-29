@@ -512,9 +512,10 @@ Intente con la distribución Beta la cual es más apropiada
 para modelar pureza.
 
 En este post hemos validado el método GUM frente a Monte Carlo "a mano", es decir,
-hemos hecho el test en forma manual. En el próximo post utilizaremos
+hemos hecho el test en forma manual. En el 
+[próximo post](https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/) utilizaremos
 la librería `metRology` la cual incorpora la validación de GUM con MC en un 
-único comando `gum.validate`... ¡y listo!.
+único comando `GUM.validate`... ¡y listo!.
 
 Hasta la próxima.
 

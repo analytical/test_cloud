@@ -674,7 +674,7 @@ Figure 5: Intervalo de confianza al 95% de los datos simulados del factor de dil
 &lt;li&gt;&lt;p&gt;A mayor asimetría de la distribución empírica, mayores diferencias habrá entre ambos métodos.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Dé un sentido químico a la simulación ¿&lt;a href=&#34;https://www.analytical.cl/post/mis-datos-no-son-normales/&#34;&gt;Recuerda que la pureza química no es Normal&lt;/a&gt;? Intente con la distribución Beta la cual es más apropiada para modelar pureza.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;En este post hemos validado el método GUM frente a Monte Carlo “a mano”, es decir, hemos hecho el test en forma manual. En el próximo post utilizaremos la librería &lt;code&gt;metRology&lt;/code&gt; la cual incorpora la validación de GUM con MC en un único comando &lt;code&gt;gum.validate&lt;/code&gt;… ¡y listo!.&lt;/p&gt;
+&lt;p&gt;En este post hemos validado el método GUM frente a Monte Carlo “a mano”, es decir, hemos hecho el test en forma manual. En el &lt;a href=&#34;https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/&#34;&gt;próximo post&lt;/a&gt; utilizaremos la librería &lt;code&gt;metRology&lt;/code&gt; la cual incorpora la validación de GUM con MC en un único comando &lt;code&gt;GUM.validate&lt;/code&gt;… ¡y listo!.&lt;/p&gt;
 &lt;p&gt;Hasta la próxima.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;bibliografia&#34; class=&#34;section level2&#34;&gt;
