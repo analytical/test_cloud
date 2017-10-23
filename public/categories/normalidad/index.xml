@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Normalidad on Carlos Gómez</title>
-    <link>https://www.analytical.cl/categories/normalidad/</link>
+    <link>/categories/normalidad/</link>
     <description>Recent content in Normalidad on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>¡Mis datos no son normales! ¿Qué hago?...Cálmese, nunca lo fueron... ni lo serán</title>
-      <link>https://www.analytical.cl/post/mis-datos-no-son-normales/</link>
+      <link>/post/mis-datos-no-son-normales/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/mis-datos-no-son-normales/</guid>
+      <guid>/post/mis-datos-no-son-normales/</guid>
       <description>&lt;p&gt;Bueno, aquí va la primera piedra:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;No existen datos experimentales normales&lt;/p&gt;
@@ -34,7 +34,7 @@
 &lt;p&gt;donde &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; son la desviación estándar y media, respectivamente. Notar que la distribución Normal es aplicable sólo a variables &lt;strong&gt;continuas&lt;/strong&gt;, tales como concentración, temperatura, masa, etc. No se puede aplicar la distribución normal a variables &lt;strong&gt;discretas&lt;/strong&gt; como cuentas de células bajo un campo de microscopio, por ejemplo. Quizás algún microbiólogo está familiarizado con el uso de logaritmos en sus cálculos de incertidumbre, bueno, es porque se utilizan otros modelos de probabilidad para datos discretos (ufc), como el modelo Poisson.&lt;/p&gt;
 &lt;p&gt;Advierta también, que los posibles valores que puede tomar la variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; están en el no despreciable rango entre &lt;span class=&#34;math inline&#34;&gt;\(-\infty\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(+\infty\)&lt;/span&gt;. ¿Ha comprado algún estándar de calibración cuyo certificado indique una pureza de &lt;span class=&#34;math inline&#34;&gt;\(99.7 \pm 0.5\)&lt;/span&gt; %? Raro ¿no? Bueno, pues el proveedor ha aplicado equivocadamente la distribución Normal a una variable que no es Normal: pureza química. En efecto, desde el punto de vista químico la pureza está confinada al intervalo &lt;span class=&#34;math inline&#34;&gt;\([0, 100]\)&lt;/span&gt; %, por lo tanto, no tiene sentido químico un certificado que indique &lt;span class=&#34;math inline&#34;&gt;\(99.7 \pm 0.5\)&lt;/span&gt; %. Para modelar pureza química es necesario utilizar una distribución de probabilidad que esté restringida al intervalo &lt;span class=&#34;math inline&#34;&gt;\([0, 100]\)&lt;/span&gt; % (o &lt;span class=&#34;math inline&#34;&gt;\([0, 1]\)&lt;/span&gt;) como, por ejemplo, la distribución Beta.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:plotnormal&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/plotnormal-1.png&#34; alt=&#34;Distribución Normal con media = 0 y sd = 1 &#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/plotnormal-1.png&#34; alt=&#34;Distribución Normal con media = 0 y sd = 1 &#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Distribución Normal con media = 0 y sd = 1
 &lt;/p&gt;
@@ -58,7 +58,7 @@ sigma &amp;lt;- 1 # Desviación estándar de los n = 100 datos
 x &amp;lt;- rnorm(n, mu, sigma)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Al calcular la media y desviación estándar (muestral) de estos datos obtenemos &lt;span class=&#34;math inline&#34;&gt;\(\overline{x} = 10.1\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(s = 0.9\)&lt;/span&gt; “¿Pero cómo? ¿No habíamos simulado una media de 10 y desviación estándar 1? Esto es una estafa” &lt;em&gt;Keep calm&lt;/em&gt; recuerde que son aleatorios. La figura &lt;a href=&#34;#fig:normplot&#34;&gt;2&lt;/a&gt; muestra a la izquierda el histograma y a la derecha el gráfico de normalidad (&lt;em&gt;QQ-Plot&lt;/em&gt;) de los datos simulados:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:normplot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/normplot-1.png&#34; alt=&#34;Izquierda histograma, derecha gráfico de normalidad&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/normplot-1.png&#34; alt=&#34;Izquierda histograma, derecha gráfico de normalidad&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Izquierda histograma, derecha gráfico de normalidad
 &lt;/p&gt;
@@ -118,7 +118,7 @@ lambda &amp;lt;- 5 # Parámetro de la distribución Poisson
 
 # Generar m = 100 datos de una distribución Poisson con parámtro lambda = 5
 y &amp;lt;- rpois(m, lambda)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;alert alert-warning&#34;&gt;
   &lt;p&gt;¿No les parece familiar el QQ-Plot a aquellos que validan homogeneidad de peso en validación de procesos farmacéuticos? 1313&lt;/p&gt;
 
@@ -154,7 +154,7 @@ A = 1.2355, p-value = 0.003072&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;p&gt;Para finalizar veamos en acción de estos métodos: Bootstrap. Sin embargo, el detalle estadístico y su implementación los veremos en otro post, por ahora, simplemente lo ejemplificaremos. La figura &lt;a href=&#34;#fig:As&#34;&gt;3&lt;/a&gt; muestra el histograma y el &lt;em&gt;QQ-Plot&lt;/em&gt; de normalidad correspondientes a datos de concentración de arsénico [ppm] muestreados en &lt;span class=&#34;math inline&#34;&gt;\(n = 271\)&lt;/span&gt; pozos de agua en Bangladesh:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:As&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/As-1.png&#34; alt=&#34;Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/As-1.png&#34; alt=&#34;Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 3: Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh
 &lt;/p&gt;
@@ -162,7 +162,7 @@ Figure 3: Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bang
 &lt;p&gt;Claramente, ni si quiera es necesario hacer un test de normalidad, la evidencia que muestra la figura &lt;a href=&#34;#fig:As&#34;&gt;3&lt;/a&gt; en contra de la hipótesis de normalidad es abrumadora. El promedio de la concentración de As es &lt;span class=&#34;math inline&#34;&gt;\(\overline{x} = 125\)&lt;/span&gt; ppm y la desviación estándar &lt;span class=&#34;math inline&#34;&gt;\(s = 298\)&lt;/span&gt; ppm. Utilizando la fórmula usual para estimar un intervalo de confianza al 95% para la media &lt;span class=&#34;math inline&#34;&gt;\(\overline{x} \pm t_{\alpha/2, n - 1} s/\sqrt{n}\)&lt;/span&gt; obtenemos [90, 161] ppm As. Sin embargo, la gran asimetría de los datos hace inverosímil el intervalo obtenido.&lt;/p&gt;
 &lt;p&gt;Al aplicar el método &lt;em&gt;bootstrap&lt;/em&gt; obtenemos un intervalo para la media al 95% (BCa) entre [98, 175] ppm As, el cual es más “correcto” por si Ud. necesita informar este parámetro. La figura &lt;a href=&#34;#fig:Asboot&#34;&gt;4&lt;/a&gt; muestra el histograma y QQ-Plot de normalidad de el método de bootstrap. Advierta el Teorema Central del Límite en su máxima expresión.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:Asboot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/Asboot-1.png&#34; alt=&#34;Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/Asboot-1.png&#34; alt=&#34;Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 4: Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos
 &lt;/p&gt;

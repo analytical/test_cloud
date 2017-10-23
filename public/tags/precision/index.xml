@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Precision on Carlos Gómez</title>
-    <link>https://www.analytical.cl/tags/precision/</link>
+    <link>/tags/precision/</link>
     <description>Recent content in Precision on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -12,10 +12,10 @@
     
     <item>
       <title>¿Cuál es la máxima diferencia tolerable entre duplicados de análisis?</title>
-      <link>https://www.analytical.cl/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</link>
+      <link>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
+      <guid>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
       <description>&lt;p&gt;Un día cualquiera en un laboratorio que aún no establece criterios de aceptación de precisión:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Duplicado 1 = 25.56 % Cu&lt;/li&gt;
@@ -152,7 +152,7 @@ QAQC-06
 \end{equation}\]&lt;/span&gt;
 &lt;p&gt;Esta ecuación puede ser fácilmente implementada en Excel pero en este post, como no, haremos los cálculos en lenguaje R. Pero antes, observe la figura &lt;a href=&#34;#fig:dup&#34;&gt;1&lt;/a&gt; la cual muestra un gráfico de dispersión entre Duplicado 1 (&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;) y Duplicado 2 (&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;). En este caso el orden es irrelevante. Si ajustáramos un modelo lineal entre ambas variables ¿Qué valores de pendiente e intercepto deberíamos obtener?&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:dup&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/dup-1.png&#34; alt=&#34;Gráfico de dispersión entre duplicados&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/dup-1.png&#34; alt=&#34;Gráfico de dispersión entre duplicados&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Gráfico de dispersión entre duplicados
 &lt;/p&gt;
@@ -200,7 +200,7 @@ Figure 1: Gráfico de dispersión entre duplicados
 &lt;/blockquote&gt;
 &lt;p&gt;Para abordar este objetivo, proponemos el siguiente diseño experimental:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/doe.png&#34; alt=&#34;Diseño Experimental&#34; width=&#34;700&#34; /&gt;
+&lt;img src=&#34;/img/doe.png&#34; alt=&#34;Diseño Experimental&#34; width=&#34;700&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Diseño Experimental&lt;/p&gt;
 &lt;/div&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
@@ -333,7 +333,7 @@ Analista 4
 &lt;/table&gt;
 &lt;p&gt;Antes de llevar a cabo el análisis estadístico formal, observemos la figura &lt;a href=&#34;#fig:doeplot&#34;&gt;2&lt;/a&gt; la cual muestra el valor promedio de cada analista &lt;span class=&#34;math inline&#34;&gt;\(\pm\)&lt;/span&gt; 1 desviación estándar. Ella nos indica que, aparentemente, los resultados entre los analistas son bastante consistentes.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:doeplot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/doeplot-1.png&#34; alt=&#34;Boxplot estudio de precisión&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/doeplot-1.png&#34; alt=&#34;Boxplot estudio de precisión&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Boxplot estudio de precisión
 &lt;/p&gt;

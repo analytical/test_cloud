@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sesgo on Carlos Gómez</title>
+    <link>/categories/sesgo/</link>
+    <description>Recent content in Sesgo on Carlos Gómez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>es</language>
+    <copyright>&amp;copy; 2017 Carlos Gómez</copyright>
+    <lastBuildDate>Fri, 20 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/categories/sesgo/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>como detectar el efecto matriz en un metodo analitico</title>
+      <link>/post/como-detectar-el-efecto-matriz-en-un-metodo-analitico/</link>
+      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/como-detectar-el-efecto-matriz-en-un-metodo-analitico/</guid>
+      <description>&lt;p&gt;He vuelto a postear, después de una gira que me llevó por los cinco&amp;hellip;
+mentira, fue por pura pega.&lt;/p&gt;
+
+&lt;p&gt;El famoso efecto matriz, algo tan etéreo como el &lt;em&gt;criterio analítico&lt;/em&gt;.
+La situación es la siguiente: Ud. tiene un método analítico que consistentemente
+entrega valores sesgados&lt;/p&gt;
+
+&lt;p&gt;El efecto matriz está íntimamente relacionado con las interferencias de la
+matriz que de alguna forma aumentan o disminuyen la señal instrumental que,
+en teoría, es producida sólo por el analito de interés.&lt;/p&gt;
+
+&lt;p&gt;Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers
+que nos enseñaron el famoso método de calibración con adición conocida o
+adición de estándar. en este método de calibración, la matriz es nuestro
+medio de calibración. En vez de preparar los calibrantes en solventes puros o
+en solución ácida, utilizaremos la misma matriz para preparar (adicionar) las
+soluciones de calibración.&lt;/p&gt;
+
+&lt;p&gt;Existen varias formas de implementar el método de adición conocida. Una muy
+buena referencia es el excelente y pedagógico paper de M. Bader:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Morris Bade, A systematic approach to standard addition methods in
+instrumental analysis &lt;em&gt;J. Chem. Educ., 1980, 57 (10), p 703&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;El método consiste en añadir cantidades conocidas del analito en solvente
+puro o solución ácida y medir la respuesta instrumental en una serie de
+adiciones crecientes. Es necesario que las adiciones de analito generen, en
+conjunto con la cantidad de analito en la muestra original, una concentración
+tal que aún se encuentre en el rango lineal de calibración. De esta forma
+se otiene una curva de calibración como se observa en la figura&lt;a href=&#34;#fig:adicion&#34;&gt;1&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/c0adicion.png&#34; alt=&#34;Preparación curva método de adición conocida&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure 1 Preparación curva método de adición conocida&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Las unidades del eje &lt;code&gt;\(X\)&lt;/code&gt; pueden establecerse como &lt;em&gt;analito añadido&lt;/em&gt; o,
+tal como lo propone Bader en su paper, como múltiplos de un volumen
+o cantidad fija del analito. Por lo tanto, en &lt;code&gt;\(x = 0\)&lt;/code&gt; se obtiene la
+señal de la muestra problema a la cual no se le ha agregado el
+analito, es decir, la señal original. En cada una de las adiciones
+del estándar mediremos la señal instrumental de tal manera de
+obtener, y así lo esperamos, una relación lineal entre analito
+agregado &lt;code&gt;\(x\)&lt;/code&gt; y señal &lt;code&gt;\(y\)&lt;/code&gt; de la forma:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+  y = \beta&lt;em&gt;{0} + \beta&lt;/em&gt;{1}x + \epsilon
+    \tag{1}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;donde se asumen los mismos supuestos que discutimos en el caso de la
+calibración lineal estándar(en solvente puro) y que puede recordar en este
+&lt;a href=&#34;https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/&#34; target=&#34;_blank&#34;&gt;post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;La concentración de la muestra problema &lt;code&gt;\(C_{0}\)&lt;/code&gt; se obtiene a partir de la
+ecuación (2):&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+  C&lt;em&gt;{0} = \frac{\beta&lt;/em&gt;{1}}{\beta_{0}}
+  \tag{2}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;La incertidumbre de la concentración de la muestra problema &lt;code&gt;\(u(C_{0})\)&lt;/code&gt; se
+calcula a partir de la ecuación:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+  u(C&lt;em&gt;{0}) = \frac{\sigma&lt;/em&gt;{y/x}}{\beta&lt;em&gt;{1}}
+  \sqrt{\frac{1}{n} + \frac{\overline{y}^2}
+  {\beta&lt;/em&gt;{1}\sum&lt;em&gt;{i}^{n} (x&lt;/em&gt;{i} - \overline{x})^2}}
+    \tag{3}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;donde:
+- &lt;code&gt;\(\sigma_{y/x}\)&lt;/code&gt; es la desviación estándar del error aleatorio &lt;code&gt;\(\epsilon\)&lt;/code&gt;
+- &lt;code&gt;\(n\)&lt;/code&gt; es el número de adiciones independientes del estándar
+- &lt;code&gt;\(\overline{y}\)&lt;/code&gt; es el promedio de las señales instrumentales de las adiciones
+- &lt;code&gt;\(\overline{x}\)&lt;/code&gt; es el promedio de las concentraciones&lt;/p&gt;
+
+&lt;p&gt;Como puede apreciar la expresión de la incertidumbre de calibración para el
+método de adición conocida es muy
+similar a la correspondiente a la calibración estandar que discutimos en un
+&lt;a href=&#34;https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/&#34; target=&#34;_blank&#34;&gt;post anterior&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si queremos minimizar esta incertidumbre podríamos aumentar el número de
+adiciones &lt;code&gt;\(n\)&lt;/code&gt; o aumentar el término &lt;code&gt;\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)&lt;/code&gt;.
+Este último es interesante pues nos dice que la incertidumbre de calibración
+de este método se minimiza utilizando un rango amplio de concentración de
+adición. Ellison hace un análisis donde demuestra que, dado que la propiedad
+de linealidad se mantiene, basta preparar dos puntos de calibración:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;La muestra original sin adición ($x = 0$)&lt;/li&gt;
+&lt;li&gt;El extremo superior del rango lineal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Por ejemplo, si por alguna razón se tuvieran que preparar &lt;code&gt;\(n = 6\)&lt;/code&gt; adiciones, lo
+que indica la ecuación (3), es que sería mejor preparar tres puntos
+sin adición ($x = 0$) y tres en el extremos superior del rango lineal, tal
+como lo demuestra la figura &lt;a href=&#34;#fig:doe&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/doeadicion.png&#34; alt=&#34;Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure 2 Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;An effective and commonly used technique to overcome matrix interferences is standard addition. This involves adding known quantities of the analyte (the standard) to the solution of interest and measuring the solution&amp;rsquo;s analytical signals in response to each addition. (Adding the standard to the sample is commonly called &amp;ldquo;spiking the sample.&amp;rdquo;) Assuming that the analytical signal still changes proportionally to the concentration of the analyte in the presence of matrix effects, a calibration curve can be obtained based on simple linear regression. The analyte&amp;rsquo;s concentration in the solution before any additions of the standard can then be extrapolated from the regression line; I will explain how this extrapolation works later in the post with a plot of the regression line.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

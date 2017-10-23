@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Carlos Gómez on Carlos Gómez</title>
-    <link>https://www.analytical.cl/</link>
+    <link>/</link>
     <description>Recent content in Carlos Gómez on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -11,11 +11,128 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>como detectar el efecto matriz en un metodo analitico</title>
+      <link>/post/como-detectar-el-efecto-matriz-en-un-metodo-analitico/</link>
+      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/como-detectar-el-efecto-matriz-en-un-metodo-analitico/</guid>
+      <description>&lt;p&gt;He vuelto a postear, después de una gira que me llevó por los cinco&amp;hellip;
+mentira, fue por pura pega.&lt;/p&gt;
+
+&lt;p&gt;El famoso efecto matriz, algo tan etéreo como el &lt;em&gt;criterio analítico&lt;/em&gt;.
+La situación es la siguiente: Ud. tiene un método analítico que consistentemente
+entrega valores sesgados&lt;/p&gt;
+
+&lt;p&gt;El efecto matriz está íntimamente relacionado con las interferencias de la
+matriz que de alguna forma aumentan o disminuyen la señal instrumental que,
+en teoría, es producida sólo por el analito de interés.&lt;/p&gt;
+
+&lt;p&gt;Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers
+que nos enseñaron el famoso método de calibración con adición conocida o
+adición de estándar. en este método de calibración, la matriz es nuestro
+medio de calibración. En vez de preparar los calibrantes en solventes puros o
+en solución ácida, utilizaremos la misma matriz para preparar (adicionar) las
+soluciones de calibración.&lt;/p&gt;
+
+&lt;p&gt;Existen varias formas de implementar el método de adición conocida. Una muy
+buena referencia es el excelente y pedagógico paper de M. Bader:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Morris Bade, A systematic approach to standard addition methods in
+instrumental analysis &lt;em&gt;J. Chem. Educ., 1980, 57 (10), p 703&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;El método consiste en añadir cantidades conocidas del analito en solvente
+puro o solución ácida y medir la respuesta instrumental en una serie de
+adiciones crecientes. Es necesario que las adiciones de analito generen, en
+conjunto con la cantidad de analito en la muestra original, una concentración
+tal que aún se encuentre en el rango lineal de calibración. De esta forma
+se otiene una curva de calibración como se observa en la figura&lt;a href=&#34;#fig:adicion&#34;&gt;1&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/c0adicion.png&#34; alt=&#34;Preparación curva método de adición conocida&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure 1 Preparación curva método de adición conocida&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Las unidades del eje &lt;code&gt;\(X\)&lt;/code&gt; pueden establecerse como &lt;em&gt;analito añadido&lt;/em&gt; o,
+tal como lo propone Bader en su paper, como múltiplos de un volumen
+o cantidad fija del analito. Por lo tanto, en &lt;code&gt;\(x = 0\)&lt;/code&gt; se obtiene la
+señal de la muestra problema a la cual no se le ha agregado el
+analito, es decir, la señal original. En cada una de las adiciones
+del estándar mediremos la señal instrumental de tal manera de
+obtener, y así lo esperamos, una relación lineal entre analito
+agregado &lt;code&gt;\(x\)&lt;/code&gt; y señal &lt;code&gt;\(y\)&lt;/code&gt; de la forma:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+  y = \beta&lt;em&gt;{0} + \beta&lt;/em&gt;{1}x + \epsilon
+    \tag{1}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;donde se asumen los mismos supuestos que discutimos en el caso de la
+calibración lineal estándar(en solvente puro) y que puede recordar en este
+&lt;a href=&#34;https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/&#34; target=&#34;_blank&#34;&gt;post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;La concentración de la muestra problema &lt;code&gt;\(C_{0}\)&lt;/code&gt; se obtiene a partir de la
+ecuación (2):&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+  C&lt;em&gt;{0} = \frac{\beta&lt;/em&gt;{1}}{\beta_{0}}
+  \tag{2}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;La incertidumbre de la concentración de la muestra problema &lt;code&gt;\(u(C_{0})\)&lt;/code&gt; se
+calcula a partir de la ecuación:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+  u(C&lt;em&gt;{0}) = \frac{\sigma&lt;/em&gt;{y/x}}{\beta&lt;em&gt;{1}}
+  \sqrt{\frac{1}{n} + \frac{\overline{y}^2}
+  {\beta&lt;/em&gt;{1}\sum&lt;em&gt;{i}^{n} (x&lt;/em&gt;{i} - \overline{x})^2}}
+    \tag{3}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;donde:
+- &lt;code&gt;\(\sigma_{y/x}\)&lt;/code&gt; es la desviación estándar del error aleatorio &lt;code&gt;\(\epsilon\)&lt;/code&gt;
+- &lt;code&gt;\(n\)&lt;/code&gt; es el número de adiciones independientes del estándar
+- &lt;code&gt;\(\overline{y}\)&lt;/code&gt; es el promedio de las señales instrumentales de las adiciones
+- &lt;code&gt;\(\overline{x}\)&lt;/code&gt; es el promedio de las concentraciones&lt;/p&gt;
+
+&lt;p&gt;Como puede apreciar la expresión de la incertidumbre de calibración para el
+método de adición conocida es muy
+similar a la correspondiente a la calibración estandar que discutimos en un
+&lt;a href=&#34;https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/&#34; target=&#34;_blank&#34;&gt;post anterior&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Si queremos minimizar esta incertidumbre podríamos aumentar el número de
+adiciones &lt;code&gt;\(n\)&lt;/code&gt; o aumentar el término &lt;code&gt;\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)&lt;/code&gt;.
+Este último es interesante pues nos dice que la incertidumbre de calibración
+de este método se minimiza utilizando un rango amplio de concentración de
+adición. Ellison hace un análisis donde demuestra que, dado que la propiedad
+de linealidad se mantiene, basta preparar dos puntos de calibración:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;La muestra original sin adición ($x = 0$)&lt;/li&gt;
+&lt;li&gt;El extremo superior del rango lineal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Por ejemplo, si por alguna razón se tuvieran que preparar &lt;code&gt;\(n = 6\)&lt;/code&gt; adiciones, lo
+que indica la ecuación (3), es que sería mejor preparar tres puntos
+sin adición ($x = 0$) y tres en el extremos superior del rango lineal, tal
+como lo demuestra la figura &lt;a href=&#34;#fig:doe&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/img/doeadicion.png&#34; alt=&#34;Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;Figure 2 Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;An effective and commonly used technique to overcome matrix interferences is standard addition. This involves adding known quantities of the analyte (the standard) to the solution of interest and measuring the solution&amp;rsquo;s analytical signals in response to each addition. (Adding the standard to the sample is commonly called &amp;ldquo;spiking the sample.&amp;rdquo;) Assuming that the analytical signal still changes proportionally to the concentration of the analyte in the presence of matrix effects, a calibration curve can be obtained based on simple linear regression. The analyte&amp;rsquo;s concentration in the solution before any additions of the standard can then be extrapolated from the regression line; I will explain how this extrapolation works later in the post with a plot of the regression line.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Prueba de linealidad de una curva de calibración en Excel... Sí ¡En Excel!</title>
-      <link>https://www.analytical.cl/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</link>
+      <link>/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</guid>
+      <guid>/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</guid>
       <description>&lt;p&gt;En un &lt;a href=&#34;https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/&#34;&gt;post anterior&lt;/a&gt; vimos cómo evaluar la hipótesis de linealidad de una curva de calibración. Propusimos dos tests estadísticos formales:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;El test de Mandel (ISO 8466-1)&lt;/li&gt;
@@ -29,9 +146,9 @@
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;En primer lugar necesitaremos, obviamente, los datos de calibración. Estos se muestran en Excel en la siguiente figura:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/img/datos.png&#34; /&gt; La gráfica de esta calibración se presenta a continuación. Note la evidente no linealidad a alta concentración.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/datos.png&#34; /&gt; La gráfica de esta calibración se presenta a continuación. Note la evidente no linealidad a alta concentración.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/plot_cal.png&#34; /&gt;
+&lt;img src=&#34;/img/plot_cal.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
@@ -39,42 +156,42 @@
 &lt;li&gt;&lt;p&gt;Para ajustar un modelo cuadrático en Excel hay varias formas, pero en este post utilizaremos las herramientas del menú &lt;code&gt;Análisis de datos&lt;/code&gt;:&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/tools.png&#34; /&gt;
+&lt;img src=&#34;/img/tools.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Como ajustaremos un modelo cuadrático, necesitamos incorporar la variable &lt;span class=&#34;math inline&#34;&gt;\(X^2\)&lt;/span&gt;. Esto es muy sencillo, debemos ubicarnos en la columna B (donde está la &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;), presionar botón derecho y seleccionar &lt;code&gt;Insertar&lt;/code&gt;, lo cual generará una columna vacía entre &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; tal como se muestra en la siguiente figura:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/img/insertar.png&#34; /&gt; A esta nueva columna la llamaremos &lt;code&gt;X^2&lt;/code&gt;, y generaremos los valores correspondientes en la celda &lt;code&gt;B2&lt;/code&gt;con la fórmula &lt;code&gt;=A2^2&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/insertar.png&#34; /&gt; A esta nueva columna la llamaremos &lt;code&gt;X^2&lt;/code&gt;, y generaremos los valores correspondientes en la celda &lt;code&gt;B2&lt;/code&gt;con la fórmula &lt;code&gt;=A2^2&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/formula.png&#34; /&gt;
+&lt;img src=&#34;/img/formula.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;Copiamos la fórmula hasta la celda &lt;code&gt;B12&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/copiada.png&#34; /&gt;
+&lt;img src=&#34;/img/copiada.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;ol start=&#34;5&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Ahora ajustaremos el modelo cuadrático. Seleccionemos el menú &lt;code&gt;Datos&lt;/code&gt; de la cinta de herramientas, el cual mostrará a la derecha el menú &lt;code&gt;Análisis de datos&lt;/code&gt;, hacemos clic y se abrirá el siguiente cuadro:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/cuadro.png&#34; /&gt;
+&lt;img src=&#34;/img/cuadro.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;Seleccionamos la opción &lt;code&gt;Regresión&lt;/code&gt;, con lo que se abrirá el siguiente diálogo:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/regresion.png&#34; /&gt;
+&lt;img src=&#34;/img/regresion.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;En &lt;code&gt;Rango Y de entrada&lt;/code&gt; presionamos la flecha negra que apunta hacia arriba y seleccionamos con el &lt;em&gt;mouse&lt;/em&gt; los datos de &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, incluyendo la letra &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;, luego presionamos la flecha que apunta hacia abajo:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/rangoy.png&#34; /&gt;
+&lt;img src=&#34;/img/rangoy.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;En &lt;code&gt;Rango X de entrada&lt;/code&gt; presionamos la flecha negra que apunta hacia arriba y seleccionamos con el &lt;em&gt;mouse&lt;/em&gt; &lt;strong&gt;las dos columnas: &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(X^2\)&lt;/span&gt;&lt;/strong&gt;, incluyendo las etiquetas, luego presionamos la flecha que apunta hacia abajo:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/rangox.png&#34; /&gt;
+&lt;img src=&#34;/img/rangox.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;Chequeamos los cuadritos &lt;code&gt;Rótulos&lt;/code&gt;y &lt;code&gt;Nivel de confianza&lt;/code&gt;.&lt;/p&gt;
@@ -84,18 +201,18 @@
 &lt;/div&gt;
 
 &lt;p&gt;En &lt;code&gt;Opciones de salida&lt;/code&gt; seleccionamos en &lt;code&gt;Rango de salida&lt;/code&gt; la celda &lt;code&gt;E1&lt;/code&gt; (en realidad da igual, es para que tengamos la misma salida).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/img/cuadrolisto.png&#34; /&gt; ¡Listo! Por ahora no usaremos las otras opciones.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/cuadrolisto.png&#34; /&gt; ¡Listo! Por ahora no usaremos las otras opciones.&lt;/p&gt;
 &lt;ol start=&#34;6&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;Presiones &lt;code&gt;Aceptar&lt;/code&gt;y aparecerá el análisis estadístico a partir de la celda &lt;code&gt;E1&lt;/code&gt;:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/analisis.png&#34; /&gt;
+&lt;img src=&#34;/img/analisis.png&#34; /&gt;
 
 &lt;/div&gt;
 &lt;ol start=&#34;7&#34; style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;No nos detendremos a explicar toda la información estadística de las tablas, iremos directamente al grano: al test de linealidad de Mandel. Ubique en la tabla inferior la fila de la variable &lt;code&gt;X^2&lt;/code&gt; y la columna respectiva denominada &lt;code&gt;Probabilidad&lt;/code&gt;. En este ejemplo marqué con rojo la celda del test de Mandel:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/img/mandel.png&#34; /&gt; 8. Esta celda representa el &lt;em&gt;p-value&lt;/em&gt; del test de Mandel. En este ejemplo el &lt;em&gt;p-value&lt;/em&gt; = &lt;span class=&#34;math inline&#34;&gt;\(3,6\times 10^{-11}\)&lt;/span&gt;, es decir, bajo la interpretación tradicional de las pruebas de hipótesis, ya que &lt;em&gt;p-value&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(&amp;lt; 0,05\)&lt;/span&gt; concluiríamos que el modelo lineal no es adecuado o razonable para modelar los datos de calibración.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/img/mandel.png&#34; /&gt; 8. Esta celda representa el &lt;em&gt;p-value&lt;/em&gt; del test de Mandel. En este ejemplo el &lt;em&gt;p-value&lt;/em&gt; = &lt;span class=&#34;math inline&#34;&gt;\(3,6\times 10^{-11}\)&lt;/span&gt;, es decir, bajo la interpretación tradicional de las pruebas de hipótesis, ya que &lt;em&gt;p-value&lt;/em&gt; &lt;span class=&#34;math inline&#34;&gt;\(&amp;lt; 0,05\)&lt;/span&gt; concluiríamos que el modelo lineal no es adecuado o razonable para modelar los datos de calibración.&lt;/p&gt;
 &lt;p&gt;Bueno, queridos lectores espero les haya gustado. Como siempre, pueden dejar sus comentarios/críticas y sugerencias aquí abajo. Hasta la próxima.&lt;/p&gt;
 &lt;/div&gt;
 </description>
@@ -103,10 +220,10 @@
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte II</title>
-      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
+      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
+      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
       <description>&lt;p&gt;En el &lt;a href=&#34;https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/&#34;&gt;post anterior&lt;/a&gt; describimos brevemente en qué consiste el método de Monte Carlo y cómo utilizarlo para estimar la incertidumbre de medición. Finalizamos comparando la estimación de acuerdo a la guía GUM con el método de Monte Carlo siguiendo estrictamente las directrices del test de diferencias numéricas propuesto por el Suplmento 1 de la GUM.&lt;/p&gt;
 &lt;p&gt;Llevamos a cabo el test de validación “a mano”, es decir, ingresamos todas las instrucciones en código &lt;code&gt;R&lt;/code&gt;. Si bien no fue difícil, existen librerías especializadas en &lt;code&gt;R&lt;/code&gt; que permiten realizar todos los cálculos de incertidumbre y validarlos utilizando funciones ya incorporadas.&lt;/p&gt;
 &lt;p&gt;En &lt;code&gt;R&lt;/code&gt;existen dos librerías especializadas en cálculo de incertidumbre de métodos de medición físico-químicos:&lt;/p&gt;
@@ -328,7 +445,7 @@ m          0.9916 0.00005 -0.351378363 -1.756892e-05
 u(y):  0.006053998 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Además de los cálculos de incertidumbre, la opción &lt;code&gt;method = &#39;GUM&#39;&lt;/code&gt; entrega 4 gráficos muy interesantes, siendo el más importante el de &lt;em&gt;Contribuciones combinadas&lt;/em&gt;, el cual se muestra en la figura &lt;a href=&#34;#fig:plotGUM&#34;&gt;1&lt;/a&gt;. En este gráfico queda en evidencia que el factor que más aporta a la incertidumbre total (evaluada por GUM) es la curva de calibración.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:plotGUM&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-23-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo-parte2_files/figure-html/plotGUM-1.png&#34; alt=&#34;Gráfico de contribución a la incertidumbre total&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-23-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo-parte2_files/figure-html/plotGUM-1.png&#34; alt=&#34;Gráfico de contribución a la incertidumbre total&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Gráfico de contribución a la incertidumbre total
 &lt;/p&gt;
@@ -499,10 +616,10 @@ GUM.validate(var.name = variables,
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I</title>
-      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
+      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
       <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
+      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
       <description>&lt;p&gt;De acuerdo al numeral 8.1 del Suplemento 1 de la guía GUM, el método de Monte Carlo es un método general para estimar la incertidumbre de medición y puede, bajo ciertas directrices, validar los cálculos realizados con el método GUM. En este post asumiremos que Ud., esimado lector, está familiarizado con el método GUM y ya lo tiene implementado , por ejemplo, en una hoja Excel y le gustaría validar sus cálculos mediante un método totalmente independiente y más general. De esta forma podrá cumplir cabalmente con el siguiente numeral de la norma 17025:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;5.4.7.1 Los cálculos y la transferencia de los datos deben estar sujetos a verificaciones adecuadas llevadas a cabo de una manera sistemática.&lt;/p&gt;
@@ -554,7 +671,7 @@ uZ &amp;lt;- sd(Z) # La incertidumbre estándar de Z es la desviación estándar
 &lt;p&gt;En nuestro ejemplo, la incertidumbre estándar por Monte Carlo es de &lt;span class=&#34;math inline&#34;&gt;\(u_{Z}^{MC} = 7.4\)&lt;/span&gt;. ¿Qué nos decía la teoría? Que &lt;span class=&#34;math inline&#34;&gt;\(u_{Z} = \sqrt{2}\sigma = \sqrt{2}\cdot 5 = 7.1\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Ojalá todo fuera tan fácil. El ejemplo era muy sencillo y la solución es conocida en forma teórica. La vida del químico analítico es extremadamente compleja (en todo $entido), y no siempre existe una solución tan simple. Para eso está el método de Monte Carlo, el cual simula un proceso complejo cuyas variables de entrada pueden tener cualquier distribución de probabilidad tal como lo muestra la siguiente figura:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/mc2.png&#34; width=&#34;500&#34; /&gt;
+&lt;img src=&#34;/img/mc2.png&#34; width=&#34;500&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;La generalidad del método MC no asume normalidad de la variable de interés &lt;span class=&#34;math inline&#34;&gt;\(g(y)\)&lt;/span&gt;, sino más bien la estima como una distribución empírica y a partir de ésta calcula la incertidumbre estándar y expandida.&lt;/p&gt;
@@ -575,7 +692,7 @@ uZ &amp;lt;- sd(Z) # La incertidumbre estándar de Z es la desviación estándar
 \end{equation}\]&lt;/span&gt;
 &lt;p&gt;Asumiremos por simplicidad que las incertidumbres asociadas al material volumétrico son las indicadas por el fabricante en el mismo material, es decir, de acuerdo a la figura &lt;a href=&#34;#fig:matraz&#34;&gt;1&lt;/a&gt; y, por ahora, serán las únicas fuentes de incertidumbre del material volumétrico (olvidaremos la T° y la repetibilidad).&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:matraz&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/pipeta.jpg&#34; alt=&#34;Incertidumbre del fabricante&#34;  /&gt;
+&lt;img src=&#34;/img/pipeta.jpg&#34; alt=&#34;Incertidumbre del fabricante&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Incertidumbre del fabricante
 &lt;/p&gt;
@@ -625,7 +742,7 @@ f.sim &amp;lt;- vf.sim/vi.sim # Es la misma fórmula&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt; valores aleatorios del volumen inicial a partir de una distribución rectangular con media &lt;code&gt;vi&lt;/code&gt; = 20 mL e incertidumbre expandida &lt;code&gt;Uvi&lt;/code&gt; = 0.1 mL. El promedio de los 1000 volumenes iniciales simulados es 19.999 mL y una desviación estándar de &lt;code&gt;uvi&lt;/code&gt; = &lt;span class=&#34;math inline&#34;&gt;\(U_{vf}/\sqrt{3} = 0.058\)&lt;/span&gt; mL. La figura &lt;a href=&#34;#fig:visim&#34;&gt;2&lt;/a&gt; muestra el histograma de los valores simulados. Note que la simulación concuerda perfectamente con los valores de incertidumbre informados por el fabricante (&lt;span class=&#34;math inline&#34;&gt;\(20 \pm 0.1\)&lt;/span&gt; mL).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:visim&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/visim-1.png&#34; alt=&#34;Histograma de los valores simulados de volumen inicial [mL]&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/visim-1.png&#34; alt=&#34;Histograma de los valores simulados de volumen inicial [mL]&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Histograma de los valores simulados de volumen inicial [mL]
 &lt;/p&gt;
@@ -680,14 +797,14 @@ Figure 2: Histograma de los valores simulados de volumen inicial [mL]
 &lt;li&gt;La figura &lt;a href=&#34;#fig:fsimhis&#34;&gt;3&lt;/a&gt; muestra el histograma de los 1000 factores de dilución simulados:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:fsimhis&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimhis-1.png&#34; alt=&#34;Histograma de factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimhis-1.png&#34; alt=&#34;Histograma de factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 3: Histograma de factores de dilución simulados
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;“¡Qué interesante!”, dirá Ud., la división de dos variables rectangulares genera una distribución de datos que, al menos, es simétrica. ¿Es razonable asumir una distribución normal del factor de dilución simulado? Si recuerda la discusión en este &lt;a href=&#34;https://www.analytical.cl/post/mis-datos-no-son-normales/&#34;&gt;post&lt;/a&gt;, podemos evaluar la admisibilidad de esta hipótesis mediante el análisis gráfico &lt;em&gt;QQ-Plot&lt;/em&gt; de normalidad de los datos simulados y el test de Shapiro, el cual se muestra en la figura &lt;a href=&#34;#fig:fsimnorm&#34;&gt;4&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:fsimnorm&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimnorm-1.png&#34; alt=&#34;QQ-Plot de normalidad de los n factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimnorm-1.png&#34; alt=&#34;QQ-Plot de normalidad de los n factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 4: QQ-Plot de normalidad de los n factores de dilución simulados
 &lt;/p&gt;
@@ -742,7 +859,7 @@ W = 0.99005, p-value = 2.719e-06&lt;/code&gt;&lt;/pre&gt;
 abline(v = quantilos[1], col = &amp;#39;red&amp;#39;)
 abline(v = quantilos[2], col = &amp;#39;red&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:quantilofig&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/quantilofig-1.png&#34; alt=&#34;Intervalo de confianza al 95% de los datos simulados del factor de dilución&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/quantilofig-1.png&#34; alt=&#34;Intervalo de confianza al 95% de los datos simulados del factor de dilución&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 5: Intervalo de confianza al 95% de los datos simulados del factor de dilución
 &lt;/p&gt;
@@ -782,10 +899,10 @@ Figure 5: Intervalo de confianza al 95% de los datos simulados del factor de dil
     
     <item>
       <title>¡Mis datos no son normales! ¿Qué hago?...Cálmese, nunca lo fueron... ni lo serán</title>
-      <link>https://www.analytical.cl/post/mis-datos-no-son-normales/</link>
+      <link>/post/mis-datos-no-son-normales/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/mis-datos-no-son-normales/</guid>
+      <guid>/post/mis-datos-no-son-normales/</guid>
       <description>&lt;p&gt;Bueno, aquí va la primera piedra:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;No existen datos experimentales normales&lt;/p&gt;
@@ -804,7 +921,7 @@ Figure 5: Intervalo de confianza al 95% de los datos simulados del factor de dil
 &lt;p&gt;donde &lt;span class=&#34;math inline&#34;&gt;\(\sigma\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt; son la desviación estándar y media, respectivamente. Notar que la distribución Normal es aplicable sólo a variables &lt;strong&gt;continuas&lt;/strong&gt;, tales como concentración, temperatura, masa, etc. No se puede aplicar la distribución normal a variables &lt;strong&gt;discretas&lt;/strong&gt; como cuentas de células bajo un campo de microscopio, por ejemplo. Quizás algún microbiólogo está familiarizado con el uso de logaritmos en sus cálculos de incertidumbre, bueno, es porque se utilizan otros modelos de probabilidad para datos discretos (ufc), como el modelo Poisson.&lt;/p&gt;
 &lt;p&gt;Advierta también, que los posibles valores que puede tomar la variable &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; están en el no despreciable rango entre &lt;span class=&#34;math inline&#34;&gt;\(-\infty\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(+\infty\)&lt;/span&gt;. ¿Ha comprado algún estándar de calibración cuyo certificado indique una pureza de &lt;span class=&#34;math inline&#34;&gt;\(99.7 \pm 0.5\)&lt;/span&gt; %? Raro ¿no? Bueno, pues el proveedor ha aplicado equivocadamente la distribución Normal a una variable que no es Normal: pureza química. En efecto, desde el punto de vista químico la pureza está confinada al intervalo &lt;span class=&#34;math inline&#34;&gt;\([0, 100]\)&lt;/span&gt; %, por lo tanto, no tiene sentido químico un certificado que indique &lt;span class=&#34;math inline&#34;&gt;\(99.7 \pm 0.5\)&lt;/span&gt; %. Para modelar pureza química es necesario utilizar una distribución de probabilidad que esté restringida al intervalo &lt;span class=&#34;math inline&#34;&gt;\([0, 100]\)&lt;/span&gt; % (o &lt;span class=&#34;math inline&#34;&gt;\([0, 1]\)&lt;/span&gt;) como, por ejemplo, la distribución Beta.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:plotnormal&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/plotnormal-1.png&#34; alt=&#34;Distribución Normal con media = 0 y sd = 1 &#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/plotnormal-1.png&#34; alt=&#34;Distribución Normal con media = 0 y sd = 1 &#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Distribución Normal con media = 0 y sd = 1
 &lt;/p&gt;
@@ -828,7 +945,7 @@ sigma &amp;lt;- 1 # Desviación estándar de los n = 100 datos
 x &amp;lt;- rnorm(n, mu, sigma)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Al calcular la media y desviación estándar (muestral) de estos datos obtenemos &lt;span class=&#34;math inline&#34;&gt;\(\overline{x} = 10.1\)&lt;/span&gt; y &lt;span class=&#34;math inline&#34;&gt;\(s = 0.9\)&lt;/span&gt; “¿Pero cómo? ¿No habíamos simulado una media de 10 y desviación estándar 1? Esto es una estafa” &lt;em&gt;Keep calm&lt;/em&gt; recuerde que son aleatorios. La figura &lt;a href=&#34;#fig:normplot&#34;&gt;2&lt;/a&gt; muestra a la izquierda el histograma y a la derecha el gráfico de normalidad (&lt;em&gt;QQ-Plot&lt;/em&gt;) de los datos simulados:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:normplot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/normplot-1.png&#34; alt=&#34;Izquierda histograma, derecha gráfico de normalidad&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/normplot-1.png&#34; alt=&#34;Izquierda histograma, derecha gráfico de normalidad&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Izquierda histograma, derecha gráfico de normalidad
 &lt;/p&gt;
@@ -888,7 +1005,7 @@ lambda &amp;lt;- 5 # Parámetro de la distribución Poisson
 
 # Generar m = 100 datos de una distribución Poisson con parámtro lambda = 5
 y &amp;lt;- rpois(m, lambda)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;div class=&#34;alert alert-warning&#34;&gt;
   &lt;p&gt;¿No les parece familiar el QQ-Plot a aquellos que validan homogeneidad de peso en validación de procesos farmacéuticos? 1313&lt;/p&gt;
 
@@ -924,7 +1041,7 @@ A = 1.2355, p-value = 0.003072&lt;/code&gt;&lt;/pre&gt;
 &lt;/ol&gt;
 &lt;p&gt;Para finalizar veamos en acción de estos métodos: Bootstrap. Sin embargo, el detalle estadístico y su implementación los veremos en otro post, por ahora, simplemente lo ejemplificaremos. La figura &lt;a href=&#34;#fig:As&#34;&gt;3&lt;/a&gt; muestra el histograma y el &lt;em&gt;QQ-Plot&lt;/em&gt; de normalidad correspondientes a datos de concentración de arsénico [ppm] muestreados en &lt;span class=&#34;math inline&#34;&gt;\(n = 271\)&lt;/span&gt; pozos de agua en Bangladesh:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:As&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/As-1.png&#34; alt=&#34;Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/As-1.png&#34; alt=&#34;Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 3: Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh
 &lt;/p&gt;
@@ -932,7 +1049,7 @@ Figure 3: Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bang
 &lt;p&gt;Claramente, ni si quiera es necesario hacer un test de normalidad, la evidencia que muestra la figura &lt;a href=&#34;#fig:As&#34;&gt;3&lt;/a&gt; en contra de la hipótesis de normalidad es abrumadora. El promedio de la concentración de As es &lt;span class=&#34;math inline&#34;&gt;\(\overline{x} = 125\)&lt;/span&gt; ppm y la desviación estándar &lt;span class=&#34;math inline&#34;&gt;\(s = 298\)&lt;/span&gt; ppm. Utilizando la fórmula usual para estimar un intervalo de confianza al 95% para la media &lt;span class=&#34;math inline&#34;&gt;\(\overline{x} \pm t_{\alpha/2, n - 1} s/\sqrt{n}\)&lt;/span&gt; obtenemos [90, 161] ppm As. Sin embargo, la gran asimetría de los datos hace inverosímil el intervalo obtenido.&lt;/p&gt;
 &lt;p&gt;Al aplicar el método &lt;em&gt;bootstrap&lt;/em&gt; obtenemos un intervalo para la media al 95% (BCa) entre [98, 175] ppm As, el cual es más “correcto” por si Ud. necesita informar este parámetro. La figura &lt;a href=&#34;#fig:Asboot&#34;&gt;4&lt;/a&gt; muestra el histograma y QQ-Plot de normalidad de el método de bootstrap. Advierta el Teorema Central del Límite en su máxima expresión.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:Asboot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/Asboot-1.png&#34; alt=&#34;Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/Asboot-1.png&#34; alt=&#34;Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 4: Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos
 &lt;/p&gt;
@@ -952,10 +1069,10 @@ Figure 4: Histograma y QQ-Plot de las estimaciones de la media de los datos de A
     
     <item>
       <title>¿Cuál es la máxima diferencia tolerable entre duplicados de análisis?</title>
-      <link>https://www.analytical.cl/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</link>
+      <link>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
+      <guid>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
       <description>&lt;p&gt;Un día cualquiera en un laboratorio que aún no establece criterios de aceptación de precisión:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Duplicado 1 = 25.56 % Cu&lt;/li&gt;
@@ -1092,7 +1209,7 @@ QAQC-06
 \end{equation}\]&lt;/span&gt;
 &lt;p&gt;Esta ecuación puede ser fácilmente implementada en Excel pero en este post, como no, haremos los cálculos en lenguaje R. Pero antes, observe la figura &lt;a href=&#34;#fig:dup&#34;&gt;1&lt;/a&gt; la cual muestra un gráfico de dispersión entre Duplicado 1 (&lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;) y Duplicado 2 (&lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt;). En este caso el orden es irrelevante. Si ajustáramos un modelo lineal entre ambas variables ¿Qué valores de pendiente e intercepto deberíamos obtener?&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:dup&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/dup-1.png&#34; alt=&#34;Gráfico de dispersión entre duplicados&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/dup-1.png&#34; alt=&#34;Gráfico de dispersión entre duplicados&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Gráfico de dispersión entre duplicados
 &lt;/p&gt;
@@ -1140,7 +1257,7 @@ Figure 1: Gráfico de dispersión entre duplicados
 &lt;/blockquote&gt;
 &lt;p&gt;Para abordar este objetivo, proponemos el siguiente diseño experimental:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://www.analytical.cl/img/doe.png&#34; alt=&#34;Diseño Experimental&#34; width=&#34;700&#34; /&gt;
+&lt;img src=&#34;/img/doe.png&#34; alt=&#34;Diseño Experimental&#34; width=&#34;700&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Diseño Experimental&lt;/p&gt;
 &lt;/div&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
@@ -1273,7 +1390,7 @@ Analista 4
 &lt;/table&gt;
 &lt;p&gt;Antes de llevar a cabo el análisis estadístico formal, observemos la figura &lt;a href=&#34;#fig:doeplot&#34;&gt;2&lt;/a&gt; la cual muestra el valor promedio de cada analista &lt;span class=&#34;math inline&#34;&gt;\(\pm\)&lt;/span&gt; 1 desviación estándar. Ella nos indica que, aparentemente, los resultados entre los analistas son bastante consistentes.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:doeplot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/doeplot-1.png&#34; alt=&#34;Boxplot estudio de precisión&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/doeplot-1.png&#34; alt=&#34;Boxplot estudio de precisión&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Boxplot estudio de precisión
 &lt;/p&gt;
@@ -1401,10 +1518,10 @@ Residuals
     
     <item>
       <title>¿Cómo &#34;demuestro&#34; que mi curva de calibracion es lineal?</title>
-      <link>https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</link>
+      <link>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</link>
       <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
+      <guid>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
       <description>&lt;!-- Promedín: Lo siento, no se puede demostrar eso. Fin del Post.\ --&gt;
 &lt;!-- Preguntín: &#34;¡Pero cómo!... si el r = 0,999&#34;&#34; \ --&gt;
 &lt;!-- Promedín: Lo lamento, el coeficiente de correlación no es una prueba formal de linealidad. --&gt;
@@ -1431,7 +1548,7 @@ Residuals
 &lt;p&gt;Para comenzar, por favor, ponga atención a la figura &lt;a href=&#34;#fig:anscombe&#34;&gt;1&lt;/a&gt; denominada “El Cuarteto de Anscombe”. La “gracia” de estos datos de calibración es que todos tienen la misma pendiente, intercepto, error de calibración y… ¡coeficiente de correlación!&lt;/p&gt;
 &lt;p&gt;¿No me cree? Le dejo este &lt;a href=&#34;https://1drv.ms/x/s!AuF6FPVWruwDtfpb0dC8SSaBCChfzA&#34;&gt;link&lt;/a&gt; para que descargue los datos en archivo Excel y se convenza con sus propios ojos.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:anscombe&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/anscombe-1.png&#34; alt=&#34;El Cuarteto de Ascombe&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/anscombe-1.png&#34; alt=&#34;El Cuarteto de Ascombe&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: El Cuarteto de Ascombe
 &lt;/p&gt;
@@ -1441,7 +1558,7 @@ Figure 1: El Cuarteto de Ascombe
 &lt;p&gt;&lt;em&gt;Moraleja:&lt;/em&gt; Trate, en lo posible, de diseñar la curva con los puntos equiespaciados y evite los saltos de varios órdenes de magnitud de la concentración.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:influyente&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/influyente-1.png&#34; alt=&#34;Punto inlfuyente en la calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/influyente-1.png&#34; alt=&#34;Punto inlfuyente en la calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Punto inlfuyente en la calibración
 &lt;/p&gt;
@@ -1462,7 +1579,7 @@ y1 &amp;lt;- b0 + b1*x + rnorm(10, 0, s) # Absorbancias con
 y2 &amp;lt;- b0 + b1*x + rnorm(10, 0, 10*s) # Absorbancias con 
                                      # error = 10*s = 10&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:simplot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/simplot-1.png&#34; alt=&#34;Simulación de curvas perfectamente lineales&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/simplot-1.png&#34; alt=&#34;Simulación de curvas perfectamente lineales&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 3: Simulación de curvas perfectamente lineales
 &lt;/p&gt;
@@ -1582,7 +1699,7 @@ Replicado
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:lofplot&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/lofplot-1.png&#34; alt=&#34;Curva de calibración CAF. Test de carencia de ajuste&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/lofplot-1.png&#34; alt=&#34;Curva de calibración CAF. Test de carencia de ajuste&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 4: Curva de calibración CAF. Test de carencia de ajuste
 &lt;/p&gt;
@@ -1904,7 +2021,7 @@ Pure Error
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:plotmandel&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/plotmandel-1.png&#34; alt=&#34;Curva de calibración Cu&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/plotmandel-1.png&#34; alt=&#34;Curva de calibración Cu&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 5: Curva de calibración Cu
 &lt;/p&gt;
@@ -1970,10 +2087,10 @@ Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39
     
     <item>
       <title>¿Cómo calcular la incertidumbre de una curva de calibración?</title>
-      <link>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
+      <link>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
       <pubDate>Mon, 14 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
+      <guid>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
       <description>&lt;p&gt;Ok, este es el segundo post pero advierto que aún está en rodaje… esto del &lt;em&gt;copywriting&lt;/em&gt; no es nada fácil.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;¿Qué es y cómo estimar la incertidumbre de una curva de calibración?&lt;/p&gt;
@@ -2014,7 +2131,7 @@ library(ggplot2)
 ggplot(d, aes(x = x, y = y)) +
   geom_smooth(method = &amp;#39;lm&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:banda&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Incertidumbre de calibración
 &lt;/p&gt;
@@ -2137,7 +2254,7 @@ UA
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:cal&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png&#34; alt=&#34;Curva de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png&#34; alt=&#34;Curva de calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Curva de calibración
 &lt;/p&gt;
@@ -2201,20 +2318,20 @@ $`Confidence Limits`
     
     <item>
       <title>Primer Post, perdone lo poco</title>
-      <link>https://www.analytical.cl/post/primer-post/</link>
+      <link>/post/primer-post/</link>
       <pubDate>Sun, 13 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/primer-post/</guid>
-      <description>&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
-&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;link href=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-label/leaflet.label.css&#34; rel=&#34;stylesheet&#34; /&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-label/leaflet.label.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
-&lt;script src=&#34;https://www.analytical.cl/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
+      <guid>/post/primer-post/</guid>
+      <description>&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;/rmarkdown-libs/leaflet-label/leaflet.label.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-label/leaflet.label.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
 
 
 &lt;p&gt;Este es el primer post de esta página. Estoy utilizando &lt;code&gt;blogdown&lt;/code&gt; para generar los post, el cual permite incorporar código en &lt;code&gt;R&lt;/code&gt; y &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; en el mismo documento.&lt;/p&gt;
@@ -2234,7 +2351,7 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point(pch = 19, col = &amp;#39;red&amp;#39;) +
   geom_smooth(method = &amp;#39;lm&amp;#39;) +
   theme_bw()&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-primer-post_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2017-08-13-primer-post_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Todos los modelos son erróneos, pero algunos son útiles (&lt;strong&gt;no me acuerdo quién dijo esto&lt;/strong&gt;)&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2366,10 +2483,10 @@ Figure 1: Ubicación de Bureau Veritas
     
     <item>
       <title>Análisis Geoespacial de Zonas de Producción de Mieles</title>
-      <link>https://www.analytical.cl/project/indice_mieles_chile/</link>
+      <link>/project/indice_mieles_chile/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/project/indice_mieles_chile/</guid>
+      <guid>/project/indice_mieles_chile/</guid>
       <description>&lt;p&gt;Zonas idóneas para la apicultura
 &lt;img src=&#34;static/img/indice.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 </description>
@@ -2377,14 +2494,14 @@ Figure 1: Ubicación de Bureau Veritas
     
     <item>
       <title>Tutorial Rstudio&#43;knitr: Reportería automática con R</title>
-      <link>https://www.analytical.cl/talk/example-talk/</link>
+      <link>/talk/example-talk/</link>
       <pubDate>Wed, 14 May 2014 19:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/talk/example-talk/</guid>
+      <guid>/talk/example-talk/</guid>
       <description>
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34;
-  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 
+  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
@@ -2393,14 +2510,30 @@ Figure 1: Ubicación de Bureau Veritas
     
     <item>
       <title>Establecimiento de la trazabilidad y estimación de incertidumbre en Metrología Química</title>
-      <link>https://www.analytical.cl/talk/inn/</link>
+      <link>/talk/inn/</link>
       <pubDate>Thu, 12 Jul 2012 12:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/talk/inn/</guid>
+      <guid>/talk/inn/</guid>
       <description>
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34;
-  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 
+  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Test slides</title>
+      <link>/talk/test_slides/</link>
+      <pubDate>Thu, 12 Jul 2012 12:00:00 +0000</pubDate>
+      
+      <guid>/talk/test_slides/</guid>
+      <description>
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 
+  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
