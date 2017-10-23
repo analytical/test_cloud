@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Carlos Gómez</title>
-    <link>/categories/</link>
+    <link>https://www.analytical.cl/categories/</link>
     <description>Recent content in Categories on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -11,73 +11,64 @@
     
     <item>
       <title>Incertidumbre</title>
-      <link>/categories/incertidumbre/</link>
-      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
+      <link>https://www.analytical.cl/categories/incertidumbre/</link>
+      <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/incertidumbre/</guid>
+      <guid>https://www.analytical.cl/categories/incertidumbre/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Iso</title>
-      <link>/categories/iso/</link>
+      <link>https://www.analytical.cl/categories/iso/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/iso/</guid>
+      <guid>https://www.analytical.cl/categories/iso/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Monte Carlo</title>
-      <link>/categories/monte-carlo/</link>
+      <link>https://www.analytical.cl/categories/monte-carlo/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/monte-carlo/</guid>
+      <guid>https://www.analytical.cl/categories/monte-carlo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Normalidad</title>
-      <link>/categories/normalidad/</link>
+      <link>https://www.analytical.cl/categories/normalidad/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/normalidad/</guid>
+      <guid>https://www.analytical.cl/categories/normalidad/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Precision</title>
-      <link>/categories/precision/</link>
+      <link>https://www.analytical.cl/categories/precision/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/precision/</guid>
+      <guid>https://www.analytical.cl/categories/precision/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/categories/r/</link>
+      <link>https://www.analytical.cl/categories/r/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/r/</guid>
+      <guid>https://www.analytical.cl/categories/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Repetibilidad</title>
-      <link>/categories/repetibilidad/</link>
+      <link>https://www.analytical.cl/categories/repetibilidad/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/repetibilidad/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Sesgo</title>
-      <link>/categories/sesgo/</link>
-      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/sesgo/</guid>
+      <guid>https://www.analytical.cl/categories/repetibilidad/</guid>
       <description></description>
     </item>
     

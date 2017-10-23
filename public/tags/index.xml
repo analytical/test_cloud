@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Carlos Gómez</title>
-    <link>/tags/</link>
+    <link>https://www.analytical.cl/tags/</link>
     <description>Recent content in Tags on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -12,92 +12,83 @@
     
     <item>
       <title>Content tagged as &#39;Academic&#39;</title>
-      <link>/tags/academic/</link>
+      <link>https://www.analytical.cl/tags/academic/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/academic/</guid>
+      <guid>https://www.analytical.cl/tags/academic/</guid>
       <description>&lt;p&gt;Here is a list of all the content that has been tagged as &lt;em&gt;academic&lt;/em&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Adicion Conocida</title>
-      <link>/tags/adicion-conocida/</link>
-      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/adicion-conocida/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Calibracion</title>
-      <link>/tags/calibracion/</link>
-      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
+      <link>https://www.analytical.cl/tags/calibracion/</link>
+      <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/calibracion/</guid>
+      <guid>https://www.analytical.cl/tags/calibracion/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Gum</title>
-      <link>/tags/gum/</link>
+      <link>https://www.analytical.cl/tags/gum/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/gum/</guid>
+      <guid>https://www.analytical.cl/tags/gum/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Incertidumbre</title>
-      <link>/tags/incertidumbre/</link>
+      <link>https://www.analytical.cl/tags/incertidumbre/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/incertidumbre/</guid>
+      <guid>https://www.analytical.cl/tags/incertidumbre/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linealidad</title>
-      <link>/tags/linealidad/</link>
+      <link>https://www.analytical.cl/tags/linealidad/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/linealidad/</guid>
+      <guid>https://www.analytical.cl/tags/linealidad/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mieles De Chile</title>
-      <link>/tags/mieles-de-chile/</link>
+      <link>https://www.analytical.cl/tags/mieles-de-chile/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/mieles-de-chile/</guid>
+      <guid>https://www.analytical.cl/tags/mieles-de-chile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Precision</title>
-      <link>/tags/precision/</link>
+      <link>https://www.analytical.cl/tags/precision/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/precision/</guid>
+      <guid>https://www.analytical.cl/tags/precision/</guid>
       <description></description>
     </item>
     
     <item>
       <title>R</title>
-      <link>/tags/r/</link>
-      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
+      <link>https://www.analytical.cl/tags/r/</link>
+      <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/r/</guid>
+      <guid>https://www.analytical.cl/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Repetibilidad</title>
-      <link>/tags/repetibilidad/</link>
+      <link>https://www.analytical.cl/tags/repetibilidad/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/repetibilidad/</guid>
+      <guid>https://www.analytical.cl/tags/repetibilidad/</guid>
       <description></description>
     </item>
     

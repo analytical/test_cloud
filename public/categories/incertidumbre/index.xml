@@ -2,137 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Incertidumbre on Carlos Gómez</title>
-    <link>/categories/incertidumbre/</link>
+    <link>https://www.analytical.cl/categories/incertidumbre/</link>
     <description>Recent content in Incertidumbre on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2017 Carlos Gómez</copyright>
-    <lastBuildDate>Fri, 20 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Sep 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="/categories/incertidumbre/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>como detectar el efecto matriz en un metodo analitico</title>
-      <link>/post/como-detectar-el-efecto-matriz-en-un-metodo-analitico/</link>
-      <pubDate>Fri, 20 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/post/como-detectar-el-efecto-matriz-en-un-metodo-analitico/</guid>
-      <description>&lt;p&gt;He vuelto a postear, después de una gira que me llevó por los cinco&amp;hellip;
-mentira, fue por pura pega.&lt;/p&gt;
-
-&lt;p&gt;El famoso efecto matriz, algo tan etéreo como el &lt;em&gt;criterio analítico&lt;/em&gt;.
-La situación es la siguiente: Ud. tiene un método analítico que consistentemente
-entrega valores sesgados&lt;/p&gt;
-
-&lt;p&gt;El efecto matriz está íntimamente relacionado con las interferencias de la
-matriz que de alguna forma aumentan o disminuyen la señal instrumental que,
-en teoría, es producida sólo por el analito de interés.&lt;/p&gt;
-
-&lt;p&gt;Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers
-que nos enseñaron el famoso método de calibración con adición conocida o
-adición de estándar. en este método de calibración, la matriz es nuestro
-medio de calibración. En vez de preparar los calibrantes en solventes puros o
-en solución ácida, utilizaremos la misma matriz para preparar (adicionar) las
-soluciones de calibración.&lt;/p&gt;
-
-&lt;p&gt;Existen varias formas de implementar el método de adición conocida. Una muy
-buena referencia es el excelente y pedagógico paper de M. Bader:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Morris Bade, A systematic approach to standard addition methods in
-instrumental analysis &lt;em&gt;J. Chem. Educ., 1980, 57 (10), p 703&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;El método consiste en añadir cantidades conocidas del analito en solvente
-puro o solución ácida y medir la respuesta instrumental en una serie de
-adiciones crecientes. Es necesario que las adiciones de analito generen, en
-conjunto con la cantidad de analito en la muestra original, una concentración
-tal que aún se encuentre en el rango lineal de calibración. De esta forma
-se otiene una curva de calibración como se observa en la figura&lt;a href=&#34;#fig:adicion&#34;&gt;1&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/c0adicion.png&#34; alt=&#34;Preparación curva método de adición conocida&#34;  /&gt;
-&lt;p class=&#34;caption&#34;&gt;Figure 1 Preparación curva método de adición conocida&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Las unidades del eje &lt;code&gt;\(X\)&lt;/code&gt; pueden establecerse como &lt;em&gt;analito añadido&lt;/em&gt; o,
-tal como lo propone Bader en su paper, como múltiplos de un volumen
-o cantidad fija del analito. Por lo tanto, en &lt;code&gt;\(x = 0\)&lt;/code&gt; se obtiene la
-señal de la muestra problema a la cual no se le ha agregado el
-analito, es decir, la señal original. En cada una de las adiciones
-del estándar mediremos la señal instrumental de tal manera de
-obtener, y así lo esperamos, una relación lineal entre analito
-agregado &lt;code&gt;\(x\)&lt;/code&gt; y señal &lt;code&gt;\(y\)&lt;/code&gt; de la forma:&lt;/p&gt;
-
-&lt;p&gt;\begin{equation}
-  y = \beta&lt;em&gt;{0} + \beta&lt;/em&gt;{1}x + \epsilon
-    \tag{1}
-\end{equation}&lt;/p&gt;
-
-&lt;p&gt;donde se asumen los mismos supuestos que discutimos en el caso de la
-calibración lineal estándar(en solvente puro) y que puede recordar en este
-&lt;a href=&#34;https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/&#34; target=&#34;_blank&#34;&gt;post&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;La concentración de la muestra problema &lt;code&gt;\(C_{0}\)&lt;/code&gt; se obtiene a partir de la
-ecuación (2):&lt;/p&gt;
-
-&lt;p&gt;\begin{equation}
-  C&lt;em&gt;{0} = \frac{\beta&lt;/em&gt;{1}}{\beta_{0}}
-  \tag{2}
-\end{equation}&lt;/p&gt;
-
-&lt;p&gt;La incertidumbre de la concentración de la muestra problema &lt;code&gt;\(u(C_{0})\)&lt;/code&gt; se
-calcula a partir de la ecuación:&lt;/p&gt;
-
-&lt;p&gt;\begin{equation}
-  u(C&lt;em&gt;{0}) = \frac{\sigma&lt;/em&gt;{y/x}}{\beta&lt;em&gt;{1}}
-  \sqrt{\frac{1}{n} + \frac{\overline{y}^2}
-  {\beta&lt;/em&gt;{1}\sum&lt;em&gt;{i}^{n} (x&lt;/em&gt;{i} - \overline{x})^2}}
-    \tag{3}
-\end{equation}&lt;/p&gt;
-
-&lt;p&gt;donde:
-- &lt;code&gt;\(\sigma_{y/x}\)&lt;/code&gt; es la desviación estándar del error aleatorio &lt;code&gt;\(\epsilon\)&lt;/code&gt;
-- &lt;code&gt;\(n\)&lt;/code&gt; es el número de adiciones independientes del estándar
-- &lt;code&gt;\(\overline{y}\)&lt;/code&gt; es el promedio de las señales instrumentales de las adiciones
-- &lt;code&gt;\(\overline{x}\)&lt;/code&gt; es el promedio de las concentraciones&lt;/p&gt;
-
-&lt;p&gt;Como puede apreciar la expresión de la incertidumbre de calibración para el
-método de adición conocida es muy
-similar a la correspondiente a la calibración estandar que discutimos en un
-&lt;a href=&#34;https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/&#34; target=&#34;_blank&#34;&gt;post anterior&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Si queremos minimizar esta incertidumbre podríamos aumentar el número de
-adiciones &lt;code&gt;\(n\)&lt;/code&gt; o aumentar el término &lt;code&gt;\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)&lt;/code&gt;.
-Este último es interesante pues nos dice que la incertidumbre de calibración
-de este método se minimiza utilizando un rango amplio de concentración de
-adición. Ellison hace un análisis donde demuestra que, dado que la propiedad
-de linealidad se mantiene, basta preparar dos puntos de calibración:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;La muestra original sin adición ($x = 0$)&lt;/li&gt;
-&lt;li&gt;El extremo superior del rango lineal&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Por ejemplo, si por alguna razón se tuvieran que preparar &lt;code&gt;\(n = 6\)&lt;/code&gt; adiciones, lo
-que indica la ecuación (3), es que sería mejor preparar tres puntos
-sin adición ($x = 0$) y tres en el extremos superior del rango lineal, tal
-como lo demuestra la figura &lt;a href=&#34;#fig:doe&#34;&gt;2&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/doeadicion.png&#34; alt=&#34;Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre&#34;  /&gt;
-&lt;p class=&#34;caption&#34;&gt;Figure 2 Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;p&gt;An effective and commonly used technique to overcome matrix interferences is standard addition. This involves adding known quantities of the analyte (the standard) to the solution of interest and measuring the solution&amp;rsquo;s analytical signals in response to each addition. (Adding the standard to the sample is commonly called &amp;ldquo;spiking the sample.&amp;rdquo;) Assuming that the analytical signal still changes proportionally to the concentration of the analyte in the presence of matrix effects, a calibration curve can be obtained based on simple linear regression. The analyte&amp;rsquo;s concentration in the solution before any additions of the standard can then be extrapolated from the regression line; I will explain how this extrapolation works later in the post with a plot of the regression line.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte II</title>
-      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
+      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
+      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
       <description>&lt;p&gt;En el &lt;a href=&#34;https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/&#34;&gt;post anterior&lt;/a&gt; describimos brevemente en qué consiste el método de Monte Carlo y cómo utilizarlo para estimar la incertidumbre de medición. Finalizamos comparando la estimación de acuerdo a la guía GUM con el método de Monte Carlo siguiendo estrictamente las directrices del test de diferencias numéricas propuesto por el Suplmento 1 de la GUM.&lt;/p&gt;
 &lt;p&gt;Llevamos a cabo el test de validación “a mano”, es decir, ingresamos todas las instrucciones en código &lt;code&gt;R&lt;/code&gt;. Si bien no fue difícil, existen librerías especializadas en &lt;code&gt;R&lt;/code&gt; que permiten realizar todos los cálculos de incertidumbre y validarlos utilizando funciones ya incorporadas.&lt;/p&gt;
 &lt;p&gt;En &lt;code&gt;R&lt;/code&gt;existen dos librerías especializadas en cálculo de incertidumbre de métodos de medición físico-químicos:&lt;/p&gt;
@@ -354,7 +237,7 @@ m          0.9916 0.00005 -0.351378363 -1.756892e-05
 u(y):  0.006053998 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Además de los cálculos de incertidumbre, la opción &lt;code&gt;method = &#39;GUM&#39;&lt;/code&gt; entrega 4 gráficos muy interesantes, siendo el más importante el de &lt;em&gt;Contribuciones combinadas&lt;/em&gt;, el cual se muestra en la figura &lt;a href=&#34;#fig:plotGUM&#34;&gt;1&lt;/a&gt;. En este gráfico queda en evidencia que el factor que más aporta a la incertidumbre total (evaluada por GUM) es la curva de calibración.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:plotGUM&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-09-23-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo-parte2_files/figure-html/plotGUM-1.png&#34; alt=&#34;Gráfico de contribución a la incertidumbre total&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-23-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo-parte2_files/figure-html/plotGUM-1.png&#34; alt=&#34;Gráfico de contribución a la incertidumbre total&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Gráfico de contribución a la incertidumbre total
 &lt;/p&gt;
@@ -525,10 +408,10 @@ GUM.validate(var.name = variables,
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I</title>
-      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
+      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
       <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
+      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
       <description>&lt;p&gt;De acuerdo al numeral 8.1 del Suplemento 1 de la guía GUM, el método de Monte Carlo es un método general para estimar la incertidumbre de medición y puede, bajo ciertas directrices, validar los cálculos realizados con el método GUM. En este post asumiremos que Ud., esimado lector, está familiarizado con el método GUM y ya lo tiene implementado , por ejemplo, en una hoja Excel y le gustaría validar sus cálculos mediante un método totalmente independiente y más general. De esta forma podrá cumplir cabalmente con el siguiente numeral de la norma 17025:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;5.4.7.1 Los cálculos y la transferencia de los datos deben estar sujetos a verificaciones adecuadas llevadas a cabo de una manera sistemática.&lt;/p&gt;
@@ -580,7 +463,7 @@ uZ &amp;lt;- sd(Z) # La incertidumbre estándar de Z es la desviación estándar
 &lt;p&gt;En nuestro ejemplo, la incertidumbre estándar por Monte Carlo es de &lt;span class=&#34;math inline&#34;&gt;\(u_{Z}^{MC} = 7.4\)&lt;/span&gt;. ¿Qué nos decía la teoría? Que &lt;span class=&#34;math inline&#34;&gt;\(u_{Z} = \sqrt{2}\sigma = \sqrt{2}\cdot 5 = 7.1\)&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;Ojalá todo fuera tan fácil. El ejemplo era muy sencillo y la solución es conocida en forma teórica. La vida del químico analítico es extremadamente compleja (en todo $entido), y no siempre existe una solución tan simple. Para eso está el método de Monte Carlo, el cual simula un proceso complejo cuyas variables de entrada pueden tener cualquier distribución de probabilidad tal como lo muestra la siguiente figura:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/img/mc2.png&#34; width=&#34;500&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/mc2.png&#34; width=&#34;500&#34; /&gt;
 
 &lt;/div&gt;
 &lt;p&gt;La generalidad del método MC no asume normalidad de la variable de interés &lt;span class=&#34;math inline&#34;&gt;\(g(y)\)&lt;/span&gt;, sino más bien la estima como una distribución empírica y a partir de ésta calcula la incertidumbre estándar y expandida.&lt;/p&gt;
@@ -601,7 +484,7 @@ uZ &amp;lt;- sd(Z) # La incertidumbre estándar de Z es la desviación estándar
 \end{equation}\]&lt;/span&gt;
 &lt;p&gt;Asumiremos por simplicidad que las incertidumbres asociadas al material volumétrico son las indicadas por el fabricante en el mismo material, es decir, de acuerdo a la figura &lt;a href=&#34;#fig:matraz&#34;&gt;1&lt;/a&gt; y, por ahora, serán las únicas fuentes de incertidumbre del material volumétrico (olvidaremos la T° y la repetibilidad).&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:matraz&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/img/pipeta.jpg&#34; alt=&#34;Incertidumbre del fabricante&#34;  /&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/pipeta.jpg&#34; alt=&#34;Incertidumbre del fabricante&#34;  /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Incertidumbre del fabricante
 &lt;/p&gt;
@@ -651,7 +534,7 @@ f.sim &amp;lt;- vf.sim/vi.sim # Es la misma fórmula&lt;/code&gt;&lt;/pre&gt;
 &lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(n = 1000\)&lt;/span&gt; valores aleatorios del volumen inicial a partir de una distribución rectangular con media &lt;code&gt;vi&lt;/code&gt; = 20 mL e incertidumbre expandida &lt;code&gt;Uvi&lt;/code&gt; = 0.1 mL. El promedio de los 1000 volumenes iniciales simulados es 19.999 mL y una desviación estándar de &lt;code&gt;uvi&lt;/code&gt; = &lt;span class=&#34;math inline&#34;&gt;\(U_{vf}/\sqrt{3} = 0.058\)&lt;/span&gt; mL. La figura &lt;a href=&#34;#fig:visim&#34;&gt;2&lt;/a&gt; muestra el histograma de los valores simulados. Note que la simulación concuerda perfectamente con los valores de incertidumbre informados por el fabricante (&lt;span class=&#34;math inline&#34;&gt;\(20 \pm 0.1\)&lt;/span&gt; mL).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:visim&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/visim-1.png&#34; alt=&#34;Histograma de los valores simulados de volumen inicial [mL]&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/visim-1.png&#34; alt=&#34;Histograma de los valores simulados de volumen inicial [mL]&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Histograma de los valores simulados de volumen inicial [mL]
 &lt;/p&gt;
@@ -706,14 +589,14 @@ Figure 2: Histograma de los valores simulados de volumen inicial [mL]
 &lt;li&gt;La figura &lt;a href=&#34;#fig:fsimhis&#34;&gt;3&lt;/a&gt; muestra el histograma de los 1000 factores de dilución simulados:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:fsimhis&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimhis-1.png&#34; alt=&#34;Histograma de factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimhis-1.png&#34; alt=&#34;Histograma de factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 3: Histograma de factores de dilución simulados
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;“¡Qué interesante!”, dirá Ud., la división de dos variables rectangulares genera una distribución de datos que, al menos, es simétrica. ¿Es razonable asumir una distribución normal del factor de dilución simulado? Si recuerda la discusión en este &lt;a href=&#34;https://www.analytical.cl/post/mis-datos-no-son-normales/&#34;&gt;post&lt;/a&gt;, podemos evaluar la admisibilidad de esta hipótesis mediante el análisis gráfico &lt;em&gt;QQ-Plot&lt;/em&gt; de normalidad de los datos simulados y el test de Shapiro, el cual se muestra en la figura &lt;a href=&#34;#fig:fsimnorm&#34;&gt;4&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:fsimnorm&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimnorm-1.png&#34; alt=&#34;QQ-Plot de normalidad de los n factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/fsimnorm-1.png&#34; alt=&#34;QQ-Plot de normalidad de los n factores de dilución simulados&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 4: QQ-Plot de normalidad de los n factores de dilución simulados
 &lt;/p&gt;
@@ -768,7 +651,7 @@ W = 0.99005, p-value = 2.719e-06&lt;/code&gt;&lt;/pre&gt;
 abline(v = quantilos[1], col = &amp;#39;red&amp;#39;)
 abline(v = quantilos[2], col = &amp;#39;red&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:quantilofig&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/quantilofig-1.png&#34; alt=&#34;Intervalo de confianza al 95% de los datos simulados del factor de dilución&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-09-12-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo_files/figure-html/quantilofig-1.png&#34; alt=&#34;Intervalo de confianza al 95% de los datos simulados del factor de dilución&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 5: Intervalo de confianza al 95% de los datos simulados del factor de dilución
 &lt;/p&gt;
@@ -808,10 +691,10 @@ Figure 5: Intervalo de confianza al 95% de los datos simulados del factor de dil
     
     <item>
       <title>¿Cómo calcular la incertidumbre de una curva de calibración?</title>
-      <link>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
+      <link>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
       <pubDate>Mon, 14 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
+      <guid>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
       <description>&lt;p&gt;Ok, este es el segundo post pero advierto que aún está en rodaje… esto del &lt;em&gt;copywriting&lt;/em&gt; no es nada fácil.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;¿Qué es y cómo estimar la incertidumbre de una curva de calibración?&lt;/p&gt;
@@ -852,7 +735,7 @@ library(ggplot2)
 ggplot(d, aes(x = x, y = y)) +
   geom_smooth(method = &amp;#39;lm&amp;#39;) &lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:banda&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png&#34; alt=&#34;Incertidumbre de calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 1: Incertidumbre de calibración
 &lt;/p&gt;
@@ -975,7 +858,7 @@ UA
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:cal&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png&#34; alt=&#34;Curva de calibración&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;https://www.analytical.cl/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png&#34; alt=&#34;Curva de calibración&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
 Figure 2: Curva de calibración
 &lt;/p&gt;
