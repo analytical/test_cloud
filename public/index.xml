@@ -11,6 +11,259 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>¿Cómo detectar el efecto matriz en un método analítico?</title>
+      <link>https://www.analytical.cl/post/como-detectar-efecto-matriz-metodo-analitico/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.analytical.cl/post/como-detectar-efecto-matriz-metodo-analitico/</guid>
+      <description>&lt;p&gt;He vuelto a postear, después de una gira que me llevó por los cinco… mentira, fue por pura pega.&lt;/p&gt;
+&lt;p&gt;El famoso efecto matriz, algo tan etéreo como el &lt;em&gt;criterio analítico&lt;/em&gt;. El efecto matriz está íntimamente relacionado con las interferencias de la matriz que de alguna forma aumentan o disminuyen la señal instrumental que, en teoría, es producida sólo por el analito de interés. Otro efecto a considerar es que la matriz ejerce un efecto protector del analito, especialmente en métodos que utilizan cromatografía gaseosa.&lt;/p&gt;
+&lt;p&gt;Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers que nos enseñaron el famoso método de calibración con adición conocida o adición de estándar. En este método la matriz es nuestro medio de calibración. En vez de preparar los calibrantes en solventes puros o en solución ácida, utilizaremos la misma matriz para preparar (adicionar) el analito. De esta forma, la señal analítica de estos calibrantes en matriz, está compuesta de la señal propia del analito así como también de los interferentes, lo que permite corregir/minimizar sus efectos.&amp;quot;&lt;/p&gt;
+&lt;p&gt;Existen varias formas de implementar el método de adición conocida. Una muy buena referencia es el excelente y pedagógico paper de M. Bader:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Morris Bader “A systematic approach to standard addition methods in instrumental analysis” &lt;em&gt;J. Chem. Educ., 1980, 57 (10), p 703&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;El método consiste en añadir cantidades conocidas del analito en solvente puro o solución ácida a volúmenes iguales de matriz. Finalmente, medir la respuesta instrumental en una serie de adiciones crecientes tal como lo muestra la figura &lt;a href=&#34;#fig:mosaplot&#34;&gt;1&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:mosaplot&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/mosaplot.png&#34; alt=&#34;Diseño experimental de la adición conocida. Cortesía de Lins4y via Wikimedia Commons&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: Diseño experimental de la adición conocida. Cortesía de Lins4y via Wikimedia Commons
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Es necesario que las adiciones de analito generen, en conjunto con la cantidad de analito presente en la muestra original, una concentración tal que aún se encuentre en el rango lineal de calibración. De esta forma se otiene una curva tal como se observa en la figura &lt;a href=&#34;#fig:adicion&#34;&gt;2&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:adicion&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/c0adicion.png&#34; alt=&#34;Preparación curva método de adición conocida&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: Preparación curva método de adición conocida
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Las unidades del eje &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; pueden establecerse como &lt;em&gt;analito añadido&lt;/em&gt; o, tal como lo propone Bader en su paper, como múltiplos de un volumen o cantidad fija del analito. Por lo tanto, en &lt;span class=&#34;math inline&#34;&gt;\(x = 0\)&lt;/span&gt; se obtiene la señal de la muestra problema a la cual no se le ha agregado el analito, es decir, la señal original. En cada una de las adiciones del estándar mediremos la señal instrumental de tal manera de obtener, y así lo esperamos, una relación lineal entre analito agregado &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt; y señal &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt; de la forma:&lt;/p&gt;
+&lt;span class=&#34;math display&#34; id=&#34;eq:calib&#34;&gt;\[\begin{equation}
+  y = \beta_{0} + \beta_{1}x + \epsilon
+    \tag{1}
+\end{equation}\]&lt;/span&gt;
+&lt;p&gt;donde se asumen los mismos supuestos que discutimos en el caso de la calibración lineal estándar(en solvente puro) y que puede recordar en este &lt;a href=&#34;https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/&#34;&gt;post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;La concentración de la muestra problema &lt;span class=&#34;math inline&#34;&gt;\(C_{0}\)&lt;/span&gt; se obtiene a partir de la ecuación &lt;a href=&#34;#eq:c0&#34;&gt;(2)&lt;/a&gt;:&lt;/p&gt;
+&lt;span class=&#34;math display&#34; id=&#34;eq:c0&#34;&gt;\[\begin{equation}
+  C_{0} = \frac{\beta_{0}}{\beta_{1}}
+  \tag{2}
+\end{equation}\]&lt;/span&gt;
+&lt;p&gt;La incertidumbre de la concentración de la muestra problema &lt;span class=&#34;math inline&#34;&gt;\(u(C_{0})\)&lt;/span&gt; se calcula a partir de la ecuación:&lt;/p&gt;
+&lt;span class=&#34;math display&#34; id=&#34;eq:uc0&#34;&gt;\[\begin{equation}
+  u(C_{0}) = \frac{\sigma_{y/x}}{\beta_{1}}
+  \sqrt{\frac{1}{n} + \frac{\overline{y}^2}
+  {\beta_{1}\sum_{i}^{n} (x_{i} - \overline{x})^2}}
+    \tag{3}
+\end{equation}\]&lt;/span&gt;
+&lt;p&gt;donde:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\sigma_{y/x}\)&lt;/span&gt; es la desviación estándar del error aleatorio &lt;span class=&#34;math inline&#34;&gt;\(\epsilon\)&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; es el número de adiciones independientes del estándar&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\overline{y}\)&lt;/span&gt; es el promedio de las señales instrumentales de las adiciones&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;math inline&#34;&gt;\(\overline{x}\)&lt;/span&gt; es el promedio de las concentraciones&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Como puede apreciar, la expresión de la incertidumbre de calibración para el método de adición conocida es muy similar a la correspondiente calibración estandar que discutimos en un &lt;a href=&#34;https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/&#34;&gt;post anterior&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Si queremos minimizar esta incertidumbre podríamos aumentar el número de adiciones &lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt; o aumentar el término &lt;span class=&#34;math inline&#34;&gt;\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)&lt;/span&gt;. Este último es interesante pues nos dice que la incertidumbre de calibración de este método se minimiza utilizando un rango amplio de concentración de adición. Ellison hace un análisis donde demuestra que, dado que la propiedad de linealidad se mantiene, basta preparar dos puntos de calibración:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;La muestra original sin adición (&lt;span class=&#34;math inline&#34;&gt;\(x = 0\)&lt;/span&gt;)&lt;/li&gt;
+&lt;li&gt;El extremo superior del rango lineal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Por ejemplo, si por alguna razón se tuvieran que preparar &lt;span class=&#34;math inline&#34;&gt;\(n = 6\)&lt;/span&gt; adiciones, lo que indica la ecuación &lt;a href=&#34;#eq:uc0&#34;&gt;(3)&lt;/a&gt;, es que sería mejor preparar tres puntos sin adición (&lt;span class=&#34;math inline&#34;&gt;\(x = 0\)&lt;/span&gt;) y tres en el extremos superior del rango lineal, tal como lo demuestra la figura &lt;a href=&#34;#fig:doe&#34;&gt;3&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:doe&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/doeadicion.png&#34; alt=&#34;Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Para evaluar estadísticamente si existe un efecto matriz debemos comparar la curva de calibración estándar (es decir, en solvente orgánico o en solución ácida) con la curva de adición conocida. Si las pendientes de ambas curvas son “iguales” podemos afirmar que no hay evidencia de efecto matriz tal como se muestra en la figura &lt;a href=&#34;#fig:sinefecto&#34;&gt;4&lt;/a&gt;. De modo contrario, si las pendientes de ambas curvas difieren, entonces, existe un efecto matriz significativo, tal como lo indica la figura &lt;a href=&#34;#fig:conefecto&#34;&gt;5&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:sinefecto&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/sinefecto.png&#34; alt=&#34;Sin efecto matriz: calibración estándar v/s adición conocida&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4: Sin efecto matriz: calibración estándar v/s adición conocida
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:conefecto&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/conefecto.png&#34; alt=&#34;Con efecto matriz: calibración estándar v/s adición conocida&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 5: Con efecto matriz: calibración estándar v/s adición conocida
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ahora, Ud. se preguntará ¿Cuál es la herramienta estadística para comparar dos pendientes de curvas de calibración?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;¡Excelente pregunta Tu(x3)!&lt;/p&gt;
+&lt;p&gt;Aunque hay varias aproximaciones para hacer esta comparación, en este post utilizaremos el Análisis de Covarianza (ANCOVA) y lo implementaremos, como no, en lenguaje &lt;code&gt;R&lt;/code&gt;. La siguiente tabla muestra los datos de calibración de clorpirifos en vino por GC-NPD, tanto en solvente puro como mediante el método de adición conocida en la muestra de vino:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:tablamosa&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/tabla_mosa.png&#34; alt=&#34;Tabla datos de calibración clorpirifos&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 6: Tabla datos de calibración clorpirifos
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Note que en la caso de la calibración estándar, las unidades de concentración están expresadas como &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;g de clorpirifos por mL de solvente. En cambio, en los datos de adición conocida están expresadas como &lt;span class=&#34;math inline&#34;&gt;\(\mu\)&lt;/span&gt;g de clorpirifos añadidos en los mL de muestra original. Por lo tanto, &lt;span class=&#34;math inline&#34;&gt;\(X = 0\, \mu\text{g}/\text{mL}_{\text{vino}}\)&lt;/span&gt; significa la muestra sin adición. La figura &lt;a href=&#34;#fig:mosa&#34;&gt;7&lt;/a&gt; muestra las curvas de calibración correspondientes.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:mosa&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;https://www.analytical.cl/img/mosa.png&#34; alt=&#34;Curvas de calibración&#34;  /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 7: Curvas de calibración
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Apliquemos, ahora, el análisis de covarianza para evaluar si existen diferencias significativas entre las pendientes.&lt;/p&gt;
+&lt;p&gt;Primero, ajustemos un modelo lineal para cada calibración:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Curva de calibración estándar
+x &amp;lt;- c(0, 0.1, 0.2, 0.3, 0.5, 1.0)
+y &amp;lt;- c(0, 80, 159, 245, 410, 795)
+fit.std &amp;lt;- lm(y ~ x)
+
+# Curva de adición conocida
+x.add &amp;lt;- c(0, 0.1, 0.2, 0.3, 0.4, 0.5)
+y.add &amp;lt;- c(75, 159, 240, 328, 410, 498)
+fit.add &amp;lt;- lm(y.add ~ x.add)
+
+# En R la expresión y ~ x significa &amp;#39;y es modelado por x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A continuación se muestran los análisis estadísticos para cada curva:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(fit.std)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+     1      2      3      4      5      6 
+-2.489 -2.206 -2.924  3.359  8.924 -4.664 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&amp;gt;|t|)    
+(Intercept)    2.489      3.420   0.728    0.507    
+x            797.176      7.105 112.193 3.78e-08 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+Residual standard error: 5.751 on 4 degrees of freedom
+Multiple R-squared:  0.9997,    Adjusted R-squared:  0.9996 
+F-statistic: 1.259e+04 on 1 and 4 DF,  p-value: 3.785e-08&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(fit.add)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+lm(formula = y.add ~ x.add)
+
+Residuals:
+      1       2       3       4       5       6 
+ 1.1429  0.6857 -2.7714  0.7714 -1.6857  1.8571 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&amp;gt;|t|)    
+(Intercept)   73.857      1.463   50.49 9.21e-07 ***
+x.add        844.571      4.832  174.79 6.43e-09 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+Residual standard error: 2.021 on 4 degrees of freedom
+Multiple R-squared:  0.9999,    Adjusted R-squared:  0.9998 
+F-statistic: 3.055e+04 on 1 and 4 DF,  p-value: 6.426e-09&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;La pendiente de la curva de calibración estándar es 797 y la pendiente del método de adición es 845. ¿Es esta diferencia significativa? Esta es la pregunta que responde el ANCOVA. Para implementar este test en &lt;code&gt;R&lt;/code&gt;debemos hacer una pequeña modificación a nuestra base de datos:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Consolidaremos los datos de calibración en una sola tabla llamada &amp;#39;datos&amp;#39;
+datos &amp;lt;- data.frame(X = c(x, x.add), 
+                    Y = c(y, y.add), 
+                    Calibracion = c(rep(&amp;#39;Estandar&amp;#39;, 6), rep(&amp;#39;Adicion&amp;#39;, 6)))&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;X&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Y&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Calibracion&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Estandar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;80&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Estandar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;159&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Estandar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;245&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Estandar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;410&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Estandar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;1.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;795&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Estandar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;75&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Adicion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;159&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Adicion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;240&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Adicion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;328&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Adicion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;410&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Adicion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;0.5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;498&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Adicion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Una vez consolidados los datos en una única tabla podemos aplicar el análisis de covarianza en &lt;code&gt;R&lt;/code&gt; con los siguientes comandos de la librería &lt;code&gt;car&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(car)
+
+# Ajustamos un modelo con interceptos distintos y una pendiente para cada
+# calibración
+
+fit &amp;lt;- lm(Y ~ X + Calibracion + X:Calibracion, data = datos)
+Anova(fit, type = &amp;#39;II&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Anova Table (Type II tests)
+
+Response: Y
+              Sum Sq Df   F value    Pr(&amp;gt;F)    
+X             540763  1 29108.930 1.558e-15 ***
+Calibracion    20535  1  1105.398 7.309e-10 ***
+X:Calibracion    310  1    16.699  0.003503 ** 
+Residuals        149  8                        
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;De la tabla se observa que el &lt;em&gt;p-value&lt;/em&gt; de la comparación de las pendientes es &lt;span class=&#34;math inline&#34;&gt;\(Pr(&amp;gt;F) = 0.0035\)&lt;/span&gt; el cual es menor a 0.05 (&lt;code&gt;X:Calibracion&lt;/code&gt;), por lo tanto, la diferencia observada entre las pendientes es, desde el punto de vista estadístico, significativa. Esto implica que existe un efecto matriz que no está corregido por la calibración en solvente. En definitiva, para este tipo de muestra, sería apropiado utilizar el método de adición conocida para la determinación de clorpirifos en vino.&lt;/p&gt;
+&lt;p&gt;Ahora, esta conclusión debe ser complementada con el criterio químico y metrológico. Recuerde que la desventaja del método de adición conocida es que es necesario hacer la adición muestra a muestra. Lo que se concluye del ANCOVA está basado en un criterio puramente estadístico.&lt;/p&gt;
+&lt;p&gt;Bueno estimado lector, espero haya disfrutado este post.&lt;/p&gt;
+&lt;p&gt;Espero sus comentarios. Nos vemos.&lt;/p&gt;
+&lt;div id=&#34;bibliografia&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Bibliografía&lt;/h2&gt;
+&lt;p&gt;Ellison SL, Thompson M. &lt;strong&gt;Standard additions: myth and reality&lt;/strong&gt; (2008) &lt;em&gt;Analyst 133(8):992-7.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Prueba de linealidad de una curva de calibración en Excel... Sí ¡En Excel!</title>
       <link>https://www.analytical.cl/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
@@ -2383,8 +2636,8 @@ Figure 1: Ubicación de Bureau Veritas
       <guid>https://www.analytical.cl/talk/example-talk/</guid>
       <description>
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 
-  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34;
+  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
@@ -2399,24 +2652,8 @@ Figure 1: Ubicación de Bureau Veritas
       <guid>https://www.analytical.cl/talk/inn/</guid>
       <description>
 &lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 
-  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Test slides</title>
-      <link>https://www.analytical.cl/talk/test_slides/</link>
-      <pubDate>Thu, 12 Jul 2012 12:00:00 +0000</pubDate>
-      
-      <guid>https://www.analytical.cl/talk/test_slides/</guid>
-      <description>
-&lt;div style=&#34;position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;&#34;&gt;
-  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34; 
-  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34;&gt;&lt;/iframe&gt;
+  &lt;iframe src=&#34;//www.youtube.com/embed/4oV2ncCN_aQ?&#34;
+  style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%;&#34; allowfullscreen frameborder=&#34;0&#34; title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 
 &lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://gcushen.github.io/hugo-academic-demo/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;

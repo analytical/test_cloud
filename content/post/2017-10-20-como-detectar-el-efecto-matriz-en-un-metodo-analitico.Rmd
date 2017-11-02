@@ -1,0 +1,293 @@
+---
+title: ¿Cómo detectar el efecto matriz en un método analítico?
+author: cgomez
+date: '2017-11-01'
+slug: como-detectar-efecto-matriz-metodo-analitico
+math: true
+categories:
+  - sesgo
+  - incertidumbre
+tags:
+  - calibracion
+  - adicion conocida
+  - R
+summary: 'En este post trataremos el tema del efecto matriz de un método 
+analítico y cómo detectarlo estadísticamente mediante el análisis de covarianza'
+---
+
+
+
+He vuelto a postear, después de una gira que me llevó por los cinco... 
+mentira, fue por pura pega.
+
+El famoso efecto matriz, algo tan etéreo como el _criterio analítico_.
+El efecto matriz está íntimamente relacionado con las interferencias de la 
+matriz que de alguna forma aumentan o disminuyen la señal instrumental que, 
+en teoría, es producida sólo por el analito de interés. Otro efecto a considerar
+es que la matriz ejerce un efecto protector del analito, especialmente en
+métodos que utilizan cromatografía gaseosa.
+
+
+Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers
+que nos enseñaron el famoso método de calibración con adición conocida o 
+adición de estándar. En este método la matriz es nuestro 
+medio de calibración. En vez de preparar los calibrantes en solventes puros o 
+en solución ácida, utilizaremos la misma matriz para preparar (adicionar) 
+el analito. De esta forma, la señal analítica de estos calibrantes en matriz, está 
+compuesta de la señal propia del analito así como también de los
+interferentes, lo que permite corregir/minimizar sus efectos."
+
+Existen varias formas de implementar el método de adición conocida. Una muy
+buena referencia es el excelente y pedagógico paper de M. Bader:
+
+> Morris Bader "A systematic approach to standard addition methods in 
+instrumental analysis" _J. Chem. Educ., 1980, 57 (10), p 703_
+
+El método consiste en añadir cantidades conocidas del analito en solvente 
+puro o solución ácida a volúmenes iguales de matriz. Finalmente, medir la respuesta 
+instrumental en una serie de
+adiciones crecientes tal como lo muestra la figura \@ref(fig:mosaplot):
+
+```{r mosaplot, fig.cap='Diseño experimental de la adición conocida. Cortesía de Lins4y via Wikimedia Commons', echo = F}
+
+knitr::include_graphics('/img/mosaplot.png')
+
+```
+
+
+
+Es necesario que las adiciones de analito generen, en 
+conjunto con la cantidad de analito presente en la muestra original, 
+una concentración
+tal que aún se encuentre en el rango lineal de calibración. De esta forma
+se otiene una curva tal como se observa en la figura \@ref(fig:adicion):
+
+```{r adicion, echo = F, fig.cap = 'Preparación curva método de adición conocida'}
+knitr::include_graphics('/img/c0adicion.png')
+```
+
+Las unidades del eje $X$ pueden establecerse como _analito añadido_ o, 
+tal como lo propone Bader en su paper, como múltiplos de un volumen
+o cantidad fija del analito. Por lo tanto, en $x = 0$ se obtiene la 
+señal de la muestra problema a la cual no se le ha agregado el 
+analito, es decir, la señal original. En cada una de las adiciones
+del estándar mediremos la señal instrumental de tal manera de 
+obtener, y así lo esperamos, una relación lineal entre analito 
+agregado $x$ y señal $y$ de la forma:
+
+\begin{equation}
+  y = \beta_{0} + \beta_{1}x + \epsilon
+    (\#eq:calib)
+\end{equation}
+
+donde se asumen los mismos supuestos que discutimos en el caso de la
+calibración lineal estándar(en solvente puro) y que puede recordar en este 
+[post](https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/).
+
+La concentración de la muestra problema $C_{0}$ se obtiene a partir de la 
+ecuación \@ref(eq:c0):
+
+\begin{equation}
+  C_{0} = \frac{\beta_{0}}{\beta_{1}}
+  (\#eq:c0)
+\end{equation}
+  
+
+La incertidumbre de la concentración de la muestra problema $u(C_{0})$ se 
+calcula a partir de la ecuación:
+
+
+\begin{equation}
+  u(C_{0}) = \frac{\sigma_{y/x}}{\beta_{1}}
+  \sqrt{\frac{1}{n} + \frac{\overline{y}^2}
+  {\beta_{1}\sum_{i}^{n} (x_{i} - \overline{x})^2}}
+    (\#eq:uc0)
+\end{equation}
+
+donde:
+
+- $\sigma_{y/x}$ es la desviación estándar del error aleatorio $\epsilon$
+- $n$ es el número de adiciones independientes del estándar
+- $\overline{y}$ es el promedio de las señales instrumentales de las adiciones
+- $\overline{x}$ es el promedio de las concentraciones 
+
+
+Como puede apreciar, la expresión de la incertidumbre de calibración para el 
+método de adición conocida es muy
+similar a la correspondiente calibración estandar que discutimos en un 
+[post anterior](https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/).
+
+Si queremos minimizar esta incertidumbre podríamos aumentar el número de 
+adiciones $n$ o aumentar el término $\sum_{i}^{n} (x_{i} - \overline{x})^2$. 
+Este último es interesante pues nos dice que la incertidumbre de calibración 
+de este método se minimiza utilizando un rango amplio de concentración de
+adición. Ellison hace un análisis donde demuestra que, dado que la propiedad
+de linealidad se mantiene, basta preparar dos puntos de calibración:
+
+- La muestra original sin adición ($x = 0$)
+- El extremo superior del rango lineal
+
+Por ejemplo, si por alguna razón se tuvieran que preparar $n = 6$ adiciones, lo
+que indica la ecuación \@ref(eq:uc0), es que sería mejor preparar tres puntos
+sin adición ($x = 0$) y tres en el extremos superior del rango lineal, tal 
+como lo demuestra la figura \@ref(fig:doe)
+
+```{r doe, echo = F, fig.cap='Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre'}
+
+knitr::include_graphics('/img/doeadicion.png')
+
+
+```
+
+Para evaluar estadísticamente si existe un efecto matriz debemos 
+comparar la curva de calibración estándar (es decir, en solvente orgánico o en
+solución ácida) con la curva de adición conocida. Si las pendientes de ambas
+curvas son "iguales" podemos afirmar que no hay evidencia de efecto matriz tal
+como se muestra en la figura \@ref(fig:sinefecto). De modo contrario, si las 
+pendientes de ambas curvas difieren, entonces, existe un efecto matriz
+significativo, tal como lo indica la figura \@ref(fig:conefecto):
+
+```{r sinefecto, echo = F, fig.cap = 'Sin efecto matriz: calibración estándar v/s adición conocida'}
+knitr::include_graphics('/img/sinefecto.png')
+```
+
+```{r conefecto, echo = F, fig.cap = 'Con efecto matriz: calibración estándar v/s adición conocida'}
+knitr::include_graphics('/img/conefecto.png')
+```
+
+> Ahora, Ud. se preguntará ¿Cuál es la herramienta estadística para comparar dos
+> pendientes de curvas de calibración? 
+
+¡Excelente pregunta Tu(x3)!
+
+Aunque hay varias aproximaciones para hacer esta comparación, en este post
+utilizaremos el Análisis de Covarianza (ANCOVA) y lo implementaremos, como no, en lenguaje `R`. La siguiente tabla muestra los datos de calibración de clorpirifos
+en vino por GC-NPD, tanto en solvente puro como mediante el método de adición
+conocida en la muestra de vino:
+
+```{r tablamosa, echo = F, fig.cap = 'Tabla datos de calibración clorpirifos'}
+knitr::include_graphics('/img/tabla_mosa.png')
+```
+
+Note que en la caso de la calibración estándar, las unidades de
+concentración están expresadas como $\mu$g de clorpirifos por mL de solvente. 
+En cambio, en los datos de adición conocida están expresadas como $\mu$g de 
+clorpirifos añadidos en los mL de muestra original. Por lo tanto, 
+$X = 0\, \mu\text{g}/\text{mL}_{\text{vino}}$ significa la muestra sin adición.
+La figura \@ref(fig:mosa) muestra las curvas de calibración correspondientes.
+
+```{r mosa, echo = F, fig.cap = 'Curvas de calibración'}
+knitr::include_graphics('/img/mosa.png')
+```
+
+Apliquemos, ahora, el análisis de covarianza para evaluar si existen
+diferencias significativas entre las pendientes. 
+
+Primero, ajustemos un modelo lineal para cada calibración:
+
+```{r, echo = T}
+
+# Curva de calibración estándar
+x <- c(0, 0.1, 0.2, 0.3, 0.5, 1.0)
+y <- c(0, 80, 159, 245, 410, 795)
+fit.std <- lm(y ~ x)
+
+# Curva de adición conocida
+x.add <- c(0, 0.1, 0.2, 0.3, 0.4, 0.5)
+y.add <- c(75, 159, 240, 328, 410, 498)
+fit.add <- lm(y.add ~ x.add)
+
+# En R la expresión y ~ x significa 'y es modelado por x'
+
+```
+
+A continuación se muestran los análisis estadísticos para cada
+curva:
+
+```{r fit.std, comment= ''}
+summary(fit.std)
+```
+
+```{r fit.add, comment = ''}
+summary(fit.add)
+```
+
+
+La pendiente de la curva de calibración estándar es `r round(fit.std$coeff[2], 0)`
+y la pendiente del método de adición es `r round(fit.add$coeff[2], 0)`. 
+¿Es esta diferencia significativa? Esta es la pregunta que responde el ANCOVA. Para implementar este test en `R`debemos hacer una pequeña
+modificación a nuestra base de datos:
+
+```{r}
+
+# Consolidaremos los datos de calibración en una sola tabla llamada 'datos'
+datos <- data.frame(X = c(x, x.add), 
+                    Y = c(y, y.add), 
+                    Calibracion = c(rep('Estandar', 6), rep('Adicion', 6)))
+
+```
+
+```{r, echo = F, warning=F}
+library(knitr)
+library(kableExtra)
+
+kable(datos, align = 'l')
+```
+
+
+Una vez consolidados los datos en una única tabla podemos aplicar el 
+análisis de covarianza en `R` con los siguientes comandos de la librería
+`car`:
+
+```{r comment = ''}
+library(car)
+
+# Ajustamos un modelo con interceptos distintos y una pendiente para cada
+# calibración
+
+fit <- lm(Y ~ X + Calibracion + X:Calibracion, data = datos)
+Anova(fit, type = 'II')
+
+```
+
+```{r, echo = F}
+library(broom)
+ancova.fit <- tidy(Anova(fit, type = 'II'))
+```
+
+
+De la tabla se observa que el _p-value_ de la comparación de las pendientes
+es $Pr(>F) = `r round(ancova.fit[3, 5], 5)`$ el cual es menor
+a 0.05 (`X:Calibracion`), por lo tanto, la diferencia observada entre las pendientes es, desde el punto de vista estadístico, significativa.
+Esto implica que existe un efecto matriz que no está corregido por la 
+calibración en solvente. En definitiva, para este tipo de muestra, 
+sería apropiado
+utilizar el método de adición conocida para la determinación de clorpirifos 
+en vino.
+
+Ahora, esta conclusión debe ser complementada con el criterio químico y 
+metrológico. Recuerde que la desventaja del método de adición conocida
+es que es necesario hacer la adición muestra a muestra.  Lo que se concluye
+del ANCOVA está basado en un criterio puramente estadístico.
+
+Bueno estimado lector, espero haya disfrutado este post.
+
+Espero sus comentarios. Nos vemos.
+
+## Bibliografía
+
+Ellison SL, Thompson M. **Standard additions: myth and reality**
+(2008) _Analyst 133(8):992-7._
+
+
+
+
+
+
+
+
+
+
+
+
+
