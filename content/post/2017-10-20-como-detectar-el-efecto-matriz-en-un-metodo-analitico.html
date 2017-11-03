@@ -18,8 +18,8 @@ analítico y cómo detectarlo estadísticamente mediante el análisis de covaria
 
 
 <p>He vuelto a postear, después de una gira que me llevó por los cinco… mentira, fue por pura pega.</p>
-<p>El famoso efecto matriz, algo tan etéreo como el <em>criterio analítico</em>. El efecto matriz está íntimamente relacionado con las interferencias de la matriz que de alguna forma aumentan o disminuyen la señal instrumental que, en teoría, es producida sólo por el analito de interés. Otro efecto a considerar es que la matriz ejerce un efecto protector del analito, especialmente en métodos que utilizan cromatografía gaseosa.</p>
-<p>Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers que nos enseñaron el famoso método de calibración con adición conocida o adición de estándar. En este método la matriz es nuestro medio de calibración. En vez de preparar los calibrantes en solventes puros o en solución ácida, utilizaremos la misma matriz para preparar (adicionar) el analito. De esta forma, la señal analítica de estos calibrantes en matriz, está compuesta de la señal propia del analito así como también de los interferentes, lo que permite corregir/minimizar sus efectos.&quot;</p>
+<p>El famoso efecto matriz, algo tan etéreo como el <em>criterio analítico</em>. El efecto matriz está íntimamente relacionado con las interferencias de la matriz que de alguna forma aumentan o disminuyen la señal instrumental que, en teoría, es producida sólo por el analito de interés.</p>
+<p>Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers que nos enseñaron el famoso método de calibración con adición conocida o adición de estándar. En este método, la matriz es nuestro medio de calibración. En vez de preparar los calibrantes en solventes puros o en solución ácida, utilizaremos la misma matriz para preparar (adicionar) el analito. De esta forma, la señal analítica de estos calibrantes, está compuesta de la señal propia del analito así como también de los interferentes, lo que permite corregir/minimizar sus efectos.</p>
 <p>Existen varias formas de implementar el método de adición conocida. Una muy buena referencia es el excelente y pedagógico paper de M. Bader:</p>
 <blockquote>
 <p>Morris Bader “A systematic approach to standard addition methods in instrumental analysis” <em>J. Chem. Educ., 1980, 57 (10), p 703</em></p>
@@ -64,7 +64,7 @@ Figure 2: Preparación curva método de adición conocida
 <li><span class="math inline">\(\overline{x}\)</span> es el promedio de las concentraciones</li>
 </ul>
 <p>Como puede apreciar, la expresión de la incertidumbre de calibración para el método de adición conocida es muy similar a la correspondiente calibración estandar que discutimos en un <a href="https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/">post anterior</a>.</p>
-<p>Si queremos minimizar esta incertidumbre podríamos aumentar el número de adiciones <span class="math inline">\(n\)</span> o aumentar el término <span class="math inline">\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)</span>. Este último es interesante pues nos dice que la incertidumbre de calibración de este método se minimiza utilizando un rango amplio de concentración de adición. Ellison hace un análisis donde demuestra que, dado que la propiedad de linealidad se mantiene, basta preparar dos puntos de calibración:</p>
+<p>Si queremos minimizar esta incertidumbre podríamos aumentar el número de adiciones <span class="math inline">\(n\)</span> o aumentar el término <span class="math inline">\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)</span>. Este último término es interesante, pues nos dice que la incertidumbre de calibración de este método se minimiza utilizando un rango amplio de concentración de adición. Ellison demuestra que, dado que la propiedad de linealidad se mantiene, basta preparar dos puntos de calibración:</p>
 <ul>
 <li>La muestra original sin adición (<span class="math inline">\(x = 0\)</span>)</li>
 <li>El extremo superior del rango lineal</li>
@@ -100,7 +100,7 @@ Figure 5: Con efecto matriz: calibración estándar v/s adición conocida
 Figure 6: Tabla datos de calibración clorpirifos
 </p>
 </div>
-<p>Note que en la caso de la calibración estándar, las unidades de concentración están expresadas como <span class="math inline">\(\mu\)</span>g de clorpirifos por mL de solvente. En cambio, en los datos de adición conocida están expresadas como <span class="math inline">\(\mu\)</span>g de clorpirifos añadidos en los mL de muestra original. Por lo tanto, <span class="math inline">\(X = 0\, \mu\text{g}/\text{mL}_{\text{vino}}\)</span> significa la muestra sin adición. La figura <a href="#fig:mosa">7</a> muestra las curvas de calibración correspondientes.</p>
+<p>Note que en la caso de la calibración estándar, las unidades de concentración están expresadas como <span class="math inline">\(\mu\)</span>g de clorpirifos por mL de solvente. En cambio, en los datos de adición conocida están expresadas como <span class="math inline">\(\mu\)</span>g de clorpirifos añadidos en los mL de muestra original. Por lo tanto, <span class="math inline">\(X = 0\, \mu\text{g}/\text{mL}_{\text{vino}}\)</span> representa la muestra sin adición. La figura <a href="#fig:mosa">7</a> muestra las curvas de calibración correspondientes.</p>
 <div class="figure"><span id="fig:mosa"></span>
 <img src="/img/mosa.png" alt="Curvas de calibración"  />
 <p class="caption">
