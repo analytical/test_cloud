@@ -23,19 +23,17 @@ mentira, fue por pura pega.
 El famoso efecto matriz, algo tan etéreo como el _criterio analítico_.
 El efecto matriz está íntimamente relacionado con las interferencias de la 
 matriz que de alguna forma aumentan o disminuyen la señal instrumental que, 
-en teoría, es producida sólo por el analito de interés. Otro efecto a considerar
-es que la matriz ejerce un efecto protector del analito, especialmente en
-métodos que utilizan cromatografía gaseosa.
+en teoría, es producida sólo por el analito de interés. 
 
 
 Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers
 que nos enseñaron el famoso método de calibración con adición conocida o 
-adición de estándar. En este método la matriz es nuestro 
+adición de estándar. En este método, la matriz es nuestro 
 medio de calibración. En vez de preparar los calibrantes en solventes puros o 
 en solución ácida, utilizaremos la misma matriz para preparar (adicionar) 
-el analito. De esta forma, la señal analítica de estos calibrantes en matriz, está 
+el analito. De esta forma, la señal analítica de estos calibrantes, está 
 compuesta de la señal propia del analito así como también de los
-interferentes, lo que permite corregir/minimizar sus efectos."
+interferentes, lo que permite corregir/minimizar sus efectos.
 
 Existen varias formas de implementar el método de adición conocida. Una muy
 buena referencia es el excelente y pedagógico paper de M. Bader:
@@ -119,9 +117,9 @@ similar a la correspondiente calibración estandar que discutimos en un
 
 Si queremos minimizar esta incertidumbre podríamos aumentar el número de 
 adiciones $n$ o aumentar el término $\sum_{i}^{n} (x_{i} - \overline{x})^2$. 
-Este último es interesante pues nos dice que la incertidumbre de calibración 
+Este último término es interesante, pues nos dice que la incertidumbre de calibración 
 de este método se minimiza utilizando un rango amplio de concentración de
-adición. Ellison hace un análisis donde demuestra que, dado que la propiedad
+adición. Ellison demuestra que, dado que la propiedad
 de linealidad se mantiene, basta preparar dos puntos de calibración:
 
 - La muestra original sin adición ($x = 0$)
@@ -173,7 +171,7 @@ Note que en la caso de la calibración estándar, las unidades de
 concentración están expresadas como $\mu$g de clorpirifos por mL de solvente. 
 En cambio, en los datos de adición conocida están expresadas como $\mu$g de 
 clorpirifos añadidos en los mL de muestra original. Por lo tanto, 
-$X = 0\, \mu\text{g}/\text{mL}_{\text{vino}}$ significa la muestra sin adición.
+$X = 0\, \mu\text{g}/\text{mL}_{\text{vino}}$ representa la muestra sin adición.
 La figura \@ref(fig:mosa) muestra las curvas de calibración correspondientes.
 
 ```{r mosa, echo = F, fig.cap = 'Curvas de calibración'}
