@@ -382,7 +382,7 @@ nos dará pistas para dirigir la discusión posterior.
 > método de Monte Carlo?
 
 Muy sencillo, a partir de la desviación estándar de los factores de dilución
-simulados, es decir, $u_{f}^{MC} = $ `sd(f.sim)` = `r round(sd(f.sim), 5)`.
+simulados, es decir, $u_{f}^{MC} = `r round(sd(f.sim), 5)`$.
 Como podrá advertir, es muy similar a la obtenida por el método GUM 
 $u_{f} = `r round(uf.gum, 5)`$, la diferencia relativa es de 
 un `r round((sd(f.sim) - uf.gum)/uf.gum*100, 1)` %. Es más, ajustando a las
@@ -513,7 +513,7 @@ para modelar pureza.
 
 En este post hemos validado el método GUM frente a Monte Carlo "a mano", es decir,
 hemos hecho el test en forma manual. En el 
-[próximo post](https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/) utilizaremos
+[próximo post](https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/) utilizaremos
 la librería `metRology` la cual incorpora la validación de GUM con MC en un 
 único comando `GUM.validate`... ¡y listo!.
 

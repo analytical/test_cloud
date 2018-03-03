@@ -224,7 +224,7 @@ W = 0.99005, p-value = 2.719e-06</code></pre>
 <blockquote>
 <p>Entonces ¿Cómo obtenemos la incertidumbre del factor de dilución por el método de Monte Carlo?</p>
 </blockquote>
-<p>Muy sencillo, a partir de la desviación estándar de los factores de dilución simulados, es decir, $u_{f}^{MC} = $ <code>sd(f.sim)</code> = 0.02302. Como podrá advertir, es muy similar a la obtenida por el método GUM <span class="math inline">\(u_{f} = 0.02255\)</span>, la diferencia relativa es de un 2.1 %. Es más, ajustando a las cifras significativas correctas se obtiene la misma magnitud 0.02</p>
+<p>Muy sencillo, a partir de la desviación estándar de los factores de dilución simulados, es decir, <span class="math inline">\(u_{f}^{MC} = 0.02302\)</span>. Como podrá advertir, es muy similar a la obtenida por el método GUM <span class="math inline">\(u_{f} = 0.02255\)</span>, la diferencia relativa es de un 2.1 %. Es más, ajustando a las cifras significativas correctas se obtiene la misma magnitud 0.02</p>
 <blockquote>
 <p>¿Queda validado el método GUM con los cálculos del método de Monte Carlo? Desde el punto de vista metrológico químico: Sí. Desde el punto de vista numérico: Depende.</p>
 </blockquote>
@@ -282,7 +282,7 @@ Figure 5: Intervalo de confianza al 95% de los datos simulados del factor de dil
 <li><p>A mayor asimetría de la distribución empírica, mayores diferencias habrá entre ambos métodos.</p></li>
 <li><p>Dé un sentido químico a la simulación ¿<a href="https://www.analytical.cl/post/mis-datos-no-son-normales/">Recuerda que la pureza química no es Normal</a>? Intente con la distribución Beta la cual es más apropiada para modelar pureza.</p></li>
 </ol>
-<p>En este post hemos validado el método GUM frente a Monte Carlo “a mano”, es decir, hemos hecho el test en forma manual. En el <a href="https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/">próximo post</a> utilizaremos la librería <code>metRology</code> la cual incorpora la validación de GUM con MC en un único comando <code>GUM.validate</code>… ¡y listo!.</p>
+<p>En este post hemos validado el método GUM frente a Monte Carlo “a mano”, es decir, hemos hecho el test en forma manual. En el <a href="https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/">próximo post</a> utilizaremos la librería <code>metRology</code> la cual incorpora la validación de GUM con MC en un único comando <code>GUM.validate</code>… ¡y listo!.</p>
 <p>Hasta la próxima.</p>
 </div>
 <div id="bibliografia" class="section level2">

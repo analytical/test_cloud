@@ -102,7 +102,6 @@ Figure 3: Simulación de curvas perfectamente lineales
 </blockquote>
 <p>Si los dos estimadores del error aleatorio son similares, entonces el modelo de calibración que acabamos de ajustar es adecuado para modelar los datos experimentales. ¿Cuán similares tienen que ser? Lo probaremos con un test F. Los detalles algebraicos son latosos-engorrosos y pueden ser consultados en la bibliografía. Sólo indicaremos cómo hacer este test de linealidad en lenguaje <code>R</code>, como no. (¿Y en Excel cuándo?)</p>
 <p>La tabla <a href="#tab:lof">1</a> muestra los datos de calibración de cloranfenicol en matriz leche obtenida por GC/MS-NCI (<em>Gas Chromatography/Mass Spectrometry - Negative Chemical Ionization</em> …¡Qué tiempos aquellos!). Note que cada nivel de calibración está preparado en triplicado totalizando n = 15 calibrantes independientes. La figura <a href="#fig:lofplot">4</a> muestra la curva de calibración.</p>
-<?xml version="1.0" encoding="UTF-8"?>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:lof">Table 1: </span>Calibración CAF [ug/kg]
@@ -434,8 +433,7 @@ Pure Error
 </ul>
 <p>Los pasos recién descritos son para llevar a cabo el Test de Mandel “a mano”, afortunadamente los softwares estadísticos como <code>R</code> y Excel (sí ¡Excel!) tienen incorporada esta prueba estadística de linealidad. Veamos un ejemplo.</p>
 <p>La tabla <a href="#tab:datamandel">4</a> muestra los datos de calibración de Cu por AAS; la figura <a href="#fig:plotmandel">5</a>, la curva de calibración:</p>
-<?xml version="1.0" encoding="UTF-8"?>
-<table class="table" style="width: auto !important; text-align: right;">
+<table class="table" style="width: auto !important; ">
 <caption>
 <span id="tab:datamandel">Table 4: </span>Curva de Calibración Cu
 </caption>
