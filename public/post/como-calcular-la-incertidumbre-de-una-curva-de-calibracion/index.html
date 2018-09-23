@@ -236,28 +236,50 @@ Químico - Bioquímico">
 </div>
 
     <div class="article-style" itemprop="articleBody">
-      <p>Ok, este es el segundo post pero advierto que aún está en rodaje… esto del <em>copywriting</em> no es nada fácil.</p>
+      <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<p>Ok, este es el segundo post pero advierto que aún está en rodaje… esto del
+<em>copywriting</em> no es nada fácil.</p>
 <blockquote>
 <p>¿Qué es y cómo estimar la incertidumbre de una curva de calibración?</p>
 </blockquote>
-<p>La incertidumbre de calibración, en adelante <span class="math inline">\(u(x_{0})\)</span>, es aquella que se propaga cuando obtenemos la concentración de un mensurando al <em>interpolar</em> una señal instrumental (por ejemplo, absorbancia o área cromatográfica) en una curva de calibración. Básicamente, esta incertidumbre sólo da cuenta del error aleatorio del instrumento y no incopora la incertidumbre de los calibrantes, al menos cuando se utiliza el modelo de calibración clásico:</p>
-<span class="math display" id="eq:lin">\[\begin{equation}
+<p>La incertidumbre de calibración, en adelante <span class="math inline">\(u(x_{0})\)</span>, es aquella que se
+propaga cuando obtenemos la concentración de un mensurando
+al <em>interpolar</em> una señal instrumental (por ejemplo, absorbancia o
+área cromatográfica) en una curva de calibración. Básicamente,
+esta incertidumbre
+sólo da cuenta del error aleatorio del instrumento y no incopora la
+incertidumbre de los calibrantes, al menos cuando se utiliza el modelo de
+calibración clásico:</p>
+<p><span class="math display" id="eq:lin">\[\begin{equation}
   y = \beta_{0} + \beta_{1} x + \epsilon
     \tag{1}
-\end{equation}\]</span>
-<p>donde <span class="math inline">\(y\)</span> es la respuesta instrumental, <span class="math inline">\(\beta_{0}\)</span> es el intercepto, <span class="math inline">\(\beta_{1}\)</span> es la pendiente y <span class="math inline">\(\epsilon\)</span> es un error aleatorio Normal que tiene media <span class="math inline">\(\mu_{\epsilon} = 0\)</span> y varianza <span class="math inline">\(\sigma_{y/x}^2\)</span>. Note de la ecuación <a href="#eq:lin">(1)</a> que lo único aleatorio es <span class="math inline">\(\epsilon\)</span>, por lo tanto, el intercepto <span class="math inline">\(\beta_{0}\)</span> y la pendiente <span class="math inline">\(\beta_{1}\)</span> son <em>fijos</em>. Lo que hacemos cuando aplicamos, por ejemplo, el método de los mínimos cuadrados es estimar estos parámetros y, en estadística, todas las estimaciones tienen un error asociado.</p>
-<p>A partir de la ecuación <a href="#eq:lin">(1)</a> obtenemos la concentración de una muestra problema <span class="math inline">\(x_{0}\)</span> cuya señal instrumental es <span class="math inline">\(y_{0}\)</span>:</p>
-<span class="math display" id="eq:x0">\[\begin{equation}
+\end{equation}\]</span></p>
+<p>donde <span class="math inline">\(y\)</span> es la respuesta instrumental, <span class="math inline">\(\beta_{0}\)</span> es el intercepto,
+<span class="math inline">\(\beta_{1}\)</span> es la pendiente y <span class="math inline">\(\epsilon\)</span> es un error aleatorio Normal que tiene
+media <span class="math inline">\(\mu_{\epsilon} = 0\)</span> y varianza <span class="math inline">\(\sigma_{y/x}^2\)</span>. Note de la
+ecuación <a href="#eq:lin">(1)</a> que lo único aleatorio es <span class="math inline">\(\epsilon\)</span>, por lo tanto,
+el intercepto <span class="math inline">\(\beta_{0}\)</span> y la pendiente <span class="math inline">\(\beta_{1}\)</span> son <em>fijos</em>.
+Lo que hacemos cuando aplicamos, por ejemplo, el método de los mínimos
+cuadrados es estimar estos parámetros y, en estadística, todas las
+estimaciones tienen un error asociado.</p>
+<p>A partir de la ecuación <a href="#eq:lin">(1)</a> obtenemos la concentración de una
+muestra problema <span class="math inline">\(x_{0}\)</span> cuya señal instrumental es <span class="math inline">\(y_{0}\)</span>:</p>
+<p><span class="math display" id="eq:x0">\[\begin{equation}
   x_{0} = \frac{y_{0} - \beta_{0}}{\beta_{1}}
     \tag{2}
-\end{equation}\]</span>
-<p>Si aplicáramos la guía GUM para obtener la incertidumbre estándar de calibración <span class="math inline">\(u(x_{0})\)</span> sería bastante latoso-engorroso, pues hay unas covarianzas no muy amistosas entre pendiente e intercepto. Afortunadamente <span class="math inline">\(u(x_{0})\)</span> puede aproximarse muy bien a través de la ecuación <a href="#eq:ux0">(3)</a>:</p>
-<span class="math display" id="eq:ux0">\[\begin{equation}
+\end{equation}\]</span></p>
+<p>Si aplicáramos la guía GUM para obtener la incertidumbre estándar de
+calibración <span class="math inline">\(u(x_{0})\)</span> sería bastante latoso-engorroso, pues hay unas
+covarianzas no muy amistosas entre pendiente e intercepto. Afortunadamente
+<span class="math inline">\(u(x_{0})\)</span> puede aproximarse muy bien a través de la ecuación <a href="#eq:ux0">(3)</a>:</p>
+<p><span class="math display" id="eq:ux0">\[\begin{equation}
   u(x_{0}) = \frac{\sigma_{y/x}}{\beta_{1}}
   \sqrt{\frac{1}{n} + \frac{1}{m_{0}} + \frac{(x_{0} - \overline{x})^2}
   {\sum_{i}^{n} (x_{i} - \overline{x})^2}}
     \tag{3}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>Vamos viendo dijo el ciego:</p>
 <ul>
 <li><span class="math inline">\(\sigma_{y/x}\)</span> es la desviación estándar del error aleatorio <span class="math inline">\(\epsilon\)</span></li>
@@ -265,15 +287,16 @@ Químico - Bioquímico">
 <li><span class="math inline">\(m_{0}\)</span> es el número de replicado independientes de la muestra problema</li>
 <li><span class="math inline">\(\overline{x}\)</span> es el promedio de la concentraciones de los calibrantes</li>
 </ul>
-<p>Esta incertidumbre se puede observar en la figura <a href="#fig:banda">1</a>, la cual fue obtenida mediante simulación en lenguaje <code>R</code>:</p>
+<p>Esta incertidumbre se puede observar en la figura <a href="#fig:banda">1</a>, la
+cual fue obtenida mediante simulación en lenguaje <code>R</code>:</p>
 <pre class="r"><code>set.seed(123)
 x &lt;- 1:10
 y &lt;- 2 + 5*x + 10*rnorm(length(x), 0, 1)
 d &lt;- data.frame(x, y)
 
-library(ggplot2)
-
-ggplot(d, aes(x = x, y = y)) +
+library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.1</code></pre>
+<pre class="r"><code>ggplot(d, aes(x = x, y = y)) +
   geom_smooth(method = &#39;lm&#39;) </code></pre>
 <div class="figure"><span id="fig:banda"></span>
 <img src="/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png" alt="Incertidumbre de calibración" width="672" />
@@ -290,13 +313,16 @@ Figure 1: Incertidumbre de calibración
 <li>Aumentando <span class="math inline">\(n\)</span> el número de calibrantes.</li>
 <li>Aumentando <span class="math inline">\(m_{0}\)</span></li>
 <li>Diseñando la curva de calibración de modo que <span class="math inline">\(x_{0} = \bar{x}\)</span></li>
-<li>Aunque no tan “evidente”, maximizando <span class="math inline">\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)</span>, es decir, utilizando todo el rango lineal (Nota mental: otro post)</li>
+<li>Aunque no tan “evidente”, maximizando <span class="math inline">\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)</span>,
+es decir, utilizando todo el rango lineal (Nota mental: otro post)</li>
 </ol>
 <div id="aplicacion-a-un-caso-real" class="section level1">
 <h1>Aplicación a un caso “real”</h1>
-<p>La tabla <a href="#tab:tabla">1</a> muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura <a href="#fig:cal">2</a> describe el gráfico de calibración:</p>
+<p>La tabla <a href="#tab:tabla">1</a> muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura <a href="#fig:cal">2</a> describe
+el gráfico de calibración:</p>
 <div class="alert alert-note">
-  <p>Alguien capo en HTML/CSS que me ayude a poner tabla enfrentada con figura en 2 columnas por favor… y que Dios se lo pague.</p>
+  <p>Alguien capo en HTML/CSS que me ayude a poner tabla enfrentada con figura en
+2 columnas por favor… y que Dios se lo pague.</p>
 
 </div>
 
@@ -403,9 +429,18 @@ UA
 Figure 2: Curva de calibración
 </p>
 </div>
-<p>Ok, hay varias formas de implementar los cálculos de incertidumbre de calibración de la ecuación <a href="#eq:ux0">(3)</a>. Podríamos utilizar Excel para obtener cada uno de los términos, pero eso lo ilustraremos en otro post. En esta oportunidad utilizaremos el software <code>R</code>. Este software posee varias librerías o packages especializados en el cálculo de incertidumbre en química analítica, por ejemplo: <code>metRology</code> y <code>chemCal</code>. En este post utilizaremos el segundo, pues entrega en forma directa el cálculo de la incertidumbre de calibración:</p>
+<p>Ok, hay varias formas de implementar los cálculos de incertidumbre de
+calibración de la ecuación <a href="#eq:ux0">(3)</a>. Podríamos utilizar Excel para
+obtener cada uno de los términos, pero eso lo ilustraremos en otro post.
+En esta oportunidad utilizaremos el software <code>R</code>. Este software posee varias
+librerías o packages especializados en el cálculo de incertidumbre en
+química analítica, por ejemplo: <code>metRology</code> y <code>chemCal</code>. En este post
+utilizaremos el segundo, pues entrega en forma directa el cálculo de
+la incertidumbre de calibración:</p>
 <div class="alert alert-warning">
-  <p>Si no tienes instalado el package <code>chemCal</code> utiliza el comando <code>install.packages(&lsquo;chemCal&rsquo;)</code>. Una vez instalado procede con el siguiente código.</p>
+  <p>Si no tienes instalado el package <code>chemCal</code> utiliza el comando
+<code>install.packages(&lsquo;chemCal&rsquo;)</code>. Una vez instalado procede con el siguiente
+código.</p>
 
 </div>
 
@@ -443,19 +478,43 @@ $`Confidence Limits`
 <p>Bien, interpretemos la salida:</p>
 <ul>
 <li><code>$Prediction</code> es la concentración de la muestra problema en [ppm]</li>
-<li><code>$Standard Error</code> es la incertidumbre estándar de calibración, es decir, la que se obtiene de la ecuación <a href="#eq:ux0">(3)</a> expresada, obviamente, en las mismas unidades que los calibrantes [ppm].</li>
-<li><code>$Confidence</code> es la incertidumbre expandida de calibración <span class="math inline">\(U(x0)\)</span>, es decir, <span class="math inline">\(U(x0) = k\cdot u(x0)\)</span> donde <span class="math inline">\(k\)</span> es el factor de cobertura con el cual se obtiene un intervalo de incertidumbre con cierta confianza (habitualmente 95%). Más de esto en otro post.</li>
-<li><code>$Confidence Limits</code> es simplemente <span class="math inline">\(x0 \pm U(x0)\)</span>, es decir, <span class="math inline">\(5 \pm 0.6\)</span> ppm (ojo con las cifras significativas… ahí va otro post).</li>
+<li><code>$Standard Error</code> es la incertidumbre estándar de calibración, es
+decir, la que se obtiene de la ecuación <a href="#eq:ux0">(3)</a> expresada,
+obviamente, en las mismas unidades que los calibrantes [ppm].</li>
+<li><code>$Confidence</code> es la incertidumbre expandida de calibración <span class="math inline">\(U(x0)\)</span>, es decir,
+<span class="math inline">\(U(x0) = k\cdot u(x0)\)</span> donde <span class="math inline">\(k\)</span> es el factor de cobertura con el cual se obtiene
+un intervalo de incertidumbre con cierta confianza (habitualmente 95%).
+Más de esto en otro post.</li>
+<li><code>$Confidence Limits</code> es simplemente <span class="math inline">\(x0 \pm U(x0)\)</span>, es decir,
+<span class="math inline">\(5 \pm 0.6\)</span> ppm
+(ojo con las cifras significativas… ahí va otro post).</li>
 </ul>
 <p>Algunas consideraciones importantes:</p>
 <ol style="list-style-type: decimal">
-<li><p>Esta incertidumbre de calibración <span class="math inline">\(u(x0)\)</span> NO incorpora la incertidumbre de los calibrantes, sólo es un reflejo del error aleatorio instrumental. Punto. Es decir, asume que los calibrantes no tienen incertidumbre… lo cual todos los químicos sabemos que es ¡Farso, farso!</p></li>
-<li><p>Si Ud. requiere incorporar también la incertidumbre de los calibrantes, debe utilizar otro modelo lineal de calibración denominado: modelo lineal con error en ambos ejes (otro post).</p></li>
-<li><p>Ya que esta incertidumbre sólo refleja el componente aleatorio de la calibración, no están incorporados los errores sistemáticos de la preparación de estándares: error en el aforo, no considerar la pureza del reactivo, etc. (Nota mental: otro post… ¿cuántos van?).</p></li>
-<li><p>Si, además, el método analítico incluye pesada de la muestra, digestión o extracción, aforo final, factor de dilución, etc. Ud.debe, mediante los mandamientos de la guía GUM, combinar todas estas fuentes de incertidumbre con la de calibración <span class="math inline">\(u(x0)\)</span>.</p></li>
-<li><p>En el fondo, como se asume que los calibrantes no tienen incertidumbre, <span class="math inline">\(u(x0)\)</span> reflejaría el comportamiento aleatorio del instrumento cuando se lee la curva “muchas” veces, siempre con los mismos calibrantes. En cada oportunidad, se obtendría una pendiente e intercepto distintos (debido a al error aleatorio <span class="math inline">\(\epsilon\)</span>), por lo tanto, también una concentración <span class="math inline">\(x0\)</span> distinta cada vez.</p></li>
+<li><p>Esta incertidumbre de calibración <span class="math inline">\(u(x0)\)</span> NO incorpora la
+incertidumbre de los calibrantes, sólo es un reflejo del error aleatorio
+instrumental. Punto. Es decir, asume que los calibrantes no tienen
+incertidumbre… lo cual todos los químicos sabemos que es ¡Farso, farso!</p></li>
+<li><p>Si Ud. requiere incorporar también la incertidumbre de los calibrantes, debe
+utilizar otro modelo lineal de calibración denominado: modelo lineal con error
+en ambos ejes (otro post).</p></li>
+<li><p>Ya que esta incertidumbre sólo refleja el componente aleatorio de la
+calibración, no están incorporados los errores sistemáticos de la preparación
+de estándares: error en el aforo, no considerar la pureza del
+reactivo, etc. (Nota mental: otro post… ¿cuántos van?).</p></li>
+<li><p>Si, además, el método analítico incluye pesada de la muestra, digestión o
+extracción, aforo final, factor de dilución, etc. Ud.debe, mediante los
+mandamientos de la guía GUM, combinar todas estas fuentes de incertidumbre
+con la de calibración <span class="math inline">\(u(x0)\)</span>.</p></li>
+<li><p>En el fondo, como se asume que los calibrantes no tienen incertidumbre,
+<span class="math inline">\(u(x0)\)</span> reflejaría el comportamiento aleatorio del instrumento cuando
+se lee la curva “muchas” veces, siempre con los mismos calibrantes. En cada
+oportunidad, se obtendría una pendiente e intercepto distintos (debido a al
+error aleatorio <span class="math inline">\(\epsilon\)</span>), por lo tanto, también una concentración <span class="math inline">\(x0\)</span>
+distinta cada vez.</p></li>
 </ol>
-<p>Bueno espero que este post, en rodaje áun, haya sido de su agrado. Como siempre, siéntase libre de criticarlo. Nos vemos.</p>
+<p>Bueno espero que este post, en rodaje áun, haya sido de su agrado. Como siempre,
+siéntase libre de criticarlo. Nos vemos.</p>
 </div>
 
     </div>
@@ -514,7 +573,7 @@ $`Confidence Limits`
   <div class="container">
     <p class="powered-by">
 
-      &copy; 2017 Carlos Gómez &middot; 
+      &copy; 2018 Carlos Gómez &middot; 
 
       Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
       theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.

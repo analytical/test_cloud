@@ -17,45 +17,76 @@ analítico y cómo detectarlo estadísticamente mediante el análisis de covaria
 
 
 
-<p>He vuelto a postear, después de una gira que me llevó por los cinco… mentira, fue por pura pega.</p>
-<p>El famoso efecto matriz, algo tan etéreo como el <em>criterio analítico</em>. El efecto matriz está íntimamente relacionado con las interferencias de la matriz que de alguna forma aumentan o disminuyen la señal instrumental que, en teoría, es producida sólo por el analito de interés.</p>
-<p>Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers que nos enseñaron el famoso método de calibración con adición conocida o adición de estándar. En este método, la matriz es nuestro medio de calibración. En vez de preparar los calibrantes en solventes puros o en solución ácida, utilizaremos la misma matriz para preparar (adicionar) el analito. De esta forma, la señal analítica de estos calibrantes, está compuesta de la señal propia del analito así como también de los interferentes, lo que permite corregir/minimizar sus efectos.</p>
-<p>Existen varias formas de implementar el método de adición conocida. Una muy buena referencia es el excelente y pedagógico paper de M. Bader:</p>
+<p>He vuelto a postear, después de una gira que me llevó por los cinco…
+mentira, fue por pura pega.</p>
+<p>El famoso efecto matriz, algo tan etéreo como el <em>criterio analítico</em>.
+El efecto matriz está íntimamente relacionado con las interferencias de la
+matriz que de alguna forma aumentan o disminuyen la señal instrumental que,
+en teoría, es producida sólo por el analito de interés.</p>
+<p>Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papers
+que nos enseñaron el famoso método de calibración con adición conocida o
+adición de estándar. En este método, la matriz es nuestro
+medio de calibración. En vez de preparar los calibrantes en solventes puros o
+en solución ácida, utilizaremos la misma matriz para preparar (adicionar)
+el analito. De esta forma, la señal analítica de estos calibrantes, está
+compuesta de la señal propia del analito así como también de los
+interferentes, lo que permite corregir/minimizar sus efectos.</p>
+<p>Existen varias formas de implementar el método de adición conocida. Una muy
+buena referencia es el excelente y pedagógico paper de M. Bader:</p>
 <blockquote>
-<p>Morris Bader “A systematic approach to standard addition methods in instrumental analysis” <em>J. Chem. Educ., 1980, 57 (10), p 703</em></p>
+<p>Morris Bader “A systematic approach to standard addition methods in
+instrumental analysis” <em>J. Chem. Educ., 1980, 57 (10), p 703</em></p>
 </blockquote>
-<p>El método consiste en añadir cantidades conocidas del analito en solvente puro o solución ácida a volúmenes iguales de matriz. Finalmente, medir la respuesta instrumental en una serie de adiciones crecientes tal como lo muestra la figura <a href="#fig:mosaplot">1</a>:</p>
+<p>El método consiste en añadir cantidades conocidas del analito en solvente
+puro o solución ácida a volúmenes iguales de matriz. Finalmente, medir la respuesta
+instrumental en una serie de
+adiciones crecientes tal como lo muestra la figura <a href="#fig:mosaplot">1</a>:</p>
 <div class="figure"><span id="fig:mosaplot"></span>
 <img src="/img/mosaplot.png" alt="Diseño experimental de la adición conocida. Cortesía de Lins4y via Wikimedia Commons"  />
 <p class="caption">
 Figure 1: Diseño experimental de la adición conocida. Cortesía de Lins4y via Wikimedia Commons
 </p>
 </div>
-<p>Es necesario que las adiciones de analito generen, en conjunto con la cantidad de analito presente en la muestra original, una concentración tal que aún se encuentre en el rango lineal de calibración. De esta forma se otiene una curva tal como se observa en la figura <a href="#fig:adicion">2</a>:</p>
+<p>Es necesario que las adiciones de analito generen, en
+conjunto con la cantidad de analito presente en la muestra original,
+una concentración
+tal que aún se encuentre en el rango lineal de calibración. De esta forma
+se otiene una curva tal como se observa en la figura <a href="#fig:adicion">2</a>:</p>
 <div class="figure"><span id="fig:adicion"></span>
 <img src="/img/c0adicion.png" alt="Preparación curva método de adición conocida"  />
 <p class="caption">
 Figure 2: Preparación curva método de adición conocida
 </p>
 </div>
-<p>Las unidades del eje <span class="math inline">\(X\)</span> pueden establecerse como <em>analito añadido</em> o, tal como lo propone Bader en su paper, como múltiplos de un volumen o cantidad fija del analito. Por lo tanto, en <span class="math inline">\(x = 0\)</span> se obtiene la señal de la muestra problema a la cual no se le ha agregado el analito, es decir, la señal original. En cada una de las adiciones del estándar mediremos la señal instrumental de tal manera de obtener, y así lo esperamos, una relación lineal entre analito agregado <span class="math inline">\(x\)</span> y señal <span class="math inline">\(y\)</span> de la forma:</p>
-<span class="math display" id="eq:calib">\[\begin{equation}
+<p>Las unidades del eje <span class="math inline">\(X\)</span> pueden establecerse como <em>analito añadido</em> o,
+tal como lo propone Bader en su paper, como múltiplos de un volumen
+o cantidad fija del analito. Por lo tanto, en <span class="math inline">\(x = 0\)</span> se obtiene la
+señal de la muestra problema a la cual no se le ha agregado el
+analito, es decir, la señal original. En cada una de las adiciones
+del estándar mediremos la señal instrumental de tal manera de
+obtener, y así lo esperamos, una relación lineal entre analito
+agregado <span class="math inline">\(x\)</span> y señal <span class="math inline">\(y\)</span> de la forma:</p>
+<p><span class="math display" id="eq:calib">\[\begin{equation}
   y = \beta_{0} + \beta_{1}x + \epsilon
     \tag{1}
-\end{equation}\]</span>
-<p>donde se asumen los mismos supuestos que discutimos en el caso de la calibración lineal estándar(en solvente puro) y que puede recordar en este <a href="https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/">post</a>.</p>
-<p>La concentración de la muestra problema <span class="math inline">\(C_{0}\)</span> se obtiene a partir de la ecuación <a href="#eq:c0">(2)</a>:</p>
-<span class="math display" id="eq:c0">\[\begin{equation}
+\end{equation}\]</span></p>
+<p>donde se asumen los mismos supuestos que discutimos en el caso de la
+calibración lineal estándar(en solvente puro) y que puede recordar en este
+<a href="https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/">post</a>.</p>
+<p>La concentración de la muestra problema <span class="math inline">\(C_{0}\)</span> se obtiene a partir de la
+ecuación <a href="#eq:c0">(2)</a>:</p>
+<p><span class="math display" id="eq:c0">\[\begin{equation}
   C_{0} = \frac{\beta_{0}}{\beta_{1}}
   \tag{2}
-\end{equation}\]</span>
-<p>La incertidumbre de la concentración de la muestra problema <span class="math inline">\(u(C_{0})\)</span> se calcula a partir de la ecuación:</p>
-<span class="math display" id="eq:uc0">\[\begin{equation}
+\end{equation}\]</span></p>
+<p>La incertidumbre de la concentración de la muestra problema <span class="math inline">\(u(C_{0})\)</span> se
+calcula a partir de la ecuación:</p>
+<p><span class="math display" id="eq:uc0">\[\begin{equation}
   u(C_{0}) = \frac{\sigma_{y/x}}{\beta_{1}}
   \sqrt{\frac{1}{n} + \frac{\overline{y}^2}
   {\beta_{1}\sum_{i}^{n} (x_{i} - \overline{x})^2}}
     \tag{3}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(\sigma_{y/x}\)</span> es la desviación estándar del error aleatorio <span class="math inline">\(\epsilon\)</span></li>
@@ -63,20 +94,37 @@ Figure 2: Preparación curva método de adición conocida
 <li><span class="math inline">\(\overline{y}\)</span> es el promedio de las señales instrumentales de las adiciones</li>
 <li><span class="math inline">\(\overline{x}\)</span> es el promedio de las concentraciones</li>
 </ul>
-<p>Como puede apreciar, la expresión de la incertidumbre de calibración para el método de adición conocida es muy similar a la correspondiente calibración estandar que discutimos en un <a href="https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/">post anterior</a>.</p>
-<p>Si queremos minimizar esta incertidumbre podríamos aumentar el número de adiciones <span class="math inline">\(n\)</span> o aumentar el término <span class="math inline">\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)</span>. Este último término es interesante, pues nos dice que la incertidumbre de calibración de este método se minimiza utilizando un rango amplio de concentración de adición. Ellison demuestra que, dado que la propiedad de linealidad se mantiene, basta preparar dos puntos de calibración:</p>
+<p>Como puede apreciar, la expresión de la incertidumbre de calibración para el
+método de adición conocida es muy
+similar a la correspondiente calibración estandar que discutimos en un
+<a href="https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/">post anterior</a>.</p>
+<p>Si queremos minimizar esta incertidumbre podríamos aumentar el número de
+adiciones <span class="math inline">\(n\)</span> o aumentar el término <span class="math inline">\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)</span>.
+Este último término es interesante, pues nos dice que la incertidumbre de calibración
+de este método se minimiza utilizando un rango amplio de concentración de
+adición. Ellison demuestra que, dado que la propiedad
+de linealidad se mantiene, basta preparar dos puntos de calibración:</p>
 <ul>
 <li>La muestra original sin adición (<span class="math inline">\(x = 0\)</span>)</li>
 <li>El extremo superior del rango lineal</li>
 </ul>
-<p>Por ejemplo, si por alguna razón se tuvieran que preparar <span class="math inline">\(n = 6\)</span> adiciones, lo que indica la ecuación <a href="#eq:uc0">(3)</a>, es que sería mejor preparar tres puntos sin adición (<span class="math inline">\(x = 0\)</span>) y tres en el extremos superior del rango lineal, tal como lo demuestra la figura <a href="#fig:doe">3</a></p>
+<p>Por ejemplo, si por alguna razón se tuvieran que preparar <span class="math inline">\(n = 6\)</span> adiciones, lo
+que indica la ecuación <a href="#eq:uc0">(3)</a>, es que sería mejor preparar tres puntos
+sin adición (<span class="math inline">\(x = 0\)</span>) y tres en el extremos superior del rango lineal, tal
+como lo demuestra la figura <a href="#fig:doe">3</a></p>
 <div class="figure"><span id="fig:doe"></span>
 <img src="/img/doeadicion.png" alt="Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre"  />
 <p class="caption">
 Figure 3: Diseño de una curva de calibración con adición conocida para minimizar la incertidumbre
 </p>
 </div>
-<p>Para evaluar estadísticamente si existe un efecto matriz debemos comparar la curva de calibración estándar (es decir, en solvente orgánico o en solución ácida) con la curva de adición conocida. Si las pendientes de ambas curvas son “iguales” podemos afirmar que no hay evidencia de efecto matriz tal como se muestra en la figura <a href="#fig:sinefecto">4</a>. De modo contrario, si las pendientes de ambas curvas difieren, entonces, existe un efecto matriz significativo, tal como lo indica la figura <a href="#fig:conefecto">5</a>:</p>
+<p>Para evaluar estadísticamente si existe un efecto matriz debemos
+comparar la curva de calibración estándar (es decir, en solvente orgánico o en
+solución ácida) con la curva de adición conocida. Si las pendientes de ambas
+curvas son “iguales” podemos afirmar que no hay evidencia de efecto matriz tal
+como se muestra en la figura <a href="#fig:sinefecto">4</a>. De modo contrario, si las
+pendientes de ambas curvas difieren, entonces, existe un efecto matriz
+significativo, tal como lo indica la figura <a href="#fig:conefecto">5</a>:</p>
 <div class="figure"><span id="fig:sinefecto"></span>
 <img src="/img/sinefecto.png" alt="Sin efecto matriz: calibración estándar v/s adición conocida"  />
 <p class="caption">
@@ -90,24 +138,34 @@ Figure 5: Con efecto matriz: calibración estándar v/s adición conocida
 </p>
 </div>
 <blockquote>
-<p>Ahora, Ud. se preguntará ¿Cuál es la herramienta estadística para comparar dos pendientes de curvas de calibración?</p>
+<p>Ahora, Ud. se preguntará ¿Cuál es la herramienta estadística para comparar dos
+pendientes de curvas de calibración?</p>
 </blockquote>
 <p>¡Excelente pregunta Tu(x3)!</p>
-<p>Aunque hay varias aproximaciones para hacer esta comparación, en este post utilizaremos el Análisis de Covarianza (ANCOVA) y lo implementaremos, como no, en lenguaje <code>R</code>. La siguiente tabla muestra los datos de calibración de clorpirifos en vino por GC-NPD, tanto en solvente puro como mediante el método de adición conocida en la muestra de vino:</p>
+<p>Aunque hay varias aproximaciones para hacer esta comparación, en este post
+utilizaremos el Análisis de Covarianza (ANCOVA) y lo implementaremos, como no, en lenguaje <code>R</code>. La siguiente tabla muestra los datos de calibración de clorpirifos
+en vino por GC-NPD, tanto en solvente puro como mediante el método de adición
+conocida en la muestra de vino:</p>
 <div class="figure"><span id="fig:tablamosa"></span>
 <img src="/img/tabla_mosa.png" alt="Tabla datos de calibración clorpirifos"  />
 <p class="caption">
 Figure 6: Tabla datos de calibración clorpirifos
 </p>
 </div>
-<p>Note que en la caso de la calibración estándar, las unidades de concentración están expresadas como <span class="math inline">\(\mu\)</span>g de clorpirifos por mL de solvente. En cambio, en los datos de adición conocida están expresadas como <span class="math inline">\(\mu\)</span>g de clorpirifos añadidos en los mL de muestra original. Por lo tanto, <span class="math inline">\(X = 0\, \mu\text{g}/\text{mL}_{\text{vino}}\)</span> representa la muestra sin adición. La figura <a href="#fig:mosa">7</a> muestra las curvas de calibración correspondientes.</p>
+<p>Note que en la caso de la calibración estándar, las unidades de
+concentración están expresadas como <span class="math inline">\(\mu\)</span>g de clorpirifos por mL de solvente.
+En cambio, en los datos de adición conocida están expresadas como <span class="math inline">\(\mu\)</span>g de
+clorpirifos añadidos en los mL de muestra original. Por lo tanto,
+<span class="math inline">\(X = 0\, \mu\text{g}/\text{mL}_{\text{vino}}\)</span> representa la muestra sin adición.
+La figura <a href="#fig:mosa">7</a> muestra las curvas de calibración correspondientes.</p>
 <div class="figure"><span id="fig:mosa"></span>
 <img src="/img/mosa.png" alt="Curvas de calibración"  />
 <p class="caption">
 Figure 7: Curvas de calibración
 </p>
 </div>
-<p>Apliquemos, ahora, el análisis de covarianza para evaluar si existen diferencias significativas entre las pendientes.</p>
+<p>Apliquemos, ahora, el análisis de covarianza para evaluar si existen
+diferencias significativas entre las pendientes.</p>
 <p>Primero, ajustemos un modelo lineal para cada calibración:</p>
 <pre class="r"><code># Curva de calibración estándar
 x &lt;- c(0, 0.1, 0.2, 0.3, 0.5, 1.0)
@@ -120,7 +178,8 @@ y.add &lt;- c(75, 159, 240, 328, 410, 498)
 fit.add &lt;- lm(y.add ~ x.add)
 
 # En R la expresión y ~ x significa &#39;y es modelado por x&#39;</code></pre>
-<p>A continuación se muestran los análisis estadísticos para cada curva:</p>
+<p>A continuación se muestran los análisis estadísticos para cada
+curva:</p>
 <pre class="r"><code>summary(fit.std)</code></pre>
 <pre><code>
 Call:
@@ -159,86 +218,170 @@ Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&
 Residual standard error: 2.021 on 4 degrees of freedom
 Multiple R-squared:  0.9999,    Adjusted R-squared:  0.9998 
 F-statistic: 3.055e+04 on 1 and 4 DF,  p-value: 6.426e-09</code></pre>
-<p>La pendiente de la curva de calibración estándar es 797 y la pendiente del método de adición es 845. ¿Es esta diferencia significativa? Esta es la pregunta que responde el ANCOVA. Para implementar este test en <code>R</code>debemos hacer una pequeña modificación a nuestra base de datos:</p>
+<p>La pendiente de la curva de calibración estándar es 797
+y la pendiente del método de adición es 845.
+¿Es esta diferencia significativa? Esta es la pregunta que responde el ANCOVA. Para implementar este test en <code>R</code>debemos hacer una pequeña
+modificación a nuestra base de datos:</p>
 <pre class="r"><code># Consolidaremos los datos de calibración en una sola tabla llamada &#39;datos&#39;
 datos &lt;- data.frame(X = c(x, x.add), 
                     Y = c(y, y.add), 
                     Calibracion = c(rep(&#39;Estandar&#39;, 6), rep(&#39;Adicion&#39;, 6)))</code></pre>
 <table>
 <thead>
-<tr class="header">
-<th align="left">X</th>
-<th align="left">Y</th>
-<th align="left">Calibracion</th>
+<tr>
+<th style="text-align:left;">
+X
+</th>
+<th style="text-align:left;">
+Y
+</th>
+<th style="text-align:left;">
+Calibracion
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">0.0</td>
-<td align="left">0</td>
-<td align="left">Estandar</td>
+<tr>
+<td style="text-align:left;">
+0.0
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+Estandar
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.1</td>
-<td align="left">80</td>
-<td align="left">Estandar</td>
+<tr>
+<td style="text-align:left;">
+0.1
+</td>
+<td style="text-align:left;">
+80
+</td>
+<td style="text-align:left;">
+Estandar
+</td>
 </tr>
-<tr class="odd">
-<td align="left">0.2</td>
-<td align="left">159</td>
-<td align="left">Estandar</td>
+<tr>
+<td style="text-align:left;">
+0.2
+</td>
+<td style="text-align:left;">
+159
+</td>
+<td style="text-align:left;">
+Estandar
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.3</td>
-<td align="left">245</td>
-<td align="left">Estandar</td>
+<tr>
+<td style="text-align:left;">
+0.3
+</td>
+<td style="text-align:left;">
+245
+</td>
+<td style="text-align:left;">
+Estandar
+</td>
 </tr>
-<tr class="odd">
-<td align="left">0.5</td>
-<td align="left">410</td>
-<td align="left">Estandar</td>
+<tr>
+<td style="text-align:left;">
+0.5
+</td>
+<td style="text-align:left;">
+410
+</td>
+<td style="text-align:left;">
+Estandar
+</td>
 </tr>
-<tr class="even">
-<td align="left">1.0</td>
-<td align="left">795</td>
-<td align="left">Estandar</td>
+<tr>
+<td style="text-align:left;">
+1.0
+</td>
+<td style="text-align:left;">
+795
+</td>
+<td style="text-align:left;">
+Estandar
+</td>
 </tr>
-<tr class="odd">
-<td align="left">0.0</td>
-<td align="left">75</td>
-<td align="left">Adicion</td>
+<tr>
+<td style="text-align:left;">
+0.0
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:left;">
+Adicion
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.1</td>
-<td align="left">159</td>
-<td align="left">Adicion</td>
+<tr>
+<td style="text-align:left;">
+0.1
+</td>
+<td style="text-align:left;">
+159
+</td>
+<td style="text-align:left;">
+Adicion
+</td>
 </tr>
-<tr class="odd">
-<td align="left">0.2</td>
-<td align="left">240</td>
-<td align="left">Adicion</td>
+<tr>
+<td style="text-align:left;">
+0.2
+</td>
+<td style="text-align:left;">
+240
+</td>
+<td style="text-align:left;">
+Adicion
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.3</td>
-<td align="left">328</td>
-<td align="left">Adicion</td>
+<tr>
+<td style="text-align:left;">
+0.3
+</td>
+<td style="text-align:left;">
+328
+</td>
+<td style="text-align:left;">
+Adicion
+</td>
 </tr>
-<tr class="odd">
-<td align="left">0.4</td>
-<td align="left">410</td>
-<td align="left">Adicion</td>
+<tr>
+<td style="text-align:left;">
+0.4
+</td>
+<td style="text-align:left;">
+410
+</td>
+<td style="text-align:left;">
+Adicion
+</td>
 </tr>
-<tr class="even">
-<td align="left">0.5</td>
-<td align="left">498</td>
-<td align="left">Adicion</td>
+<tr>
+<td style="text-align:left;">
+0.5
+</td>
+<td style="text-align:left;">
+498
+</td>
+<td style="text-align:left;">
+Adicion
+</td>
 </tr>
 </tbody>
 </table>
-<p>Una vez consolidados los datos en una única tabla podemos aplicar el análisis de covarianza en <code>R</code> con los siguientes comandos de la librería <code>car</code>:</p>
-<pre class="r"><code>library(car)
-
-# Ajustamos un modelo con interceptos distintos y una pendiente para cada
+<p>Una vez consolidados los datos en una única tabla podemos aplicar el
+análisis de covarianza en <code>R</code> con los siguientes comandos de la librería
+<code>car</code>:</p>
+<pre class="r"><code>library(car)</code></pre>
+<pre><code>Warning: package &#39;car&#39; was built under R version 3.5.1</code></pre>
+<pre><code>Loading required package: carData</code></pre>
+<pre class="r"><code># Ajustamos un modelo con interceptos distintos y una pendiente para cada
 # calibración
 
 fit &lt;- lm(Y ~ X + Calibracion + X:Calibracion, data = datos)
@@ -253,11 +396,24 @@ X:Calibracion    310  1    16.699  0.003503 **
 Residuals        149  8                        
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<p>De la tabla se observa que el <em>p-value</em> de la comparación de las pendientes es <span class="math inline">\(Pr(&gt;F) = 0.0035\)</span> el cual es menor a 0.05 (<code>X:Calibracion</code>), por lo tanto, la diferencia observada entre las pendientes es, desde el punto de vista estadístico, significativa. Esto implica que existe un efecto matriz que no está corregido por la calibración en solvente. En definitiva, para este tipo de muestra, sería apropiado utilizar el método de adición conocida para la determinación de clorpirifos en vino.</p>
-<p>Ahora, esta conclusión debe ser complementada con el criterio químico y metrológico. Recuerde que la desventaja del método de adición conocida es que es necesario hacer la adición muestra a muestra. Lo que se concluye del ANCOVA está basado en un criterio puramente estadístico.</p>
+<pre><code>## Warning: package &#39;broom&#39; was built under R version 3.5.1</code></pre>
+<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.5.1</code></pre>
+<p>De la tabla se observa que el <em>p-value</em> de la comparación de las pendientes
+es <span class="math inline">\(Pr(&gt;F) = 0.0035\)</span> el cual es menor
+a 0.05 (<code>X:Calibracion</code>), por lo tanto, la diferencia observada entre las pendientes es, desde el punto de vista estadístico, significativa.
+Esto implica que existe un efecto matriz que no está corregido por la
+calibración en solvente. En definitiva, para este tipo de muestra,
+sería apropiado
+utilizar el método de adición conocida para la determinación de clorpirifos
+en vino.</p>
+<p>Ahora, esta conclusión debe ser complementada con el criterio químico y
+metrológico. Recuerde que la desventaja del método de adición conocida
+es que es necesario hacer la adición muestra a muestra. Lo que se concluye
+del ANCOVA está basado en un criterio puramente estadístico.</p>
 <p>Bueno estimado lector, espero haya disfrutado este post.</p>
 <p>Espero sus comentarios. Nos vemos.</p>
 <div id="bibliografia" class="section level2">
 <h2>Bibliografía</h2>
-<p>Ellison SL, Thompson M. <strong>Standard additions: myth and reality</strong> (2008) <em>Analyst 133(8):992-7.</em></p>
+<p>Ellison SL, Thompson M. <strong>Standard additions: myth and reality</strong>
+(2008) <em>Analyst 133(8):992-7.</em></p>
 </div>

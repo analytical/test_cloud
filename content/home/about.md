@@ -1,7 +1,7 @@
 +++
 # About/Biography widget.
 
-date = "2017-08-20T00:00:00"
+date = "2018-09-23T00:00:00"
 draft = false
 
 widget = "about"
@@ -18,7 +18,8 @@ weight = 1
     "Validación de métodos analíticos",
     "ISO 17025",
     "Cálculo de Incertidumbre",
-    "Validación de Procesos Farmacéuticos"
+    "Validación de Procesos Farmacéuticos",
+    "Muestreo y Control de Calidad"
   ]
 
 # List your qualifications (such as academic degrees).
@@ -41,11 +42,11 @@ weight = 1
 
 # Sobre Mí
 
-Me desempeño actualmente como Estadístico en la División 
-Metals & Minerals de Bureau Veritas Chile.
+Me desempeño actualmente como Gestor de Calidad de Billetes y Monedas en 
+el Banco Central de Chile.
 
-+13 años de experiencia en proyectos de I+D relacionados con metrología química y la aplicación de métodos estadísticos modernos en química analítica.
-Me desempeño también como Profesor de los Diplomados de Análisis Orgánico 
++14 años de experiencia en proyectos de I+D relacionados con metrología química y la aplicación de métodos estadísticos modernos en química analítica.
+Soy Profesor en los Diplomados de Análisis Orgánico 
 y Buenas Prácticas de Manufactura Farmacéutica impartidos por la
 Facultad de Ciencias Químicas y Farmacéuticas de la Universidad de Chile.
 

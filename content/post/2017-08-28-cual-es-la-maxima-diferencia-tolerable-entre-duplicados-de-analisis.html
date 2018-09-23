@@ -18,9 +18,11 @@ aceptación nos dará una una base para la construcción de cartas control de
 precisión'
 ---
 
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
-<p>Un día cualquiera en un laboratorio que aún no establece criterios de aceptación de precisión:</p>
+<p>Un día cualquiera en un laboratorio que aún no establece criterios de aceptación
+de precisión:</p>
 <ul>
 <li>Duplicado 1 = 25.56 % Cu</li>
 <li>Duplicado 2 = 25.66 % Cu</li>
@@ -29,38 +31,70 @@ precisión'
 <p>La diferencia observada ¿es aceptable para el laboratorio?</p>
 <p>Para responder a esta pregunta debemos considerar varias cosas:</p>
 <ol style="list-style-type: decimal">
-<li>¿Los duplicados fueron realizados en condiciones de repetibilidad o reproducibilidad?</li>
+<li>¿Los duplicados fueron realizados en condiciones de repetibilidad o
+reproducibilidad?</li>
 <li>¿Existe alguna normativa al respecto que se deba cumplir?</li>
-<li>¿Cuál es la metodología analítica? No es lo mismo determinar Cu en concentrado de cobre por electrogravimetría (método primario) que por Fluorescencia de Rayos X.</li>
+<li>¿Cuál es la metodología analítica? No es lo mismo determinar Cu en
+concentrado de cobre por electrogravimetría (método primario) que por
+Fluorescencia de Rayos X.</li>
 <li>¿Cuál es la incertidumbre del método analítico?</li>
 <li>¿Existe algún acuerdo a nivel comercial sobre estas diferencias?</li>
 </ol>
-<p>Para abordar este problema tendremos que hace la suposición que los duplicados fueron obtenidos en condiciones de repetibilidad, es decir: mismo analista, mismo día, mismo instrumento, etc. Bajo esta premisa hay varias formas de estimar la máxima diferencia tolerable entre duplicados de análisis.</p>
-<p><em><strong>Nota</strong>: En realidad, los conceptos que mostraremos a continuación son completamente análogos para estimar la máxima diferencia tolerable en condiciones de reproducibilidad. Sin embargo, dedicaremos otro post a ese tema específico.</em></p>
-<p>El concepto estadístico clave para establecer la tolerancia entre duplicados es el límite de repetibilidad <span class="math inline">\(r\)</span>.</p>
+<p>Para abordar este problema tendremos que hace la suposición que
+los duplicados fueron obtenidos en condiciones de repetibilidad, es decir: mismo
+analista, mismo día, mismo instrumento, etc. Bajo esta premisa hay varias formas
+de estimar la máxima diferencia tolerable entre duplicados de análisis.</p>
+<p><em><strong>Nota</strong>: En realidad, los conceptos que mostraremos a continuación son
+completamente análogos para estimar la máxima diferencia tolerable en
+condiciones de reproducibilidad. Sin embargo, dedicaremos otro post a ese tema
+específico.</em></p>
+<p>El concepto estadístico clave para establecer la tolerancia entre duplicados
+es el límite de repetibilidad <span class="math inline">\(r\)</span>.</p>
 <div id="limite-de-repetibilidad-r-iso-5725" class="section level1">
 <h1>Límite de repetibilidad <span class="math inline">\(r\)</span> ISO 5725</h1>
 <p>La guía ISO 5725 define el límite de repetibilidad <span class="math inline">\(r\)</span> de la siguiente manera:</p>
 <p><span class="math display">\[
 r = 2.8\cdot s_{r}
-\]</span> y corresponde a la máxima diferencia, en valor absoluto, que puede tolerarse entre duplicados de análisis, obtenidos bajo condiciones de repetibilidad con un 95% de confianza. Veamos:</p>
+\]</span>
+y corresponde a la máxima diferencia, en valor absoluto, que puede
+tolerarse entre duplicados de análisis, obtenidos bajo condiciones de
+repetibilidad con un 95% de confianza. Veamos:</p>
 <ul>
-<li><p><span class="math inline">\(s_{r}\)</span> es la desviación estándar de repetibilidad, la cual da cuenta de la dispersión de las diferencias entre duplicados. Ya explicaremos cómo calcular este parámetro.</p></li>
-<li><p>El factor <strong>2.8</strong>: aquí les exijo una prueba de fe mis hermanos, me tienen que creer porque si quieren la demostración, aumentaría mucho la viscosidad de este post . A <em>grosso modo</em>, el factor 2.8 tiene que ver con el 95% de confianza, nos indica que cuando se establece la máxima diferencia tolerable, está permitido que el 5% de los duplicados estén fuera del límite <span class="math inline">\(r\)</span>, y aún el sistema analítico se encontraría bajo <em>Control Estadístico</em>.</p></li>
+<li><p><span class="math inline">\(s_{r}\)</span> es la desviación estándar de repetibilidad, la cual da cuenta de
+la dispersión de las diferencias entre duplicados. Ya explicaremos cómo
+calcular este parámetro.</p></li>
+<li><p>El factor <strong>2.8</strong>: aquí les exijo una prueba de fe mis hermanos, me tienen que
+creer porque si quieren la demostración, aumentaría mucho la viscosidad
+de este post . A <em>grosso modo</em>, el factor
+2.8 tiene que ver con el 95% de confianza, nos indica que cuando se establece
+la máxima diferencia
+tolerable, está permitido que el 5% de los duplicados estén fuera del
+límite <span class="math inline">\(r\)</span>, y aún el
+sistema analítico se encontraría bajo <em>Control Estadístico</em>.</p></li>
 </ul>
 </div>
 <div id="como-obtenemos-la-precision-de-repetibilidad-s_r" class="section level1">
 <h1>¿Cómo obtenemos la precisión de repetibilidad <span class="math inline">\(s_{r}\)</span>?</h1>
-<p>Existen varios métodos estadísticos para abordar la estimación de la desviación estándar de repetibililidad <span class="math inline">\(s_{r}\)</span>, sin embargo, en este post nos enfocaremos en los dos más utilizados en química analítica:</p>
+<p>Existen varios métodos estadísticos para abordar la estimación de la
+desviación estándar de repetibililidad <span class="math inline">\(s_{r}\)</span>, sin embargo, en este post
+nos enfocaremos en los dos más utilizados en química analítica:</p>
 <ol style="list-style-type: decimal">
 <li><p>Estimación basada en el registro histórico de duplicados de análisis.</p></li>
-<li><p>La estimación mediante estudios de precisión siguiendo las directrices de la guía ISO 5725.</p></li>
+<li><p>La estimación mediante estudios de precisión siguiendo las directrices de la
+guía ISO 5725.</p></li>
 </ol>
-<p>No describiremos todos los detalles de cada uno de los diseños experimentales expuestos en estas guías, más bien, ejemplificaremos el cálculo de la desviación estándar de repetibilidad <span class="math inline">\(s_{r}\)</span>:</p>
+<p>No describiremos todos los detalles de cada uno de los diseños experimentales
+expuestos en estas guías, más bien, ejemplificaremos el cálculo de la desviación
+estándar de repetibilidad <span class="math inline">\(s_{r}\)</span>:</p>
 </div>
 <div id="metodo-de-estimacion-en-base-a-datos-historicos-de-duplicados" class="section level1">
 <h1>Método de estimación en base a datos históricos de duplicados</h1>
-<p>Obviamente necesitamos crear una base de datos con los registros de análisis de muestras en duplicados en condiciones de repetibilidad. Estas muestras pueden corresponder a muestras de clientes, materiales de referencia primarios o secundarios, muestras control, etc. Lo importante es que ambos duplicados cumplan con las condiciones de repetibilidad. La tabla <a href="#tab:bdsr">1</a> es un ejemplo de una base de datos a utilizar en este método:</p>
+<p>Obviamente necesitamos crear una base de datos con los registros de análisis
+de muestras en duplicados en condiciones de repetibilidad. Estas muestras
+pueden corresponder a muestras de clientes, materiales de referencia primarios
+o secundarios, muestras control, etc. Lo importante es que ambos duplicados
+cumplan con las condiciones de repetibilidad. La tabla <a href="#tab:bdsr">1</a> es un
+ejemplo de una base de datos a utilizar en este método:</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:bdsr">Table 1: </span>Base de datos histórica de duplicados (sólo los primeros 6 datos)
@@ -147,13 +181,23 @@ QAQC-06
 </tr>
 </tbody>
 </table>
-<p>Puede descargar esta base de datos desde este <a href="https://1drv.ms/x/s!AuF6FPVWruwDtoUe9jzqyzQ_q1HFwg">link</a>. Y ahora la pregunta del millón: ¿Cuántas muestras en duplicado necesito? Si bien es posible obtener un cálculo “exacto” del número de muestras <span class="math inline">\(n\)</span>, esto está fuera del alcance de este post. Sin embargo, podemos decir que <span class="math inline">\(n &gt; 25\)</span> es un número inicial adecuado.</p>
-<p>Una vez construida la base de datos, se puede obtener una estimación de <span class="math inline">\(s_{r}\)</span> mediante la ecuación <a href="#eq:srdup">(1)</a>:</p>
-<span class="math display" id="eq:srdup">\[\begin{equation}
+<p>Puede descargar esta base de datos desde este <a href="https://1drv.ms/x/s!AuF6FPVWruwDtoUe9jzqyzQ_q1HFwg">link</a>.
+Y ahora la pregunta del millón:
+¿Cuántas muestras en duplicado necesito? Si bien es posible obtener un cálculo
+“exacto” del número de muestras <span class="math inline">\(n\)</span>, esto está fuera del alcance de este post.
+Sin embargo, podemos decir que <span class="math inline">\(n &gt; 25\)</span> es un número inicial adecuado.</p>
+<p>Una vez construida la base de datos, se puede obtener una estimación de <span class="math inline">\(s_{r}\)</span>
+mediante la ecuación <a href="#eq:srdup">(1)</a>:</p>
+<p><span class="math display" id="eq:srdup">\[\begin{equation}
   s_{r} = \sqrt{\frac{\sum_{i = 1}^{n} (x_{i1} - x_{i2})^2}{2n}}
   \tag{1}
-\end{equation}\]</span>
-<p>Esta ecuación puede ser fácilmente implementada en Excel pero en este post, como no, haremos los cálculos en lenguaje R. Pero antes, observe la figura <a href="#fig:dup">1</a> la cual muestra un gráfico de dispersión entre Duplicado 1 (<span class="math inline">\(X\)</span>) y Duplicado 2 (<span class="math inline">\(Y\)</span>). En este caso el orden es irrelevante. Si ajustáramos un modelo lineal entre ambas variables ¿Qué valores de pendiente e intercepto deberíamos obtener?</p>
+\end{equation}\]</span></p>
+<p>Esta ecuación puede ser fácilmente implementada en Excel pero en este post,
+como no, haremos los cálculos en lenguaje R. Pero antes, observe la figura
+<a href="#fig:dup">1</a> la cual muestra un gráfico de dispersión entre Duplicado 1 (<span class="math inline">\(X\)</span>)
+y Duplicado 2 (<span class="math inline">\(Y\)</span>). En este caso el orden es irrelevante. Si ajustáramos un
+modelo lineal entre ambas variables ¿Qué valores de pendiente e intercepto
+deberíamos obtener?</p>
 <div class="figure"><span id="fig:dup"></span>
 <img src="/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/dup-1.png" alt="Gráfico de dispersión entre duplicados" width="672" />
 <p class="caption">
@@ -161,21 +205,46 @@ Figure 1: Gráfico de dispersión entre duplicados
 </p>
 </div>
 <blockquote>
-<p>¡Correcto! Pendiente <span class="math inline">\(\beta_{1} = 1\)</span> e intercepto <span class="math inline">\(\beta_{0} = 0\)</span>. La línea roja representa esta recta teórica. Note también que la dispersión de los datos es constante en todo el rango de concentración, propiedad denominada <strong>Homocedasticidad</strong>.</p>
+<p>¡Correcto! Pendiente <span class="math inline">\(\beta_{1} = 1\)</span> e intercepto <span class="math inline">\(\beta_{0} = 0\)</span>. La línea
+roja representa esta recta teórica.
+Note también que la dispersión de los datos es constante en todo el rango
+de concentración, propiedad denominada <strong>Homocedasticidad</strong>.</p>
 </blockquote>
-<p>Esta propiedad es deseable, sin embargo, no todos los sistemas analíticos la poseen. En sí misma no es una problema, sin embargo, si la varibilidad de los duplicados aumenta con la concentración (<em>heterocedasticidad</em>) tendremos que modelar esta variabilidad en función de la concentración en forma explícita o segmentar el rango, lo cual veremos en otro post.</p>
-<p>También advierta la presencia de datos alejados de la diagonal, es decir, diferencias entre duplicados grandes. ¿Qué hacemos con ellos?¿Los mantenemos o los eliminamos?</p>
-<p>Si los eliminamos, y realmente reflejaran la variabilidad del método, entonces subestimaríamos la máxima diferencia tolerable entre duplicados, aumentando la frecuencia de alertas de duplicados no conformes (nos ponemos la soga al cuello solitos). Si los mantenemos, y realmente fueron <em>errores</em> puntuales de medición, sobreestimaríamos la tolerancia y la carta control sería de poca utilidad (mágicamente todos los datos caerían siempre dentro del los límites). Este tema lo abordaremos en otro post (llevo una lista).</p>
-<p>Como dato “anecdótico” en las operaciones de <em>trading</em> en el mercado mundial de concentrado de cobre, la máxima diferencia tolerable entre resultados de distintos laboratorios (a.k.a exportador v/s importador) es 0,20 % Cu. Si la diferencia supera este límite, ambos negociadores se van a un arbitraje (multiplique 0,15 % Cu por la millones de toneladas que se transan en el mercado…a 3 US/libra no es un asunto trivial).</p>
-<p>Utilizando los datos históricos estimamos una desviación estándar de repetibilidad de <span class="math inline">\(s_{r} = 0.2\)</span> % Cu. Por lo tanto, el límite de repetibilidad es obtenido de la ecuación <a href="#eq:limr">(2)</a>:</p>
-<span class="math display" id="eq:limr">\[\begin{eqnarray}
+<p>Esta propiedad es deseable, sin embargo, no todos los sistemas analíticos la
+poseen. En sí misma no es una problema, sin embargo, si la varibilidad de los
+duplicados aumenta con la concentración (<em>heterocedasticidad</em>)
+tendremos que modelar esta variabilidad
+en función de la concentración en forma explícita o segmentar el rango, lo cual
+veremos en otro post.</p>
+<p>También advierta la presencia de datos alejados de la diagonal, es decir,
+diferencias entre duplicados grandes. ¿Qué hacemos
+con ellos?¿Los mantenemos o los eliminamos?</p>
+<p>Si los eliminamos, y realmente
+reflejaran la variabilidad del método, entonces subestimaríamos la
+máxima diferencia tolerable entre duplicados, aumentando la frecuencia de
+alertas de duplicados no conformes (nos ponemos la soga al cuello solitos).
+Si los mantenemos, y realmente fueron <em>errores</em> puntuales de medición,
+sobreestimaríamos la tolerancia y la carta control sería de poca utilidad
+(mágicamente todos los datos caerían siempre dentro del los límites).
+Este tema lo abordaremos en otro post (llevo una lista).</p>
+<p>Como dato “anecdótico” en las operaciones de <em>trading</em> en el mercado mundial
+de concentrado de cobre, la máxima diferencia tolerable entre resultados de
+distintos laboratorios (a.k.a exportador v/s importador) es 0,20 % Cu. Si la
+diferencia supera este límite, ambos negociadores se van a un arbitraje
+(multiplique 0,15 % Cu por la millones de toneladas que se transan en el mercado…a 3 US/libra no es un asunto trivial).</p>
+<p>Utilizando los datos históricos estimamos una desviación
+estándar de repetibilidad de <span class="math inline">\(s_{r} = 0.2\)</span> % Cu. Por lo tanto,
+el límite de repetibilidad es obtenido de la ecuación <a href="#eq:limr">(2)</a>:</p>
+<p><span class="math display" id="eq:limr">\[\begin{eqnarray}
   r &amp;=&amp; 2.8\cdot s_{r} \\
   r &amp;=&amp; 2.8\cdot 0.2 \\
   r &amp;=&amp; 0.57\, \text{% Cu}
   \tag{2}
-\end{eqnarray}\]</span>
+\end{eqnarray}\]</span></p>
 <blockquote>
-<p><strong>Interpretación</strong>: La máxima diferencia tolerable, en valor absoluto, entre duplicados de análisis en condiciones de repetibilidad es <span class="math inline">\(r = 0.57\)</span> % Cu.</p>
+<p><strong>Interpretación</strong>: La máxima diferencia tolerable, en valor absoluto,
+entre duplicados de análisis en condiciones de repetibilidad es
+<span class="math inline">\(r = 0.57\)</span> % Cu.</p>
 </blockquote>
 <p>Entonces, dados los datos iniciales:</p>
 <ul>
@@ -183,23 +252,46 @@ Figure 1: Gráfico de dispersión entre duplicados
 <li>Duplicado 2 = 25.66 % Cu</li>
 <li>Diferencia = 0.10 % Cu</li>
 </ul>
-<p>La diferencia encontrada entre duplicados <span class="math inline">\(\Delta = 0.1 &lt; 0.57\)</span> % Cu, por lo tanto, se acepta la diferencia entre duplicados, es un dato de QAQC conforme.</p>
-<p>¿Y qué hacemos si no tenemos datos históricos de duplicados? Por favor, continue leyendo.</p>
+<p>La diferencia encontrada entre duplicados
+<span class="math inline">\(\Delta = 0.1 &lt; 0.57\)</span> % Cu, por lo tanto, se acepta
+la diferencia entre duplicados, es un dato de QAQC conforme.</p>
+<p>¿Y qué hacemos si no tenemos datos históricos de duplicados? Por favor,
+continue leyendo.</p>
 </div>
 <div id="estimacion-mediante-estudios-de-precision-siguiendo-las-directrices-de-la-guia-iso-5725" class="section level1">
 <h1>Estimación mediante estudios de precisión siguiendo las directrices de la guía ISO 5725</h1>
-<p>Cuando no existen datos históricos, la guía ISO 5725 sugiere llevar a cabo un diseño experimental en el cual se estudien diversos factores que podrían, eventualmente, tener un efecto importante en la precisión del método analítico. Por ejemplo:</p>
+<p>Cuando no existen datos históricos, la guía ISO 5725 sugiere llevar a cabo
+un diseño experimental en el cual se estudien diversos factores que podrían,
+eventualmente, tener un efecto importante en la precisión del método analítico.
+Por ejemplo:</p>
 <ul>
 <li>Analistas distintos</li>
 <li>Equipos de medición (cromatógrafos, AAS, etc.)</li>
 <li>Días distintos</li>
 <li>Etc.</li>
 </ul>
-<p>El “problema” de esta aproximación es que a medida que crece el número de factores, el tamaño del diseño experimental (a.k.a número de experientos) crece en forma rápida incluso, en algunos diseños, en forma exponencial.</p>
-<p>La ventaja de este método es que permite estimar en un único estudio la precisión de repetibilidad, reproducibilidad y la precisión intermedia, es decir, entre-analistas, entre-equipos, etc. La otra ventaja es que permite estimar los denominados componentes de varianza “¿Y?” – se preguntará. Bueno, los componentes de varianza nos indican cuál es el factor que más aporta a la variabilidad del sistema analítico ¿será la variabilidad entre-analistas? ¿o los distintos equipos que dispone el laboratorio? De esta forma Ud. podrá focalizar los esfuerzos y recursos en mejorar la precisión del método sólo en aquellos factores que más aporten a la variabilidad total.</p>
-<p>Veamos en qué consiste este método de estimación de precisión en base al estudio del factor <strong>Analista</strong>. Existen varios diseños experimentales para evaluar este factor, sin embargo, en este post comenzaremos con algo <em>light</em>:</p>
+<p>El “problema” de esta aproximación es que a medida que crece el número de
+factores, el tamaño del diseño experimental (a.k.a número de experientos) crece
+en forma rápida incluso, en algunos diseños, en forma exponencial.</p>
+<p>La ventaja de este método es que permite estimar en un único estudio la precisión
+de repetibilidad, reproducibilidad y la precisión intermedia, es decir,
+entre-analistas, entre-equipos, etc. La otra ventaja es que permite estimar los
+denominados componentes de varianza “¿Y?” – se preguntará.
+Bueno, los componentes de varianza nos indican cuál es el factor que más aporta
+a la variabilidad del sistema analítico ¿será la variabilidad entre-analistas?
+¿o los distintos equipos que dispone el laboratorio? De esta forma Ud. podrá
+focalizar los esfuerzos y recursos en mejorar la precisión del método sólo
+en aquellos factores que más aporten a la variabilidad total.</p>
+<p>Veamos en qué consiste este método de estimación de precisión en base al
+estudio del factor <strong>Analista</strong>. Existen varios diseños experimentales para
+evaluar este factor, sin embargo, en este post comenzaremos con algo
+<em>light</em>:</p>
 <blockquote>
-<p>Estimaremos la precisión de reptibilidad y reproducibilidad del método volumétrico para la determinación de Cu en concentrado de cobre, en un laboratorio donde <span class="math inline">\(n = 4\)</span> analistas son igualmente competentes para llevar a cabo el análisis, siguiendo el mismo instructivo.</p>
+<p>Estimaremos la precisión de reptibilidad y reproducibilidad del método
+volumétrico para la determinación de Cu en concentrado de cobre,
+en un laboratorio donde <span class="math inline">\(n = 4\)</span> analistas son igualmente
+competentes para llevar a cabo el análisis, siguiendo el mismo
+instructivo.</p>
 </blockquote>
 <p>Para abordar este objetivo, proponemos el siguiente diseño experimental:</p>
 <div class="figure">
@@ -209,20 +301,38 @@ Figure 1: Gráfico de dispersión entre duplicados
 <ol style="list-style-type: decimal">
 <li>Una única muestra será analizada por los <span class="math inline">\(n = 4\)</span> analistas.</li>
 <li>Cada analista realizará el análisis en quintuplicado <span class="math inline">\(j = 5\)</span></li>
-<li>Los <span class="math inline">\(k = n\cdot j = 20\)</span> análisis deben ser obtenidos en condiciones de repetibilidad</li>
+<li>Los <span class="math inline">\(k = n\cdot j = 20\)</span> análisis deben ser obtenidos en
+condiciones de repetibilidad</li>
 </ol>
-<p>Si bien podríamos publicar una enciclopedia de posts sobre diseño experimental en química, surgen algunas preguntas sobre este diseño en particular:</p>
+<p>Si bien podríamos publicar una enciclopedia de posts sobre diseño experimental
+en química, surgen algunas preguntas sobre este diseño en particular:</p>
 <ul>
-<li><p>¿Por qué una única muestra? Porque si cada analista recibiera una muestra distinta, entonces la precisión del factor analista estaría “contaminada” con la variabilidad entre muestras, la cual no nos interesa en este estudio.</p></li>
-<li><p>¿Y si una única muestra no es suficiente para llevar a cabo los 20 análisis? Existen otros diseños experimentales denominados <em>anidados</em> que permiten estimar la precisión utilizando muestras distintas.</p></li>
-<li><p>¿Por qué los análisis de cada analista deben ser obtenidos en condiciones de repetibilidad? Porque no queremos que otro factor no controlado (por ejemplo, equipos distintos) influya en la estimación de la precisión entre-analistas.</p></li>
-<li><p>En lo posible, aumente el número de analistas en vez de hacer muchos replicados. Es mejor 5 analistas en triplicado, que 3 en quintuplicado.</p></li>
-<li><p>“La” muestra podría corresponder a una muestra del cliente. No es necesario que sea un material de referencia, sin embargo, esta muestra debe ser lo suficientemente homogénea… ¡Ah, eso es trampa! ¿Cómo demostramos que la muestra es homogénea? Le doy un dato, anote:</p></li>
+<li><p>¿Por qué una única muestra? Porque si cada analista recibiera una muestra
+distinta, entonces la precisión del factor analista estaría “contaminada”
+con la variabilidad entre muestras, la cual no nos interesa en este
+estudio.</p></li>
+<li><p>¿Y si una única muestra no es suficiente para llevar a cabo los 20
+análisis? Existen otros diseños experimentales denominados <em>anidados</em> que
+permiten estimar la precisión utilizando muestras distintas.</p></li>
+<li><p>¿Por qué los análisis de cada analista deben ser obtenidos en condiciones
+de repetibilidad? Porque no queremos que otro factor no controlado (por ejemplo,
+equipos distintos) influya en la estimación de la precisión entre-analistas.</p></li>
+<li><p>En lo posible, aumente el número de analistas en vez de hacer muchos
+replicados. Es mejor 5 analistas en triplicado, que 3 en quintuplicado.</p></li>
+<li><p>“La” muestra podría corresponder a una muestra del cliente. No es necesario
+que sea un material de referencia, sin embargo, esta
+muestra debe ser lo suficientemente homogénea… ¡Ah, eso es trampa!
+¿Cómo demostramos que la muestra es homogénea? Le doy un dato, anote:</p></li>
 </ul>
 <blockquote>
-<p>Si su muestra es material particulado, le tengo malas noticias: No existen las muestras homogéneas de este tipo de material (gracias a san Pierre Gy por el dato).</p>
+<p>Si su muestra es material particulado, le tengo malas noticias: No existen
+las muestras homogéneas de este tipo de material (gracias a san Pierre Gy
+por el dato).</p>
 </blockquote>
-<p>Como mencionamos anteriormente podríamos postear <em>ad infinitum</em> sobre diseño de exprimentos en química, sin embargo, la banda ancha es finita así que vamos al grano. La tabla <a href="#tab:doe">2</a> muestra los datos experimentales del estudio de precisión propuesto:</p>
+<p>Como mencionamos anteriormente podríamos postear <em>ad infinitum</em> sobre diseño
+de exprimentos en química, sin embargo, la banda ancha es finita así que
+vamos al grano. La tabla <a href="#tab:doe">2</a> muestra los datos experimentales
+del estudio de precisión propuesto:</p>
 <table>
 <caption>
 <span id="tab:doe">Table 2: </span>Resultados de estudio de precisión [% Cu]
@@ -334,7 +444,11 @@ Analista 4
 </tr>
 </tbody>
 </table>
-<p>Antes de llevar a cabo el análisis estadístico formal, observemos la figura <a href="#fig:doeplot">2</a> la cual muestra el valor promedio de cada analista <span class="math inline">\(\pm\)</span> 1 desviación estándar. Ella nos indica que, aparentemente, los resultados entre los analistas son bastante consistentes.</p>
+<p>Antes de llevar a cabo el análisis estadístico formal, observemos la figura
+<a href="#fig:doeplot">2</a> la cual muestra el valor promedio de cada analista
+<span class="math inline">\(\pm\)</span> 1 desviación estándar. Ella nos indica que, aparentemente, los resultados
+entre los analistas son bastante consistentes.</p>
+<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.5.1</code></pre>
 <div class="figure"><span id="fig:doeplot"></span>
 <img src="/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/doeplot-1.png" alt="Boxplot estudio de precisión" width="672" />
 <p class="caption">
@@ -342,14 +456,22 @@ Figure 2: Boxplot estudio de precisión
 </p>
 </div>
 <blockquote>
-<p>Ahora bien ¿Cómo, entonces, estimamos la precisión de repetibilidad y reproducibilidad a partir de la tabla <a href="#tab:doe">2</a>? Fácil, con el todopoderoso Análisis de Varianza (ANOVA).</p>
+<p>Ahora bien ¿Cómo, entonces, estimamos la precisión de repetibilidad y
+reproducibilidad a partir de la tabla <a href="#tab:doe">2</a>? Fácil, con el
+todopoderoso Análisis de Varianza (ANOVA).</p>
 </blockquote>
-<p>No detallaremos la matemática detrás de esta poderosa técnica, sin embargo, diremos simplemente que el ANOVA es un método cuyo propósito es particionar la variabilidad total de un conjunto de datos en componentes que intentan explicarla. Aplicada a nuestro caso, utilizaremos ANOVA para particionar la variabilidad total de los 20 resultados de % Cu entre dos componentes:</p>
+<p>No detallaremos la matemática detrás de esta poderosa técnica, sin embargo,
+diremos simplemente que el ANOVA es un método cuyo propósito es particionar
+la variabilidad total de un conjunto de datos en componentes que intentan
+explicarla. Aplicada a nuestro caso, utilizaremos ANOVA para particionar
+la variabilidad total de los 20 resultados de % Cu entre dos componentes:</p>
 <ul>
 <li>El factor analista</li>
 <li>La repetiblidad del método analítico.</li>
 </ul>
-<p>para lo cual seguiremos paso a paso las instrucciones de la guía ISO 5725. En primer lugar obtendremos la tabla ANOVA mediante lenguaje <code>R</code>:</p>
+<p>para lo cual seguiremos paso a paso las instrucciones de la guía ISO 5725.
+En primer lugar obtendremos la tabla ANOVA mediante lenguaje <code>R</code>:</p>
+<pre><code>## Warning: package &#39;broom&#39; was built under R version 3.5.1</code></pre>
 <table>
 <caption>
 <span id="tab:aov">Table 3: </span>Tabla ANOVA precisión
@@ -417,25 +539,36 @@ Residuals
 </tr>
 </tbody>
 </table>
-<p>Las tablas ANOVA muy similares en casi todos los softwares estadísticos profesionales… y en Excel también. Entonces:</p>
+<p>Las tablas ANOVA muy similares en casi todos los softwares estadísticos
+profesionales… y en Excel también. Entonces:</p>
 <ul>
-<li><p>Repetibilidad <span class="math inline">\(s_{r}\)</span>: Es simplemente la raíz cuadrada del término <span class="math inline">\(MS\)</span> de los <strong>Residuos</strong>. En la nomenclatura de ANOVA es lo que se conoce como variabilidad dentro (<em>within</em>). Para los datos de la tabla <a href="#tab:doe">2</a> se obtiene <span class="math inline">\(s_{r} = \sqrt{\text{MS}_{Residuals}} = \sqrt{0.04} = 0.19\)</span> % Cu.</p></li>
-<li><p>Precisión intermedia o variabilidad entre-analistas <span class="math inline">\(s_{analista}\)</span>: ¡No tan rápido! No es la raíz cuadrada de <span class="math inline">\(MS\)</span> del factor analista. Debemos hacer el siguiente cálculo adicional:</p></li>
+<li><p>Repetibilidad <span class="math inline">\(s_{r}\)</span>: Es simplemente la raíz cuadrada del término
+<span class="math inline">\(MS\)</span> de los <strong>Residuos</strong>. En la nomenclatura de ANOVA es lo que se conoce como
+variabilidad dentro (<em>within</em>). Para los datos de la tabla <a href="#tab:doe">2</a> se obtiene
+<span class="math inline">\(s_{r} = \sqrt{\text{MS}_{Residuals}} = \sqrt{0.04} = 0.19\)</span>
+% Cu.</p></li>
+<li><p>Precisión intermedia o variabilidad entre-analistas <span class="math inline">\(s_{analista}\)</span>:
+¡No tan rápido!
+No es la raíz cuadrada de <span class="math inline">\(MS\)</span> del factor analista. Debemos hacer el
+siguiente cálculo adicional:</p></li>
 </ul>
-<span class="math display">\[\begin{eqnarray}
+<p><span class="math display">\[\begin{eqnarray}
   s_{analista} &amp;=&amp; \sqrt{\frac{MS_{analista} - MS_{Residuals}}{j}} \\
   s_{analista} &amp;=&amp; \sqrt{\frac{0.07 - 0.04}{5}} \\
   s_{analista} &amp;=&amp; 0.08\, \text{% Cu} 
-\end{eqnarray}\]</span>
+\end{eqnarray}\]</span></p>
 <p>donde <span class="math inline">\(j = 5\)</span> es el número de replicados que hizo cada analista</p>
 <ul>
-<li>Reproducibilidad <span class="math inline">\(s_{R}\)</span>: Es simplemente la combinación en cuadratura de las precisiones arriba calculadas.</li>
+<li>Reproducibilidad <span class="math inline">\(s_{R}\)</span>: Es simplemente la combinación en cuadratura de
+las precisiones arriba calculadas.</li>
 </ul>
-<span class="math display">\[\begin{eqnarray}
+<p><span class="math display">\[\begin{eqnarray}
   s_{R} &amp;=&amp; \sqrt{s_{r}^{2} + s_{analista}^2}\\
   s_{R} &amp;=&amp; 0.21\, \text{% Cu}
-\end{eqnarray}\]</span>
-<p>Por lo tanto, con estos datos podemos calcular el límite de repetibilidad sin necesidad de tener una base de datos histórica de duplicados. En este caso <span class="math inline">\(r = 2.8 s_{r} = 0.58\)</span> % Cu.</p>
+\end{eqnarray}\]</span></p>
+<p>Por lo tanto, con estos datos podemos calcular el límite de repetibilidad
+sin necesidad de tener una base de datos histórica de duplicados. En este
+caso <span class="math inline">\(r = 2.8 s_{r} = 0.58\)</span> % Cu.</p>
 <blockquote>
 <p>¿Y si quisiera establecer la máxima diferencia tolerable entre analistas?</p>
 </blockquote>
@@ -443,19 +576,34 @@ Residuals
 </div>
 <div id="bonus-track-breve-historia-del-factor-2.8" class="section level1">
 <h1><em>Bonus track</em> : Breve historia del factor 2.8</h1>
-<p>Sea <span class="math inline">\(x_{1}\)</span> y <span class="math inline">\(x_{2}\)</span> los duplicados de análisis 1 y 2, respectivamente. Cada uno de ellos “sigue” una distribución Normal con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(V = \sigma_{r}^2\)</span> y, además, entre ellos son <em>independientes</em>, entonces se cumple lo siguiente:</p>
+<p>Sea <span class="math inline">\(x_{1}\)</span> y <span class="math inline">\(x_{2}\)</span> los duplicados de análisis 1 y 2, respectivamente.
+Cada uno de ellos “sigue” una distribución Normal con media <span class="math inline">\(\mu\)</span> y
+varianza <span class="math inline">\(V = \sigma_{r}^2\)</span> y, además, entre ellos son <em>independientes</em>,
+entonces se cumple lo siguiente:</p>
 <ol style="list-style-type: decimal">
-<li><p>la diferencia entre duplicados <span class="math inline">\(\Delta = x_{1} - x_{2}\)</span> sigue una distribución Normal con media 0 y varianza <span class="math inline">\(V_{\Delta} = V(x_{1} - x_{2}) = V(x_{1}) + V(x_{2}) = 2\sigma_{r}^2\)</span>.</p></li>
-<li><p>Si la varianza de las diferencias es <span class="math inline">\(V_{\Delta} = 2\sigma_{r}^2\)</span>, entonces la desviación estándar es <span class="math inline">\(\sqrt{2} \sigma_{r}\)</span>.</p></li>
-<li><p>Por lo tanto, si quisiéramos construir un intervalo de confianza al 95% para la diferencia entre duplicados obtendríamos <span class="math inline">\(\Delta \pm 2\sqrt{2} \sigma_{r}\)</span>. El 2 es por que para una distribución Normal se sabe que entre la media <span class="math inline">\(\pm\)</span> 2 la desviación estándar se encuentran aproximadamente el 95% de las observaciones.</p></li>
+<li><p>la diferencia entre duplicados <span class="math inline">\(\Delta = x_{1} - x_{2}\)</span> sigue una distribución Normal con media 0 y
+varianza <span class="math inline">\(V_{\Delta} = V(x_{1} - x_{2}) = V(x_{1}) + V(x_{2}) = 2\sigma_{r}^2\)</span>.</p></li>
+<li><p>Si la varianza de las diferencias es <span class="math inline">\(V_{\Delta} = 2\sigma_{r}^2\)</span>, entonces la
+desviación estándar es <span class="math inline">\(\sqrt{2} \sigma_{r}\)</span>.</p></li>
+<li><p>Por lo tanto, si quisiéramos construir un intervalo de
+confianza al 95% para la diferencia entre duplicados obtendríamos
+<span class="math inline">\(\Delta \pm 2\sqrt{2} \sigma_{r}\)</span>. El 2 es por que para una distribución Normal se
+sabe que entre la media <span class="math inline">\(\pm\)</span> 2 la desviación estándar se encuentran aproximadamente
+el 95% de las observaciones.</p></li>
 <li><p><span class="math inline">\(s_{r}\)</span> es la estimación de <span class="math inline">\(\sigma_{r}\)</span>, la cual es fija pero desconocida.</p></li>
-<li><p>Como <span class="math inline">\(\sqrt{2}\approx 1,41\)</span> entonces, con un 95% de confianza, la diferencia se encuentra entre <span class="math inline">\(\Delta \pm 2\cdot 1,41 \cdot s_{r} = 2.8\cdot s_{r}\)</span>. Ahora imágineme como el mago Tamariz al final de sus actos tocando el violín ¡chiararaaá! (Si eres <em>old school</em> sabrás quien es el mago Tamariz. Si eres <em>millenial</em> mira este <a href="https://www.youtube.com/watch?v=zcSqG2v-MZQ">video</a>).</p></li>
+<li><p>Como <span class="math inline">\(\sqrt{2}\approx 1,41\)</span> entonces, con un 95% de confianza, la
+diferencia se encuentra
+entre <span class="math inline">\(\Delta \pm 2\cdot 1,41 \cdot s_{r} = 2.8\cdot s_{r}\)</span>. Ahora imágineme como
+el mago Tamariz al final de sus actos tocando el violín ¡chiararaaá! (Si eres
+<em>old school</em> sabrás quien es el mago Tamariz. Si eres <em>millenial</em> mira este <a href="https://www.youtube.com/watch?v=zcSqG2v-MZQ">video</a>).</p></li>
 </ol>
 </div>
 <div id="bibliografia" class="section level1">
 <h1>Bibliografía</h1>
 <ol style="list-style-type: decimal">
 <li><p>ISO 5725 – 3:1994 Accuracy (trueness and precision) of measurement methods and results – Part 3: Intermediate measures of the precision of a standard measurement method</p></li>
-<li><p>Michael Thompson, Bertil Magnusson Methodology in internal quality control of chemical analysis <em>Accreditation and Quality Assurance August 2013, Volume 18, Issue 4, pp 271–278</em></p></li>
+<li><p>Michael Thompson, Bertil Magnusson Methodology in internal quality control of
+chemical analysis <em>Accreditation and Quality Assurance August 2013, Volume 18,
+Issue 4, pp 271–278</em></p></li>
 </ol>
 </div>

@@ -289,7 +289,7 @@ Johnson y la de Box-Cox.
 efecto de valores anómalos (_outliers_), sino también para obener estimadores de 
 datos que no son normales.
 
-Para finalizar veamos en acción de estos métodos: Bootstrap. 
+Para finalizar veamos en acción uno de estos métodos: Bootstrap. 
 Sin embargo, el detalle estadístico y su implementación los veremos en otro post, por ahora, 
 simplemente lo ejemplificaremos. La figura \@ref(fig:As) muestra 
 el histograma y el _QQ-Plot_ de normalidad correspondientes a datos de concentración de arsénico [ppm] muestreados en $n = 271$ pozos de agua en

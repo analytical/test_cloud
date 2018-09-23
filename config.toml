@@ -1,6 +1,6 @@
 baseurl = "https://www.analytical.cl/"  # End your URL with a `/` trailing slash.
 title = "Carlos Gómez"
-copyright = "&copy; 2017 Carlos Gómez"
+copyright = "&copy; 2018 Carlos Gómez"
 theme = "hugo-academic"
 enableEmoji = true
 footnotereturnlinkcontents = "<sup>^</sup>"
@@ -25,13 +25,13 @@ defaultContentLanguageInSubdir = true
 Magíster en Estadística  
 Químico - Bioquímico"""
   organization = """
-  División Metals & Minerals 
-  Bureau Veritas Chile"""
-  organization_url = "http://www.bureauveritas.cl/home/your-industry/process-industries-and-mining"
+  Gerencia de Tesorería 
+  Banco Central de Chile"""
+  organization_url = "http://www.billetesymonedas.cl/"
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
-  avatar = "foto_cv.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
+  avatar = "foto_2018.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
   email = "cvgomez@gmail.com"
-  address = "Marathon 2595, Macul, Santiago - Chile"
+  address = "Agustinas 1180, Santiago - Chile"
   office_hours = "8:30 a 18:00"
   phone = "56 9 8729 6214"
   skype = ""

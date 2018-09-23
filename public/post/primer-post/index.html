@@ -241,27 +241,28 @@ Químico - Bioquímico">
 <link href="/rmarkdown-libs/leaflet/leaflet.css" rel="stylesheet" />
 <script src="/rmarkdown-libs/leaflet/leaflet.js"></script>
 <link href="/rmarkdown-libs/leafletfix/leafletfix.css" rel="stylesheet" />
-<link href="/rmarkdown-libs/leaflet-label/leaflet.label.css" rel="stylesheet" />
-<script src="/rmarkdown-libs/leaflet-label/leaflet.label.js"></script>
 <script src="/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js"></script>
 <script src="/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js"></script>
+<link href="/rmarkdown-libs/rstudio_leaflet/rstudio_leaflet.css" rel="stylesheet" />
 <script src="/rmarkdown-libs/leaflet-binding/leaflet.js"></script>
 
 
-<p>Este es el primer post de esta página. Estoy utilizando <code>blogdown</code> para generar los post, el cual permite incorporar código en <code>R</code> y <span class="math inline">\(\LaTeX\)</span> en el mismo documento.</p>
+<p>Este es el primer post de esta página.
+Estoy utilizando <code>blogdown</code> para generar los post, el cual permite
+incorporar código en <code>R</code> y <span class="math inline">\(\LaTeX\)</span> en el mismo documento.</p>
 <p>Probando <span class="math inline">\(\LaTeX\)</span>:</p>
-<span class="math display">\[
+<p><span class="math display">\[
 \mu = \int xf(x)dx
 \]</span>
 <span class="math display" id="eq:mc2">\[\begin{equation}
   E = mc^{2}
     \tag{1}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>La ecuación <a href="#eq:mc2">(1)</a> es muy importante.</p>
 <p>Probando R:</p>
-<pre class="r"><code>library(ggplot2)
-
-ggplot(mtcars, aes(x = wt, y = mpg)) +
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.1</code></pre>
+<pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point(pch = 19, col = &#39;red&#39;) +
   geom_smooth(method = &#39;lm&#39;) +
   theme_bw()</code></pre>
@@ -269,7 +270,8 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 <blockquote>
 <p>Todos los modelos son erróneos, pero algunos son útiles (<strong>no me acuerdo quién dijo esto</strong>)</p>
 </blockquote>
-<p>Probando el package <code>leaflet</code>. En la figura <a href="#fig:bv">1</a> está ubicada mi fuente laboral.</p>
+<p>Probando el package <code>leaflet</code>. En la figura <a href="#fig:bv">1</a> está
+ubicada mi fuente laboral.</p>
 <pre class="r"><code>library(leaflet)
 
 m &lt;- leaflet() %&gt;%
@@ -280,7 +282,7 @@ m &lt;- leaflet() %&gt;%
 m  </code></pre>
 <div class="figure"><span id="fig:bv"></span>
 <div id="htmlwidget-1" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-33.478783,-70.613644,null,null,null,{"clickable":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Aquí trabajo",null,null,null,null,null,null]}],"limits":{"lat":[-33.478783,-33.478783],"lng":[-70.613644,-70.613644]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-33.478783,-70.613644,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Aquí trabajo",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-33.478783,-33.478783],"lng":[-70.613644,-70.613644]}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1: Ubicación de Bureau Veritas
 </p>
@@ -446,7 +448,7 @@ Figure 1: Ubicación de Bureau Veritas
   <div class="container">
     <p class="powered-by">
 
-      &copy; 2017 Carlos Gómez &middot; 
+      &copy; 2018 Carlos Gómez &middot; 
 
       Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
       theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.

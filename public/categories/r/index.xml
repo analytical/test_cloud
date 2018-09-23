@@ -6,7 +6,7 @@
     <description>Recent content in R on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <copyright>&amp;copy; 2017 Carlos Gómez</copyright>
+    <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Fri, 08 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
@@ -27,10 +27,10 @@
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
-      <description>Un día cualquiera en un laboratorio que aún no establece criterios de aceptación de precisión:
+      <description>Un día cualquiera en un laboratorio que aún no establece criterios de aceptaciónde precisión:
 Duplicado 1 = 25.56 % CuDuplicado 2 = 25.66 % CuDiferencia = 0.10 % CuLa diferencia observada ¿es aceptable para el laboratorio?
 Para responder a esta pregunta debemos considerar varias cosas:
-¿Los duplicados fueron realizados en condiciones de repetibilidad o reproducibilidad?¿Existe alguna normativa al respecto que se deba cumplir?¿Cuál es la metodología analítica?</description>
+¿Los duplicados fueron realizados en condiciones de repetibilidad oreproducibilidad?¿Existe alguna normativa al respecto que se deba cumplir?</description>
     </item>
     
     <item>
@@ -39,9 +39,9 @@ Para responder a esta pregunta debemos considerar varias cosas:
       <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
-      <description>En este post intentaremos derribar el mito del coeficiente de correlación con “muchos” 9’s como prueba de linealidad. Además, presentaremos dos test formales para evaluar el modelo de calibración lineal en química analítica.
-Coeficiente de correlaciónEste parámetro estadístico indica la fuerza y dirección de la relación de dos variables cuantitativas, por ejemplo;
-Concentración (\(x\)) y Absorbancia (\(y\))\(log \text{ Concentración}\) y \(E\) Potencial (Ecuación de Nernst)La edad de las ganadoras de Miss América con los asesinatos utilizando objetos calientes y vapor.</description>
+      <description>En este post intentaremos derribar el mito del coeficiente de correlación con“muchos” 9’s como prueba de linealidad. Además, presentaremos dos testformales para evaluar el modelo de calibración lineal en químicaanalítica.
+Coeficiente de correlaciónEste parámetro estadístico indica la fuerza y dirección de la relación dedos variables cuantitativas, por ejemplo;
+Concentración (\(x\)) y Absorbancia (\(y\))\(log \text{ Concentración}\) y \(E\) Potencial (Ecuación de Nernst)La edad de las ganadoras de Miss América con los asesinatos utilizando objetoscalientes y vapor.</description>
     </item>
     
   </channel>

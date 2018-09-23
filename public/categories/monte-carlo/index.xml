@@ -6,7 +6,7 @@
     <description>Recent content in Monte Carlo on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
-    <copyright>&amp;copy; 2017 Carlos Gómez</copyright>
+    <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Sat, 23 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
@@ -27,7 +27,7 @@
       <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
-      <description>De acuerdo al numeral 8.1 del Suplemento 1 de la guía GUM, el método de Monte Carlo es un método general para estimar la incertidumbre de medición y puede, bajo ciertas directrices, validar los cálculos realizados con el método GUM. En este post asumiremos que Ud., esimado lector, está familiarizado con el método GUM y ya lo tiene implementado , por ejemplo, en una hoja Excel y le gustaría validar sus cálculos mediante un método totalmente independiente y más general.</description>
+      <description>De acuerdo al numeral 8.1 del Suplemento 1 de la guía GUM,el método de Monte Carlo es un método general para estimar la incertidumbre demedición y puede, bajo ciertas directrices, validar los cálculos realizadoscon el método GUM. En este post asumiremos que Ud.,esimado lector, está familiarizado con el método GUM y ya lo tiene implementado, por ejemplo, en una hoja Excel y le gustaría validarsus cálculos mediante unmétodo totalmente independiente y más general.</description>
     </item>
     
   </channel>
