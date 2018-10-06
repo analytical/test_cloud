@@ -43,13 +43,13 @@ ggplot(mtcars, aes(x = wt, y = mpg)) +
 Probando el package ```leaflet```. En la figura \@ref(fig:bv) está
 ubicada mi fuente laboral.
 
-```{r bv, fig.cap = 'Ubicación de Bureau Veritas', warning=F}
+```{r bv, fig.cap = 'Ubicación de mi escritorio en el Banco Central de Chile', warning=F}
 library(leaflet)
 
 m <- leaflet() %>%
   addTiles() %>%  
-  addMarkers(lng = -70.613644, 
-             lat = -33.478783, 
+  addMarkers(lng = -70.653366, 
+             lat = -33.441160, 
              popup = 'Aquí trabajo')
 m  
 
