@@ -12,5 +12,6 @@ Los principales tópicos del blog son:
 5. Análisis estadístico de datos no normales
 6. Pruebas de linealidad a las curvas de calibración
 7. Métodos estadísticos "modernos" (_computationally-intensive methods_)
+8. Métodos estadísticos aplicados a la validación de métodos analíticos
 
 Visita nuestro [blog](https://www.analytical.cl) y déjanos tus comentarios.
