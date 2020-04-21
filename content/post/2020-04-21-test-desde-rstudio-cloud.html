@@ -18,5 +18,20 @@ math: yes
 <p><span class="math display">\[
 x = y^2
 \]</span></p>
-<pre class="r"><code>hist(rnorm(1000))</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(ggcorrplot)
+
+# Correlation matrix
+data(mtcars)
+corr &lt;- round(cor(mtcars), 1)
+
+# Plot
+ggcorrplot(corr, hc.order = TRUE, 
+           type = &quot;lower&quot;, 
+           lab = TRUE, 
+           lab_size = 3, 
+           method=&quot;circle&quot;, 
+           colors = c(&quot;tomato2&quot;, &quot;white&quot;, &quot;springgreen3&quot;), 
+           title=&quot;Correlogram of mtcars&quot;, 
+           ggtheme=theme_bw)</code></pre>
 <p><img src="/post/2020-04-21-test-desde-rstudio-cloud_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
