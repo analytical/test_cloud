@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recent &amp; Upcoming Talks on Carlos Gómez</title>
-    <link>/talk/</link>
+    <link>https://test-cloud.netlify.app/talk/</link>
     <description>Recent content in Recent &amp; Upcoming Talks on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/talk/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://test-cloud.netlify.app/talk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tutorial Rstudio&#43;knitr: Reportería automática con R</title>
-      <link>/talk/example-talk/</link>
+      <link>https://test-cloud.netlify.app/talk/example-talk/</link>
       <pubDate>Wed, 14 May 2014 19:00:00 +0000</pubDate>
       
-      <guid>/talk/example-talk/</guid>
+      <guid>https://test-cloud.netlify.app/talk/example-talk/</guid>
       <description>Embed your slides or video here using shortcodes. Further details can easily be added using Markdown and $\rm \LaTeX$ math code.</description>
     </item>
     
     <item>
       <title>Establecimiento de la trazabilidad y estimación de incertidumbre en Metrología Química</title>
-      <link>/talk/inn/</link>
+      <link>https://test-cloud.netlify.app/talk/inn/</link>
       <pubDate>Thu, 12 Jul 2012 12:00:00 +0000</pubDate>
       
-      <guid>/talk/inn/</guid>
+      <guid>https://test-cloud.netlify.app/talk/inn/</guid>
       <description>Embed your slides or video here using shortcodes. Further details can easily be added using Markdown and $\rm \LaTeX$ math code.</description>
     </item>
     

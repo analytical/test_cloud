@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>normalidad on Carlos Gómez</title>
-    <link>/categories/normalidad/</link>
+    <link>https://test-cloud.netlify.app/categories/normalidad/</link>
     <description>Recent content in normalidad on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Fri, 08 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/normalidad/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://test-cloud.netlify.app/categories/normalidad/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>¡Mis datos no son normales! ¿Qué hago?...Cálmese, nunca lo fueron... ni lo serán</title>
-      <link>/post/mis-datos-no-son-normales/</link>
+      <link>https://test-cloud.netlify.app/post/mis-datos-no-son-normales/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/mis-datos-no-son-normales/</guid>
+      <guid>https://test-cloud.netlify.app/post/mis-datos-no-son-normales/</guid>
       <description>En este post discutiremos el concepto de normalidad y su aplicación en química. Daremos algunas luces sobre qué hacer cuándo los datos experimentales no soportan el supuesto de normalidad</description>
     </item>
     

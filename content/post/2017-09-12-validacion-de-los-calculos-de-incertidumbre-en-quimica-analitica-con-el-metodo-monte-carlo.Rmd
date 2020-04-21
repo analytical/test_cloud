@@ -10,7 +10,7 @@ tags:
   - incertidumbre
   - R
   - GUM
-summary:'En este post introductorio validaremos los cálculos de incertidumbre 
+summary: 'En este post introductorio validaremos los cálculos de incertidumbre 
 de una operación analítica realizados de acuerdo a la guía GUM, 
 mediante el Método de Monte Carlo. De esta forma Ud. podrá evidenciar, por 
 ejemplo, ante un amable auditor de la norma 17025, que 
