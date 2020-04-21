@@ -16,7 +16,7 @@ math: yes
 probando test
 
 $$
-x = y^2
+x = y^2 + \int_{\infty}^{0}x
 $$
 ```{r}
 library(ggplot2)
@@ -36,5 +36,6 @@ ggcorrplot(corr, hc.order = TRUE,
            title="Correlogram of mtcars", 
            ggtheme=theme_bw)
 ```
+
 
 

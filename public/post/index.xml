@@ -19,7 +19,7 @@
       
       <guid>https://test-cloud.netlify.app/post/test-desde-rstudio-cloud/</guid>
       <description> probando test
-\[ x = y^2 \]
+\[ x = y^2 + \int_{\infty}^{0}x \]
 library(ggplot2) library(ggcorrplot) # Correlation matrix data(mtcars) corr &amp;lt;- round(cor(mtcars), 1) # Plot ggcorrplot(corr, hc.order = TRUE, type = &amp;quot;lower&amp;quot;, lab = TRUE, lab_size = 3, method=&amp;quot;circle&amp;quot;, colors = c(&amp;quot;tomato2&amp;quot;, &amp;quot;white&amp;quot;, &amp;quot;springgreen3&amp;quot;), title=&amp;quot;Correlogram of mtcars&amp;quot;, ggtheme=theme_bw) </description>
     </item>
     
