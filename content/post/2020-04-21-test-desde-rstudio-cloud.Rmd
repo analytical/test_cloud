@@ -9,7 +9,7 @@ header:
   caption: ''
   image: ''
 highlight: yes
-math: no
+math: yes
 ---
 
 
