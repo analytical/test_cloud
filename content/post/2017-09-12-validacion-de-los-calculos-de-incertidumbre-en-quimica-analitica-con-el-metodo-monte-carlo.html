@@ -34,7 +34,7 @@ cabalmente con el siguiente numeral de la norma 17025:</p>
 verificaciones adecuadas llevadas a cabo de una manera sistemática.</p>
 </blockquote>
 <p>¿Cómo sabe Ud. que su implementación en Excel está correcta?</p>
-<div id="que-es-el-metodo-de-monte-carlo" class="section level1">
+<div id="qué-es-el-método-de-monte-carlo" class="section level1">
 <h1>¿Qué es el método de Monte Carlo?</h1>
 <p>(Aquí podría hacer copy-paste de Wikipedia…no olvidar borrar esta nota interna)</p>
 <p>Muy sucintamente, el método de Monte Carlo es un método numérico que permite
@@ -126,7 +126,7 @@ la siguiente figura:</p>
 interés <span class="math inline">\(g(y)\)</span>, sino más bien la estima como una distribución empírica y a
 partir de ésta calcula la incertidumbre estándar y expandida.</p>
 </div>
-<div id="incertidumbre-de-un-factor-de-dilucion" class="section level1">
+<div id="incertidumbre-de-un-factor-de-dilución" class="section level1">
 <h1>Incertidumbre de un factor de dilución</h1>
 <p>Para aterrizar esta definición veamos un
 ejemplo muy simple en química analítica
@@ -140,7 +140,7 @@ es <span class="math inline">\(20,0 \pm 0,1\)</span> mL y su dilución en un mat
 con un volumen de <span class="math inline">\(100 \pm 0,6\)</span> mL. Calcular la incertidumbre
 del factor de dilución <span class="math inline">\(f = V_{final}/V_{inicial}\)</span></p>
 </blockquote>
-<div id="metodo-gum" class="section level2">
+<div id="método-gum" class="section level2">
 <h2>Método GUM</h2>
 <p>Este es un ejercicio bastante simple para el método GUM, pues el factor de
 dilución es una operación de división, por lo que aplicando las reglas de
@@ -180,7 +180,7 @@ incertidumbre expandida del factor de dilución con un 95% de confianza,
 se asume un factor de cobertura <span class="math inline">\(k = 2\)</span>, de esta forma
 obtenemos <span class="math inline">\(U_{f} = ku_{f} = 0.04509\)</span> mL.</p>
 </div>
-<div id="metodo-de-monte-carlo" class="section level2">
+<div id="método-de-monte-carlo" class="section level2">
 <h2>Método de Monte Carlo</h2>
 <p>Implementaremos en <code>R</code>, los pasos descritos del método de Monte Carlo:</p>
 <pre class="r"><code>k &lt;- sqrt(3) # Factor de estandarización para una distribución rectangular
@@ -433,7 +433,7 @@ la librería <code>metRology</code> la cual incorpora la validación de GUM con 
 único comando <code>GUM.validate</code>… ¡y listo!.</p>
 <p>Hasta la próxima.</p>
 </div>
-<div id="bibliografia" class="section level2">
+<div id="bibliografía" class="section level2">
 <h2>Bibliografía</h2>
 <ol style="list-style-type: decimal">
 <li><p>Evaluation of measurement data – Guide to the expression of uncertainty in

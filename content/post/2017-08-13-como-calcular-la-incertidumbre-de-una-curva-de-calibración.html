@@ -10,7 +10,7 @@ summary: '¿Qué es y cómo estimar la incertidumbre de una curva de calibració
 
 ---
 
-<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+<script src="2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/kePrint/kePrint.js"></script>
 
 
 <p>Ok, este es el segundo post pero advierto que aún está en rodaje… esto del
@@ -68,12 +68,13 @@ x &lt;- 1:10
 y &lt;- 2 + 5*x + 10*rnorm(length(x), 0, 1)
 d &lt;- data.frame(x, y)
 
-library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.1</code></pre>
-<pre class="r"><code>ggplot(d, aes(x = x, y = y)) +
+library(ggplot2)
+
+ggplot(d, aes(x = x, y = y)) +
   geom_smooth(method = &#39;lm&#39;) </code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure"><span id="fig:banda"></span>
-<img src="/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png" alt="Incertidumbre de calibración" width="672" />
+<img src="/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibraci%C3%B3n_files/figure-html/banda-1.png" alt="Incertidumbre de calibración" width="672" />
 <p class="caption">
 Figure 1: Incertidumbre de calibración
 </p>
@@ -90,7 +91,7 @@ Figure 1: Incertidumbre de calibración
 <li>Aunque no tan “evidente”, maximizando <span class="math inline">\(\sum_{i}^{n} (x_{i} - \overline{x})^2\)</span>,
 es decir, utilizando todo el rango lineal (Nota mental: otro post)</li>
 </ol>
-<div id="aplicacion-a-un-caso-real" class="section level1">
+<div id="aplicación-a-un-caso-real" class="section level1">
 <h1>Aplicación a un caso “real”</h1>
 <p>La tabla <a href="#tab:tabla">1</a> muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura <a href="#fig:cal">2</a> describe
 el gráfico de calibración:</p>
@@ -195,8 +196,9 @@ UA
 </tr>
 </tbody>
 </table>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure"><span id="fig:cal"></span>
-<img src="/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png" alt="Curva de calibración" width="672" />
+<img src="/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibraci%C3%B3n_files/figure-html/cal-1.png" alt="Curva de calibración" width="672" />
 <p class="caption">
 Figure 2: Curva de calibración
 </p>

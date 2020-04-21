@@ -287,9 +287,8 @@ al intervalo <span class="math inline">\([0, 100]\)</span> %, por lo tanto, no t
 que indique <span class="math inline">\(99.7 \pm 0.5\)</span> %. Para modelar pureza química es necesario utilizar
 una distribución de probabilidad que esté restringida al intervalo <span class="math inline">\([0, 100]\)</span> %
 (o <span class="math inline">\([0, 1]\)</span>) como, por ejemplo, la distribución Beta.</p>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.1</code></pre>
 <div class="figure"><span id="fig:plotnormal"></span>
-<img src="../../post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/plotnormal-1.png" alt="Distribución Normal con media = 0 y sd = 1 " width="672" />
+<img src="../../post/2017-09-08-mis-datos-no-son-normales-qu%C3%A9-hago-c%C3%A1lmese-nunca-lo-fueron-ni-lo-ser%C3%A1n_files/figure-html/plotnormal-1.png" alt="Distribución Normal con media = 0 y sd = 1 " width="672" />
 <p class="caption">
 Figure 1: Distribución Normal con media = 0 y sd = 1
 </p>
@@ -330,7 +329,7 @@ Esto es una estafa” <em>Keep calm</em> recuerde que son aleatorios.
 La figura <a href="#fig:normplot">2</a> muestra a la izquierda el histograma y a la derecha
 el gráfico de normalidad (<em>QQ-Plot</em>) de los datos simulados:</p>
 <div class="figure"><span id="fig:normplot"></span>
-<img src="../../post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/normplot-1.png" alt="Izquierda histograma, derecha gráfico de normalidad" width="672" />
+<img src="../../post/2017-09-08-mis-datos-no-son-normales-qu%C3%A9-hago-c%C3%A1lmese-nunca-lo-fueron-ni-lo-ser%C3%A1n_files/figure-html/normplot-1.png" alt="Izquierda histograma, derecha gráfico de normalidad" width="672" />
 <p class="caption">
 Figure 2: Izquierda histograma, derecha gráfico de normalidad
 </p>
@@ -411,7 +410,7 @@ concentraciones.</li>
 <p>Ok, es cierto, a medida que aumenta el <span class="math inline">\(n\)</span> la suposición de normalidad es cada
 vez menos relevante. De hecho algunos de los tests mencionados arriba son
 más o menos “robustos” a la suposición de normalidad.</p>
-<div id="que-observariamos-si-la-hipotesis-de-normalidad-fuese-totalmente-inverosimil-para-modelar-nuestros-datos" class="section level1">
+<div id="qué-observaríamos-si-la-hipótesis-de-normalidad-fuese-totalmente-inverosímil-para-modelar-nuestros-datos" class="section level1">
 <h1>¿Qué observaríamos si la hipótesis de normalidad fuese totalmente inverosímil para modelar nuestros datos?</h1>
 <p>Simulemos ahora datos no normales y veamos cuáles son los resultados tanto de los
 gráficos exploratorios como de las pruebas estadísticas formales:</p>
@@ -423,7 +422,7 @@ lambda &lt;- 5 # Parámetro de la distribución Poisson
 
 # Generar m = 100 datos de una distribución Poisson con parámtro lambda = 5
 y &lt;- rpois(m, lambda)</code></pre>
-<p><img src="../../post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="../../post/2017-09-08-mis-datos-no-son-normales-qu%C3%A9-hago-c%C3%A1lmese-nunca-lo-fueron-ni-lo-ser%C3%A1n_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p><div class="alert alert-warning">
   
 ¿No les parece familiar el QQ-Plot a aquellos que validan homogeneidad de peso en
@@ -449,7 +448,7 @@ A = 1.2355, p-value = 0.003072</code></pre>
 <p>Como era esperable, ambos tests confirman que la hipótesis de normalidad
 no es razonable para modelar los datos(<em>p-value</em> &lt; 0,05)</p>
 </div>
-<div id="si-mis-datos-no-son-normales-entonces-como-los-analizo" class="section level1">
+<div id="si-mis-datos-no-son-normales-entonces-cómo-los-analizo" class="section level1">
 <h1>Si mis datos no son normales, entonces ¿Cómo los analizo?</h1>
 <p>Tranquilo(a), el mundo sigue girando. Existen varios métodos estadísticos
 que Ud. puede utilizar para analizar datos donde la hipótesis de normalidad
@@ -478,7 +477,7 @@ simplemente lo ejemplificaremos. La figura <a href="#fig:As">3</a> muestra
 el histograma y el <em>QQ-Plot</em> de normalidad correspondientes a datos de concentración de arsénico [ppm] muestreados en <span class="math inline">\(n = 271\)</span> pozos de agua en
 Bangladesh:</p>
 <div class="figure"><span id="fig:As"></span>
-<img src="../../post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/As-1.png" alt="Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh" width="672" />
+<img src="../../post/2017-09-08-mis-datos-no-son-normales-qu%C3%A9-hago-c%C3%A1lmese-nunca-lo-fueron-ni-lo-ser%C3%A1n_files/figure-html/As-1.png" alt="Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh" width="672" />
 <p class="caption">
 Figure 3: Histograma y QQ-Plot datos de Arsénico [ppm] en n = 271 pozos en Bangladesh
 </p>
@@ -491,20 +490,20 @@ la fórmula usual para estimar un intervalo de confianza al 95% para la media
 <span class="math inline">\(\overline{x} \pm t_{\alpha/2, n - 1} s/\sqrt{n}\)</span> obtenemos
 [90, 161] ppm As. Sin embargo, la gran asimetría de los datos
 hace inverosímil el intervalo obtenido.</p>
-<p>Al aplicar el método <em>bootstrap</em> obtenemos un intervalo para la media al 95% (BCa) entre [98, 175] ppm As, el cual es más
+<p>Al aplicar el método <em>bootstrap</em> obtenemos un intervalo para la media al 95% (BCa) entre [95, 164] ppm As, el cual es más
 “correcto” por si Ud. necesita informar este parámetro. La figura
 <a href="#fig:Asboot">4</a> muestra el histograma y QQ-Plot de normalidad de
 el método de bootstrap. Advierta el Teorema Central del Límite en su
 máxima expresión.</p>
 <div class="figure"><span id="fig:Asboot"></span>
-<img src="../../post/2017-09-08-mis-datos-no-son-normales-qué-hago-cálmese-nunca-lo-fueron-ni-lo-serán_files/figure-html/Asboot-1.png" alt="Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos" width="672" />
+<img src="../../post/2017-09-08-mis-datos-no-son-normales-qu%C3%A9-hago-c%C3%A1lmese-nunca-lo-fueron-ni-lo-ser%C3%A1n_files/figure-html/Asboot-1.png" alt="Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos" width="672" />
 <p class="caption">
 Figure 4: Histograma y QQ-Plot de las estimaciones de la media de los datos de As con N = 1000 remuestreos
 </p>
 </div>
 <p>Bueno estimado lector, nos vemos pronto. Saludos.</p>
 </div>
-<div id="bibliografia" class="section level1">
+<div id="bibliografía" class="section level1">
 <h1>Bibliografía</h1>
 <ol style="list-style-type: decimal">
 <li><p>Ghasemi A, Zahediasl S. Normality Tests for Statistical Analysis: A Guide for Non-Statisticians. <em>International Journal of Endocrinology and Metabolism</em>. 2012;10(2):486-489. <a href="doi:10.5812/ijem.3505" class="uri">doi:10.5812/ijem.3505</a>.</p></li>

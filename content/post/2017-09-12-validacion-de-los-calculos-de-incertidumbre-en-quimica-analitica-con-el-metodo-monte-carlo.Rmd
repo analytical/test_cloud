@@ -18,6 +18,8 @@ sus cálculos de incertidumbre en Excel están "validados" ¿o no recuerda el
 numeral 5.4.7?.'
 ---
 
+
+
 De acuerdo al numeral 8.1 del Suplemento 1 de la guía GUM, 
 el método de Monte Carlo es un método general para estimar la incertidumbre de
 medición y puede, bajo ciertas directrices, validar los cálculos realizados

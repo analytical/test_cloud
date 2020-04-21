@@ -50,7 +50,7 @@ condiciones de reproducibilidad. Sin embargo, dedicaremos otro post a ese tema
 específico.</em></p>
 <p>El concepto estadístico clave para establecer la tolerancia entre duplicados
 es el límite de repetibilidad <span class="math inline">\(r\)</span>.</p>
-<div id="limite-de-repetibilidad-r-iso-5725" class="section level1">
+<div id="límite-de-repetibilidad-r-iso-5725" class="section level1">
 <h1>Límite de repetibilidad <span class="math inline">\(r\)</span> ISO 5725</h1>
 <p>La guía ISO 5725 define el límite de repetibilidad <span class="math inline">\(r\)</span> de la siguiente manera:</p>
 <p><span class="math display">\[
@@ -73,7 +73,7 @@ límite <span class="math inline">\(r\)</span>, y aún el
 sistema analítico se encontraría bajo <em>Control Estadístico</em>.</p></li>
 </ul>
 </div>
-<div id="como-obtenemos-la-precision-de-repetibilidad-s_r" class="section level1">
+<div id="cómo-obtenemos-la-precisión-de-repetibilidad-s_r" class="section level1">
 <h1>¿Cómo obtenemos la precisión de repetibilidad <span class="math inline">\(s_{r}\)</span>?</h1>
 <p>Existen varios métodos estadísticos para abordar la estimación de la
 desviación estándar de repetibililidad <span class="math inline">\(s_{r}\)</span>, sin embargo, en este post
@@ -87,7 +87,7 @@ guía ISO 5725.</p></li>
 expuestos en estas guías, más bien, ejemplificaremos el cálculo de la desviación
 estándar de repetibilidad <span class="math inline">\(s_{r}\)</span>:</p>
 </div>
-<div id="metodo-de-estimacion-en-base-a-datos-historicos-de-duplicados" class="section level1">
+<div id="método-de-estimación-en-base-a-datos-históricos-de-duplicados" class="section level1">
 <h1>Método de estimación en base a datos históricos de duplicados</h1>
 <p>Obviamente necesitamos crear una base de datos con los registros de análisis
 de muestras en duplicados en condiciones de repetibilidad. Estas muestras
@@ -258,7 +258,7 @@ la diferencia entre duplicados, es un dato de QAQC conforme.</p>
 <p>¿Y qué hacemos si no tenemos datos históricos de duplicados? Por favor,
 continue leyendo.</p>
 </div>
-<div id="estimacion-mediante-estudios-de-precision-siguiendo-las-directrices-de-la-guia-iso-5725" class="section level1">
+<div id="estimación-mediante-estudios-de-precisión-siguiendo-las-directrices-de-la-guía-iso-5725" class="section level1">
 <h1>Estimación mediante estudios de precisión siguiendo las directrices de la guía ISO 5725</h1>
 <p>Cuando no existen datos históricos, la guía ISO 5725 sugiere llevar a cabo
 un diseño experimental en el cual se estudien diversos factores que podrían,
@@ -448,7 +448,6 @@ Analista 4
 <a href="#fig:doeplot">2</a> la cual muestra el valor promedio de cada analista
 <span class="math inline">\(\pm\)</span> 1 desviación estándar. Ella nos indica que, aparentemente, los resultados
 entre los analistas son bastante consistentes.</p>
-<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.5.1</code></pre>
 <div class="figure"><span id="fig:doeplot"></span>
 <img src="/post/2017-08-28-cual-es-la-maxima-diferencia-tolerable-entre-duplicados-de-analisis_files/figure-html/doeplot-1.png" alt="Boxplot estudio de precisión" width="672" />
 <p class="caption">
@@ -471,7 +470,6 @@ la variabilidad total de los 20 resultados de % Cu entre dos componentes:</p>
 </ul>
 <p>para lo cual seguiremos paso a paso las instrucciones de la guía ISO 5725.
 En primer lugar obtendremos la tabla ANOVA mediante lenguaje <code>R</code>:</p>
-<pre><code>## Warning: package &#39;broom&#39; was built under R version 3.5.1</code></pre>
 <table>
 <caption>
 <span id="tab:aov">Table 3: </span>Tabla ANOVA precisión
@@ -598,7 +596,7 @@ el mago Tamariz al final de sus actos tocando el violín ¡chiararaaá! (Si eres
 <em>old school</em> sabrás quien es el mago Tamariz. Si eres <em>millenial</em> mira este <a href="https://www.youtube.com/watch?v=zcSqG2v-MZQ">video</a>).</p></li>
 </ol>
 </div>
-<div id="bibliografia" class="section level1">
+<div id="bibliografía" class="section level1">
 <h1>Bibliografía</h1>
 <ol style="list-style-type: decimal">
 <li><p>ISO 5725 – 3:1994 Accuracy (trueness and precision) of measurement methods and results – Part 3: Intermediate measures of the precision of a standard measurement method</p></li>

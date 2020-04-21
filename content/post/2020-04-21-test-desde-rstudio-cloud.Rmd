@@ -1,0 +1,24 @@
+---
+title: Test desde rstudio.cloud
+author: cgomez
+date: '2020-04-21'
+slug: test-desde-rstudio-cloud
+categories: []
+tags: []
+header:
+  caption: ''
+  image: ''
+highlight: yes
+math: no
+---
+
+
+probando test
+
+$$
+x = y^2
+$$
+```{r}
+hist(rnorm(1000))
+```
+

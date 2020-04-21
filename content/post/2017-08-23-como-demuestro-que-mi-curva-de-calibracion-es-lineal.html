@@ -24,7 +24,7 @@ analítica.'
 “muchos” 9’s como prueba de linealidad. Además, presentaremos dos test
 formales para evaluar el modelo de calibración lineal en química
 analítica.</p>
-<div id="coeficiente-de-correlacion" class="section level1">
+<div id="coeficiente-de-correlación" class="section level1">
 <h1>Coeficiente de correlación</h1>
 <p>Este parámetro estadístico indica la fuerza y dirección de la relación de
 dos variables cuantitativas, por ejemplo;</p>
@@ -81,6 +81,8 @@ baja concentración, mágicamente el r = 1 (derecha).</p>
 equiespaciados y evite los saltos de varios órdenes de magnitud de la
 concentración.</p>
 </blockquote>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure"><span id="fig:influyente"></span>
 <img src="/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/influyente-1.png" alt="Punto inlfuyente en la calibración" width="672" />
 <p class="caption">
@@ -109,6 +111,8 @@ y1 &lt;- b0 + b1*x + rnorm(10, 0, s) # Absorbancias con
                                   # error = s = 1
 y2 &lt;- b0 + b1*x + rnorm(10, 0, 10*s) # Absorbancias con 
                                      # error = 10*s = 10</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;
+## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure"><span id="fig:simplot"></span>
 <img src="/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/simplot-1.png" alt="Simulación de curvas perfectamente lineales" width="672" />
 <p class="caption">
@@ -256,6 +260,7 @@ Replicado
 </tr>
 </tbody>
 </table>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure"><span id="fig:lofplot"></span>
 <img src="/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/lofplot-1.png" alt="Curva de calibración CAF. Test de carencia de ajuste" width="672" />
 <p class="caption">
@@ -624,6 +629,7 @@ la figura <a href="#fig:plotmandel">5</a>, la curva de calibración:</p>
 </tr>
 </tbody>
 </table>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure"><span id="fig:plotmandel"></span>
 <img src="/post/2017-08-23-como-demuestro-que-mi-curva-de-calibracion-es-lineal_files/figure-html/plotmandel-1.png" alt="Curva de calibración Cu" width="672" />
 <p class="caption">
@@ -656,7 +662,7 @@ La evidencia
 en contra de la hipótesis nula de linealidad es abrumadora.</p>
 </div>
 </div>
-<div id="entonces-resumiendo-por-que-no-puedo-probar-linealidad-de-la-curva-de-calibracion" class="section level1">
+<div id="entonces-resumiendo-por-qué-no-puedo-probar-linealidad-de-la-curva-de-calibración" class="section level1">
 <h1>Entonces, resumiendo ¿Por qué no puedo probar linealidad de la curva de calibración?</h1>
 <p>Porque la decisión está basada en pruebas estadísticas, las cuáles tienen
 algunas consideraciones para su correcta interpretación:</p>
@@ -688,7 +694,7 @@ propósitos de cuantificación? Pero ojo:</p>
 <p>Es aquí donde las pruebas estadísticas nos ayudan a decidir entre varios modelos
 plausibles.</p>
 </div>
-<div id="en-defensa-del-coeficiente-de-correlacion" class="section level1">
+<div id="en-defensa-del-coeficiente-de-correlación" class="section level1">
 <h1>En defensa del coeficiente de correlación</h1>
 <p>Es cierto, el <span class="math inline">\(r\)</span> con “muchos” 9’s no es una prueba formal de linealidad…
 ¿quiere decir que el <span class="math inline">\(r\)</span> no es importante en Química
@@ -703,11 +709,11 @@ incertidumbre de calibración.</p>
 coefficient. <em>Accred Qual Assur (2006) 11: 146.</em>
 <a href="https://doi.org/10.1007/s00769-006-0087-y" class="uri">https://doi.org/10.1007/s00769-006-0087-y</a></p>
 </div>
-<div id="por-ultimo-y-el-r2" class="section level1">
+<div id="por-último-y-el-r2" class="section level1">
 <h1>Por último… ¿y el <span class="math inline">\(r^2\)</span>?</h1>
 <p>Ahhh, pero eso es otra cosa… hasta la próxima.</p>
 </div>
-<div id="bibliografia" class="section level1">
+<div id="bibliografía" class="section level1">
 <h1>Bibliografía</h1>
 <ol style="list-style-type: decimal">
 <li><p>Lutz Brüggemann, Wolfgang Quapp, Rainer Wennrich <strong>Test for non-linearity concerning linear calibrated chemical measurements</strong> (2006) <em>Accreditation and Quality Assurance Volume 11, Issue 12, pp 625–631</em></p></li>

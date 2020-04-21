@@ -32,12 +32,13 @@ incorporar código en <code>R</code> y <span class="math inline">\(\LaTeX\)</spa
 \end{equation}\]</span></p>
 <p>La ecuación <a href="#eq:mc2">(1)</a> es muy importante.</p>
 <p>Probando R:</p>
-<pre class="r"><code>library(ggplot2)</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.5.1</code></pre>
-<pre class="r"><code>ggplot(mtcars, aes(x = wt, y = mpg)) +
+<pre class="r"><code>library(ggplot2)
+
+ggplot(mtcars, aes(x = wt, y = mpg)) +
   geom_point(pch = 19, col = &#39;red&#39;) +
   geom_smooth(method = &#39;lm&#39;) +
   theme_bw()</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/post/2017-08-13-primer-post_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <blockquote>
 <p>Todos los modelos son erróneos, pero algunos son útiles (<strong>no me acuerdo quién dijo esto</strong>)</p>
