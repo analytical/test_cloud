@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Iso on Carlos Gómez</title>
+    <title>iso on Carlos Gómez</title>
     <link>/categories/iso/</link>
-    <description>Recent content in Iso on Carlos Gómez</description>
+    <description>Recent content in iso on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
@@ -18,10 +18,7 @@
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
-      <description>Un día cualquiera en un laboratorio que aún no establece criterios de aceptaciónde precisión:
-Duplicado 1 = 25.56 % CuDuplicado 2 = 25.66 % CuDiferencia = 0.10 % CuLa diferencia observada ¿es aceptable para el laboratorio?
-Para responder a esta pregunta debemos considerar varias cosas:
-¿Los duplicados fueron realizados en condiciones de repetibilidad oreproducibilidad?¿Existe alguna normativa al respecto que se deba cumplir?</description>
+      <description>En este post presentaremos dos métodos estadísticos para establecer la máxima diferencia tolerable entre duplicados de análisis. Este criterio de aceptación nos dará una una base para la construcción de cartas control de precisión</description>
     </item>
     
   </channel>

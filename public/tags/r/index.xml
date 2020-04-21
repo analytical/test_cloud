@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Carlos Gómez</title>
@@ -18,9 +18,7 @@
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/como-detectar-efecto-matriz-metodo-analitico/</guid>
-      <description>He vuelto a postear, después de una gira que me llevó por los cinco…mentira, fue por pura pega.
-El famoso efecto matriz, algo tan etéreo como el criterio analítico.El efecto matriz está íntimamente relacionado con las interferencias de lamatriz que de alguna forma aumentan o disminuyen la señal instrumental que,en teoría, es producida sólo por el analito de interés.
-Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papersque nos enseñaron el famoso método de calibración con adición conocida oadición de estándar.</description>
+      <description>En este post trataremos el tema del efecto matriz de un método analítico y cómo detectarlo estadísticamente mediante el análisis de covarianza</description>
     </item>
     
     <item>
@@ -29,7 +27,7 @@ Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papersque
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
-      <description></description>
+      <description>En este post continuaremos describiendo el método de Monte Carlo y su aplicación en química analítica. En esta oportunidad, utilizaremos la librería &lt;code&gt;metRology&lt;/code&gt; del software &lt;code&gt;R&lt;/code&gt;, la cual incorpora varios métodos numéricos de estimación de incertidumbre, incluyendo el test de validación de los cálculos por guía GUM.</description>
     </item>
     
     <item>
@@ -38,7 +36,7 @@ Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papersque
       <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
-      <description>De acuerdo al numeral 8.1 del Suplemento 1 de la guía GUM,el método de Monte Carlo es un método general para estimar la incertidumbre demedición y puede, bajo ciertas directrices, validar los cálculos realizadoscon el método GUM. En este post asumiremos que Ud.,esimado lector, está familiarizado con el método GUM y ya lo tiene implementado, por ejemplo, en una hoja Excel y le gustaría validarsus cálculos mediante unmétodo totalmente independiente y más general.</description>
+      <description>En este post introductorio validaremos los cálculos de incertidumbre de una operación analítica realizados de acuerdo a la guía GUM, mediante el Método de Monte Carlo. De esta forma Ud. podrá evidenciar, por ejemplo, ante un amable auditor de la norma 17025, que sus cálculos de incertidumbre en Excel están &amp;ldquo;validados&amp;rdquo; ¿o no recuerda el numeral 5.4.7?.</description>
     </item>
     
     <item>
@@ -47,12 +45,7 @@ Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papersque
       <pubDate>Sun, 13 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/primer-post/</guid>
-      <description>Este es el primer post de esta página.Estoy utilizando blogdown para generar los post, el cual permiteincorporar código en R y \(\LaTeX\) en el mismo documento.
-Probando \(\LaTeX\):
-\[\mu = \int xf(x)dx\]\[\begin{equation}E = mc^{2}\tag{1}\end{equation}\]
-La ecuación (1) es muy importante.
-Probando R:
-library(ggplot2)## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 3.5.1ggplot(mtcars, aes(x = wt, y = mpg)) +geom_point(pch = 19, col = &amp;#39;red&amp;#39;) +geom_smooth(method = &amp;#39;lm&amp;#39;) +theme_bw()Todos los modelos son erróneos, pero algunos son útiles (no me acuerdo quién dijo esto)</description>
+      <description>Ese es el primer post&amp;hellip;probando&amp;hellip; probando</description>
     </item>
     
   </channel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homes on Carlos Gómez</title>
@@ -19,7 +19,8 @@
       
       <guid>/home/about/</guid>
       <description>Sobre Mí Me desempeño actualmente como Gestor de Calidad de Billetes y Monedas en el Banco Central de Chile.
-+14 años de experiencia en proyectos de I+D relacionados con metrología química y la aplicación de métodos estadísticos modernos en química analítica. Soy Profesor en los Diplomados de Análisis Orgánico y Buenas Prácticas de Manufactura Farmacéutica impartidos por la Facultad de Ciencias Químicas y Farmacéuticas de la Universidad de Chile.</description>
++14 años de experiencia en proyectos de I+D relacionados con metrología química y la aplicación de métodos estadísticos modernos en química analítica. Soy Profesor en los Diplomados de Análisis Orgánico y Buenas Prácticas de Manufactura Farmacéutica impartidos por la Facultad de Ciencias Químicas y Farmacéuticas de la Universidad de Chile.
+Ha actuado como consultor en Validación de Procesos Farmacéuticos (Nota N° 4 ISP), así como auditor internacional en la norma ISO 17025.</description>
     </item>
     
     <item>
@@ -50,12 +51,12 @@
     </item>
     
     <item>
-      <title>Cursos 2020</title>
+      <title>Cursos 2018</title>
       <link>/home/teaching/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>/home/teaching/</guid>
-      <description>Durante este año dictaré los siguientes cursos en la Facultad de Ciencias Químicas y Farmacéuticas de la Universidad de Chile:
+      <description>Durante el año 2018 dictaré los siguientes cursos en la Facultad de Ciencias Químicas y Farmacéuticas de la Universidad de Chile:
  Diseño e Interpretación Estadística de las Mediciones Químicas Métodos estadísticos aplicados a Buenas Prácticas de Manufactura Cálculo de incertidumbre en mediciones químicas Control Estadístico de la calidad en el laboratorio  Más información aquí</description>
     </item>
     

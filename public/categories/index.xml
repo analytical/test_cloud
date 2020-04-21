@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Carlos Gómez</title>
@@ -7,12 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
+    <lastBuildDate>Wed, 01 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Incertidumbre</title>
+      <title>incertidumbre</title>
       <link>/categories/incertidumbre/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
@@ -21,16 +22,16 @@
     </item>
     
     <item>
-      <title>Iso</title>
-      <link>/categories/iso/</link>
-      <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
+      <title>sesgo</title>
+      <link>/categories/sesgo/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/iso/</guid>
+      <guid>/categories/sesgo/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Monte Carlo</title>
+      <title>monte carlo</title>
       <link>/categories/monte-carlo/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
@@ -39,20 +40,11 @@
     </item>
     
     <item>
-      <title>Normalidad</title>
+      <title>normalidad</title>
       <link>/categories/normalidad/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/categories/normalidad/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Precision</title>
-      <link>/categories/precision/</link>
-      <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/precision/</guid>
       <description></description>
     </item>
     
@@ -66,20 +58,29 @@
     </item>
     
     <item>
-      <title>Repetibilidad</title>
-      <link>/categories/repetibilidad/</link>
+      <title>iso</title>
+      <link>/categories/iso/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/repetibilidad/</guid>
+      <guid>/categories/iso/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Sesgo</title>
-      <link>/categories/sesgo/</link>
-      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      <title>precision</title>
+      <link>/categories/precision/</link>
+      <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/sesgo/</guid>
+      <guid>/categories/precision/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>repetibilidad</title>
+      <link>/categories/repetibilidad/</link>
+      <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/repetibilidad/</guid>
       <description></description>
     </item>
     

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linealidad on Carlos Gómez</title>
+    <title>linealidad on Carlos Gómez</title>
     <link>/tags/linealidad/</link>
-    <description>Recent content in Linealidad on Carlos Gómez</description>
+    <description>Recent content in linealidad on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
@@ -18,7 +18,7 @@
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</guid>
-      <description></description>
+      <description>En este post implementaremos el test de linealidad de Mandel en Excel, para evaluar la hipótesis de linealidad de una curva de calibración en química analítica.</description>
     </item>
     
     <item>
@@ -27,9 +27,7 @@
       <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
-      <description>En este post intentaremos derribar el mito del coeficiente de correlación con“muchos” 9’s como prueba de linealidad. Además, presentaremos dos testformales para evaluar el modelo de calibración lineal en químicaanalítica.
-Coeficiente de correlaciónEste parámetro estadístico indica la fuerza y dirección de la relación dedos variables cuantitativas, por ejemplo;
-Concentración (\(x\)) y Absorbancia (\(y\))\(log \text{ Concentración}\) y \(E\) Potencial (Ecuación de Nernst)La edad de las ganadoras de Miss América con los asesinatos utilizando objetoscalientes y vapor.</description>
+      <description>En este post intentaremos derribar el mito del coeficiente de correlación con &lt;em&gt;muchos&lt;/em&gt; 9s como prueba de linealidad. Además, presentaremos dos test formales para evaluar el modelo de calibración lineal en química analítica.</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sesgo on Carlos Gómez</title>
+    <title>sesgo on Carlos Gómez</title>
     <link>/categories/sesgo/</link>
-    <description>Recent content in Sesgo on Carlos Gómez</description>
+    <description>Recent content in sesgo on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
@@ -18,9 +18,7 @@
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/post/como-detectar-efecto-matriz-metodo-analitico/</guid>
-      <description>He vuelto a postear, después de una gira que me llevó por los cinco…mentira, fue por pura pega.
-El famoso efecto matriz, algo tan etéreo como el criterio analítico.El efecto matriz está íntimamente relacionado con las interferencias de lamatriz que de alguna forma aumentan o disminuyen la señal instrumental que,en teoría, es producida sólo por el analito de interés.
-Para evaluar y detectar el efecto matriz, debemos desempolvar algunos papersque nos enseñaron el famoso método de calibración con adición conocida oadición de estándar.</description>
+      <description>En este post trataremos el tema del efecto matriz de un método analítico y cómo detectarlo estadísticamente mediante el análisis de covarianza</description>
     </item>
     
   </channel>

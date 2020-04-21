@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.37" />
+  <meta name="generator" content="Hugo 0.69.0" />
   <meta name="author" content="Carlos Gómez">
   <meta name="description" content="Magíster en Estadística  
 Químico - Bioquímico">
@@ -19,7 +19,7 @@ Químico - Bioquímico">
   
     
     
-    <link rel="stylesheet" href="/css/highlight.min.css">
+    <link rel="stylesheet" href="../../css/highlight.min.css">
     
   
   
@@ -29,9 +29,9 @@ Químico - Bioquímico">
   
   
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-  <link rel="stylesheet" href="/css/hugo-academic.css">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
   
-  <link rel="stylesheet" href="/css/blue.css">
+  <link rel="stylesheet" href="../../css/blue.css">
   
 
   
@@ -49,13 +49,13 @@ Químico - Bioquímico">
     
   
 
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Carlos Gómez">
-  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Carlos Gómez">
+  <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="Carlos Gómez">
+  <link rel="feed" href="../../index.xml" type="application/rss+xml" title="Carlos Gómez">
 
-  <link rel="icon" type="image/png" href="/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
-  <link rel="canonical" href="/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/">
+  <link rel="canonical" href="../../post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/">
 
   
 
@@ -76,7 +76,7 @@ Químico - Bioquímico">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Carlos Gómez</a>
+      <a class="navbar-brand" href="../../">Carlos Gómez</a>
     </div>
 
     
@@ -89,7 +89,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#about">
+          <a href="../../#about">
             
             <span>Home</span>
           </a>
@@ -101,7 +101,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#posts">
+          <a href="../../#posts">
             
             <span>Blog</span>
           </a>
@@ -113,7 +113,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#projects">
+          <a href="../../#projects">
             
             <span>Proyectos</span>
           </a>
@@ -125,7 +125,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#teaching">
+          <a href="../../#teaching">
             
             <span>Cursos</span>
           </a>
@@ -137,7 +137,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#contact">
+          <a href="../../#contact">
             
             <span>Contacto</span>
           </a>
@@ -177,7 +177,7 @@ Químico - Bioquímico">
   <span class="article-categories">
     <i class="fa fa-folder"></i>
     
-    <a href="/categories/incertidumbre">incertidumbre</a
+    <a href="../../categories/incertidumbre">incertidumbre</a
     >
     
   </span>
@@ -236,7 +236,8 @@ Químico - Bioquímico">
 </div>
 
     <div class="article-style" itemprop="articleBody">
-      <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+      
+<script src="../../rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
 <p>Ok, este es el segundo post pero advierto que aún está en rodaje… esto del
@@ -299,7 +300,7 @@ library(ggplot2)</code></pre>
 <pre class="r"><code>ggplot(d, aes(x = x, y = y)) +
   geom_smooth(method = &#39;lm&#39;) </code></pre>
 <div class="figure"><span id="fig:banda"></span>
-<img src="/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png" alt="Incertidumbre de calibración" width="672" />
+<img src="../../post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/banda-1.png" alt="Incertidumbre de calibración" width="672" />
 <p class="caption">
 Figure 1: Incertidumbre de calibración
 </p>
@@ -320,12 +321,13 @@ es decir, utilizando todo el rango lineal (Nota mental: otro post)</li>
 <h1>Aplicación a un caso “real”</h1>
 <p>La tabla <a href="#tab:tabla">1</a> muestra los datos de una curva de calibración para la determinación de cobre en mineral por AAS, la figura <a href="#fig:cal">2</a> describe
 el gráfico de calibración:</p>
-<div class="alert alert-note">
-  <p>Alguien capo en HTML/CSS que me ayude a poner tabla enfrentada con figura en
-2 columnas por favor… y que Dios se lo pague.</p>
+<p><div class="alert alert-note">
+  
+Alguien capo en HTML/CSS que me ayude a poner tabla enfrentada con figura en
+2 columnas por favor… y que Dios se lo pague.
 
 </div>
-
+</p>
 <table class="table" style="width: auto !important; ">
 <caption>
 <span id="tab:tabla">Table 1: </span>Curva de Calibración Cu
@@ -424,7 +426,7 @@ UA
 </tbody>
 </table>
 <div class="figure"><span id="fig:cal"></span>
-<img src="/post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png" alt="Curva de calibración" width="672" />
+<img src="../../post/2017-08-13-como-calcular-la-incertidumbre-de-una-curva-de-calibración_files/figure-html/cal-1.png" alt="Curva de calibración" width="672" />
 <p class="caption">
 Figure 2: Curva de calibración
 </p>
@@ -437,13 +439,13 @@ librerías o packages especializados en el cálculo de incertidumbre en
 química analítica, por ejemplo: <code>metRology</code> y <code>chemCal</code>. En este post
 utilizaremos el segundo, pues entrega en forma directa el cálculo de
 la incertidumbre de calibración:</p>
-<div class="alert alert-warning">
-  <p>Si no tienes instalado el package <code>chemCal</code> utiliza el comando
-<code>install.packages(&lsquo;chemCal&rsquo;)</code>. Una vez instalado procede con el siguiente
-código.</p>
-
+<p><div class="alert alert-warning">
+  
+Si no tienes instalado el package <code>chemCal</code> utiliza el comando
+<code>install.packages('chemCal')</code>. Una vez instalado procede con el siguiente
+código.
 </div>
-
+</p>
 <pre class="r"><code># Creación del modelo de calibración lineal, al que llamaremos fit.lin 
 # (En otro post se profundizará sobre otros modelos de calibración en R)
 
@@ -526,12 +528,12 @@ siéntase libre de criticarlo. Nos vemos.</p>
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="/post/primer-post/"><span
+    <li class="previous"><a href="../../post/primer-post/"><span
       aria-hidden="true">&larr;</span> Primer Post, perdone lo poco</a></li>
     
 
     
-    <li class="next"><a href="/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/">¿Cómo &#34;demuestro&#34; que mi curva de calibracion es lineal? <span
+    <li class="next"><a href="../../post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/">¿Cómo &#34;demuestro&#34; que mi curva de calibracion es lineal? <span
       aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
@@ -544,7 +546,7 @@ siéntase libre de criticarlo. Nos vemos.</p>
 <section id="comments">
   <div id="disqus_thread">
     <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -573,7 +575,7 @@ siéntase libre de criticarlo. Nos vemos.</p>
   <div class="container">
     <p class="powered-by">
 
-      &copy; 2018 Carlos Gómez &middot; 
+      © 2018 Carlos Gómez &middot; 
 
       Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
       theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
@@ -598,7 +600,7 @@ siéntase libre de criticarlo. Nos vemos.</p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
     
-    <script src="/js/hugo-academic.js"></script>
+    <script src="../../js/hugo-academic.js"></script>
     
 
     

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Carlos Gómez</title>
@@ -7,22 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Content tagged as &#39;Academic&#39;</title>
-      <link>/tags/academic/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/academic/</guid>
-      <description>Here is a list of all the content that has been tagged as academic.</description>
-    </item>
-    
-    <item>
-      <title>Adicion Conocida</title>
+      <title>adicion conocida</title>
       <link>/tags/adicion-conocida/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
@@ -31,56 +22,11 @@
     </item>
     
     <item>
-      <title>Calibracion</title>
+      <title>calibracion</title>
       <link>/tags/calibracion/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/calibracion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gum</title>
-      <link>/tags/gum/</link>
-      <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/gum/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Incertidumbre</title>
-      <link>/tags/incertidumbre/</link>
-      <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/incertidumbre/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linealidad</title>
-      <link>/tags/linealidad/</link>
-      <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/linealidad/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mieles De Chile</title>
-      <link>/tags/mieles-de-chile/</link>
-      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/mieles-de-chile/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Precision</title>
-      <link>/tags/precision/</link>
-      <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/precision/</guid>
       <description></description>
     </item>
     
@@ -94,12 +40,66 @@
     </item>
     
     <item>
-      <title>Repetibilidad</title>
+      <title>linealidad</title>
+      <link>/tags/linealidad/</link>
+      <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/linealidad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GUM</title>
+      <link>/tags/gum/</link>
+      <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/gum/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>incertidumbre</title>
+      <link>/tags/incertidumbre/</link>
+      <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/incertidumbre/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>precision</title>
+      <link>/tags/precision/</link>
+      <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/precision/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>repetibilidad</title>
       <link>/tags/repetibilidad/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
       <guid>/tags/repetibilidad/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Mieles de Chile</title>
+      <link>/tags/mieles-de-chile/</link>
+      <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/mieles-de-chile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Content tagged as &#39;Academic&#39;</title>
+      <link>/tags/academic/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/academic/</guid>
+      <description>Here is a list of all the content that has been tagged as academic.</description>
     </item>
     
   </channel>

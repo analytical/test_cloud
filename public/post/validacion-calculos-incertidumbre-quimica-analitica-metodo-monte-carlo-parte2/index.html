@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme" content="hugo-academic">
-  <meta name="generator" content="Hugo 0.37" />
+  <meta name="generator" content="Hugo 0.69.0" />
   <meta name="author" content="Carlos Gómez">
   <meta name="description" content="Magíster en Estadística  
 Químico - Bioquímico">
@@ -19,7 +19,7 @@ Químico - Bioquímico">
   
     
     
-    <link rel="stylesheet" href="/css/highlight.min.css">
+    <link rel="stylesheet" href="../../css/highlight.min.css">
     
   
   
@@ -29,9 +29,9 @@ Químico - Bioquímico">
   
   
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather%7CRoboto+Mono">
-  <link rel="stylesheet" href="/css/hugo-academic.css">
+  <link rel="stylesheet" href="../../css/hugo-academic.css">
   
-  <link rel="stylesheet" href="/css/blue.css">
+  <link rel="stylesheet" href="../../css/blue.css">
   
 
   
@@ -49,13 +49,13 @@ Químico - Bioquímico">
     
   
 
-  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Carlos Gómez">
-  <link rel="feed" href="/index.xml" type="application/rss+xml" title="Carlos Gómez">
+  <link rel="alternate" href="../../index.xml" type="application/rss+xml" title="Carlos Gómez">
+  <link rel="feed" href="../../index.xml" type="application/rss+xml" title="Carlos Gómez">
 
-  <link rel="icon" type="image/png" href="/img/icon.png">
-  <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="../../img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="../../img/apple-touch-icon.png">
 
-  <link rel="canonical" href="/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/">
+  <link rel="canonical" href="../../post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/">
 
   
 
@@ -76,7 +76,7 @@ Químico - Bioquímico">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Carlos Gómez</a>
+      <a class="navbar-brand" href="../../">Carlos Gómez</a>
     </div>
 
     
@@ -89,7 +89,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#about">
+          <a href="../../#about">
             
             <span>Home</span>
           </a>
@@ -101,7 +101,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#posts">
+          <a href="../../#posts">
             
             <span>Blog</span>
           </a>
@@ -113,7 +113,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#projects">
+          <a href="../../#projects">
             
             <span>Proyectos</span>
           </a>
@@ -125,7 +125,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#teaching">
+          <a href="../../#teaching">
             
             <span>Cursos</span>
           </a>
@@ -137,7 +137,7 @@ Químico - Bioquímico">
         
 
         <li class="nav-item">
-          <a href="/#contact">
+          <a href="../../#contact">
             
             <span>Contacto</span>
           </a>
@@ -177,10 +177,10 @@ Químico - Bioquímico">
   <span class="article-categories">
     <i class="fa fa-folder"></i>
     
-    <a href="/categories/incertidumbre">incertidumbre</a
+    <a href="../../categories/incertidumbre">incertidumbre</a
     >, 
     
-    <a href="/categories/monte-carlo">monte carlo</a
+    <a href="../../categories/monte-carlo">monte carlo</a
     >
     
   </span>
@@ -193,13 +193,13 @@ Químico - Bioquímico">
   <span class="article-tags">
     <i class="fa fa-tags"></i>
     
-    <a href="/tags/incertidumbre">incertidumbre</a
+    <a href="../../tags/incertidumbre">incertidumbre</a
     >, 
     
-    <a href="/tags/r">R</a
+    <a href="../../tags/r">R</a
     >, 
     
-    <a href="/tags/gum">GUM</a
+    <a href="../../tags/gum">GUM</a
     >
     
   </span>
@@ -253,7 +253,8 @@ Químico - Bioquímico">
 </div>
 
     <div class="article-style" itemprop="articleBody">
-      <script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+      
+<script src="../../rmarkdown-libs/kePrint/kePrint.js"></script>
 
 
 <p>En el
@@ -344,12 +345,12 @@ ser obtenidos directamente del análisis estadístico de la curva de calibració
 lineal. Cabe destacar que cuando se utiliza el método de mínimos cuadrados
 ordinarios para estimar la pendiente e intercepto de la curva, esta metodología
 no incorpora la incertirtumbre de la concentración de los calibrantes.</p>
-<div class="alert alert-warning">
-  <p>Puede profundizar sobre la incertidumbre de calibración en el siguiente
-<a href="https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/">post</a></p>
-
+<p><div class="alert alert-warning">
+  
+Puede profundizar sobre la incertidumbre de calibración en el siguiente
+<a href="https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/">post</a>
 </div>
-
+</p>
 <ul>
 <li><p><span class="math inline">\(V\)</span>: La incertidumbre del volumen de aforo <span class="math inline">\(u_{\text{V}}\)</span> es estimada a partir
 de la combinación de tres fuentes:</p>
@@ -485,12 +486,12 @@ g
 </table>
 <p>Ok, vamos entonces a utilizar la librería <code>metRology</code> para evaluar la
 incertidumbre del % de Cu.</p>
-<div class="alert alert-warning">
-  <p>Debe, en primer lugar, instalar la librería mediante el
-comando <code>install.packages(&lsquo;metRology&rsquo;)</code></p>
-
+<p><div class="alert alert-warning">
+  
+Debe, en primer lugar, instalar la librería mediante el
+comando <code>install.packages('metRology')</code>
 </div>
-
+</p>
 <p>Una vez instalada debe ingresar el siguiente código <code>R</code>:</p>
 <pre class="r"><code>library(metRology)  # Carga la librería metRology
 
@@ -571,7 +572,7 @@ u(y):  0.006053998 </code></pre>
 En este gráfico queda en evidencia que el factor que más aporta a la
 incertidumbre total (evaluada por GUM) es la curva de calibración.</p>
 <div class="figure"><span id="fig:plotGUM"></span>
-<img src="/post/2017-09-23-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo-parte2_files/figure-html/plotGUM-1.png" alt="Gráfico de contribución a la incertidumbre total" width="672" />
+<img src="../../post/2017-09-23-validacion-de-los-calculos-de-incertidumbre-en-quimica-analitica-con-el-metodo-monte-carlo-parte2_files/figure-html/plotGUM-1.png" alt="Gráfico de contribución a la incertidumbre total" width="672" />
 <p class="caption">
 Figure 1: Gráfico de contribución a la incertidumbre total
 </p>
@@ -788,12 +789,12 @@ R package version 0.9-23-2, 2016.</p></li>
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/"><span
+    <li class="previous"><a href="../../post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/"><span
       aria-hidden="true">&larr;</span> Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I</a></li>
     
 
     
-    <li class="next"><a href="/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/">Prueba de linealidad de una curva de calibración en Excel... Sí ¡En Excel! <span
+    <li class="next"><a href="../../post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/">Prueba de linealidad de una curva de calibración en Excel... Sí ¡En Excel! <span
       aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
@@ -806,7 +807,7 @@ R package version 0.9-23-2, 2016.</p></li>
 <section id="comments">
   <div id="disqus_thread">
     <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -835,7 +836,7 @@ R package version 0.9-23-2, 2016.</p></li>
   <div class="container">
     <p class="powered-by">
 
-      &copy; 2018 Carlos Gómez &middot; 
+      © 2018 Carlos Gómez &middot; 
 
       Powered by the <a href="https://github.com/gcushen/hugo-academic" target="_blank">Academic
       theme</a> for <a href="http://gohugo.io" target="_blank">Hugo</a>.
@@ -860,7 +861,7 @@ R package version 0.9-23-2, 2016.</p></li>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
     
-    <script src="/js/hugo-academic.js"></script>
+    <script src="../../js/hugo-academic.js"></script>
     
 
     
