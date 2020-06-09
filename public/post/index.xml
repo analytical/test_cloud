@@ -2,22 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Carlos Gómez</title>
-    <link>https://test-cloud.netlify.app/post/</link>
+    <link>/post/</link>
     <description>Recent content in Posts on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://test-cloud.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Incertidumbre de una calibración no lineal con aplicación en química analítica</title>
+      <link>/post/incertidumbre-de-una-calibracion-no-lineal/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/incertidumbre-de-una-calibracion-no-lineal/</guid>
+      <description>Se comparan tres métodos para estimar la incertidumbre de una calibración no lineal: Norma ISO 8466-2, GUM y Método de Monte Carlo</description>
+    </item>
+    
+    <item>
       <title>Test desde rstudio.cloud</title>
-      <link>https://test-cloud.netlify.app/post/test-desde-rstudio-cloud/</link>
+      <link>/post/test-desde-rstudio-cloud/</link>
       <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/test-desde-rstudio-cloud/</guid>
+      <guid>/post/test-desde-rstudio-cloud/</guid>
       <description> probando test
 \[ x = y^2 + \int_{\infty}^{0}x \]
 library(ggplot2) library(ggcorrplot) # Correlation matrix data(mtcars) corr &amp;lt;- round(cor(mtcars), 1) # Plot ggcorrplot(corr, hc.order = TRUE, type = &amp;quot;lower&amp;quot;, lab = TRUE, lab_size = 3, method=&amp;quot;circle&amp;quot;, colors = c(&amp;quot;tomato2&amp;quot;, &amp;quot;white&amp;quot;, &amp;quot;springgreen3&amp;quot;), title=&amp;quot;Correlogram of mtcars&amp;quot;, ggtheme=theme_bw) </description>
@@ -25,82 +34,82 @@ library(ggplot2) library(ggcorrplot) # Correlation matrix data(mtcars) corr &amp
     
     <item>
       <title>¿Cómo detectar el efecto matriz en un método analítico?</title>
-      <link>https://test-cloud.netlify.app/post/como-detectar-efecto-matriz-metodo-analitico/</link>
+      <link>/post/como-detectar-efecto-matriz-metodo-analitico/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/como-detectar-efecto-matriz-metodo-analitico/</guid>
+      <guid>/post/como-detectar-efecto-matriz-metodo-analitico/</guid>
       <description>En este post trataremos el tema del efecto matriz de un método analítico y cómo detectarlo estadísticamente mediante el análisis de covarianza</description>
     </item>
     
     <item>
       <title>Prueba de linealidad de una curva de calibración en Excel... Sí ¡En Excel!</title>
-      <link>https://test-cloud.netlify.app/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</link>
+      <link>/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</guid>
+      <guid>/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</guid>
       <description>En este post implementaremos el test de linealidad de Mandel en Excel, para evaluar la hipótesis de linealidad de una curva de calibración en química analítica.</description>
     </item>
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte II</title>
-      <link>https://test-cloud.netlify.app/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
+      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
+      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
       <description>En este post continuaremos describiendo el método de Monte Carlo y su aplicación en química analítica. En esta oportunidad, utilizaremos la librería &lt;code&gt;metRology&lt;/code&gt; del software &lt;code&gt;R&lt;/code&gt;, la cual incorpora varios métodos numéricos de estimación de incertidumbre, incluyendo el test de validación de los cálculos por guía GUM.</description>
     </item>
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I</title>
-      <link>https://test-cloud.netlify.app/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
+      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
       <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
+      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
       <description>En este post introductorio validaremos los cálculos de incertidumbre de una operación analítica realizados de acuerdo a la guía GUM, mediante el Método de Monte Carlo. De esta forma Ud. podrá evidenciar, por ejemplo, ante un amable auditor de la norma 17025, que sus cálculos de incertidumbre en Excel están &amp;ldquo;validados&amp;rdquo; ¿o no recuerda el numeral 5.4.7?.</description>
     </item>
     
     <item>
       <title>¡Mis datos no son normales! ¿Qué hago?...Cálmese, nunca lo fueron... ni lo serán</title>
-      <link>https://test-cloud.netlify.app/post/mis-datos-no-son-normales/</link>
+      <link>/post/mis-datos-no-son-normales/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/mis-datos-no-son-normales/</guid>
+      <guid>/post/mis-datos-no-son-normales/</guid>
       <description>En este post discutiremos el concepto de normalidad y su aplicación en química. Daremos algunas luces sobre qué hacer cuándo los datos experimentales no soportan el supuesto de normalidad</description>
     </item>
     
     <item>
       <title>¿Cuál es la máxima diferencia tolerable entre duplicados de análisis?</title>
-      <link>https://test-cloud.netlify.app/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</link>
+      <link>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
+      <guid>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
       <description>En este post presentaremos dos métodos estadísticos para establecer la máxima diferencia tolerable entre duplicados de análisis. Este criterio de aceptación nos dará una una base para la construcción de cartas control de precisión</description>
     </item>
     
     <item>
       <title>¿Cómo &#34;demuestro&#34; que mi curva de calibracion es lineal?</title>
-      <link>https://test-cloud.netlify.app/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</link>
+      <link>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</link>
       <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
+      <guid>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
       <description>En este post intentaremos derribar el mito del coeficiente de correlación con &lt;em&gt;muchos&lt;/em&gt; 9s como prueba de linealidad. Además, presentaremos dos test formales para evaluar el modelo de calibración lineal en química analítica.</description>
     </item>
     
     <item>
       <title>¿Cómo calcular la incertidumbre de una curva de calibración?</title>
-      <link>https://test-cloud.netlify.app/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
+      <link>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
       <pubDate>Mon, 14 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
+      <guid>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
       <description>¿Qué es y cómo estimar la incertidumbre de una curva de calibración?</description>
     </item>
     
     <item>
       <title>Primer Post, perdone lo poco</title>
-      <link>https://test-cloud.netlify.app/post/primer-post/</link>
+      <link>/post/primer-post/</link>
       <pubDate>Sun, 13 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/primer-post/</guid>
+      <guid>/post/primer-post/</guid>
       <description>Ese es el primer post&amp;hellip;probando&amp;hellip; probando</description>
     </item>
     

@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Carlos Gómez</title>
-    <link>https://test-cloud.netlify.app/categories/r/</link>
+    <link>/categories/r/</link>
     <description>Recent content in R on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Fri, 08 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://test-cloud.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>¡Mis datos no son normales! ¿Qué hago?...Cálmese, nunca lo fueron... ni lo serán</title>
-      <link>https://test-cloud.netlify.app/post/mis-datos-no-son-normales/</link>
+      <link>/post/mis-datos-no-son-normales/</link>
       <pubDate>Fri, 08 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/mis-datos-no-son-normales/</guid>
+      <guid>/post/mis-datos-no-son-normales/</guid>
       <description>En este post discutiremos el concepto de normalidad y su aplicación en química. Daremos algunas luces sobre qué hacer cuándo los datos experimentales no soportan el supuesto de normalidad</description>
     </item>
     
     <item>
       <title>¿Cuál es la máxima diferencia tolerable entre duplicados de análisis?</title>
-      <link>https://test-cloud.netlify.app/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</link>
+      <link>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</link>
       <pubDate>Mon, 28 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
+      <guid>/post/cual-maxima-diferencia-tolerable-entre-duplicados-analisis/</guid>
       <description>En este post presentaremos dos métodos estadísticos para establecer la máxima diferencia tolerable entre duplicados de análisis. Este criterio de aceptación nos dará una una base para la construcción de cartas control de precisión</description>
     </item>
     
     <item>
       <title>¿Cómo &#34;demuestro&#34; que mi curva de calibracion es lineal?</title>
-      <link>https://test-cloud.netlify.app/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</link>
+      <link>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</link>
       <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://test-cloud.netlify.app/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
+      <guid>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
       <description>En este post intentaremos derribar el mito del coeficiente de correlación con &lt;em&gt;muchos&lt;/em&gt; 9s como prueba de linealidad. Además, presentaremos dos test formales para evaluar el modelo de calibración lineal en química analítica.</description>
     </item>
     
