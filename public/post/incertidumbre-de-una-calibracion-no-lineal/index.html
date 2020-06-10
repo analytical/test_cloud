@@ -938,7 +938,7 @@ head(muestra.MC) # muestra las primeras n = 6 simulaciones</code></pre>
 6 -0.006100136 0.007724920 -2.626908e-05 0.08644533 12.51252</code></pre>
 <p>La última columna corresponde a la concentración calculada para cada
 simulación. Por lo tanto, si queremos obtener la incertidumbre estándar de
-la concentración, basta clacular la desviación estándar de esa columna:</p>
+la concentración, basta calcular la desviación estándar de esa columna:</p>
 <pre class="r"><code>mu.x.hat.MC &lt;- mean(muestra.MC$x.hat) # valor promedio de concentración
 u.x.hat.MC &lt;- sd(muestra.MC$x.hat) # incertidumbre estándar de la concentración
 u.x.hat.MC</code></pre>
@@ -958,22 +958,22 @@ considerando la incertidumbre estándar de calibración:</p>
 knitr::kable(tabla, 
              rownames = NA,
              col.names = c(&#39;ISO&#39;, &#39;GUM&#39;, &#39;GUM/Covarianzas&#39;, &#39;Monte Carlo&#39;),
-             align = &#39;c&#39;)</code></pre>
+             align = &#39;l&#39;)</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th align="center">ISO</th>
-<th align="center">GUM</th>
-<th align="center">GUM/Covarianzas</th>
-<th align="center">Monte Carlo</th>
+<th align="left">ISO</th>
+<th align="left">GUM</th>
+<th align="left">GUM/Covarianzas</th>
+<th align="left">Monte Carlo</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center">0.2651904</td>
-<td align="center">0.4774807</td>
-<td align="center">0.2651904</td>
-<td align="center">0.265321</td>
+<td align="left">0.2651904</td>
+<td align="left">0.4774807</td>
+<td align="left">0.2651904</td>
+<td align="left">0.265321</td>
 </tr>
 </tbody>
 </table>
