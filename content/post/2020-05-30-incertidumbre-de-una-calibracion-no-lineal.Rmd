@@ -324,7 +324,7 @@ cuadrática. Como Ud. recordará de sus años mozos esto siginifica que
 la concentración interpolada se obtiene a partir de:
 
 $$\hat{x} = \frac{-b \pm \sqrt{b^2 - 4(a - y_{0})c}}{2c}$$
-donde $y_{0}$ es la señal inestrumental de la muestra problema.
+donde $y_{0}$ es la señal instrumental de la muestra problema.
 
 - $x_{i}$ es la concentración del estándar $i$
 
