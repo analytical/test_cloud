@@ -640,7 +640,7 @@ curvas de calibración cuadráticas. En la figura se muestra las correlaciones
 entre los tres parámetros del modelo no lineal:
 
 ```{r}
-# Simularemos p = 1000 curvas de calibración cuadráticas a partir de los datos 
+# Simularemos p = 200 curvas de calibración cuadráticas a partir de los datos 
 # empíricos 
 
 p <- 200 # Número de simulaciones
