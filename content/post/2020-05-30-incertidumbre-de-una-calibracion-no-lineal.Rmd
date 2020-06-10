@@ -782,7 +782,7 @@ head(muestra.MC) # muestra las primeras n = 6 simulaciones
 
 La última columna corresponde a la concentración calculada para cada 
 simulación. Por lo tanto, si queremos obtener la incertidumbre estándar de 
-la concentración, basta clacular la desviación estándar de esa columna:
+la concentración, basta calcular la desviación estándar de esa columna:
 
 ```{r}
 mu.x.hat.MC <- mean(muestra.MC$x.hat) # valor promedio de concentración
@@ -812,7 +812,7 @@ tabla <- data.frame(Ix/t, u.GUM$u.y, u.GUM.cov$u.y, u.x.hat.MC)
 knitr::kable(tabla, 
              rownames = NA,
              col.names = c('ISO', 'GUM', 'GUM/Covarianzas', 'Monte Carlo'),
-             align = 'c')
+             align = 'l')
 ```
 
 Se aprecia claramente una excelente concordancia entre los tres métodos.
