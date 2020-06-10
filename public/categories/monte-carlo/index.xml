@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>monte carlo on Carlos Gómez</title>
-    <link>/categories/monte-carlo/</link>
+    <link>https://www.analytical.cl/categories/monte-carlo/</link>
     <description>Recent content in monte carlo on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Sat, 23 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.analytical.cl/categories/monte-carlo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte II</title>
-      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
+      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
+      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
       <description>En este post continuaremos describiendo el método de Monte Carlo y su aplicación en química analítica. En esta oportunidad, utilizaremos la librería &lt;code&gt;metRology&lt;/code&gt; del software &lt;code&gt;R&lt;/code&gt;, la cual incorpora varios métodos numéricos de estimación de incertidumbre, incluyendo el test de validación de los cálculos por guía GUM.</description>
     </item>
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I</title>
-      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
+      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
       <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
+      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
       <description>En este post introductorio validaremos los cálculos de incertidumbre de una operación analítica realizados de acuerdo a la guía GUM, mediante el Método de Monte Carlo. De esta forma Ud. podrá evidenciar, por ejemplo, ante un amable auditor de la norma 17025, que sus cálculos de incertidumbre en Excel están &amp;ldquo;validados&amp;rdquo; ¿o no recuerda el numeral 5.4.7?.</description>
     </item>
     

@@ -14,14 +14,10 @@ weight = 60
 
 +++
 
-Durante el año 2018 dictaré los siguientes
+Durante el año 2020 dictaré los siguientes
 cursos en la Facultad de Ciencias Químicas y Farmacéuticas
 de la Universidad de Chile:
 
-- Diseño e Interpretación Estadística de las Mediciones Químicas
-- Métodos estadísticos aplicados a Buenas Prácticas de Manufactura
-- Cálculo de incertidumbre en mediciones químicas
-- Control Estadístico de la calidad en el laboratorio
+- [Diseño e Interpretación Estadística de las Mediciones Químicas](https://www.postgradoquimica.cl/curso-posgrado-herramientas-diseno-interpretacion-estadistica-mediciones-version-semipresencial-2/)
+- [Métodos estadísticos aplicados a Buenas Prácticas de Manufactura](https://www.postgradoquimica.cl/actualizacion-en-buenas-practicas-de-manufactura-vigentes-con-enfasis-en-auditorias-de-sistemas-de-calidad-validacion-y-analisis-de-riesgo/)
 
-
-Más información [aquí](http://www.quimica.uchile.cl/postgrado/)

@@ -45,7 +45,7 @@ weight = 1
 Me desempeño actualmente como Gestor de Calidad de Billetes y Monedas en 
 el Banco Central de Chile.
 
-+14 años de experiencia en proyectos de I+D relacionados con metrología química y la aplicación de métodos estadísticos modernos en química analítica.
++16 años de experiencia en proyectos de I+D relacionados con metrología química y la aplicación de métodos estadísticos modernos en química analítica.
 Soy Profesor en los Diplomados de Análisis Orgánico 
 y Buenas Prácticas de Manufactura Farmacéutica impartidos por la
 Facultad de Ciencias Químicas y Farmacéuticas de la Universidad de Chile.
