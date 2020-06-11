@@ -616,7 +616,7 @@ $$
 \end{aligned}
 $$
 
-¡Listo! sólo nos falta ahora evaluar las expresiones. Pero como soy flojo 
+¡Listo! ahora debemos evaluar las expresiones. Pero como soy flojo, 
 prefiero usar el excelente package `metRology` que hará todo el trabajo por
 mí:
 
