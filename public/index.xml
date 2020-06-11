@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Carlos Gómez on Carlos Gómez</title>
-    <link>https://www.analytical.cl/</link>
+    <link>/</link>
     <description>Recent content in Carlos Gómez on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
@@ -11,37 +11,37 @@
     
     <item>
       <title>Projects</title>
-      <link>https://www.analytical.cl/project/</link>
+      <link>/project/</link>
       <pubDate>Thu, 27 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/project/</guid>
+      <guid>/project/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Posts</title>
-      <link>https://www.analytical.cl/post/</link>
+      <link>/post/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/</guid>
+      <guid>/post/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Publications</title>
-      <link>https://www.analytical.cl/publication/</link>
+      <link>/publication/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/publication/</guid>
+      <guid>/publication/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recent &amp; Upcoming Talks</title>
-      <link>https://www.analytical.cl/talk/</link>
+      <link>/talk/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/talk/</guid>
+      <guid>/talk/</guid>
       <description></description>
     </item>
     

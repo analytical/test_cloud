@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>incertidumbre on Carlos Gómez</title>
-    <link>https://www.analytical.cl/categories/incertidumbre/</link>
+    <link>/categories/incertidumbre/</link>
     <description>Recent content in incertidumbre on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Wed, 01 Nov 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.analytical.cl/categories/incertidumbre/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/incertidumbre/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>¿Cómo detectar el efecto matriz en un método analítico?</title>
-      <link>https://www.analytical.cl/post/como-detectar-efecto-matriz-metodo-analitico/</link>
+      <link>/post/como-detectar-efecto-matriz-metodo-analitico/</link>
       <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/como-detectar-efecto-matriz-metodo-analitico/</guid>
+      <guid>/post/como-detectar-efecto-matriz-metodo-analitico/</guid>
       <description>En este post trataremos el tema del efecto matriz de un método analítico y cómo detectarlo estadísticamente mediante el análisis de covarianza</description>
     </item>
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte II</title>
-      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
+      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</link>
       <pubDate>Sat, 23 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
+      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo-parte2/</guid>
       <description>En este post continuaremos describiendo el método de Monte Carlo y su aplicación en química analítica. En esta oportunidad, utilizaremos la librería &lt;code&gt;metRology&lt;/code&gt; del software &lt;code&gt;R&lt;/code&gt;, la cual incorpora varios métodos numéricos de estimación de incertidumbre, incluyendo el test de validación de los cálculos por guía GUM.</description>
     </item>
     
     <item>
       <title>Validación de los cálculos de incertidumbre en química analítica con el método Monte Carlo. Parte I</title>
-      <link>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
+      <link>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</link>
       <pubDate>Wed, 20 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
+      <guid>/post/validacion-calculos-incertidumbre-quimica-analitica-metodo-monte-carlo/</guid>
       <description>En este post introductorio validaremos los cálculos de incertidumbre de una operación analítica realizados de acuerdo a la guía GUM, mediante el Método de Monte Carlo. De esta forma Ud. podrá evidenciar, por ejemplo, ante un amable auditor de la norma 17025, que sus cálculos de incertidumbre en Excel están &amp;ldquo;validados&amp;rdquo; ¿o no recuerda el numeral 5.4.7?.</description>
     </item>
     
     <item>
       <title>¿Cómo calcular la incertidumbre de una curva de calibración?</title>
-      <link>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
+      <link>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</link>
       <pubDate>Mon, 14 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
+      <guid>/post/como-calcular-la-incertidumbre-de-una-curva-de-calibracion/</guid>
       <description>¿Qué es y cómo estimar la incertidumbre de una curva de calibración?</description>
     </item>
     

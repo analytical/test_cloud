@@ -736,7 +736,7 @@ forma muy expedita. Otros usuarios han tenido un problema similar y se ha
 abierto un hilo en [stackoverflow](https://stackoverflow.com/questions/60971950/error-in-eigensigma-symmetric-true-0-x-0-matrix-in-metrology-uncertmc-wit/62119518#62119518).
 
 Por lo tanto, implementamos el método de Monte Carlo "a mano" utilizando el 
-package `MASS` el cual permite generar muetras aleatorias multivariadas 
+package `MASS` el cual permite generar muestras aleatorias multivariadas 
 incluyendo las correlaciones:
 
 ```{r u.MC.sim}
