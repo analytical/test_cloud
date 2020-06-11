@@ -717,7 +717,7 @@ u.GUM.cov <- uncert(expr, x, cov = v, method = "GUM")
 u.GUM.cov
 ```
 
-Perfecto, ahora sí, al incluir las covarianzas obtenemos resultados consistentes 
+¡Perfecto!, ahora sí, al incluir las covarianzas obtenemos resultados consistentes 
 con el método descrito en la norma ISO 8466-2.
 
 ## Estimación con el Método de Monte Carlo
