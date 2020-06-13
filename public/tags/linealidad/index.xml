@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linealidad on Carlos Gómez</title>
-    <link>/tags/linealidad/</link>
+    <link>https://www.analytical.cl/tags/linealidad/</link>
     <description>Recent content in linealidad on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Thu, 28 Sep 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/linealidad/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.analytical.cl/tags/linealidad/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Prueba de linealidad de una curva de calibración en Excel... Sí ¡En Excel!</title>
-      <link>/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</link>
+      <link>https://www.analytical.cl/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</link>
       <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</guid>
+      <guid>https://www.analytical.cl/post/prueba-de-linealidad-de-una-curva-de-calibracion-en-excel/</guid>
       <description>En este post implementaremos el test de linealidad de Mandel en Excel, para evaluar la hipótesis de linealidad de una curva de calibración en química analítica.</description>
     </item>
     
     <item>
       <title>¿Cómo &#34;demuestro&#34; que mi curva de calibracion es lineal?</title>
-      <link>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</link>
+      <link>https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</link>
       <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
       
-      <guid>/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
+      <guid>https://www.analytical.cl/post/como-demuestro-que-mi-curva-de-calibracion-es-lineal/</guid>
       <description>En este post intentaremos derribar el mito del coeficiente de correlación con &lt;em&gt;muchos&lt;/em&gt; 9s como prueba de linealidad. Además, presentaremos dos test formales para evaluar el modelo de calibración lineal en química analítica.</description>
     </item>
     

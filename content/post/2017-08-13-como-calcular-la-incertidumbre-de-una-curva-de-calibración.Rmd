@@ -231,5 +231,12 @@ oportunidad, se obtendría una pendiente e intercepto distintos (debido a al
 error aleatorio $\epsilon$), por lo tanto, también una concentración $x0$ 
 distinta cada vez.
 
+
+{{% alert warning %}}
+Si está interesado en estimar la incertidumbre de una calibración no lineal, lo
+discutimos paso a paso en el [siguiente link.](https://www.analytical.cl/post/incertidumbre-de-una-calibracion-no-lineal/)
+{{% /alert %}}
+
+
 Bueno espero que este post, en rodaje áun, haya sido de su agrado. Como siempre, 
 siéntase libre de criticarlo. Nos vemos.
