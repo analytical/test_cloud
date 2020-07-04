@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Homes on Carlos Gómez</title>
-    <link>https://www.analytical.cl/home/</link>
+    <link>/home/</link>
     <description>Recent content in Homes on Carlos Gómez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>es</language>
     <copyright>&amp;copy; 2018 Carlos Gómez</copyright>
     <lastBuildDate>Sun, 23 Sep 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.analytical.cl/home/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/home/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://www.analytical.cl/home/about/</link>
+      <link>/home/about/</link>
       <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/home/about/</guid>
+      <guid>/home/about/</guid>
       <description>Sobre Mí Me desempeño actualmente como Gestor de Calidad de Billetes y Monedas en el Banco Central de Chile.
 +16 años de experiencia en proyectos de I+D relacionados con metrología química y la aplicación de métodos estadísticos modernos en química analítica. Soy Profesor en los Diplomados de Análisis Orgánico y Buenas Prácticas de Manufactura Farmacéutica impartidos por la Facultad de Ciencias Químicas y Farmacéuticas de la Universidad de Chile.
 Ha actuado como consultor en Validación de Procesos Farmacéuticos (Nota N° 4 ISP), así como auditor internacional en la norma ISO 17025.</description>
@@ -25,47 +25,47 @@ Ha actuado como consultor en Validación de Procesos Farmacéuticos (Nota N° 4 
     
     <item>
       <title>Post Recientes</title>
-      <link>https://www.analytical.cl/home/posts/</link>
+      <link>/home/posts/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/home/posts/</guid>
+      <guid>/home/posts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Conferencias y Presentaciones</title>
-      <link>https://www.analytical.cl/home/talks/</link>
+      <link>/home/talks/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/home/talks/</guid>
+      <guid>/home/talks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Proyectos</title>
-      <link>https://www.analytical.cl/home/projects/</link>
+      <link>/home/projects/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/home/projects/</guid>
+      <guid>/home/projects/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cursos 2018</title>
-      <link>https://www.analytical.cl/home/teaching/</link>
+      <link>/home/teaching/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/home/teaching/</guid>
+      <guid>/home/teaching/</guid>
       <description>Durante el año 2020 dictaré los siguientes cursos en la Facultad de Ciencias Químicas y Farmacéuticas de la Universidad de Chile:
  Diseño e Interpretación Estadística de las Mediciones Químicas Métodos estadísticos aplicados a Buenas Prácticas de Manufactura  </description>
     </item>
     
     <item>
       <title>Contacto</title>
-      <link>https://www.analytical.cl/home/contact/</link>
+      <link>/home/contact/</link>
       <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://www.analytical.cl/home/contact/</guid>
+      <guid>/home/contact/</guid>
       <description></description>
     </item>
     

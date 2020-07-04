@@ -64,7 +64,8 @@ denominada "El Cuarteto de Anscombe". La "gracia" de estos
 datos de calibración es que todos tienen la misma pendiente, intercepto, 
 error de calibración y... ¡coeficiente de correlación!
 
-¿No me cree? Le dejo este [link](https://1drv.ms/x/s!AuF6FPVWruwDtfpb0dC8SSaBCChfzA) para que descargue los datos en archivo Excel
+¿No me cree? Le dejo este [link](https://1drv.ms/x/s!AuF6FPVWruwDvolyX6YjvQa1NSxQFw?e=7jcwsT) 
+para que descargue los datos en archivo Excel
 y se convenza con sus propios ojos.
 
 
